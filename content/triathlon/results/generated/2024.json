@@ -1,0 +1,322 @@
+{
+  "year": 2024,
+  "updated_at": "2026-01-10T22:22:24.695Z",
+  "entries": [
+    {
+      "id": "2024-will",
+      "name_public": "Will",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1373,
+        "t1": 171,
+        "bike": 5421,
+        "t2": 100,
+        "run": 4006
+      },
+      "total_seconds": 11071,
+      "ranks": {
+        "total": 7,
+        "swim": 1,
+        "bike": 4,
+        "run": 12
+      },
+      "overtakes": {
+        "bike": -3
+      }
+    },
+    {
+      "id": "2024-jaylan",
+      "name_public": "Jaylan",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1441,
+        "t1": 162,
+        "bike": 5879,
+        "t2": 58,
+        "run": 2792
+      },
+      "total_seconds": 10092,
+      "ranks": {
+        "total": 4,
+        "swim": 2,
+        "bike": 8,
+        "run": 4
+      },
+      "overtakes": {
+        "bike": -6
+      }
+    },
+    {
+      "id": "2024-nick",
+      "name_public": "Nick",
+      "status": "partial",
+      "splits_seconds": {
+        "swim": 1453,
+        "t1": 819,
+        "bike": 7703,
+        "t2": null,
+        "run": null
+      },
+      "total_seconds": null,
+      "ranks": {
+        "total": 14,
+        "swim": 3,
+        "bike": 12,
+        "run": 14
+      },
+      "overtakes": {
+        "bike": -9
+      }
+    },
+    {
+      "id": "2024-izabelle",
+      "name_public": "Izabelle",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1458,
+        "t1": 116,
+        "bike": 5697,
+        "t2": 84,
+        "run": 3259
+      },
+      "total_seconds": 10612,
+      "ranks": {
+        "total": 5,
+        "swim": 4,
+        "bike": 7,
+        "run": 8
+      },
+      "overtakes": {
+        "bike": -3
+      }
+    },
+    {
+      "id": "2024-jacob",
+      "name_public": "Jacob",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1677,
+        "t1": 132,
+        "bike": 4904,
+        "t2": 62,
+        "run": 2469
+      },
+      "total_seconds": 9244,
+      "ranks": {
+        "total": 2,
+        "swim": 5,
+        "bike": 3,
+        "run": 1
+      },
+      "overtakes": {
+        "bike": 2
+      }
+    },
+    {
+      "id": "2024-ian",
+      "name_public": "Ian",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1691,
+        "t1": 144,
+        "bike": 4677,
+        "t2": 94,
+        "run": 2525
+      },
+      "total_seconds": 9119,
+      "ranks": {
+        "total": 1,
+        "swim": 6,
+        "bike": 1,
+        "run": 2
+      },
+      "overtakes": {
+        "bike": 5
+      }
+    },
+    {
+      "id": "2024-tobias",
+      "name_public": "Tobias",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1727,
+        "t1": 189,
+        "bike": 4835,
+        "t2": 112,
+        "run": 2656
+      },
+      "total_seconds": 9519,
+      "ranks": {
+        "total": 3,
+        "swim": 7,
+        "bike": 2,
+        "run": 3
+      },
+      "overtakes": {
+        "bike": 5
+      }
+    },
+    {
+      "id": "2024-marshall",
+      "name_public": "Marshall",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1755,
+        "t1": 191,
+        "bike": 5669,
+        "t2": 63,
+        "run": 3241
+      },
+      "total_seconds": 10919,
+      "ranks": {
+        "total": 6,
+        "swim": 8,
+        "bike": 6,
+        "run": 7
+      },
+      "overtakes": {
+        "bike": 2
+      }
+    },
+    {
+      "id": "2024-hannah",
+      "name_public": "Hannah",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1946,
+        "t1": 446,
+        "bike": 7703,
+        "t2": 50,
+        "run": 3590
+      },
+      "total_seconds": 13615,
+      "ranks": {
+        "total": 12,
+        "swim": 9,
+        "bike": 13,
+        "run": 11
+      },
+      "overtakes": {
+        "bike": -4
+      }
+    },
+    {
+      "id": "2024-daniel",
+      "name_public": "Daniel",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1974,
+        "t1": 235,
+        "bike": 6253,
+        "t2": 138,
+        "run": 3352
+      },
+      "total_seconds": 12492,
+      "ranks": {
+        "total": 9,
+        "swim": 10,
+        "bike": 9,
+        "run": 9
+      },
+      "overtakes": {
+        "bike": 1
+      }
+    },
+    {
+      "id": "2024-sam",
+      "name_public": "Sam",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2424,
+        "t1": 313,
+        "bike": 6649,
+        "t2": 333,
+        "run": 2799
+      },
+      "total_seconds": 12518,
+      "ranks": {
+        "total": 10,
+        "swim": 11,
+        "bike": 11,
+        "run": 5
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2024-jackson",
+      "name_public": "Jackson",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2453,
+        "t1": 275,
+        "bike": 6341,
+        "t2": 90,
+        "run": 3428
+      },
+      "total_seconds": 12587,
+      "ranks": {
+        "total": 11,
+        "swim": 12,
+        "bike": 10,
+        "run": 10
+      },
+      "overtakes": {
+        "bike": 2
+      }
+    },
+    {
+      "id": "2024-ben",
+      "name_public": "Ben",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2498,
+        "t1": 364,
+        "bike": 9389,
+        "t2": 330,
+        "run": 4092
+      },
+      "total_seconds": 13811,
+      "ranks": {
+        "total": 13,
+        "swim": 13,
+        "bike": 14,
+        "run": 13
+      },
+      "overtakes": {
+        "bike": -1
+      }
+    },
+    {
+      "id": "2024-karol",
+      "name_public": "Karol",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2506,
+        "t1": 199,
+        "bike": 5539,
+        "t2": 84,
+        "run": 3116
+      },
+      "total_seconds": 11444,
+      "ranks": {
+        "total": 8,
+        "swim": 14,
+        "bike": 5,
+        "run": 6
+      },
+      "overtakes": {
+        "bike": 9
+      }
+    }
+  ],
+  "summary": {
+    "finishers_count": 13,
+    "total_seconds": {
+      "min": 9119,
+      "median": 11071,
+      "max": 13811
+    }
+  }
+}

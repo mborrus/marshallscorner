@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  min-height: 120px;
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-bg);
+  text-decoration: none;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+}
