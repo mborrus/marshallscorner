@@ -1,0 +1,92 @@
+/* Konami Code Easter Egg Styles */
+
+.secretMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.messageBox {
+  background-color: var(--color-bg);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.titleBar {
+  background: linear-gradient(90deg, #2e8b57, #3cb371);
+  color: #ffffff;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.closeBtn {
+  background-color: var(--color-bg);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  padding: 0 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.closeBtn:hover {
+  background-color: var(--color-bg-panel);
+}
+
+.closeBtn:active {
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.messageContent {
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.congrats {
+  font-family: var(--font-pixel);
+  font-size: 2rem;
+  color: #ff0000;
+  margin-bottom: var(--spacing-md);
+  animation: blink 0.5s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.messageContent p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.hint {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.small {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}

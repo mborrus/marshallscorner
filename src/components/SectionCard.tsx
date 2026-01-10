@@ -1,5 +1,5 @@
 // SectionCard component for the home page grid
-// Links to each of the 6 main sections
+// 90s folder/button style cards
 
 import Link from 'next/link';
 import styles from './SectionCard.module.css';
@@ -7,12 +7,14 @@ import styles from './SectionCard.module.css';
 interface SectionCardProps {
   title: string;
   href: string;
+  icon?: string;
 }
 
-export default function SectionCard({ title, href }: SectionCardProps) {
+export default function SectionCard({ title, href, icon }: SectionCardProps) {
   return (
     <Link href={href} className={styles.card}>
-      <h2 className={styles.title}>{title}</h2>
+      {icon && <span className={styles.icon}>{icon}</span>}
+      <span className={styles.title}>{title}</span>
     </Link>
   );
 }

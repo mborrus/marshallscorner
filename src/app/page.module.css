@@ -1,25 +1,130 @@
-.intro {
-  margin-bottom: var(--spacing-xl);
+/* Home page authentic 90s styling */
+
+/* Welcome banner */
+.welcome {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-panel);
+  border: 1px solid var(--border-mid);
 }
 
+.welcomeText {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--color-secondary);
+  letter-spacing: 1px;
+}
+
+/* Section header - like old web section titles */
+.sectionHeader {
+  background: linear-gradient(90deg, #2e8b57, #3cb371);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 4px 8px;
+  margin-bottom: 0;
+}
+
+/* About section */
+.intro {
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  margin-bottom: var(--spacing-lg);
+}
+
+.intro .sectionHeader {
+  margin-bottom: 0;
+}
+
+.intro :global(.markdown-content) {
+  padding: var(--spacing-md);
+}
+
+/* Decorative divider */
+.divider {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  font-family: var(--font-body);
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+/* Site map section */
 .sections {
-  margin-top: var(--spacing-lg);
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  margin-bottom: var(--spacing-lg);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+}
+
+/* Under construction section */
+.underConstruction {
+  margin: var(--spacing-xl) 0;
+}
+
+.constructionStripe {
+  height: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffcc00,
+    #ffcc00 10px,
+    #000000 10px,
+    #000000 20px
+  );
+}
+
+.constructionContent {
+  background-color: var(--color-bg-panel);
+  padding: var(--spacing-md);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.constructionIcon {
+  font-size: 1.25rem;
+}
+
+/* Hidden secret - barely visible */
+.hiddenSecret {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.75rem;
+  color: var(--color-bg);
+  opacity: 0.1;
+  cursor: help;
+  transition: opacity 0.3s;
+  user-select: none;
+}
+
+.hiddenSecret:hover {
+  opacity: 0.5;
 }
 
 @media (min-width: 640px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (min-width: 900px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }

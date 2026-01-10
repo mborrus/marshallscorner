@@ -1,12 +1,150 @@
+/* Authentic 90s web footer */
+
 .footer {
-  border-top: 1px solid var(--color-border);
-  padding: var(--spacing-lg) 0;
+  background-color: var(--color-bg-panel);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  margin: var(--spacing-md);
   margin-top: auto;
+  padding: var(--spacing-md);
 }
 
-.text {
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
+.topRule {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right,
+    transparent,
+    var(--color-primary) 20%,
+    var(--color-primary) 80%,
+    transparent
+  );
+  margin-bottom: var(--spacing-md);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
   text-align: center;
+}
+
+/* Webring section */
+.webring {
+  background-color: var(--color-bg);
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.webringLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.webringNav {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.webringLink {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-link);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.webringLink:hover {
+  color: var(--color-highlight);
+}
+
+.webringDivider {
+  color: var(--color-text-muted);
+}
+
+/* Links section */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.link {
+  color: var(--color-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--color-highlight);
+}
+
+.divider {
+  color: var(--color-text-muted);
+}
+
+/* Best viewed badge */
+.badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-mid);
+}
+
+.browser {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* Copyright */
+.copyright {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.copyright p {
   margin: 0;
+  margin-bottom: 2px;
+}
+
+.disclaimer {
+  font-style: italic;
+}
+
+/* Made with */
+.madeWith {
+  font-family: var(--font-pixel);
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-bg);
+  border: 1px dashed var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer {
+    margin: var(--spacing-sm);
+    padding: var(--spacing-sm);
+  }
+
+  .webring {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 }
