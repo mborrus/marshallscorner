@@ -1,6 +1,6 @@
 {
   "year": 2025,
-  "updated_at": "2026-01-10T22:17:42.671Z",
+  "updated_at": "2026-01-10T22:22:24.698Z",
   "entries": [
     {
       "id": "2025-ian",
@@ -304,9 +304,6 @@
         "total": 14,
         "swim": 4,
         "bike": 16
-      },
-      "overtakes": {
-        "bike": -12
       }
     },
     {
