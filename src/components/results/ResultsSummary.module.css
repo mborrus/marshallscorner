@@ -1,46 +1,53 @@
+/* 90s style results summary */
+
 .summary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .section {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: 0;
 }
 
 .sectionTitle {
+  background: linear-gradient(90deg, #2e8b57, #3cb371);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: bold;
   font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #666;
-  margin: 0 0 0.75rem 0;
+  margin: 0;
+  padding: 4px 8px;
 }
 
 .stats {
   margin: 0;
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .stat {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
 }
 
 .stat dt {
-  font-weight: 500;
-  color: #333;
+  color: var(--color-text);
 }
 
 .stat dd {
   margin: 0;
   font-variant-numeric: tabular-nums;
-  color: #666;
+  color: var(--color-text);
+  font-family: 'Courier New', monospace;
 }
