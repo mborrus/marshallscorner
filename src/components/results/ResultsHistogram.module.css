@@ -1,0 +1,36 @@
+.container {
+  margin: 1.5rem 0;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin: 0 0 0.75rem 0;
+}
+
+.chart {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.bar {
+  fill: #4a90a4;
+}
+
+.bar:hover {
+  fill: #3a7a94;
+}
+
+.count {
+  font-size: 10px;
+  fill: #333;
+}
+
+.label {
+  font-size: 8px;
+  fill: #666;
+}

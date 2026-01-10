@@ -1,0 +1,383 @@
+{
+  "year": 2025,
+  "updated_at": "2026-01-10T22:17:42.671Z",
+  "entries": [
+    {
+      "id": "2025-ian",
+      "name_public": "Ian",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1931,
+        "t1": 124,
+        "bike": 4589,
+        "t2": 49,
+        "run": 2322
+      },
+      "total_seconds": 9015,
+      "ranks": {
+        "total": 1,
+        "swim": 11,
+        "bike": 1,
+        "run": 2
+      },
+      "overtakes": {
+        "bike": 10
+      }
+    },
+    {
+      "id": "2025-lucas",
+      "name_public": "Lucas",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1896,
+        "t1": 118,
+        "bike": 4892,
+        "t2": 33,
+        "run": 2129
+      },
+      "total_seconds": 9068,
+      "ranks": {
+        "total": 2,
+        "swim": 9,
+        "bike": 3,
+        "run": 1
+      },
+      "overtakes": {
+        "bike": 6
+      }
+    },
+    {
+      "id": "2025-jacob-jampel",
+      "name_public": "Jacob J.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1723,
+        "t1": 70,
+        "bike": 4919,
+        "t2": 28,
+        "run": 2334
+      },
+      "total_seconds": 9074,
+      "ranks": {
+        "total": 3,
+        "swim": 6,
+        "bike": 4,
+        "run": 3
+      },
+      "overtakes": {
+        "bike": 2
+      }
+    },
+    {
+      "id": "2025-felix-knollmann",
+      "name_public": "Felix K.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1330,
+        "t1": 104,
+        "bike": 4876,
+        "t2": 47,
+        "run": 2840
+      },
+      "total_seconds": 9197,
+      "ranks": {
+        "total": 4,
+        "swim": 2,
+        "bike": 2,
+        "run": 7
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2025-jaylan",
+      "name_public": "Jaylan",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1433,
+        "t1": 168,
+        "bike": 5503,
+        "t2": 51,
+        "run": 2628
+      },
+      "total_seconds": 9783,
+      "ranks": {
+        "total": 5,
+        "swim": 3,
+        "bike": 9,
+        "run": 5
+      },
+      "overtakes": {
+        "bike": -6
+      }
+    },
+    {
+      "id": "2025-marshall",
+      "name_public": "Marshall",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1814,
+        "t1": 171,
+        "bike": 5177,
+        "t2": 79,
+        "run": 2617
+      },
+      "total_seconds": 9858,
+      "ranks": {
+        "total": 6,
+        "swim": 7,
+        "bike": 7,
+        "run": 4
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2025-botond-oreg",
+      "name_public": "Botond O.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2045,
+        "t1": 289,
+        "bike": 5166,
+        "t2": 35,
+        "run": 2719
+      },
+      "total_seconds": 10254,
+      "ranks": {
+        "total": 7,
+        "swim": 13,
+        "bike": 6,
+        "run": 6
+      },
+      "overtakes": {
+        "bike": 7
+      }
+    },
+    {
+      "id": "2025-karol-regula",
+      "name_public": "Karol R.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1979,
+        "t1": 182,
+        "bike": 5345,
+        "t2": 8,
+        "run": 2891
+      },
+      "total_seconds": 10405,
+      "ranks": {
+        "total": 8,
+        "swim": 12,
+        "bike": 8,
+        "run": 8
+      },
+      "overtakes": {
+        "bike": 4
+      }
+    },
+    {
+      "id": "2025-will-munstermann",
+      "name_public": "Will M.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1327,
+        "t1": 156,
+        "bike": 5507,
+        "t2": 84,
+        "run": 3705
+      },
+      "total_seconds": 10779,
+      "ranks": {
+        "total": 9,
+        "swim": 1,
+        "bike": 10,
+        "run": 12
+      },
+      "overtakes": {
+        "bike": -9
+      }
+    },
+    {
+      "id": "2025-bryn-anderson",
+      "name_public": "Bryn A.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1857,
+        "t1": 218,
+        "bike": 5628,
+        "t2": 85,
+        "run": 3464
+      },
+      "total_seconds": 11252,
+      "ranks": {
+        "total": 10,
+        "swim": 8,
+        "bike": 12,
+        "run": 11
+      },
+      "overtakes": {
+        "bike": -4
+      }
+    },
+    {
+      "id": "2025-ryan-chaban",
+      "name_public": "Ryan C.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2246,
+        "t1": 462,
+        "bike": 5555,
+        "t2": 152,
+        "run": 3138
+      },
+      "total_seconds": 11553,
+      "ranks": {
+        "total": 11,
+        "swim": 16,
+        "bike": 11,
+        "run": 10
+      },
+      "overtakes": {
+        "bike": 5
+      }
+    },
+    {
+      "id": "2025-jackson-bibbens",
+      "name_public": "Jackson B.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2100,
+        "t1": 425,
+        "bike": 6017,
+        "t2": 214,
+        "run": 2966
+      },
+      "total_seconds": 11722,
+      "ranks": {
+        "total": 12,
+        "swim": 14,
+        "bike": 14,
+        "run": 9
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2025-daniel",
+      "name_public": "Daniel",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1905,
+        "t1": 158,
+        "bike": 6200,
+        "t2": 61,
+        "run": 3910
+      },
+      "total_seconds": 12234,
+      "ranks": {
+        "total": 13,
+        "swim": 10,
+        "bike": 15,
+        "run": 13
+      },
+      "overtakes": {
+        "bike": -5
+      }
+    },
+    {
+      "id": "2025-john-reisert",
+      "name_public": "John R.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1470,
+        "t1": 175,
+        "bike": 6545,
+        "t2": 42,
+        "run": null
+      },
+      "total_seconds": 12473,
+      "ranks": {
+        "total": 14,
+        "swim": 4,
+        "bike": 16
+      },
+      "overtakes": {
+        "bike": -12
+      }
+    },
+    {
+      "id": "2025-meg-veenstra",
+      "name_public": "Meg V.",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1503,
+        "t1": 326,
+        "bike": 8253,
+        "t2": 101,
+        "run": 4590
+      },
+      "total_seconds": 14773,
+      "ranks": {
+        "total": 15,
+        "swim": 5,
+        "bike": 17,
+        "run": 14
+      },
+      "overtakes": {
+        "bike": -12
+      }
+    },
+    {
+      "id": "2025-sam-schraver",
+      "name_public": "Sam S.",
+      "status": "partial",
+      "splits_seconds": {
+        "swim": 2443,
+        "t1": 266,
+        "bike": 5981,
+        "t2": 65,
+        "run": null
+      },
+      "total_seconds": null,
+      "ranks": {
+        "swim": 17,
+        "bike": 13
+      },
+      "overtakes": {
+        "bike": 4
+      }
+    },
+    {
+      "id": "2025-ross",
+      "name_public": "Ross",
+      "status": "partial",
+      "splits_seconds": {
+        "swim": 2111,
+        "t1": 204,
+        "bike": 4949,
+        "t2": null,
+        "run": null
+      },
+      "total_seconds": null,
+      "ranks": {
+        "swim": 15,
+        "bike": 5
+      },
+      "overtakes": {
+        "bike": 10
+      }
+    }
+  ],
+  "summary": {
+    "finishers_count": 15,
+    "total_seconds": {
+      "min": 9015,
+      "median": 10405,
+      "max": 14773
+    }
+  }
+}
