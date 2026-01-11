@@ -32,3 +32,11 @@ npm-debug.log*
 
 # Context (internal)
 .context/
+
+# Personal Data
+content/raw_import/email_list.eatmarshalleat.csv
+content/raw_import/posts/*.delivers.csv
+content/raw_import/posts/*.opens.csv
+
+# Python
+.venv/
