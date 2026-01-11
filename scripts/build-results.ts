@@ -19,9 +19,12 @@ interface SplitsSeconds {
   run: number | null;
 }
 
+type Gender = 'M' | 'W';
+
 interface ResultEntry {
   id: string;
   name_public: string;
+  gender: Gender;
   status: 'finished' | 'partial';
   splits_seconds: SplitsSeconds;
   total_seconds: number | null;
@@ -151,9 +154,14 @@ function parseResultsCSV(csvContent: string, year: number): ResultEntry[] {
     const status: 'finished' | 'partial' =
       totalSeconds !== null && totalSeconds > 0 ? 'finished' : 'partial';
 
+    // Parse gender (default to M if not specified)
+    const genderRaw = (row.Gender || row.gender || 'M').trim().toUpperCase();
+    const gender: Gender = genderRaw === 'W' || genderRaw === 'F' ? 'W' : 'M';
+
     const entry: ResultEntry = {
       id: generateId(nameRaw, year),
       name_public: toPublicName(nameRaw),
+      gender,
       status,
       splits_seconds: splits,
       total_seconds: totalSeconds,

@@ -1,7 +1,7 @@
 // CSV parsing utilities for triathlon results
 
 import { parse } from 'csv-parse/sync';
-import type { RawResultRow, ResultEntry, SplitsSeconds } from './schema';
+import type { RawResultRow, ResultEntry, SplitsSeconds, Gender } from './schema';
 import { parseTimeToSeconds, toPublicName, generateId } from './format';
 
 /**
@@ -71,9 +71,14 @@ function parseRow(row: RawResultRow, year: number): ResultEntry | null {
   // Drop truly empty rows
   if (!hasSomeSplit && totalSeconds === null) return null;
 
+  // Parse gender (default to M if not specified)
+  const genderRaw = (row.Gender || 'M').trim().toUpperCase();
+  const gender: Gender = genderRaw === 'W' || genderRaw === 'F' ? 'W' : 'M';
+
   const entry: ResultEntry = {
     id: generateId(nameRaw, year),
     name_public: toPublicName(nameRaw),
+    gender,
     status,
     splits_seconds: splits,
     total_seconds: totalSeconds,
