@@ -1,0 +1,197 @@
+/* Turkey Trotter stlite page styles */
+
+.container {
+  padding: var(--spacing-md) 0;
+}
+
+.header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.title {
+  font-family: var(--font-title);
+  font-size: 1.75rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.badge {
+  display: inline-block;
+  background-color: #ff6600;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: var(--spacing-sm);
+  vertical-align: middle;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.description {
+  background-color: var(--color-bg-panel);
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.description p {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 0.875rem;
+}
+
+.description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Loading state styles */
+.loadingContainer {
+  background-color: var(--color-bg-panel);
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: var(--spacing-xl);
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingTitle {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.loadingText {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-mid);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingSteps {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0 0 0;
+  text-align: left;
+}
+
+.loadingSteps li {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: 2px 0;
+}
+
+.loadingSteps li.active {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.loadingSteps li.done {
+  color: var(--color-accent);
+}
+
+.loadingSteps li.done::before {
+  content: "[OK] ";
+}
+
+/* Streamlit container */
+.stliteWrapper {
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  min-height: 600px;
+  position: relative;
+}
+
+.stliteContainer {
+  width: 100%;
+  height: 700px;
+}
+
+/* Error state */
+.errorContainer {
+  background-color: #fff0f0;
+  border: 2px solid #cc0000;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.errorTitle {
+  font-family: var(--font-title);
+  color: #cc0000;
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.errorText {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+
+/* Limitations notice */
+.limitations {
+  background-color: #ffffcc;
+  border: 1px dashed var(--color-accent);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  font-size: 0.75rem;
+}
+
+.limitations h4 {
+  font-family: var(--font-title);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.limitations ul {
+  margin: 0;
+  padding-left: var(--spacing-md);
+}
+
+.limitations li {
+  margin-bottom: 2px;
+}
+
+/* Link back */
+.linkBack {
+  margin-top: var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .stliteContainer {
+    height: 500px;
+  }
+}

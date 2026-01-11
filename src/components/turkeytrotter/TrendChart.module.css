@@ -1,0 +1,168 @@
+/* Trend chart styles */
+
+.container {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.noData {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Grid and axes */
+.gridLine {
+  stroke: #e5e7eb;
+  stroke-width: 1;
+}
+
+.axisLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  fill: #6b7280;
+}
+
+.axisTitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  fill: #6b7280;
+  font-weight: 500;
+}
+
+/* Lines */
+.fastestLine {
+  fill: none;
+  stroke: #10B981;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.medianLine {
+  fill: none;
+  stroke: #EA580C;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Data points */
+.fastestPoint {
+  fill: #10B981;
+  stroke: #ffffff;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.fastestPoint:hover {
+  r: 7;
+}
+
+.medianPoint {
+  fill: #EA580C;
+  stroke: #ffffff;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.medianPoint:hover {
+  r: 7;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: #374151;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.fastestDot {
+  background: #10B981;
+}
+
+.medianDot {
+  background: #EA580C;
+}
+
+/* Summary stats */
+.summary {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.summaryLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+}
+
+.summaryValue {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .summary {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

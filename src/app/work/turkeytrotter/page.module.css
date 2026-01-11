@@ -1,0 +1,115 @@
+/* Turkey Trot Dashboard Styles */
+/* Color palette: Navy (#111827), Rust (#EA580C), Red (#EF4444), Green (#10B981) */
+/* Fonts: Lora serif for headers, Inter sans-serif for body */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+}
+
+.subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+}
+
+/* Dashboard Container */
+.dashboard {
+  margin-top: 1rem;
+}
+
+/* Tab Navigation */
+.tabNav {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabButton {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.875rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6b7280;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  margin-bottom: -2px;
+}
+
+.tabButton:hover {
+  color: #111827;
+}
+
+.tabActive {
+  color: #111827;
+  border-bottom-color: #EA580C;
+  font-weight: 600;
+}
+
+/* Tab Content */
+.tabContent {
+  min-height: 400px;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Tab-specific layouts */
+.analyticsTab {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.toolsTab,
+.hallOfFameTab,
+.predictorTab {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .tabButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+}

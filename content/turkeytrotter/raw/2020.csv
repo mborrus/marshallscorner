@@ -1,0 +1,11 @@
+Name,Gender,Age,Bib,City,State,FinishTime,OverallPlace,GenderPlace,AgeGroupPlace,AgeGroup
+Alex Turner,M,26,134,Austin,TX,18:09,1,1,1,25-29
+Michael Chen,M,24,101,Austin,TX,18:43,2,2,1,20-24
+Sarah Johnson,F,27,205,Austin,TX,19:16,3,1,1,25-29
+David Rodriguez,M,31,118,Round Rock,TX,20:01,4,3,1,30-34
+Jennifer Martinez,F,25,287,Pflugerville,TX,21:07,5,2,2,25-29
+James Wilson,M,38,156,Austin,TX,22:25,6,4,1,35-39
+Emily Davis,F,22,312,Cedar Park,TX,21:52,7,3,1,20-24
+Robert Brown,M,47,423,Austin,TX,23:21,8,5,1,45-49
+Lisa Anderson,F,34,198,Leander,TX,24:27,9,4,1,30-34
+Daniel Garcia,M,29,445,Austin,TX,25:12,10,6,2,25-29

@@ -1,0 +1,320 @@
+/* Place predictor styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Input Section */
+.inputSection {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+}
+
+.description {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 1.5rem 0;
+}
+
+.inputRow {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input,
+.select {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111827;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: #EA580C;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+}
+
+.hint {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Results Section */
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Prediction Cards */
+.predictionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.predictionCard {
+  position: relative;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.predictionCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.cardPlace::before {
+  background: #10B981;
+}
+
+.cardPercentile::before {
+  background: #EA580C;
+}
+
+.cardPace::before {
+  background: #111827;
+}
+
+.predictionLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.predictionValue {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.predictionSub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* Histogram */
+.histogramSection {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.histogramTitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem 0;
+}
+
+.histogram {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.bar {
+  fill: #d1d5db;
+  transition: fill 0.15s ease;
+}
+
+.bar:hover {
+  fill: #9ca3af;
+}
+
+.barHighlight {
+  fill: #EA580C;
+}
+
+.barCount {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 9px;
+  fill: #ffffff;
+  font-weight: 500;
+}
+
+.targetLine {
+  stroke: #10B981;
+  stroke-width: 3;
+  stroke-dasharray: 6, 4;
+}
+
+.targetLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  fill: #10B981;
+  font-weight: 600;
+}
+
+.axisLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  fill: #6b7280;
+}
+
+/* Nearby Runners */
+.nearbySection {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nearbyTitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem 0;
+}
+
+.nearbyTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+}
+
+.nearbyTable th {
+  text-align: left;
+  padding: 0.625rem 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.nearbyTable td {
+  padding: 0.625rem 0.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+
+.nearbyTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.youRow td {
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.yourPrediction {
+  background: rgba(234, 88, 12, 0.08);
+}
+
+.yourPrediction td {
+  font-weight: 600;
+  color: #EA580C;
+  border-bottom: none;
+}
+
+.youLabel {
+  font-weight: 600;
+  color: #EA580C;
+}
+
+/* Empty State */
+.emptyState {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.emptyState p {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .inputSection {
+    padding: 1rem;
+  }
+
+  .inputRow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .inputGroup {
+    min-width: 100%;
+  }
+
+  .predictionCards {
+    grid-template-columns: 1fr;
+  }
+
+  .predictionValue {
+    font-size: 1.75rem;
+  }
+
+  .histogramSection,
+  .nearbySection {
+    padding: 1rem;
+  }
+}

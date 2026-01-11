@@ -1,0 +1,345 @@
+/* Hall of Fame styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* View Selector */
+.viewSelector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.viewButton {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewButton:hover {
+  background: #e5e7eb;
+}
+
+.viewButton.active {
+  background: #111827;
+  border-color: #111827;
+  color: #ffffff;
+}
+
+/* Sections */
+.section {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem 0;
+}
+
+.sectionDesc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 1rem 0;
+}
+
+/* Record Cards */
+.recordCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.recordCard {
+  position: relative;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.recordStripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #EA580C, #f97316);
+}
+
+.recordCategory {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #EA580C;
+  margin-bottom: 0.5rem;
+}
+
+.recordTime {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.recordName {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #374151;
+  margin-top: 0.25rem;
+}
+
+.recordYear {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin-top: 0.125rem;
+}
+
+.recordPace {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* Tables */
+.recordsTable,
+.topTable,
+.championsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+}
+
+.recordsTable th,
+.topTable th,
+.championsTable th {
+  text-align: left;
+  padding: 0.625rem 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.recordsTable td,
+.topTable td,
+.championsTable td {
+  padding: 0.625rem 0.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+
+.recordsTable tbody tr:hover,
+.topTable tbody tr:hover,
+.championsTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.ageGroupCell {
+  font-weight: 500;
+  color: #111827;
+}
+
+.placeCell {
+  font-weight: 600;
+  color: #111827;
+  width: 40px;
+}
+
+.yearCell {
+  font-weight: 600;
+  color: #111827;
+}
+
+.nameCell {
+  font-weight: 500;
+  color: #111827;
+}
+
+.timeCell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.topThree td {
+  background: rgba(234, 88, 12, 0.05);
+}
+
+.topThree .placeCell {
+  color: #EA580C;
+}
+
+/* Year Selector */
+.yearSelector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.select {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111827;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #EA580C;
+}
+
+/* Frequent Flyers */
+.flyerCards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.flyerCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 3px solid #10B981;
+}
+
+.flyerRank {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #10B981;
+  min-width: 40px;
+}
+
+.flyerInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.flyerName {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.flyerCount {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+.flyerStats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.flyerStat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.flyerStatLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+}
+
+.flyerStatValue {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Views */
+.recordsView,
+.yearlyView,
+.frequentFlyersView {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .viewSelector {
+    gap: 0.375rem;
+  }
+
+  .viewButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .recordCards {
+    grid-template-columns: 1fr;
+  }
+
+  .yearSelector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .flyerCard {
+    flex-wrap: wrap;
+  }
+
+  .flyerStats {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+}

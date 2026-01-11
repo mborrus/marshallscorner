@@ -1,0 +1,26 @@
+Name,Gender,Age,Bib,City,State,FinishTime,OverallPlace,GenderPlace,AgeGroupPlace,AgeGroup
+Michael Chen,M,28,101,Austin,TX,17:03,1,1,1,25-29
+Sarah Johnson,F,31,205,Austin,TX,18:09,2,1,1,30-34
+David Rodriguez,M,35,118,Round Rock,TX,19:05,3,2,1,35-39
+Emily Davis,F,26,312,Cedar Park,TX,19:58,4,2,1,25-29
+James Wilson,M,42,156,Austin,TX,20:56,5,3,1,40-44
+Jennifer Martinez,F,29,287,Pflugerville,TX,21:52,6,3,1,25-29
+Robert Brown,M,51,423,Austin,TX,22:58,7,4,1,50-54
+Lisa Anderson,F,38,198,Leander,TX,23:45,8,4,1,35-39
+Christopher Taylor,M,24,567,Austin,TX,24:49,9,5,1,20-24
+Amanda Thomas,F,45,334,Georgetown,TX,25:34,10,5,1,45-49
+Daniel Garcia,M,33,445,Austin,TX,26:38,11,6,1,30-34
+Rachel White,F,27,289,Austin,TX,27:25,12,6,2,25-29
+Matthew Harris,M,58,512,Austin,TX,28:32,13,7,1,55-59
+Jessica Lee,F,34,367,Round Rock,TX,29:38,14,7,2,30-34
+Andrew Clark,M,47,623,Austin,TX,30:34,15,8,1,45-49
+Michelle Robinson,F,52,456,Cedar Park,TX,31:41,16,8,1,50-54
+Kevin Walker,M,39,234,Austin,TX,32:47,17,9,2,35-39
+Stephanie Hall,F,41,178,Pflugerville,TX,33:54,18,9,1,40-44
+Brian Young,M,62,789,Austin,TX,35:12,19,10,1,60-64
+Nicole King,F,23,145,Austin,TX,36:18,20,10,1,20-24
+Steven Wright,M,31,678,Georgetown,TX,37:25,21,11,2,30-34
+Laura Scott,F,56,890,Austin,TX,38:32,22,11,1,55-59
+Mark Adams,M,44,345,Leander,TX,39:49,23,12,2,40-44
+Karen Nelson,F,48,567,Austin,TX,40:56,24,12,2,45-49
+Paul Mitchell,M,67,901,Austin,TX,42:14,25,13,1,65-69

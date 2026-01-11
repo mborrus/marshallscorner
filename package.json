@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build:results": "npx tsx scripts/build-results.ts",
     "build:pizza": "npx tsx scripts/build_pizza_reviews.ts",
-    "prebuild": "npm run build:results && npm run build:pizza",
+    "build:turkeytrotter": "npx tsx scripts/build_turkeytrotter.ts",
+    "prebuild": "npm run build:results && npm run build:pizza && npm run build:turkeytrotter",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
