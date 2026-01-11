@@ -1,0 +1,285 @@
+.container {
+  max-width: 900px;
+}
+
+/* Scoring System */
+.scoringSection {
+  margin-bottom: 1.5rem;
+}
+
+.scoringToggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #333;
+  transition: background-color 0.15s ease;
+}
+
+.scoringToggle:hover {
+  background: #e8e8e8;
+}
+
+.toggleIcon {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.scoringContent {
+  background: #f9f9f9;
+  border-radius: 0 0 8px 8px;
+  padding: 1rem 1.25rem;
+  margin-top: -4px;
+}
+
+.scoringIntro {
+  margin: 0 0 0.875rem 0;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.scoringGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+}
+
+.scoringItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.375rem 0.5rem;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+}
+
+.scoringName {
+  color: #444;
+}
+
+.scoringMax {
+  font-weight: 600;
+  color: #666;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stats Section */
+.statsSection {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.statsSection h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statItem dt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.statItem dd {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.locationStats {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.locationStats h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.locationTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.locationTable th,
+.locationTable td {
+  text-align: left;
+  padding: 0.375rem 0.5rem;
+}
+
+.locationTable th {
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.locationTable td {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.locationTable tr:last-child td {
+  border-bottom: none;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggleBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.toggleBtn:hover {
+  background: #f5f5f5;
+}
+
+.toggleBtn.active {
+  background: #333;
+  color: #fff;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.searchInput,
+.select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: #fff;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 150px;
+}
+
+.select {
+  min-width: 140px;
+}
+
+/* Reviews List */
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewCard {
+  display: block;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.reviewCard:hover {
+  background: #f0f0f0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.375rem;
+}
+
+.restaurantName {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.score {
+  background: #333;
+  color: #fff;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.pizzaOrdered {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #444;
+}
+
+.noResults {
+  color: #666;
+  font-style: italic;
+}
+
+/* Map */
+.mapContainer {
+  min-height: 500px;
+}

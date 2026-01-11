@@ -1,0 +1,144 @@
+.container {
+  max-width: 700px;
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.score {
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.details {
+  margin: 0 0 2rem 0;
+}
+
+.detailRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detailRow:last-child {
+  border-bottom: none;
+}
+
+.detailRow dt {
+  flex: 0 0 140px;
+  font-weight: 500;
+  color: #666;
+}
+
+.detailRow dd {
+  flex: 1;
+  margin: 0;
+  min-width: 200px;
+}
+
+/* Ratings */
+.ratingsSection {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ratingsSection h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+}
+
+.ratingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.ratingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ratingItem:last-child {
+  border-bottom: none;
+}
+
+.ratingItem dt {
+  font-size: 0.8125rem;
+  color: #555;
+}
+
+.ratingItem dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Links */
+.linksSection {
+  margin-bottom: 1.5rem;
+}
+
+.linksSection h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.125rem;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.externalLink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f5f5f5;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.externalLink:hover {
+  background: #e8e8e8;
+}
