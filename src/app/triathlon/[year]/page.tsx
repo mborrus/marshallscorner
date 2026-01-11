@@ -1,8 +1,8 @@
 // Dynamic triathlon year page - renders content for a specific year
 
-import { getTriathlonYears, getTriathlonContent } from '@/lib/content';
+import { getTriathlonYears, getTriathlonContent, getTriathlonPhotos } from '@/lib/content';
 import YearSelector from '@/components/YearSelector';
-import Placeholder from '@/components/Placeholder';
+import PhotoGallery from '@/components/PhotoGallery';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -27,6 +27,7 @@ export default async function TriathlonYearPage({ params }: PageProps) {
   const { year } = await params;
   const years = getTriathlonYears();
   const content = await getTriathlonContent(year);
+  const photos = getTriathlonPhotos(year);
 
   if (!content) {
     notFound();
@@ -42,6 +43,7 @@ export default async function TriathlonYearPage({ params }: PageProps) {
         className="markdown-content"
         dangerouslySetInnerHTML={{ __html: content.contentHtml }}
       />
+      <PhotoGallery photos={photos} year={year} />
     </div>
   );
 }
