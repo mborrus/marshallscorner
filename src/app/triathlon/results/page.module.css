@@ -21,6 +21,15 @@
   text-decoration: none;
 }
 
+.allTime {
+  background: #e8f4f8;
+  border: 2px solid #4a90a4;
+}
+
+.allTime:hover {
+  background: #d9eef4;
+}
+
 .yearTitle {
   background: linear-gradient(90deg, #336699, #5a9fd4);
   color: #ffffff;

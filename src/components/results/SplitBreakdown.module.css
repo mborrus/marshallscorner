@@ -1,0 +1,165 @@
+.container {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin: 0 0 1rem 0;
+}
+
+.barContainer {
+  display: flex;
+  height: 40px;
+  border-radius: 4px;
+  overflow: visible;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  animation: growWidth 0.5s ease forwards;
+}
+
+.segment:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.segment:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.segmentHovered {
+  transform: scaleY(1.1);
+  filter: brightness(1.1);
+  z-index: 10;
+}
+
+@keyframes growWidth {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.segmentLabel {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-bottom: 8px;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.legendItem:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.legendItemHovered {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.legendItemHovered .legendColor {
+  transform: scale(1.2);
+}
+
+.legendName {
+  font-weight: 500;
+  min-width: 32px;
+}
+
+.legendValue {
+  font-variant-numeric: tabular-nums;
+  color: #666;
+}
+
+.legendPct {
+  font-variant-numeric: tabular-nums;
+  color: #999;
+  font-size: 0.75rem;
+}
+
+.totalTime {
+  margin: 1rem 0 0 0;
+  font-size: 0.875rem;
+  color: #666;
+  text-align: right;
+}

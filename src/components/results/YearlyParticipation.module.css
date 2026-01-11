@@ -1,0 +1,161 @@
+.container {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin: 0 0 1.5rem 0;
+}
+
+.chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 140px;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 80px;
+  cursor: pointer;
+  position: relative;
+}
+
+.barHovered .barStack {
+  transform: scaleX(1.1);
+}
+
+.barStack {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  max-width: 40px;
+  height: 100px;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  animation: growHeight 0.5s ease forwards;
+  transform-origin: bottom;
+  transition: transform 0.2s ease;
+}
+
+@keyframes growHeight {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.barSegmentMen {
+  width: 100%;
+  background-color: #4a7c9b;
+  transition: filter 0.2s ease;
+}
+
+.barSegmentWomen {
+  width: 100%;
+  background-color: #9b4a7c;
+  transition: filter 0.2s ease;
+}
+
+.barHovered .barSegmentMen,
+.barHovered .barSegmentWomen {
+  filter: brightness(1.15);
+}
+
+.year {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  margin-top: 0.5rem;
+  transition: color 0.15s ease;
+}
+
+.barHovered .year {
+  color: #333;
+}
+
+.count {
+  font-size: 0.625rem;
+  color: #999;
+  transition: color 0.15s ease;
+}
+
+.barHovered .count {
+  color: #666;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-bottom: 8px;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.legendColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}

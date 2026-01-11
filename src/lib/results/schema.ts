@@ -20,9 +20,12 @@ export interface Overtakes {
   run?: number;
 }
 
+export type Gender = 'M' | 'W';
+
 export interface ResultEntry {
   id: string;
   name_public: string;
+  gender: Gender;
   status: 'finished' | 'partial';
   splits_seconds: SplitsSeconds;
   total_seconds: number | null;
@@ -49,6 +52,7 @@ export interface ResultsYear {
 // Raw CSV row before processing
 export interface RawResultRow {
   Name?: string;
+  Gender?: string;
   Swim?: string;
   T1?: string;
   Bike?: string;
