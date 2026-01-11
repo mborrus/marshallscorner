@@ -1,0 +1,125 @@
+---
+title: "Revisiting the Cursed Land of Spain"
+date: "2024-03-25"
+slug: "revisiting-the-cursed-land-of-spain"
+excerpt: "Days 180 to 190: Tour De Spain, Chasing Cyclists, Finding Cider, Fighting Fires, Making Wine"
+draft: false
+source:
+  substack_url: "" 
+---
+
+# **Cycling and Cider**
+
+I leave Belgium for Spain and spend the first day driving 11 hours along impeccably maintained French highways with vistas full of sunflowers, wheat fields, and chateaus. There were a few standout memories from the drive, first of which was the flawlessness in which the Volvo performed, its last servicing being five years prior. Second was the delicious pork knuckle I found at a restaurant, which I ordered with the scarcity of French at my disposal, and a bevy of context clues, cognates, and gestures. Third was crawling over and through the passenger side window for tollbooths, which came every thirty-minutes or so, my right-hand drive car not made with left-hand drive tolls in mind. I spent the first night somewhere outside of Bordeaux in a wooded rest-area, my \$20 air mattress and thrift store bedding paying dividends.  
+
+Waiting for sleep to set in I began planning how I'd go about passing the *Vuelta de España*. The *Vuelta*, to make a simplification, is the *Tour de France* of Spain, the biggest difference being that the leader wears a red jersey instead of a yellow jersey. It's one of the three [grand tours](https://en.wikipedia.org/wiki/Grand_Tour_(cycling)) in the cycling world and I happened to be driving by it on one of its last stages. Growing up my dad would record the *TdF* on vcr and then rewatch them when he was home from work. It was as big as the olympics and a fixture of summertime; watching hours of aerial footage of people camped out on roadsides, shouting fan chasing riders up climbs, Lance Armstrong parading as Mr. America. Or at least that's how I remember it. My goal was to live out a Spanish version of my *Tour de France* dreams: to wait patiently for hours on a sunny hillside to watch 176 riders go by in three seconds. To add to the fan fair, an American was in the lead, set to win for only the second time in history. Mr. America back on top. He needed me there. 
+
+So in the morning I set off for the town of Lekunberri, the ending site of that day's stage following two laps of a nearby mountain. I drive around lots of ineffectual 'road closed' signs (because a man in a bright yellow vest said I could) until I reach the finish line, where I park beneath the shade of the church. Waiting to watch the sprint at the end of the race would mean the ordeal would be over in milliseconds, so I decided I would run the 5 miles to the top of the climb to watch at a slower pace. I still had a few hours, so I explored the town and soaked in the potential magnitude of the day; the charged air, the red-and-white barricaded streets buzzing with spectators, the packed cafes spilling festively into the packed plazas. 
+
+![](/images/writing/23f0db2-7563-410e-a393-3f535ea3c05e_4017x2634.jpeg)
+
+Like a sun blister rising from the green hills
+
+The town of Lekunberri was a unique introduction to Basque Country because I never saw another like it. If it was created in my imagination for that day alone, as a product of my ensuing heat stroke, I'd have believed it. Squat stone houses pointed in creamy plaster ripple outwards from the central church, their age-worn terracotta tiles completing their centuries-long transition from dirt red to sun-burnt sienna. The houses grow so near each other that they shade the cobbled roads, making a maze of cool alleys to hide from the oppressive summer heat. Behind the town there are muddy walking paths that lead to mossy bridges and steep-cliffed overlooks. A marching band parades down the main street and kids run along the barriers while the *Guardia Nacional* and local bank compete to give out hats. At one point I am given chorizo on a stick, three different flavors of Spanish *tortilla,* and more cans of olives than I can carry. Spain peaked on my first day there.
+
+I didn't know this at the time but thirty years earlier in Lekunberri, the Basque separatist group ETA was throwing grenades at the national guard now handing out swag in the plaza. [2011](https://www.cyclingnews.com/news/vuelta-heads-to-basque-country-after-33-year-absence/) was the first *Vuelta* to return to Basque Country after a 33 year break. A decade later, stalls were selling basque-flag bucket hats and everyone was proudly decked out in red, green, and white.
+
+Fueled by an egg tortilla and an espresso I began my run to the top of the climb. I pass by camper vans parked on the roadside with flags and signs from all over Europe with their lawn chairs, grills, and coolers all set up. Along the route are two progressively smaller towns with fans setting up around the stoney churches and singular town bar. Shortly after the top of the climb there's the smallest village yet, with 15 weathered buildings, all of which give the impression they could double as barns or armories. I can't call it hamlet because one of the 15 buildings was, you guessed it, a church. On this day, the village was packed with cyclists and weary fans who had also made the trek. All were gathered in the small square of shade produced by a building with the words, "*Sagardoa Salgai, Venta de Sidra*", scrawled in a blocky, [stonelike typeface](https://biscaydossier.wordpress.com/2014/07/28/the-basque-renaissance-typeface/). *Cider for Sale* in Basque and Spanish. 
+
+The only building open in this mountain town was a cider house of all things, and if that doesn't sound like divine providence, you're not listening hard enough. The word for cider, *Sagardoa,* sounds like the word *sacred*, and on that particular day, dehydrated and blistering under the rays of a harsh, foreign sun, it was.
+
+![](/images/writing/57feddb-6f7a-4944-8c33-ea4eae4a7c69_4032x3024.jpeg)
+
+When I went to order my drink, I was asked, "Would you like to do *it* yourself?". Not knowing what *it* was, and seconds from collapsing in a thermic fever, I shook my head in a vigorously confused *no*. I watch as they walk into the cellar and open the tap on the 5000L stainless steel tank, their other arm fully extended away, cup in hand. A 6 foot long parabolic stream of cider streaks through the air and into the cup, splattering and fizzing as it lands. It was cold, sour as vinegar, and kept a slight bubbliness from it's recent acrobatic feat. In other words, it was life sustaining and gave me the will to press on. 
+
+The sign above the stand read '*Pintxotx*!', a play on *pinchos* (or *pintxo*), small plates typical of northern Spain (tapas with a skewer), and *txotx*, the traditional shout of the Basque cider region to announce the shooting of streams of cider from their barrels. They were all out of *pinchos*, and I had no idea what *txotx* meant at this point, so it was only until months afterwards while looking at photos that I put it all together.
+
+By the time I was back for seconds, they had closed. Maybe it was for a siesta, or maybe to watch the race, or maybe just because they felt like it. It's hard to imagine this town of 15 buildings gets many visitors, so it takes a lot of chutzpah to close your doors early on the one day you do. But to me, that's Spain. I would not see another *txotx* in a *Sagardotegi* for the rest of my time in the country, once again proving my experience really did peak on my first day. 
+
+Partially hydrated and entirely underfed I wandered to a good view point to watch the race and passed the next few hours napping, hiding from the sun, and cheering on kids being pushed up the kills by their parents, both on bikes. In the town below a papier-mâché dancing giant is dressed in the greens and reds of the Basque Country, twirled underneath by a dizzy boy who peaks out the folds of the skirt. Eventually the bikers pass by, preceded by a motorcade and the hum of helicopters. The American Sepp Kuss is in the red jersey and will go on to win the race and his first grand tour, probably thanks to my support. I see him and others in a blur and I move one step closer to dying completely fulfilled. 
+
+![](/images/writing/4f33c04-6a00-4476-980e-7f147f38ea6d_3024x2160.jpeg)
+
+Basque flag on left, Spanish flag on right
+
+### **Arrival at the bodega**
+
+The sun sets as I cross down into the valley of Rioja from Lekunberri, the last light reflecting golden on the rolling fields of dead grass and cut hay. I arrive at the bodega just before nightfall and am shown to where I'll stay for the next two months for the harvest. It is, in many ways, a hotel room attached to the house; with two twin beds, a bathroom, a closet, and a view of the vineyards and the stone church of the nearby town. I've never spent two months in a hotel room but there's a first time for everything and spirits are high. 
+
+The bodega was rather small, containing a few wooden vats and cement fermentors built into the walls. Everything is shiny, new, and expensive, including where we are staying. It looks a bit like the [hotel](https://jamesbond.fandom.com/wiki/Perla_de_las_Dunas) that blows up in the 2008 *James Bond* film *Quantum of Solace*. Rows of glass windows reflect the blue roan mountain faces, the endless horizon, and the painted clouds which march dramatically between the two. The main differences between the two hotels, mine and Bond's, are that this place does not blow up, that it took us far longer than it took Daniel Craig to escape, and that justice is never delivered in the end (spoilers, sorry).
+
+![](/images/writing/efaad65-1659-49c2-80d8-62ab71bab52f_3995x2571.jpeg)
+
+[Google result](https://www.google.com/search?newwindow=1&sca_esv=9b74a4c0b9e67cb5&rlz=1C5GCCM_en&sxsrf=ACQVn08koxovOK-8cxZOVw25tfa_6JRIhw:1710361462075&q=james+bond+hotel+in+desert&uds=AMwkrPtSrrg_4_ohB04QORiAjybwEDN-RdAP7ZUMQ1Mgo2J4CrpQ1VQRTymFYzgMePH2ojuW-nKi0aH0K86wva59qznDBYbK86o6Yv1QEB8SwzvkCqj7i23eS45ANNT8EeuZ4-vN8IEBzKWLeDLqNK_75GgsDY8vRQwsxj84mWt8aPrGqeO9S0vGbTwMzkY2olSe_BJSeTeMnB7xBj0x73ECXNGtDpXCcWyIT6g0Ca7vyDYQ2vCR0WndhsZQ2CdlkgGxpIceXXrTRWIiqnrQdDvvgiM8cZP6EGfx9K-iB9fTVZXFmsfCmaCuk9-WPORQGwxKi3jPQ2_n&udm=2&prmd=ivmnsbtz&sa=X&ved=2ahUKEwjDtIn7iPKEAxWlDrkGHWp9AVcQtKgLegQICRAB&biw=1051&bih=786&dpr=2) for "James Bond Hotel in Desert"
+
+The next morning I'm told we'll meet to discuss plans, sign papers, and get to work. In attendance are three other volunteers, Michael, Dakota, and Kyle, as well as Rose, the au pair, Josian, the happy helper, Albert, the horse caretaker, and the husband-wife, winemaker-director duo that run the vineyard, who I'll call Daniel and Morgan. The winery is in a small town in the middle of Rioja with a few acres of managed vineyards. They are a biodynamic winery, which I should have known means a lot more than just using horses, or using biology, or being dynamic. It turns out to be the astrology of wine. This is both an oversimplification and closer to the truth than you might think:
+
+> "A biodynamic wine can be understood as a combination of biological agricultural practices without the addition of synthetic chemicals, with biodynamic practices in order to influence the biological and metaphysical aspects of the vine and adapting the vines to the lunar phases, such as \[for\] example the harvest on the night of the full moon, etc. 
+>
+> Biodynamic wines, in addition to being made from organically grown grapes, their producers follow the anthroposophical philosophy, proposed in 1924 by Rudolf Steiner. According to the principles of Steiner\'s philosophy, an agricultural farm should seek to be a fully self-sustaining environment, in harmony with the cosmos, with minimal interference from man, so that the land can recover its vital energy and produce fruits that express its characteristics. own of the place. The rules for this type of agriculture were laid down in the book "The Spiritual Foundations of Biodynamic Methods". 
+>
+> In it, it is stated that the processes in both the vineyard and the winery are governed by the position of the planets and the phases of the moon. No pesticides and fertilizers are used, however, the producer can initially rely on biodynamic preparations, based on medicinal herbs and minerals, until the ecosystem recovers its balance and requires less and less human action. The same precepts are followed in wine making, with as little interference as possible in the winemaking, without using active dry yeasts and with minimal (or no) preservatives."
+>
+> *[Natural, organic and biodynamic wines: sustainability in the production chain](https://www.researchgate.net/publication/355066761_Natural_organic_and_biodynamic_wines_sustainability_in_the_production_chain)*
+
+So, in a way, I ignorantly chose the winery which would require the *least* amount of human input in the winemaking process. In that sense I sowed the seeds of my own destruction. 
+
+![](/images/writing/b704f3f-700f-4d25-b46d-429528d64df6_4032x3024.jpeg)
+
+The views were nice.
+
+### **Covid Oregon Interlude**:
+
+When covid began and companies were returning job applications with words like 'unprecedented' and 'uncertain', the one offer that remained for me was Foris Vineyards in southern Oregon. So, In the fall of 2020, I worked as a 'vintage cellar hand' under the tutelage of a passionate, creative, strong-minded head winemaker who was eager to not just make wine, but to teach us lowly cellar-hands. Stephanie looked after the wines, the vines, and us. I was also accompanied by two other wine-making assistants, Jackie and Max, both with previous vintages, both with the lingo and skills to prove it. They too wanted to make wine, make merry, and make money.
+
+The vineyard was located in the rogue valley of Oregon, claiming the unnecessary superlative of the states *southernmost* winery. The founder, Ted Gerber, bought the land in the 70s along with a wave of other Californian hippies interested in trying their luck at growing grapes where previously thought impossible. Not much had changed since then and now, other than he now had lots of grapes growing. He told us a story about how, because he couldn't sell all the grapes, he started to make wine, and, because he couldn't drink all of it, he started to sell that too. His [online biography](https://www.foriswine.com/about/) is much more nobly crafted, so who knows which is true. 
+
+Working at a winery, despite how posh it sounds, is a lot like working in a warehouse where all the products are liquid and you're always wet or sticky. You lift things up and put them down, connect tubes to other tubes, climb ladders and smell things, move liquids from one tank to another tank, squeegee liquids to gutters, fill trash bins with liquids, make cold liquids hot, make hot liquids cold, empty barrels, fill barrels, roll barrels, lift barrels, climb barrels, sniff barrels, taste barrels, and, best of all, drink too-sweet, unfinished wine straight from the stainless-steel-teat at 11am if you so desire. Early each morning we would walk the vineyard plots, row by row, collecting samples which we'd test back in the winery. My job was to run these tests, start and monitor the fermentations of the wine wines, and fill in wherever else Stephanie told me to go. Stephanie made me the lab-worker because of my fancy stem degree. I never took college chemistry, but the lab is the only place where you look productive sitting (a luxury), so I never brought this up to Stephanie.
+
+
+
+A week into the job we were told to that we might be seeing some smoke from wildfires. This notice turned into a warning which turned into an emergency evacuation. One morning, when I set out on my daily grape walk we were at level one "[be ready](https://wildfire.oregon.gov/Documents/OEM_EVAC_3Levels_English.png)". When I finished my first plot we were at level two, "be set". We reached level three, "GO!", before neither my bags nor belly were full of grapes. I got these updates via text from Jackie, but the gradual change of the sky from clear to red to brown to black was indication enough. I have never seen the End of Times, but I imagined it would look pretty similar. I meandered back to the house and fed some very unaware cows standing in very a flammable field some plums and apples as we awaited our fate. 
+
+![](/images/writing/d50b117-00f3-4947-a6ba-d6668061e8ba_4032x3024.jpeg)
+
+Around 8am
+
+We were all given the option to leave, but the ignorance and invincibility of youth compelled us to stay. That afternoon we were put to work digging fire ditches around houses, clearing brush and cutting trees around the winery, and moving the irrigation pipes from the fields to the cellars. Ted told us about hidden backroads to hide out in if the fire-marshal came by to force us to leave. On the ride home, with the fire giving the otherwise-black sky an orange glow, we passed families loading horses and donkeys onto trailers and setting up sprinklers on the roofs of the houses they were about to leave. *We Didn't Start the Fire* came on over the radio, which I attribute more to a morbid DJ than anything else. 
+
+The next day, ash falling from the sky, we were given a snow-day from work. I made blueberry scones while we waited for the end of the world.  
+
+The fire came up to within a mile of the vineyard before settling on a ridgeline, where it filled the valley with smoke for the following month. Each morning we'd wave at the national guard troops parked at the road leading to the winery, stationed there to remind us that we were making the choice to enter an active fire zone. What they didn't know was that Max spent a year as a wildland fire fighter, and we lived with Max, so by the transitive property we were invincible. Each night after dinner he'd check USFS fire maps while Jackie and I would play Lego Harry Potter on the Nintendo Switch, blissfully ignorant of changing winds and containment zones.
+
+The wine still had to be made, so work continued on, our soot-tinted KN95s now serving a dual function. There are lots of ways in which wines are affected by climate change, as as the [increased extent](https://www.c2es.org/content/wildfires-and-climate-change/) of wildfires. Fires, even if they don't burn a single vine, are capable of ruining entire harvests. When grapes come into contact with smoke, the aromatic compounds (*volatile phenols*) from the burned wood can bind to the sugars in the grapes. It's not until the juice is fermented that the bond is broken and you can begin to taste the smoke flavors. This means, barring specialized testing, you don't know how affected your wine will be until its already been made. I, like you dear reader, thought that *smokiness* was a positive trait that people look for. What changed my mind on this was a mouthful of semi-fermented smoke-tainted wine which tasted overwhelmingly like hyper-concentrated barbecue potato chip flavoring. 
+
+![](/images/writing/6a45cc6-d638-4015-a4a7-80f8e73c5202_4032x3024.jpeg)
+
+Smoky winery, balloon man protecting the grapes
+
+Stephanie enlisted me as her research and laboratory assistant in her war against smoke taint. We tried adding pure carbon, synthetic speciality products, blending unaffected juice, making rose. I don't think anything worked, and I don't know what happened to that vintage, but at the very least I got to learn a lot. As [they](https://www.goodreads.com/quotes/48126-experience-is-what-you-get-when-you-didn-t-get-what) say, 'experience is what you get when you don't get what you want'. 
+
+Back at our homestead we would spend our evenings making plum jam, fermenting small mason jars of grape juice, cooking apple sauce, snacking on wild cherries, and enjoying each other's company in our covid-and-fire induced rural confinement. We ate tubs of Tillamook ice cream, took turns cooking meals, and would eat each night around our table with a new wine and a new dinner question. I'll forever remember those months as happy and uniquely young: The golden leaves in the first light of early morning sampling walks, cold dew and grape juice wetting my shirt sleeves, sneaking naps under leafy trellises, counting cows through fire-haze, drying socks on our wood stove, boiling sage and lemon to diffuse the smoke sitting in the house, Max teaching us to drive manual, eating chili and discussing our hours of podcast listening at lunch, unfulfilled promises of fresh bear meat (a grape thief, at large). 
+
+
+
+Maybe I should have known I was setting an unrealistic expectation for any vintage to follow. I was so excited to make more wine with all the skills I'd gained since my first rodeo that I overlooked this. More on that next time. 
+
+![](/images/writing/0813310-8a28-4a6e-b858-d5ae66a3f50e_4032x3024.jpeg)
+
+Instagram caption at the time: "This has got a lot of body - critics"
+
+---
+
+### Extra Photos:
+
+The Last Supper, colorized
+
+![](/images/writing/a1a1367-1978-4a18-9cb3-ea0f3dd69391_4032x3024.jpeg)
+
+Everybody Eats
+
+[Listen on Spotify](https://open.spotify.com/embed/playlist/7qrOjql66HmGNFlCJdRyPs)
+
+![](/images/writing/d5cd564-9e86-4e04-b7af-d76b6b076c07_3088x2320.jpeg)
+
+Too early for thoughts, just vibes

@@ -1,0 +1,7 @@
+post_id,timestamp,email,post_type,post_audience,active_subscription,country,city,region,device_type,client_os,client_type,user_agent
+114020957,2023-04-11T06:54:47.327Z,Msborrus@gmail.com,newsletter,everyone,false,US,,,,,,Mozilla/5.0
+114020957,2023-04-11T07:05:09.569Z,kaleemvett@gmail.com,newsletter,everyone,true,,,,,,,Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)
+114020957,2023-04-11T07:05:52.253Z,kaleemvett@gmail.com,newsletter,everyone,true,,,,,,,Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)
+114020957,2023-04-11T12:36:55.569Z,dsborrus@gmail.com,newsletter,everyone,true,,,,,,,Mozilla/5.0
+114020957,2023-04-12T02:37:39.174Z,emelia_jackson@hotmail.com,newsletter,everyone,true,US,,,,,,Mozilla/5.0
+114020957,2023-04-12T14:04:53.631Z,dsborrus@gmail.com,newsletter,everyone,true,US,,,,,,Mozilla/5.0

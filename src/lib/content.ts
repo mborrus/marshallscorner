@@ -64,6 +64,7 @@ export async function getHomeContent() {
   return getMarkdownContent('home.md');
 }
 
+
 // Get triathlon content for a specific year
 export async function getTriathlonContent(year: string) {
   return getMarkdownContent(`triathlon/${year}.md`);
