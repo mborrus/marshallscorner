@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import styles from './Header.module.css';
+import VisitorCounter from './VisitorCounter';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -34,10 +35,7 @@ export default function Header() {
 
         <p className={styles.tagline}>My Personal Homepage on the World Wide Web</p>
 
-        {/* Visitor counter */}
-        <div className={styles.counter}>
-          You are visitor #<span className={styles.counterNum}>001337</span>
-        </div>
+        <VisitorCounter />
 
         {/* Navigation */}
         <nav className={styles.nav}>

@@ -1,0 +1,25 @@
+/* Individual post page styles */
+
+.postPage {
+  max-width: 100%;
+}
+
+.postHeader {
+  margin-bottom: var(--spacing-xl);
+}
+
+.postHeader h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.postDate {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.postFooter {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-mid);
+}
