@@ -1,0 +1,119 @@
+/* Triathlon landing page styles */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.hero {
+  padding: var(--spacing-sm);
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-mid);
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.kicker {
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-size: 1.0625rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.timelineNote {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.section {
+  margin-top: var(--spacing-md);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.routeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.routeList li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.yearList {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0 0;
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.yearCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-bg-panel);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+}
+
+.yearLabel {
+  font-family: var(--font-pixel);
+  font-size: 1.125rem;
+  color: var(--color-secondary);
+}
+
+.yearLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.resultsPending {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.resultsCta {
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 520px) {
+  .yearCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
