@@ -8,8 +8,10 @@ interface ResultsHistogramProps {
   bucketCount?: number;
 }
 
-function formatMinutes(seconds: number): string {
-  return `${Math.floor(seconds / 60)}m`;
+function formatTime(seconds: number): string {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return `${hours}:${minutes.toString().padStart(2, '0')}`;
 }
 
 export default function ResultsHistogram({ entries, bucketCount = 8 }: ResultsHistogramProps) {
@@ -33,7 +35,7 @@ export default function ResultsHistogram({ entries, bucketCount = 8 }: ResultsHi
     const count = times.filter((t) => t >= start && (i === bucketCount - 1 ? t <= end : t < end)).length;
 
     buckets.push({
-      label: `${formatMinutes(start)}-${formatMinutes(end)}`,
+      label: `${formatTime(start)}-${formatTime(end)}`,
       count,
     });
   }

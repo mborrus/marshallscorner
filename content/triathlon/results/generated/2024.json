@@ -1,10 +1,11 @@
 {
   "year": 2024,
-  "updated_at": "2026-01-10T23:35:28.884Z",
+  "updated_at": "2026-01-11T00:03:56.612Z",
   "entries": [
     {
-      "id": "2024-will",
-      "name_public": "Will",
+      "id": "2024-will-munstermann",
+      "name_public": "Will M.",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1373,
@@ -27,6 +28,7 @@
     {
       "id": "2024-jaylan",
       "name_public": "Jaylan",
+      "gender": "W",
       "status": "finished",
       "splits_seconds": {
         "swim": 1441,
@@ -49,6 +51,7 @@
     {
       "id": "2024-nick",
       "name_public": "Nick",
+      "gender": "M",
       "status": "partial",
       "splits_seconds": {
         "swim": 1453,
@@ -71,6 +74,7 @@
     {
       "id": "2024-izabelle",
       "name_public": "Izabelle",
+      "gender": "W",
       "status": "finished",
       "splits_seconds": {
         "swim": 1458,
@@ -91,8 +95,9 @@
       }
     },
     {
-      "id": "2024-jacob",
-      "name_public": "Jacob",
+      "id": "2024-jacob-jampel",
+      "name_public": "Jacob J.",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1677,
@@ -115,6 +120,7 @@
     {
       "id": "2024-ian",
       "name_public": "Ian",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1691,
@@ -137,6 +143,7 @@
     {
       "id": "2024-tobias",
       "name_public": "Tobias",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1727,
@@ -159,6 +166,7 @@
     {
       "id": "2024-marshall",
       "name_public": "Marshall",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1755,
@@ -181,6 +189,7 @@
     {
       "id": "2024-hannah",
       "name_public": "Hannah",
+      "gender": "W",
       "status": "finished",
       "splits_seconds": {
         "swim": 1946,
@@ -203,6 +212,7 @@
     {
       "id": "2024-daniel",
       "name_public": "Daniel",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 1974,
@@ -223,8 +233,9 @@
       }
     },
     {
-      "id": "2024-sam",
-      "name_public": "Sam",
+      "id": "2024-sam-schraver",
+      "name_public": "Sam S.",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 2424,
@@ -245,8 +256,9 @@
       }
     },
     {
-      "id": "2024-jackson",
-      "name_public": "Jackson",
+      "id": "2024-jackson-bibbens",
+      "name_public": "Jackson B.",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 2453,
@@ -269,6 +281,7 @@
     {
       "id": "2024-ben",
       "name_public": "Ben",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 2498,
@@ -289,8 +302,9 @@
       }
     },
     {
-      "id": "2024-karol",
-      "name_public": "Karol",
+      "id": "2024-karol-regula",
+      "name_public": "Karol R.",
+      "gender": "M",
       "status": "finished",
       "splits_seconds": {
         "swim": 2506,

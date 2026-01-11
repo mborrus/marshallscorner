@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getResultsYears, readResultsYear } from '@/lib/results/fs';
+import { getResultsYears, readResultsYear, readAllResults } from '@/lib/results/fs';
 import Placeholder from '@/components/Placeholder';
 import styles from './page.module.css';
 
@@ -37,11 +37,37 @@ export default function ResultsIndexPage() {
     );
   }
 
+  // Compute all-time stats
+  const allResults = readAllResults();
+  const uniqueParticipants = new Set<string>();
+  for (const yearData of allResults) {
+    for (const entry of yearData.entries) {
+      if (entry.status === 'finished') {
+        uniqueParticipants.add(entry.name_public.toLowerCase());
+      }
+    }
+  }
+
   return (
     <div>
       <h1>Triathlon Results</h1>
 
       <div className={styles.yearsList}>
+        {/* All Time card */}
+        <Link href="/triathlon/results/all-time" className={`${styles.yearCard} ${styles.allTime}`}>
+          <h2 className={styles.yearTitle}>All Time</h2>
+          <dl className={styles.stats}>
+            <div className={styles.stat}>
+              <dt>Participants</dt>
+              <dd>{uniqueParticipants.size}</dd>
+            </div>
+            <div className={styles.stat}>
+              <dt>Years</dt>
+              <dd>{years.length}</dd>
+            </div>
+          </dl>
+        </Link>
+
         {years.map((year) => {
           const data = readResultsYear(year);
 
