@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
     "csv-parse": "^6.1.0",
     "gray-matter": "^4.0.3",
     "leaflet": "^1.9.4",
