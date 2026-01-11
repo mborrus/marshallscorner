@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 
 const contentDirectory = path.join(process.cwd(), 'content');
@@ -24,6 +25,7 @@ export async function getMarkdownContent(relativePath: string): Promise<{
   const { data, content } = matter(fileContents);
 
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(html, { sanitize: false })
     .process(content);
 
@@ -65,4 +67,24 @@ export async function getHomeContent() {
 // Get triathlon content for a specific year
 export async function getTriathlonContent(year: string) {
   return getMarkdownContent(`triathlon/${year}.md`);
+}
+
+// Get list of photos for a triathlon year
+// Scans public/images/triathlon/{year}/ for image files
+export function getTriathlonPhotos(year: string): string[] {
+  const photosDir = path.join(process.cwd(), 'public', 'images', 'triathlon', year);
+
+  if (!fs.existsSync(photosDir)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(photosDir);
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
+  return files
+    .filter((file) => {
+      const ext = path.extname(file).toLowerCase();
+      return imageExtensions.includes(ext) && !file.startsWith('.');
+    })
+    .sort();
 }
