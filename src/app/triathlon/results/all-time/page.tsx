@@ -7,6 +7,10 @@ import ResultsTableAllTime from '@/components/results/ResultsTableAllTime';
 import AllTimeRecords from '@/components/results/AllTimeRecords';
 import YearlyParticipation from '@/components/results/YearlyParticipation';
 import ReturneeStats from '@/components/results/ReturneeStats';
+import DisciplineLeaderboard from '@/components/results/DisciplineLeaderboard';
+import BiggestMovers from '@/components/results/BiggestMovers';
+import HeadToHead from '@/components/results/HeadToHead';
+import type { ResultEntry } from '@/lib/results/schema';
 import styles from '../[year]/page.module.css';
 
 export const metadata: Metadata = {
@@ -67,6 +71,18 @@ export default function AllTimeResultsPage() {
 
   const allTimeEntries = Array.from(bestByPerson.values());
 
+  // Create array of ALL finished entries (for leaderboards/comparisons)
+  const allEntriesForStats: ResultEntry[] = allResults.flatMap((yearData) =>
+    yearData.entries
+      .filter((entry) => entry.status === 'finished' && entry.total_seconds !== null)
+      .map((entry) => ({
+        ...entry,
+        // Add year to name for disambiguation in head-to-head
+        name_public: `${entry.name_public} (${yearData.year})`,
+        id: `${yearData.year}-${entry.id}`,
+      }))
+  );
+
   // Compute stats
   const totalTimes = allTimeEntries.map((e) => e.total_seconds);
   const maleCount = allTimeEntries.filter((e) => e.gender === 'M').length;
@@ -115,6 +131,12 @@ export default function AllTimeResultsPage() {
       <YearlyParticipation allResults={allResults} />
 
       <ReturneeStats allResults={allResults} />
+
+      <DisciplineLeaderboard entries={allEntriesForStats} />
+
+      <BiggestMovers entries={allEntriesForStats} />
+
+      <HeadToHead entries={allEntriesForStats} />
 
       <h2>Best Times</h2>
       <ResultsTableAllTime entries={allTimeEntries} />
