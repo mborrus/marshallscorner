@@ -20,9 +20,9 @@ export default function FoodPage() {
           </Link>
         </li>
         <li>
-          <span className={styles.sectionLink}>
-            Bakeries <span className={styles.stub}>[TODO: coming soon]</span>
-          </span>
+          <Link href="/food/bagels" className={styles.sectionLink}>
+            Bagels
+          </Link>
         </li>
       </ul>
     </div>

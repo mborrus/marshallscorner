@@ -38,6 +38,7 @@ export interface PizzaReview {
   lon: number | null;
   googleMapsUrl: string | null;
   website: string | null;
+  photos: string[];
 }
 
 export interface PizzaReviewsData {

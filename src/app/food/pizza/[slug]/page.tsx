@@ -2,6 +2,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllReviews, getReviewBySlug } from '@/lib/pizza/data';
 import styles from './page.module.css';
@@ -182,6 +183,25 @@ export default async function PizzaDetailPage({ params }: PageProps) {
             >
               View on Google Maps
             </a>
+          </div>
+        </section>
+      )}
+
+      {/* Photos */}
+      {review.photos && review.photos.length > 0 && (
+        <section className={styles.photosSection}>
+          <h2>Photos</h2>
+          <div className={styles.photosGrid}>
+            {review.photos.map((photo, index) => (
+              <Image
+                key={photo}
+                src={photo}
+                alt={`${review.restaurant} photo ${index + 1}`}
+                width={400}
+                height={400}
+                className={styles.photo}
+              />
+            ))}
           </div>
         </section>
       )}

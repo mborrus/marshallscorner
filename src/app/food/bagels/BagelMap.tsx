@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import Link from 'next/link';
-import type { PizzaReview } from '@/lib/pizza/types';
+import type { BagelReview } from '@/lib/bagels/types';
 import 'leaflet/dist/leaflet.css';
 
 // Fix Leaflet marker icon issue
@@ -20,14 +20,14 @@ const icon = L.icon({
 
 // NYC center coordinates
 const NYC_CENTER: [number, number] = [40.7831, -73.9712];
-const NYC_ZOOM = 12;
+const NYC_ZOOM = 13;
 
 interface Props {
-  reviews: PizzaReview[];
+  reviews: BagelReview[];
 }
 
 // Zoom control buttons component
-function ZoomControls({ reviews }: { reviews: PizzaReview[] }) {
+function ZoomControls({ reviews }: { reviews: BagelReview[] }) {
   const map = useMap();
 
   const zoomToNYC = () => {
@@ -92,7 +92,7 @@ function ZoomControls({ reviews }: { reviews: PizzaReview[] }) {
   );
 }
 
-export default function PizzaMap({ reviews }: Props) {
+export default function BagelMap({ reviews }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -108,7 +108,7 @@ export default function PizzaMap({ reviews }: Props) {
   }
 
   if (!mounted) {
-    return <div style={{ height: '500px', background: '#f5f5f5', borderRadius: '8px' }} />;
+    return <div style={{ height: '400px', background: '#f5f5f5', borderRadius: '8px' }} />;
   }
 
   // Calculate bounds for initial view
@@ -120,7 +120,7 @@ export default function PizzaMap({ reviews }: Props) {
     <MapContainer
       bounds={bounds}
       boundsOptions={{ padding: [50, 50] }}
-      style={{ height: '500px', width: '100%', borderRadius: '8px' }}
+      style={{ height: '400px', width: '100%', borderRadius: '8px' }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -137,7 +137,7 @@ export default function PizzaMap({ reviews }: Props) {
             <div style={{ minWidth: '150px' }}>
               <strong>
                 <Link
-                  href={`/food/pizza/${review.slug}`}
+                  href={`/food/bagels/${review.slug}`}
                   style={{ color: '#0066cc', textDecoration: 'none' }}
                 >
                   {review.restaurant}

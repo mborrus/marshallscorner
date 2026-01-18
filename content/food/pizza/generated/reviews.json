@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-16T01:52:46.316Z",
+  "updatedAt": "2026-01-18T17:15:08.595Z",
   "reviews": [
     {
       "slug": "fumo",
@@ -36,7 +36,10 @@
       "lat": 40.8025041,
       "lon": -73.9675908,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/fumo/1.jpg"
+      ]
     },
     {
       "slug": "em-squared",
@@ -73,7 +76,12 @@
       "lat": 40.7768754,
       "lon": -73.9511415,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/em-squared/1.jpg",
+        "/images/food/pizza/em-squared/2.jpg",
+        "/images/food/pizza/em-squared/3.jpg"
+      ]
     },
     {
       "slug": "giuseppes",
@@ -110,7 +118,8 @@
       "lat": 43.65711,
       "lon": -71.49999,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": []
     },
     {
       "slug": "two-boots",
@@ -147,7 +156,8 @@
       "lat": 40.7765306,
       "lon": -73.9790882,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": []
     },
     {
       "slug": "modern-apizza",
@@ -184,7 +194,11 @@
       "lat": 41.313756,
       "lon": -72.912733,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/modern-apizza/1.jpg",
+        "/images/food/pizza/modern-apizza/2.jpg"
+      ]
     },
     {
       "slug": "don-antonio",
@@ -221,12 +235,17 @@
       "lat": 40.7625,
       "lon": -73.9867,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/don-antonio/1.jpg",
+        "/images/food/pizza/don-antonio/2.jpg",
+        "/images/food/pizza/don-antonio/3.jpg"
+      ]
     },
     {
       "slug": "made-in-new-york-pizza",
       "restaurant": "Made in New York Pizza",
-      "location": "UWS",
+      "location": "Upper West Side, NYC",
       "date": "2025-04-19",
       "dateRaw": "04/19/2025",
       "pizzaOrdered": "Cheese",
@@ -258,7 +277,10 @@
       "lat": 40.77899,
       "lon": -73.98113,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/made-in-new-york-pizza/1.jpg"
+      ]
     },
     {
       "slug": "one6three",
@@ -295,7 +317,177 @@
       "lat": 41.32104037,
       "lon": -72.90903544,
       "googleMapsUrl": null,
-      "website": null
+      "website": null,
+      "photos": [
+        "/images/food/pizza/one6three/1.jpg",
+        "/images/food/pizza/one6three/2.jpg"
+      ]
+    },
+    {
+      "slug": "celeste",
+      "restaurant": "Celeste",
+      "location": "Upper West Side, NYC",
+      "date": "2025-05-10",
+      "dateRaw": "05/10/2025",
+      "pizzaOrdered": "Margeritta with chili oil",
+      "cost": "$23.00",
+      "costNumeric": 23,
+      "upchargeAmount": "$4.00",
+      "upchargeNumeric": 4,
+      "toppings": "Chili oil, maybe gorganzola",
+      "overallFlavorVibes": "4",
+      "textureDescriptor": "Chewy, light, a little wet with sauce, very italian",
+      "crustBrand": "Made in house, the owner will come over and talk to you and tell you about it. He's very proud (and should be). Webiste mentions:  rice, psyilllium husk, pea protein and quinoa",
+      "serviceNotes": "Close to me in the UWS, which is a bonus. You'll usually need a reservation and it's cash only. The owner must be gluten free or know someone who is, because he makes a lot of things in house: gnocci, burger buns, pizza crusts. Intimate inside (aka close), but fast service. Cash only. Very itialian style pizza. not sliced, served with a knife. Ask for the chili oil",
+      "ratings": {
+        "crustTexture": 4,
+        "undercarriage": 1,
+        "flavorOfCrust": 3,
+        "integrity": 2,
+        "mouthCutter": 3,
+        "edge": 3,
+        "sauce": 4,
+        "choices": 2,
+        "toppingsPresentation": 3,
+        "madeInHouse": 3,
+        "upchargeRating": 2,
+        "service": 3
+      },
+      "overallScore": 37,
+      "address": "502 Amsterdam Ave, New York, NY 10024",
+      "lat": 40.78663744,
+      "lon": -73.97609289,
+      "googleMapsUrl": null,
+      "website": null,
+      "photos": [
+        "/images/food/pizza/celeste/1.jpg",
+        "/images/food/pizza/celeste/2.jpg"
+      ]
+    },
+    {
+      "slug": "emporio",
+      "restaurant": "Emporio",
+      "location": "West Village, NYC",
+      "date": "2025-12-02",
+      "dateRaw": "12/2/2025",
+      "pizzaOrdered": "Spicy Sopressata",
+      "cost": "$24.00",
+      "costNumeric": 24,
+      "upchargeAmount": "$2.00",
+      "upchargeNumeric": 2,
+      "toppings": "spicy salami, chili oil",
+      "overallFlavorVibes": "4",
+      "textureDescriptor": "Chewy, light, a little wet with sauce. Similar to Celeste. Roman style. No new haven style char. Held together well enough to get a bend.",
+      "crustBrand": "Made in house, similar to celeste in style and taste. thin, light, chewy, not charred on bottom",
+      "serviceNotes": "They have half off happy hour pizza, which does not apply to the gluten free pizzas. why is that? I don't know. Their menu says \"all pizzas half off.\" If I were a lawyer, or perhaps larry david, I'd put up a fight about this. Unforutantely, I'm neither. We had overall pretty bad service even though we were sitting at the bar. Cool place, good vibes, probably just got unlucky. A bit difficult to get our order in even when it was mostly empty. We came here before going to the Angelika, and I'd do it again, and I think I'll enjoy the experience more. I'm starting to think Roman style pizza means wet. This does come presliced.",
+      "ratings": {
+        "crustTexture": 4,
+        "undercarriage": 1,
+        "flavorOfCrust": 4,
+        "integrity": 3,
+        "mouthCutter": 3,
+        "edge": 3,
+        "sauce": 3,
+        "choices": 3,
+        "toppingsPresentation": 2,
+        "madeInHouse": 3,
+        "upchargeRating": 1,
+        "service": 1
+      },
+      "overallScore": 35,
+      "address": "231 Mott St, New York, NY 10012",
+      "lat": 40.72264082,
+      "lon": -73.99513669,
+      "googleMapsUrl": null,
+      "website": null,
+      "photos": [
+        "/images/food/pizza/emporio/1.jpg",
+        "/images/food/pizza/emporio/2.jpg",
+        "/images/food/pizza/emporio/3.jpg"
+      ]
+    },
+    {
+      "slug": "marshalls-pizza-oven",
+      "restaurant": "Marshall's Pizza Oven",
+      "location": "Meredith, NH",
+      "date": "2025-10-01",
+      "dateRaw": "10/01/2025",
+      "pizzaOrdered": "Cheese and pepperoni",
+      "cost": "$1.00",
+      "costNumeric": 1,
+      "upchargeAmount": "$0.00",
+      "upchargeNumeric": 0,
+      "toppings": "Anything I want",
+      "overallFlavorVibes": "5",
+      "textureDescriptor": "Airy, maybe too thick, well charred",
+      "crustBrand": "made in MY house.",
+      "serviceNotes": "This guy can do it all. Just look at the photos",
+      "ratings": {
+        "crustTexture": 4,
+        "undercarriage": 2,
+        "flavorOfCrust": 4,
+        "integrity": 3,
+        "mouthCutter": 3,
+        "edge": 2,
+        "sauce": 4,
+        "choices": 3,
+        "toppingsPresentation": 4,
+        "madeInHouse": 3,
+        "upchargeRating": 3,
+        "service": 3
+      },
+      "overallScore": 43,
+      "address": "1 main st, Meredith, NH 03253",
+      "lat": 43.65654376,
+      "lon": -71.50677255,
+      "googleMapsUrl": null,
+      "website": null,
+      "photos": [
+        "/images/food/pizza/marshalls-pizza-oven/1.jpg",
+        "/images/food/pizza/marshalls-pizza-oven/2.jpg",
+        "/images/food/pizza/marshalls-pizza-oven/3.jpg",
+        "/images/food/pizza/marshalls-pizza-oven/4.jpg"
+      ]
+    },
+    {
+      "slug": "pizzarte",
+      "restaurant": "PizzArte",
+      "location": "Hell's Kitchen, NYC",
+      "date": "2025-11-07",
+      "dateRaw": "11/7/2025",
+      "pizzaOrdered": "Boscaiola Pizze",
+      "cost": "$29.00",
+      "costNumeric": 29,
+      "upchargeAmount": "$6.00",
+      "upchargeNumeric": 6,
+      "toppings": "Mozzarella, Mushrooms, Italian Sweet Sausage, Basil",
+      "overallFlavorVibes": "5",
+      "textureDescriptor": "Finally a bit of char to the crust after many wet pizzas. Home made, held its consistency together, tasted good. 5 stars",
+      "crustBrand": "Made in house",
+      "serviceNotes": "Despite how good the pizza was, the vibe inside was horrendous. reminded me of an ihop or dennys. went here in route to MoMA. Worth it for a test visit, but I won't be going back just because I hated it so much inside for no easily explainable reason. You may feel otherwise.",
+      "ratings": {
+        "crustTexture": 4,
+        "undercarriage": 2,
+        "flavorOfCrust": 4,
+        "integrity": 3,
+        "mouthCutter": 3,
+        "edge": 3,
+        "sauce": 4,
+        "choices": 3,
+        "toppingsPresentation": 3,
+        "madeInHouse": 3,
+        "upchargeRating": 1,
+        "service": 1
+      },
+      "overallScore": 39,
+      "address": "69 W 55th St, New York, NY 10019",
+      "lat": 40.76292122,
+      "lon": -73.97742059,
+      "googleMapsUrl": null,
+      "website": null,
+      "photos": [
+        "/images/food/pizza/pizzarte/1.jpg"
+      ]
     }
   ]
 }
