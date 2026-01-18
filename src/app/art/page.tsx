@@ -207,6 +207,7 @@ export default function ArtPage() {
   const [filterCategory, setFilterCategory] = useState<string>('All');
   const [filterTag, setFilterTag] = useState<string>('All');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
 
   const closeLightbox = () => setSelectedArt(null);
@@ -266,54 +267,65 @@ export default function ArtPage() {
         <p className={styles.hint}>* Click an item to inspect closer *</p>
       </div>
 
-      {/* Filter and Sort Controls */}
-      <div className={styles.controls}>
-        <div className={styles.controlGroup}>
-          <label className={styles.controlLabel}>Medium:</label>
-          <select
-            className={styles.select}
-            value={filterCategory}
-            onChange={(e) => setFilterCategory(e.target.value)}
-          >
-            {ALL_CATEGORIES.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
+      {/* Filter and Sort Controls - Collapsible */}
+      <div className={styles.filterToolbar}>
+        <button
+          className={styles.filterToggle}
+          onClick={() => setFiltersExpanded(!filtersExpanded)}
+        >
+          <span className={styles.filterToggleIcon}>{filtersExpanded ? '−' : '+'}</span>
+          <span>Filters</span>
+          <span className={styles.filterToggleCount}>
+            ({filteredGallery.length} piece{filteredGallery.length !== 1 ? 's' : ''})
+          </span>
+        </button>
 
-        <div className={styles.controlGroup}>
-          <label className={styles.controlLabel}>Tag:</label>
-          <select
-            className={styles.select}
-            value={filterTag}
-            onChange={(e) => setFilterTag(e.target.value)}
-          >
-            {ALL_TAGS.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
-              </option>
-            ))}
-          </select>
-        </div>
+        {filtersExpanded && (
+          <div className={styles.controls}>
+            <div className={styles.controlGroup}>
+              <label className={styles.controlLabel}>Medium:</label>
+              <select
+                className={styles.select}
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+              >
+                {ALL_CATEGORIES.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <div className={styles.controlGroup}>
-          <label className={styles.controlLabel}>Sort:</label>
-          <select
-            className={styles.select}
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-          >
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="title">Title A-Z</option>
-          </select>
-        </div>
+            <div className={styles.controlGroup}>
+              <label className={styles.controlLabel}>Tag:</label>
+              <select
+                className={styles.select}
+                value={filterTag}
+                onChange={(e) => setFilterTag(e.target.value)}
+              >
+                {ALL_TAGS.map((tag) => (
+                  <option key={tag} value={tag}>
+                    {tag}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <span className={styles.resultCount}>
-          {filteredGallery.length} piece{filteredGallery.length !== 1 ? 's' : ''}
-        </span>
+            <div className={styles.controlGroup}>
+              <label className={styles.controlLabel}>Sort:</label>
+              <select
+                className={styles.select}
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+              >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="title">Title A-Z</option>
+              </select>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Gallery Grid */}
