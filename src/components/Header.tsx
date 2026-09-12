@@ -19,7 +19,7 @@ export default function Header() {
       {/* Marquee banner - classic 90s */}
       <div className={styles.marquee}>
         <span className={styles.marqueeText}>
-          Welcome to my corner of the internet! This site is always under construction. Last updated: January 2025 ~*~*~*~
+          Welcome to my corner of the internet! This site is always under construction. Last updated: September 2026 ~*~*~*~
         </span>
       </div>
 

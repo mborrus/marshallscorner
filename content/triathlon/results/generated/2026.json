@@ -1,0 +1,404 @@
+{
+  "year": 2026,
+  "updated_at": "2026-09-12T21:24:17.717Z",
+  "entries": [
+    {
+      "id": "2026-lucas",
+      "name_public": "Lucas",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1913,
+        "t1": 91,
+        "bike": 5057,
+        "t2": 61,
+        "run": 2090
+      },
+      "total_seconds": 9212,
+      "ranks": {
+        "total": 1,
+        "swim": 7,
+        "bike": 2,
+        "run": 1
+      },
+      "overtakes": {
+        "bike": 5
+      }
+    },
+    {
+      "id": "2026-felix-knollmann",
+      "name_public": "Felix K.",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1395,
+        "t1": 104,
+        "bike": 4981,
+        "t2": 60,
+        "run": 2674
+      },
+      "total_seconds": 9214,
+      "ranks": {
+        "total": 2,
+        "swim": 1,
+        "bike": 1,
+        "run": 5
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2026-evan",
+      "name_public": "Evan",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2145,
+        "t1": 214,
+        "bike": 5182,
+        "t2": 98,
+        "run": 2293
+      },
+      "total_seconds": 9932,
+      "ranks": {
+        "total": 3,
+        "swim": 13,
+        "bike": 3,
+        "run": 2
+      },
+      "overtakes": {
+        "bike": 10
+      }
+    },
+    {
+      "id": "2026-jaylan",
+      "name_public": "Jaylan",
+      "gender": "W",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1490,
+        "t1": 180,
+        "bike": 5686,
+        "t2": 62,
+        "run": 2647
+      },
+      "total_seconds": 10065,
+      "ranks": {
+        "total": 4,
+        "swim": 4,
+        "bike": 8,
+        "run": 4
+      },
+      "overtakes": {
+        "bike": -4
+      }
+    },
+    {
+      "id": "2026-marshall",
+      "name_public": "Marshall",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1905,
+        "t1": 210,
+        "bike": 5428,
+        "t2": 62,
+        "run": 2689
+      },
+      "total_seconds": 10294,
+      "ranks": {
+        "total": 5,
+        "swim": 6,
+        "bike": 5,
+        "run": 6
+      },
+      "overtakes": {
+        "bike": 1
+      }
+    },
+    {
+      "id": "2026-karol-regula",
+      "name_public": "Karol R.",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2032,
+        "t1": 177,
+        "bike": 5348,
+        "t2": 5,
+        "run": 2830
+      },
+      "total_seconds": 10392,
+      "ranks": {
+        "total": 6,
+        "swim": 10,
+        "bike": 4,
+        "run": 7
+      },
+      "overtakes": {
+        "bike": 6
+      }
+    },
+    {
+      "id": "2026-will-munstermann",
+      "name_public": "Will M.",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1480,
+        "t1": 123,
+        "bike": 5451,
+        "t2": 39,
+        "run": 3636
+      },
+      "total_seconds": 10729,
+      "ranks": {
+        "total": 7,
+        "swim": 3,
+        "bike": 6,
+        "run": 14
+      },
+      "overtakes": {
+        "bike": -3
+      }
+    },
+    {
+      "id": "2026-nick",
+      "name_public": "Nick",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1573,
+        "t1": 176,
+        "bike": 6075,
+        "t2": 23,
+        "run": 3289
+      },
+      "total_seconds": 11136,
+      "ranks": {
+        "total": 8,
+        "swim": 5,
+        "bike": 11,
+        "run": 10
+      },
+      "overtakes": {
+        "bike": -6
+      }
+    },
+    {
+      "id": "2026-grant",
+      "name_public": "Grant",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2821,
+        "t1": 249,
+        "bike": 5484,
+        "t2": 20,
+        "run": 2606
+      },
+      "total_seconds": 11180,
+      "ranks": {
+        "total": 9,
+        "swim": 16,
+        "bike": 7,
+        "run": 3
+      },
+      "overtakes": {
+        "bike": 9
+      }
+    },
+    {
+      "id": "2026-jackson-bibbens",
+      "name_public": "Jackson B.",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2121,
+        "t1": 213,
+        "bike": 6066,
+        "t2": 45,
+        "run": 3073
+      },
+      "total_seconds": 11518,
+      "ranks": {
+        "total": 10,
+        "swim": 11,
+        "bike": 10,
+        "run": 8
+      },
+      "overtakes": {
+        "bike": 1
+      }
+    },
+    {
+      "id": "2026-daniel",
+      "name_public": "Daniel",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1955,
+        "t1": 113,
+        "bike": 5992,
+        "t2": 55,
+        "run": 3579
+      },
+      "total_seconds": 11694,
+      "ranks": {
+        "total": 11,
+        "swim": 8,
+        "bike": 9,
+        "run": 13
+      },
+      "overtakes": {
+        "bike": -1
+      }
+    },
+    {
+      "id": "2026-meg-veenstra",
+      "name_public": "Meg V.",
+      "gender": "W",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 1426,
+        "t1": 125,
+        "bike": 6593,
+        "t2": 111,
+        "run": 3942
+      },
+      "total_seconds": 12197,
+      "ranks": {
+        "total": 12,
+        "swim": 2,
+        "bike": 15,
+        "run": 16
+      },
+      "overtakes": {
+        "bike": -13
+      }
+    },
+    {
+      "id": "2026-giorgio",
+      "name_public": "Giorgio",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": null,
+        "t1": null,
+        "bike": 6304,
+        "t2": 130,
+        "run": 3542
+      },
+      "total_seconds": 12310,
+      "ranks": {
+        "total": 13,
+        "bike": 12,
+        "run": 11
+      },
+      "overtakes": {
+        "bike": -1
+      }
+    },
+    {
+      "id": "2026-hannah",
+      "name_public": "Hannah",
+      "gender": "W",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2134,
+        "t1": 281,
+        "bike": 6433,
+        "t2": 40,
+        "run": 3573
+      },
+      "total_seconds": 12461,
+      "ranks": {
+        "total": 14,
+        "swim": 12,
+        "bike": 13,
+        "run": 12
+      },
+      "overtakes": {
+        "bike": -1
+      }
+    },
+    {
+      "id": "2026-sam-schraver",
+      "name_public": "Sam S.",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2657,
+        "t1": 288,
+        "bike": 6499,
+        "t2": 12,
+        "run": 3264
+      },
+      "total_seconds": 12720,
+      "ranks": {
+        "total": 15,
+        "swim": 14,
+        "bike": 14,
+        "run": 9
+      },
+      "overtakes": {
+        "bike": 0
+      }
+    },
+    {
+      "id": "2026-emma",
+      "name_public": "Emma",
+      "gender": "W",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2025,
+        "t1": 53,
+        "bike": 8228,
+        "t2": 20,
+        "run": 3856
+      },
+      "total_seconds": 14182,
+      "ranks": {
+        "total": 16,
+        "swim": 9,
+        "bike": 16,
+        "run": 15
+      },
+      "overtakes": {
+        "bike": -7
+      }
+    },
+    {
+      "id": "2026-ben",
+      "name_public": "Ben",
+      "gender": "M",
+      "status": "finished",
+      "splits_seconds": {
+        "swim": 2720,
+        "t1": 448,
+        "bike": 8907,
+        "t2": 365,
+        "run": 5006
+      },
+      "total_seconds": 17446,
+      "ranks": {
+        "total": 17,
+        "swim": 15,
+        "bike": 17,
+        "run": 17
+      },
+      "overtakes": {
+        "bike": -2
+      }
+    }
+  ],
+  "summary": {
+    "finishers_count": 17,
+    "total_seconds": {
+      "min": 9212,
+      "median": 11180,
+      "max": 17446
+    }
+  }
+}
