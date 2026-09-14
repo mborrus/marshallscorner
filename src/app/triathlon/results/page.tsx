@@ -48,11 +48,31 @@ export default function ResultsIndexPage() {
     }
   }
 
+  const athleteCount = uniqueParticipants.size;
+
   return (
     <div>
       <h1>Triathlon Results</h1>
 
       <div className={styles.yearsList}>
+        {/* Athlete explorer card */}
+        <Link
+          href="/triathlon/results/athletes"
+          className={`${styles.yearCard} ${styles.athletes}`}
+        >
+          <h2 className={styles.yearTitle}>Athletes</h2>
+          <dl className={styles.stats}>
+            <div className={styles.stat}>
+              <dt>Explore</dt>
+              <dd>{athleteCount} racers</dd>
+            </div>
+            <div className={styles.stat}>
+              <dt>Compare</dt>
+              <dd>year to year</dd>
+            </div>
+          </dl>
+        </Link>
+
         {/* All Time card */}
         <Link href="/triathlon/results/all-time" className={`${styles.yearCard} ${styles.allTime}`}>
           <h2 className={styles.yearTitle}>All Time</h2>

@@ -21,6 +21,15 @@
   text-decoration: none;
 }
 
+.athletes {
+  background: #f1efe3;
+  border: 2px solid var(--color-primary);
+}
+
+.athletes:hover {
+  background: #e7e4d4;
+}
+
 .allTime {
   background: #e8f4f8;
   border: 2px solid #4a90a4;

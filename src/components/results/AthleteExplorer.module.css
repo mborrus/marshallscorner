@@ -1,0 +1,368 @@
+/* Athlete explorer - 90s panels, modern chart mechanics */
+
+.explorer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* --- Panel chrome (matches the other results widgets) ----------------- */
+
+.panel {
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.panelTitle {
+  background: linear-gradient(90deg, #336699, #5a9fd4);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 0.9375rem;
+  margin: 0;
+  padding: 4px 8px;
+}
+
+.panelBody {
+  padding: var(--spacing-md);
+}
+
+/* --- Picker ----------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: flex-end;
+  margin-bottom: var(--spacing-md);
+}
+
+.searchLabel {
+  flex: 1 1 200px;
+}
+
+.search,
+.select {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: 4px 6px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.compareLabel {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.athleteList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-xs);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.athleteButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  text-align: left;
+  background-color: var(--color-bg);
+}
+
+.athleteButtonActive {
+  background-color: #1a6fa8;
+  color: #ffffff;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.athleteButtonActive:hover {
+  background-color: #17618f;
+}
+
+.athleteName {
+  font-weight: bold;
+}
+
+.athleteYears {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.noMatch {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.875rem;
+  grid-column: 1 / -1;
+}
+
+/* --- Stat tiles -------------------------------------------------------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.tile {
+  background-color: var(--color-bg);
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tile dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.tile dd {
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-size: 1.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.tileNote {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Legend ------------------------------------------------------------ */
+
+.legend {
+  list-style: none;
+  margin: 0 0 var(--spacing-sm);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* --- Bars -------------------------------------------------------------- */
+
+.chart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.barLabel {
+  flex: 0 0 8.5rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.barYear {
+  font-family: var(--font-pixel);
+  font-size: 1.125rem;
+  color: var(--color-secondary);
+}
+
+.barAthlete {
+  font-size: 0.8125rem;
+  font-weight: bold;
+}
+
+.barPlace {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.barTrack {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 0;
+}
+
+.bar {
+  display: flex;
+  height: 26px;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.segment {
+  /* Reset the global Windows 95 button chrome - these are chart marks. */
+  padding: 0;
+  margin: 0;
+  border: none;
+  /* 2px surface gap so neighbouring fills never touch. */
+  border-right: 2px solid #ffffff;
+  height: 100%;
+  min-width: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.segment:last-child {
+  border-right: none;
+}
+
+.segment:hover,
+.segment:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 1px;
+  background-color: inherit;
+}
+
+.segmentLabel {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  padding: 0 4px;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.barTotal {
+  font-family: var(--font-pixel);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tooltip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 8px));
+  background-color: #ffffef;
+  border: 2px solid var(--border-dark);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tooltipBelow {
+  transform: translate(-50%, 8px);
+}
+
+.chartNote {
+  margin: var(--spacing-sm) 0 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Tables ------------------------------------------------------------ */
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  margin: 0;
+  font-size: 0.8125rem;
+  min-width: 34rem;
+}
+
+.table th,
+.table td {
+  white-space: nowrap;
+}
+
+.cellValue {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.cellDelta {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.faster {
+  color: #1d7a3f;
+}
+
+.slower {
+  color: #b03a26;
+}
+
+.note {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 560px) {
+  .barRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .barLabel {
+    flex: none;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--spacing-xs);
+  }
+}

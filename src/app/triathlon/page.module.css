@@ -109,6 +109,9 @@
 
 .resultsCta {
   margin-top: var(--spacing-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
 }
 
 @media (max-width: 520px) {
