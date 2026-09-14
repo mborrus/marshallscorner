@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getTriathlonYears } from '@/lib/content';
 import { getResultsYears } from '@/lib/results/fs';
-import YearSelector from '@/components/YearSelector';
 import type { Metadata } from 'next';
 import styles from './page.module.css';
 
@@ -99,28 +98,25 @@ export default function TriathlonPage() {
       <section className={styles.section}>
         <h2>Years & results</h2>
         {years.length > 0 ? (
-          <>
-            <YearSelector years={eventYears} />
-            <ul className={styles.yearList}>
-              {years.map((year) => (
-                <li key={year} className={styles.yearCard}>
-                  <span className={styles.yearLabel}>{year}</span>
-                  <div className={styles.yearLinks}>
-                    {eventSet.has(year) ? (
-                      <Link href={`/triathlon/${year}`}>Event page</Link>
-                    ) : (
-                      <span className={styles.resultsPending}>Recap soon</span>
-                    )}
-                    {resultsSet.has(year) ? (
-                      <Link href={`/triathlon/results/${year}`}>Results</Link>
-                    ) : (
-                      <span className={styles.resultsPending}>Results soon</span>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </>
+          <ul className={styles.yearList}>
+            {years.map((year) => (
+              <li key={year} className={styles.yearCard}>
+                <span className={styles.yearLabel}>{year}</span>
+                <div className={styles.yearLinks}>
+                  {eventSet.has(year) ? (
+                    <Link href={`/triathlon/${year}`}>Event page</Link>
+                  ) : (
+                    <span className={styles.resultsPending}>Recap soon</span>
+                  )}
+                  {resultsSet.has(year) ? (
+                    <Link href={`/triathlon/results/${year}`}>Results</Link>
+                  ) : (
+                    <span className={styles.resultsPending}>Results soon</span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
         ) : (
           <p className="placeholder">[TODO: Add triathlon years in content/triathlon/]</p>
         )}
