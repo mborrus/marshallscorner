@@ -14,10 +14,18 @@ export const metadata: Metadata = {
 };
 
 export default function TriathlonPage() {
-  const years = getTriathlonYears();
+  const eventYears = getTriathlonYears();
   const resultsYears = getResultsYears();
   const hasResults = resultsYears.length > 0;
+  const eventSet = new Set(eventYears);
   const resultsSet = new Set(resultsYears);
+
+  // A year shows up here as soon as it has either a recap page or results,
+  // so a results-only year (results posted before the recap is written) is
+  // still one click away.
+  const years = [...new Set([...eventYears, ...resultsYears])].sort((a, b) =>
+    b.localeCompare(a)
+  );
 
   return (
     <div className={styles.page}>
@@ -92,13 +100,17 @@ export default function TriathlonPage() {
         <h2>Years & results</h2>
         {years.length > 0 ? (
           <>
-            <YearSelector years={years} />
+            <YearSelector years={eventYears} />
             <ul className={styles.yearList}>
               {years.map((year) => (
                 <li key={year} className={styles.yearCard}>
                   <span className={styles.yearLabel}>{year}</span>
                   <div className={styles.yearLinks}>
-                    <Link href={`/triathlon/${year}`}>Event page</Link>
+                    {eventSet.has(year) ? (
+                      <Link href={`/triathlon/${year}`}>Event page</Link>
+                    ) : (
+                      <span className={styles.resultsPending}>Recap soon</span>
+                    )}
                     {resultsSet.has(year) ? (
                       <Link href={`/triathlon/results/${year}`}>Results</Link>
                     ) : (
@@ -117,6 +129,9 @@ export default function TriathlonPage() {
           <p className={styles.resultsCta}>
             <Link href="/triathlon/results" className="button">
               View all results →
+            </Link>
+            <Link href="/triathlon/results/athletes" className="button">
+              Explore an athlete →
             </Link>
           </p>
         )}

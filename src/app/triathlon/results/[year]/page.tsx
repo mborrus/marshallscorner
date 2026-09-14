@@ -55,6 +55,9 @@ export default async function ResultsYearPage({ params }: PageProps) {
         <Link href="/triathlon/results/all-time">
           All Time
         </Link>
+        <Link href="/triathlon/results/athletes">
+          Athletes
+        </Link>
         {years.map((y) => (
           <Link
             key={y}

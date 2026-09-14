@@ -1,0 +1,46 @@
+/* 90s style athlete explorer page */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-highlight);
+}
+
+.separator {
+  color: var(--color-text-muted);
+}
+
+.intro {
+  margin-bottom: 0.5rem;
+}
+
+.yearNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.yearNav a {
+  font-family: var(--font-body);
+  padding: 2px 8px;
+  text-decoration: underline;
+  color: var(--color-link);
+  font-size: 0.875rem;
+}
+
+.yearNav a:hover {
+  color: var(--color-highlight);
+}
