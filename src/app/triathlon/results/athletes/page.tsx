@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { readAllResults, getResultsYears } from '@/lib/results/fs';
 import { buildAthleteIndex } from '@/lib/results/athletes';
-import AthleteExplorer from '@/components/results/AthleteExplorer';
+import AthleteExplorer from '@/components/results/athlete/AthleteExplorer';
 import Placeholder from '@/components/Placeholder';
 import styles from './page.module.css';
 

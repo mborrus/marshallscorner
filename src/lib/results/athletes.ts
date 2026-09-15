@@ -67,11 +67,21 @@ export interface AthleteProfile {
   totalSpread: number | null;
 }
 
+/** One finisher's total, for plotting a year's whole field. */
+export interface FieldEntry {
+  slug: string;
+  name: string;
+  total: number;
+}
+
 export interface YearContext {
   year: number;
   finishers: number;
   medianTotal: number | null;
   winningTotal: number | null;
+  slowestTotal: number | null;
+  /** Every finisher that year, fastest first. */
+  field: FieldEntry[];
 }
 
 export interface AthleteIndex {
@@ -110,9 +120,10 @@ export function buildAthleteIndex(allResults: ResultsYear[]): AthleteIndex {
   for (const yearData of byYear) {
     const { year, entries } = yearData;
 
-    const finisherTotals = entries
-      .filter((e) => e.status === 'finished' && e.total_seconds !== null)
-      .map((e) => e.total_seconds!);
+    const finished = entries.filter(
+      (e) => e.status === 'finished' && e.total_seconds !== null
+    );
+    const finisherTotals = finished.map((e) => e.total_seconds!);
     const medianTotal = median(finisherTotals);
     const winningTotal = finisherTotals.length ? Math.min(...finisherTotals) : null;
 
@@ -121,6 +132,14 @@ export function buildAthleteIndex(allResults: ResultsYear[]): AthleteIndex {
       finishers: finisherTotals.length,
       medianTotal,
       winningTotal,
+      slowestTotal: finisherTotals.length ? Math.max(...finisherTotals) : null,
+      field: finished
+        .map((e) => ({
+          slug: slugifyAthlete(e.name_public.trim()),
+          name: e.name_public.trim(),
+          total: e.total_seconds!,
+        }))
+        .sort((a, b) => a.total - b.total),
     });
 
     // Per-leg field times for this year, used for leg standings.

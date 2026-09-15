@@ -1,45 +1,21 @@
 'use client';
 
-// Pick an athlete, see every race they have run: splits, year-over-year
-// changes, how they stacked up against the field, and an optional
-// side-by-side with a second athlete.
+// Pick an athlete, see every race they have run: how their finish time has
+// moved, where the time goes, what changed leg by leg, where they sat in the
+// field, and an optional side-by-side with a second athlete.
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { AthleteIndex, AthleteProfile, AthleteRace, Leg } from '@/lib/results/athletes';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import type { AthleteIndex, AthleteProfile } from '@/lib/results/athletes';
 import { LEGS, LEG_LABELS, RACED_LEGS } from '@/lib/results/athletes';
-import styles from './AthleteExplorer.module.css';
+import { deltaArrow, formatDelta, formatTime, ordinal } from './chart';
+import SplitBars, { type BarRow } from './SplitBars';
+import FinishTrend from './FinishTrend';
+import FieldStrip from './FieldStrip';
+import LegDeltas from './LegDeltas';
+import styles from './athlete.module.css';
 
 interface AthleteExplorerProps {
   index: AthleteIndex;
-}
-
-// Swim / bike / run carry identity, so they get the three validated hues.
-// T1 and T2 are context between them and stay neutral.
-const LEG_COLORS: Record<Leg, string> = {
-  swim: '#1a6fa8',
-  t1: '#8a8378',
-  bike: '#2e8b57',
-  t2: '#8a8378',
-  run: '#c1571a',
-};
-
-function formatTime(seconds: number | null | undefined): string {
-  if (seconds === null || seconds === undefined || seconds < 0) return '—';
-  const s = Math.round(seconds);
-  const hours = Math.floor(s / 3600);
-  const minutes = Math.floor((s % 3600) / 60);
-  const secs = s % 60;
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  return hours > 0 ? `${hours}:${pad(minutes)}:${pad(secs)}` : `${minutes}:${pad(secs)}`;
-}
-
-/** Signed difference. Faster (negative) reads as a gain. */
-function formatDelta(seconds: number | null | undefined): string {
-  if (seconds === null || seconds === undefined) return '—';
-  const rounded = Math.round(seconds);
-  if (rounded === 0) return 'even';
-  const sign = rounded < 0 ? '−' : '+';
-  return `${sign}${formatTime(Math.abs(rounded))}`;
 }
 
 function deltaClass(seconds: number | null | undefined): string {
@@ -47,57 +23,27 @@ function deltaClass(seconds: number | null | undefined): string {
   return seconds < 0 ? styles.faster : styles.slower;
 }
 
-/** Arrow so faster/slower is never carried by color alone. */
-function deltaArrow(seconds: number | null | undefined): string {
-  if (seconds === null || seconds === undefined || Math.round(seconds) === 0) return '';
-  return seconds < 0 ? '▼ ' : '▲ ';
+/** Change on the athlete's most recent finish vs the finish before it. */
+function latestDelta(athlete: AthleteProfile): number | null {
+  const finished = athlete.races.filter((r) => r.total !== null);
+  return finished[finished.length - 1]?.deltaTotal ?? null;
 }
 
-function ordinal(n: number): string {
-  const rem100 = n % 100;
-  if (rem100 >= 11 && rem100 <= 13) return `${n}th`;
-  switch (n % 10) {
-    case 1:
-      return `${n}st`;
-    case 2:
-      return `${n}nd`;
-    case 3:
-      return `${n}rd`;
-    default:
-      return `${n}th`;
+function latestDeltaNote(athlete: AthleteProfile): string {
+  const finished = athlete.races.filter((r) => r.total !== null);
+  const latest = finished[finished.length - 1];
+  if (!latest || latest.deltaTotal === null || latest.comparedToYear === null) {
+    return 'first finish on record';
   }
-}
-
-function raceTotal(race: AthleteRace): number {
-  if (race.total !== null) return race.total;
-  // Partial races still get a bar out of whatever splits were recorded.
-  return LEGS.reduce((sum, leg) => sum + (race.splits[leg] ?? 0), 0);
-}
-
-interface TooltipState {
-  x: number;
-  y: number;
-  /** Render below the mark when there is no room above it. */
-  below: boolean;
-  title: string;
-  lines: string[];
-}
-
-interface BarRow {
-  key: string;
-  race: AthleteRace;
-  athlete: AthleteProfile;
-  showAthleteName: boolean;
+  return `${latest.year} vs ${latest.comparedToYear}`;
 }
 
 export default function AthleteExplorer({ index }: AthleteExplorerProps) {
-  const { athletes, years } = index;
+  const { athletes, years, yearContext } = index;
 
   const [selectedSlug, setSelectedSlug] = useState<string>(athletes[0]?.slug ?? '');
   const [compareSlug, setCompareSlug] = useState<string>('');
   const [query, setQuery] = useState('');
-  const [tooltip, setTooltip] = useState<TooltipState | null>(null);
-  const chartRef = useRef<HTMLDivElement>(null);
 
   // Read a shareable link on first paint (?athlete=marshall&vs=lucas).
   useEffect(() => {
@@ -106,7 +52,6 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
     const vs = params.get('vs');
     if (athlete && athletes.some((a) => a.slug === athlete)) setSelectedSlug(athlete);
     if (vs && athletes.some((a) => a.slug === vs)) setCompareSlug(vs);
-    // athletes is build-time data and never changes after mount
   }, [athletes]);
 
   // Keep the URL in step so a view can be linked to.
@@ -148,43 +93,20 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
       for (const athlete of [selected, compare]) {
         const race = athlete.races.find((r) => r.year === year);
         if (race) {
-          out.push({
-            key: `${athlete.slug}-${year}`,
-            race,
-            athlete,
-            showAthleteName: true,
-          });
+          out.push({ key: `${athlete.slug}-${year}`, race, athlete, showAthleteName: true });
         }
       }
     }
     return out;
   }, [selected, compare]);
 
-  const maxTotal = useMemo(
-    () => rows.reduce((max, row) => Math.max(max, raceTotal(row.race)), 0),
-    [rows]
-  );
-
-  const showTooltip = useCallback(
-    (target: HTMLElement, title: string, lines: string[]) => {
-      const container = chartRef.current;
-      if (!container) return;
-      const rect = target.getBoundingClientRect();
-      const bounds = container.getBoundingClientRect();
-      const top = rect.top - bounds.top;
-      const below = top < 80;
-      setTooltip({
-        x: rect.left - bounds.left + rect.width / 2,
-        y: below ? rect.bottom - bounds.top : top,
-        below,
-        title,
-        lines,
-      });
+  const selectAthlete = useCallback(
+    (slug: string) => {
+      setSelectedSlug(slug);
+      setCompareSlug((current) => (current === slug ? '' : current));
     },
     []
   );
-
-  const hideTooltip = useCallback(() => setTooltip(null), []);
 
   if (athletes.length === 0) {
     return <p>No athlete data available.</p>;
@@ -234,10 +156,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
               <li key={athlete.slug}>
                 <button
                   type="button"
-                  onClick={() => {
-                    setSelectedSlug(athlete.slug);
-                    if (compareSlug === athlete.slug) setCompareSlug('');
-                  }}
+                  onClick={() => selectAthlete(athlete.slug)}
                   className={`${styles.athleteButton} ${
                     athlete.slug === selectedSlug ? styles.athleteButtonActive : ''
                   }`}
@@ -265,9 +184,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
                 <div className={styles.tile}>
                   <dt>Races</dt>
                   <dd>{selected.races.length}</dd>
-                  <span className={styles.tileNote}>
-                    {selected.years.join(', ')}
-                  </span>
+                  <span className={styles.tileNote}>{selected.years.join(', ')}</span>
                 </div>
                 <div className={styles.tile}>
                   <dt>Personal best</dt>
@@ -278,9 +195,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
                 </div>
                 <div className={styles.tile}>
                   <dt>Best finish</dt>
-                  <dd>
-                    {selected.bestPlace ? ordinal(selected.bestPlace.place) : '—'}
-                  </dd>
+                  <dd>{selected.bestPlace ? ordinal(selected.bestPlace.place) : '—'}</dd>
                   <span className={styles.tileNote}>
                     {selected.bestPlace
                       ? `of ${selected.bestPlace.of} in ${selected.bestPlace.year}`
@@ -300,123 +215,39 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
             </div>
           </section>
 
+          {/* ---- Finish time trend ------------------------------------ */}
+          <section className={styles.panel}>
+            <h2 className={styles.panelTitle}>Finish time by year</h2>
+            <div className={styles.panelBody}>
+              <FinishTrend athlete={selected} compare={compare} yearContext={yearContext} />
+            </div>
+          </section>
+
           {/* ---- Stacked bars ---------------------------------------- */}
           <section className={styles.panel}>
             <h2 className={styles.panelTitle}>Where the time went</h2>
             <div className={styles.panelBody}>
-              <ul className={styles.legend}>
-                {LEGS.filter((leg) => leg !== 't2').map((leg) => (
-                  <li key={leg} className={styles.legendItem}>
-                    <span
-                      className={styles.swatch}
-                      style={{ backgroundColor: LEG_COLORS[leg] }}
-                      aria-hidden="true"
-                    />
-                    {leg === 't1' ? 'Transitions' : LEG_LABELS[leg]}
-                  </li>
-                ))}
-              </ul>
-
-              <div className={styles.chart} ref={chartRef}>
-                {rows.map((row) => {
-                  const total = raceTotal(row.race);
-                  const segments = LEGS.map((leg) => ({
-                    leg,
-                    seconds: row.race.splits[leg],
-                  })).filter((s) => s.seconds !== null && s.seconds > 0);
-
-                  return (
-                    <div key={row.key} className={styles.barRow}>
-                      <div className={styles.barLabel}>
-                        <span className={styles.barYear}>{row.race.year}</span>
-                        {row.showAthleteName && (
-                          <span className={styles.barAthlete}>{row.athlete.name}</span>
-                        )}
-                        <span className={styles.barPlace}>
-                          {row.race.place
-                            ? `${ordinal(row.race.place)} of ${row.race.fieldSize}`
-                            : 'did not finish'}
-                        </span>
-                      </div>
-
-                      <div className={styles.barTrack}>
-                        <div
-                          className={styles.bar}
-                          style={{ width: maxTotal ? `${(total / maxTotal) * 100}%` : '0%' }}
-                        >
-                          {segments.map((segment, i) => {
-                            const share = segment.seconds! / total;
-                            const standing =
-                              segment.leg === 'swim' || segment.leg === 'bike' || segment.leg === 'run'
-                                ? row.race.legs[segment.leg]
-                                : undefined;
-                            const label = `${row.athlete.name} ${row.race.year} ${LEG_LABELS[segment.leg]}`;
-                            const lines = [
-                              formatTime(segment.seconds),
-                              `${Math.round(share * 100)}% of the race`,
-                            ];
-                            if (standing) {
-                              lines.push(`${ordinal(standing.place)} of ${standing.of} on this leg`);
-                              lines.push(`${formatDelta(standing.vsMedian)} vs field median`);
-                            }
-                            const yoy = row.race.deltaSplits[segment.leg];
-                            if (yoy !== undefined && row.race.comparedToYear !== null) {
-                              lines.push(`${formatDelta(yoy)} vs ${row.race.comparedToYear}`);
-                            }
-
-                            return (
-                              <button
-                                type="button"
-                                key={segment.leg}
-                                className={styles.segment}
-                                style={{
-                                  width: `${share * 100}%`,
-                                  backgroundColor: LEG_COLORS[segment.leg],
-                                  borderTopLeftRadius: i === 0 ? 4 : 0,
-                                  borderBottomLeftRadius: i === 0 ? 4 : 0,
-                                  borderTopRightRadius: i === segments.length - 1 ? 4 : 0,
-                                  borderBottomRightRadius: i === segments.length - 1 ? 4 : 0,
-                                }}
-                                aria-label={`${label}: ${lines.join(', ')}`}
-                                onMouseEnter={(e) => showTooltip(e.currentTarget, label, lines)}
-                                onFocus={(e) => showTooltip(e.currentTarget, label, lines)}
-                                onMouseLeave={hideTooltip}
-                                onBlur={hideTooltip}
-                              >
-                                {share > 0.14 && (
-                                  <span className={styles.segmentLabel}>
-                                    {LEG_LABELS[segment.leg]} {formatTime(segment.seconds)}
-                                  </span>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                        <span className={styles.barTotal}>
-                          {row.race.total !== null ? formatTime(row.race.total) : 'partial'}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-
-                {tooltip && (
-                  <div
-                    className={`${styles.tooltip} ${tooltip.below ? styles.tooltipBelow : ''}`}
-                    style={{ left: tooltip.x, top: tooltip.y }}
-                    role="presentation"
-                  >
-                    <strong>{tooltip.title}</strong>
-                    {tooltip.lines.map((line) => (
-                      <span key={line}>{line}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <SplitBars rows={rows} />
               <p className={styles.chartNote}>
-                Bars are to scale against the longest race shown. Hover or tab a segment for
+                Bars share one clock, so a longer race is a longer bar. Hover or tab a segment for
                 detail.
               </p>
+            </div>
+          </section>
+
+          {/* ---- Leg-by-leg change ------------------------------------ */}
+          <section className={styles.panel}>
+            <h2 className={styles.panelTitle}>What changed, leg by leg</h2>
+            <div className={styles.panelBody}>
+              <LegDeltas athlete={selected} />
+            </div>
+          </section>
+
+          {/* ---- Field strip ----------------------------------------- */}
+          <section className={styles.panel}>
+            <h2 className={styles.panelTitle}>Where they sat in the field</h2>
+            <div className={styles.panelBody}>
+              <FieldStrip athlete={selected} compare={compare} yearContext={yearContext} />
             </div>
           </section>
 
@@ -450,7 +281,9 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
                           <td key={leg}>
                             <span className={styles.cellValue}>{formatTime(race.splits[leg])}</span>
                             {race.deltaSplits[leg] !== undefined && (
-                              <span className={`${styles.cellDelta} ${deltaClass(race.deltaSplits[leg])}`}>
+                              <span
+                                className={`${styles.cellDelta} ${deltaClass(race.deltaSplits[leg])}`}
+                              >
                                 {deltaArrow(race.deltaSplits[leg])}
                                 {formatDelta(race.deltaSplits[leg])}
                               </span>
@@ -515,9 +348,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
                         {RACED_LEGS.map((leg) => {
                           const standing = race.legs[leg];
                           return (
-                            <td key={leg}>
-                              {standing ? `${standing.place}/${standing.of}` : '—'}
-                            </td>
+                            <td key={leg}>{standing ? `${standing.place}/${standing.of}` : '—'}</td>
                           );
                         })}
                       </tr>
@@ -537,7 +368,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
               <div className={styles.panelBody}>
                 {sharedYears.length === 0 ? (
                   <p className={styles.note}>
-                    {selected.name} and {compare.name} have never raced the same year — the bars
+                    {selected.name} and {compare.name} have never raced the same year — the charts
                     above still line their careers up side by side.
                   </p>
                 ) : (
@@ -573,9 +404,7 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
                                 </span>
                               </td>
                               <td className={deltaClass(gap)}>
-                                {gap === null
-                                  ? '—'
-                                  : `${deltaArrow(gap)}${formatDelta(gap)}`}
+                                {gap === null ? '—' : `${deltaArrow(gap)}${formatDelta(gap)}`}
                               </td>
                             </tr>
                           );
@@ -598,20 +427,4 @@ export default function AthleteExplorer({ index }: AthleteExplorerProps) {
       </p>
     </div>
   );
-}
-
-/** Change on the athlete's most recent finish vs the finish before it. */
-function latestDelta(athlete: AthleteProfile): number | null {
-  const finished = athlete.races.filter((r) => r.total !== null);
-  const latest = finished[finished.length - 1];
-  return latest?.deltaTotal ?? null;
-}
-
-function latestDeltaNote(athlete: AthleteProfile): string {
-  const finished = athlete.races.filter((r) => r.total !== null);
-  const latest = finished[finished.length - 1];
-  if (!latest || latest.deltaTotal === null || latest.comparedToYear === null) {
-    return 'first finish on record';
-  }
-  return `${latest.year} vs ${latest.comparedToYear}`;
 }

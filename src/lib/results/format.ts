@@ -48,14 +48,22 @@ export function parseTimeToSeconds(timeStr: string | undefined | null): number |
 }
 
 /**
- * Format seconds into a display string (H:MM:SS or MM:SS)
+ * Format seconds into a display string (H:MM:SS or MM:SS).
+ * The single implementation for every results view - pass `fallback` for the
+ * missing-value glyph the surrounding page uses.
  */
-export function formatSecondsToTime(totalSeconds: number | null): string {
-  if (totalSeconds === null || totalSeconds < 0) return '-';
+export function formatSecondsToTime(
+  totalSeconds: number | null | undefined,
+  fallback = '-'
+): string {
+  if (totalSeconds === null || totalSeconds === undefined || totalSeconds < 0) {
+    return fallback;
+  }
 
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = Math.round(totalSeconds % 60);
+  const total = Math.round(totalSeconds);
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
 
   const pad = (n: number) => n.toString().padStart(2, '0');
 

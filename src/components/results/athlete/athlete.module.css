@@ -176,26 +176,42 @@
   display: inline-block;
 }
 
-/* --- Bars -------------------------------------------------------------- */
-
-.chart {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+.swatchDashed {
+  width: 16px;
+  height: 0;
+  border-top: 2px dashed #8a8378;
+  display: inline-block;
 }
 
-.barRow {
-  display: flex;
+/* --- Stacked split bars ------------------------------------------------ */
+
+.chartFrame {
+  position: relative;
+}
+
+.svgHost {
+  width: 100%;
+}
+
+.svgHost svg {
+  display: block;
+  max-width: 100%;
+}
+
+.barChart {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--spacing-sm);
+  column-gap: var(--spacing-sm);
+  row-gap: var(--spacing-sm);
 }
 
 .barLabel {
-  flex: 0 0 8.5rem;
   display: flex;
   flex-direction: column;
   line-height: 1.2;
+  min-width: 0;
 }
 
 .barYear {
@@ -214,19 +230,30 @@
   color: var(--color-text-muted);
 }
 
-.barTrack {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
+.barPlot {
+  position: relative;
   min-width: 0;
+  height: 26px;
+}
+
+.gridlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gridlines span {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background-color: #e6e1d6;
 }
 
 .bar {
+  position: relative;
   display: flex;
-  height: 26px;
-  min-width: 0;
-  flex: 0 1 auto;
+  height: 100%;
 }
 
 .segment {
@@ -237,7 +264,10 @@
   /* 2px surface gap so neighbouring fills never touch. */
   border-right: 2px solid #ffffff;
   height: 100%;
-  min-width: 3px;
+  /* Percentage widths must win over the label's intrinsic size, or the
+     bars stop being to scale. */
+  min-width: 0;
+  flex: 0 0 auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -253,7 +283,6 @@
 .segment:focus-visible {
   outline: 2px solid var(--color-text);
   outline-offset: 1px;
-  background-color: inherit;
 }
 
 .segmentLabel {
@@ -270,6 +299,117 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+.barAxis {
+  grid-column: 2;
+  position: relative;
+  height: 1.25rem;
+}
+
+.axisTick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* --- SVG chart marks --------------------------------------------------- */
+
+.grid {
+  stroke: #e6e1d6;
+  stroke-width: 1;
+}
+
+.stripRule {
+  stroke: #f0ece1;
+  stroke-width: 1;
+}
+
+.medianLine {
+  fill: none;
+  stroke: #8a8378;
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+
+.medianTick {
+  stroke: #8a8378;
+  stroke-width: 2;
+}
+
+.zeroLine {
+  stroke: var(--color-text);
+  stroke-width: 2;
+}
+
+.marker {
+  cursor: pointer;
+}
+
+.marker:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.axisText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--color-text-muted);
+}
+
+.axisYear {
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  fill: var(--color-secondary);
+}
+
+.pointLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  /* Halo, so a value can sit over a line and stay readable. */
+  stroke: #ffffff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.pointLabelInverse {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Leg deltas -------------------------------------------------------- */
+
+.deltaBlock + .deltaBlock {
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--border-mid);
+  padding-top: var(--spacing-sm);
+}
+
+.deltaTitle {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  margin: 0 0 var(--spacing-xs);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: baseline;
+}
+
+.deltaTotal {
+  font-size: 0.8125rem;
+  font-weight: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Tooltip ----------------------------------------------------------- */
 
 .tooltip {
   position: absolute;
@@ -353,16 +493,19 @@
 }
 
 @media (max-width: 560px) {
-  .barRow {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
+  .barChart {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .barLabel {
-    flex: none;
+    grid-column: 1 / -1;
     flex-direction: row;
     align-items: baseline;
     gap: var(--spacing-xs);
+    margin-bottom: -4px;
+  }
+
+  .barAxis {
+    grid-column: 1;
   }
 }
