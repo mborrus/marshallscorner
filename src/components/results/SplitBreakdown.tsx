@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import type { ResultEntry } from '@/lib/results/schema';
+import { formatSecondsToTime as formatTime } from '@/lib/results/format';
 import styles from './SplitBreakdown.module.css';
 
 interface SplitBreakdownProps {
@@ -16,15 +17,6 @@ function median(values: number[]): number {
   return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
 }
 
-function formatTime(seconds: number): string {
-  if (seconds <= 0) return '-';
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.round(seconds % 60);
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  if (hours > 0) return `${hours}:${pad(minutes)}:${pad(secs)}`;
-  return `${minutes}:${pad(secs)}`;
-}
 
 interface Split {
   name: string;

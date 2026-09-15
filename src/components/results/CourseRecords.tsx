@@ -3,6 +3,7 @@
 
 import { useState, useMemo } from 'react';
 import type { ResultEntry, Gender } from '@/lib/results/schema';
+import { formatSecondsToTime as formatTime } from '@/lib/results/format';
 import styles from './CourseRecords.module.css';
 
 interface CourseRecordsProps {
@@ -11,15 +12,6 @@ interface CourseRecordsProps {
 
 type GenderFilter = 'All' | Gender;
 
-function formatTime(seconds: number): string {
-  if (seconds <= 0) return '-';
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.round(seconds % 60);
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  if (hours > 0) return `${hours}:${pad(minutes)}:${pad(secs)}`;
-  return `${minutes}:${pad(secs)}`;
-}
 
 type Discipline = 'swim' | 'bike' | 'run' | 'total';
 

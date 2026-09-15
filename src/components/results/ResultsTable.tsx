@@ -4,6 +4,7 @@
 
 import { useState, useMemo } from 'react';
 import type { ResultEntry, Gender } from '@/lib/results/schema';
+import { formatSecondsToTime as formatTime } from '@/lib/results/format';
 import styles from './ResultsTable.module.css';
 
 interface ResultsTableProps {
@@ -14,20 +15,6 @@ type SortKey = 'name' | 'total' | 'swim' | 'bike' | 'run' | 't1' | 't2';
 type SortDir = 'asc' | 'desc';
 type GenderFilter = 'All' | Gender;
 
-function formatTime(seconds: number | null): string {
-  if (seconds === null || seconds < 0) return '-';
-
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.round(seconds % 60);
-
-  const pad = (n: number) => n.toString().padStart(2, '0');
-
-  if (hours > 0) {
-    return `${hours}:${pad(minutes)}:${pad(secs)}`;
-  }
-  return `${minutes}:${pad(secs)}`;
-}
 
 function getPodiumClass(rank: number): string {
   if (rank === 1) return styles.gold;

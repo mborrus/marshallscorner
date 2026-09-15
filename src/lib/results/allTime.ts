@@ -2,6 +2,7 @@
 // results tables. Nothing here should be hand-typed per year — see the design
 // handoff's "Data contract" section for the source of truth on each field.
 
+import { formatSecondsToTime } from './format';
 import type { Gender, ResultsYear } from './schema';
 
 export interface Row {
@@ -19,13 +20,7 @@ export interface Row {
 }
 
 export function fmt(sec: number | null): string {
-  if (sec === null) return '—';
-  const s = Math.round(sec);
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const r = s % 60;
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  return h > 0 ? `${h}:${pad(m)}:${pad(r)}` : `${m}:${pad(r)}`;
+  return formatSecondsToTime(sec, '—');
 }
 
 export function fmtDiff(diff: number): string {

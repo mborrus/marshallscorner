@@ -1,6 +1,7 @@
 // Results summary statistics component
 
 import type { ResultEntry } from '@/lib/results/schema';
+import { formatSecondsToTime as formatTime } from '@/lib/results/format';
 import styles from './ResultsSummary.module.css';
 
 interface ResultsSummaryProps {
@@ -11,20 +12,6 @@ interface ResultsSummaryProps {
   };
 }
 
-function formatTime(seconds: number | null): string {
-  if (seconds === null || seconds <= 0) return '-';
-
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.round(seconds % 60);
-
-  const pad = (n: number) => n.toString().padStart(2, '0');
-
-  if (hours > 0) {
-    return `${hours}:${pad(minutes)}:${pad(secs)}`;
-  }
-  return `${minutes}:${pad(secs)}`;
-}
 
 function findBest(
   entries: ResultEntry[],

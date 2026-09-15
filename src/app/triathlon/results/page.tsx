@@ -4,26 +4,13 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getResultsYears, readResultsYear, readAllResults } from '@/lib/results/fs';
 import Placeholder from '@/components/Placeholder';
+import { formatSecondsToTime as formatTime } from '@/lib/results/format';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Triathlon Results',
 };
 
-function formatTime(seconds: number): string {
-  if (seconds <= 0) return '-';
-
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = Math.round(seconds % 60);
-
-  const pad = (n: number) => n.toString().padStart(2, '0');
-
-  if (hours > 0) {
-    return `${hours}:${pad(minutes)}:${pad(secs)}`;
-  }
-  return `${minutes}:${pad(secs)}`;
-}
 
 export default function ResultsIndexPage() {
   const years = getResultsYears();
