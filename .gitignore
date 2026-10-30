@@ -40,3 +40,6 @@ content/raw_import/posts/*.opens.csv
 
 # Python
 .venv/
+
+# NYRR research data and API cache (scripts/nyrr_research)
+.nyrr-research/

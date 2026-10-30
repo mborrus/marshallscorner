@@ -1,0 +1,52 @@
+{
+  "about": "Written by scripts/nyrr_lineup.ts. Runner names are hashed.",
+  "lineups": [
+    {
+      "year": 2026,
+      "race": "tcs new york city marathon",
+      "team": "ManTC",
+      "runners": [
+        "110b852214169e0e",
+        "a13c4bc8c6bd0208",
+        "3c068a661eccd391",
+        "691279599fa29540",
+        "6cb90f4a825a24a6",
+        "71122568648c903f",
+        "222a5d0401f42034",
+        "f5af663ed246948f",
+        "faa7221f818eed2a",
+        "eb77b81f87019192",
+        "3860b2a1178ce98e",
+        "26c004ad30e393dd",
+        "366d855cd4341833",
+        "c4c4c2ba11c7377b",
+        "06e33a9fb697d1c3",
+        "a87a9cde7d777053",
+        "6798096befc33050",
+        "58eead7ffda993af"
+      ],
+      "unmatched": 2,
+      "updated": "2026-10-24"
+    },
+    {
+      "year": 2026,
+      "race": "nyrr ted corbitt 15k",
+      "team": "ManTC",
+      "kind": "asked",
+      "runners": [
+        "d9f9127bbbc48718",
+        "366d855cd4341833",
+        "f34c3afec9ec153d",
+        "563cdc89dad3d3d0",
+        "71122568648c903f",
+        "3164d46b9fdd7eac",
+        "9e328f1461f2ecce",
+        "5ec9b34a0b2b7c3a",
+        "402c9cab7e15086b",
+        "a13c4bc8c6bd0208"
+      ],
+      "unmatched": 0,
+      "updated": "2026-10-24"
+    }
+  ]
+}

@@ -112,6 +112,19 @@ Tags are extracted automatically from all gallery entries. Current tags include:
 ### Note on Images
 The art images already have titles/dates embedded in them, so the gallery displays them without additional captions on the polaroid cards.
 
+## NYRR Team Standings (`/nyrr`)
+
+Live NYRR club points standings plus a promotion forecast for Manhattan Track Club. **Read
+`docs/nyrr-forecast.md` before changing it**: it covers the NYRR API quirks, scoring rules, how
+the model was calibrated, findings from 2022–2025 backtests, the lineup lists, and known gaps.
+Keep that file updated with anything new you learn.
+
+- `npm run build:nyrr` regenerates `content/nyrr/generated/forecast.json` (also runs in `prebuild`).
+- A weekly GitHub Action (`.github/workflows/nyrr-weekly.yml`) snapshots the standings to
+  `content/nyrr/snapshots/` and rebuilds the forecast when NYRR posts something new.
+- Team sign-up lists: `npx tsx scripts/nyrr_lineup.ts [--asked] <year> "<race>" ManTC "Name" ...`
+  (names are stored hashed; the repo is public).
+
 ## External Services
 - **Vercel KV:** Visitor counter API (`/api/visitor-count`)
 - **Leaflet:** Pizza location maps (client-side)

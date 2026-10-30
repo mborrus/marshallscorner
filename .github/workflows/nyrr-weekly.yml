@@ -1,0 +1,51 @@
+# Weekly NYRR refresh: saves a dated snapshot of MTC's division standings when
+# NYRR has posted something new, rebuilds the forecast, and commits both. The
+# push triggers a Vercel deploy. Weeks with no new results stop after one quick
+# check, with no commit and no deploy.
+name: NYRR weekly refresh
+
+on:
+  schedule:
+    # Tuesdays 15:17 UTC (about 10-11am in New York), after weekend races are scored
+    - cron: '17 15 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nyrr-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Check NYRR for new results
+        id: snapshot
+        run: npx tsx scripts/nyrr_snapshot.ts
+
+      - name: Rebuild forecast
+        if: steps.snapshot.outputs.changed == 'true'
+        run: npm run build:nyrr
+
+      - name: Commit
+        if: steps.snapshot.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/nyrr
+          git diff --cached --quiet && exit 0
+          git commit -m "Update NYRR standings snapshot and forecast ($(date -u +%Y-%m-%d))"
+          git push
