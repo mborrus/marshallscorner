@@ -1,0 +1,538 @@
+{
+  "savedAt": "2026-10-30T11:26:12.371Z",
+  "year": 2026,
+  "divisions": [
+    {
+      "divisionCode": "BM",
+      "divisionName": "OPEN MEN B Standings",
+      "teams": [
+        {
+          "teamCode": "ReRC",
+          "teamName": "Rebeldes Running Club.",
+          "place": 1,
+          "points": 133,
+          "races": {
+            "26WASH": 15,
+            "H2026": 10,
+            "26RAO4M": 12,
+            "B2026": 12,
+            "26QUEENS": 15,
+            "26CHAMPS5M": 24,
+            "26HAR": 12,
+            "26FAM": 8,
+            "26BX10M": 15,
+            "26SIHALF": 10,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "HRR",
+          "teamName": "Hellgate RR",
+          "place": 2,
+          "points": 105,
+          "races": {
+            "26WASH": 5,
+            "H2026": 4,
+            "26RAO4M": 10,
+            "B2026": 3,
+            "26QUEENS": 12,
+            "26CHAMPS5M": 16,
+            "26HAR": 15,
+            "26FAM": 15,
+            "26BX10M": 10,
+            "26SIHALF": 15,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "LWTC",
+          "teamName": "Lone Wolf Track Club",
+          "place": 3,
+          "points": 102,
+          "races": {
+            "26WASH": 12,
+            "H2026": 12,
+            "26RAO4M": 15,
+            "B2026": 10,
+            "26QUEENS": 8,
+            "26CHAMPS5M": 6,
+            "26HAR": 10,
+            "26FAM": 5,
+            "26BX10M": 12,
+            "26SIHALF": 12,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "ManTC",
+          "teamName": "Manhattan Track Club",
+          "place": 4,
+          "points": 97,
+          "races": {
+            "26WASH": 10,
+            "H2026": 15,
+            "26RAO4M": 8,
+            "B2026": 15,
+            "26QUEENS": 1,
+            "26CHAMPS5M": 30,
+            "26HAR": 4,
+            "26FAM": 0,
+            "26BX10M": 6,
+            "26SIHALF": 8,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "STR",
+          "teamName": "Striders Track USA",
+          "place": 5,
+          "points": 69,
+          "races": {
+            "26WASH": 8,
+            "H2026": 1,
+            "26RAO4M": 6,
+            "B2026": 8,
+            "26QUEENS": 5,
+            "26CHAMPS5M": 10,
+            "26HAR": 8,
+            "26FAM": 10,
+            "26BX10M": 8,
+            "26SIHALF": 5,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "TFK",
+          "teamName": "Team For Kids",
+          "place": 6,
+          "points": 52,
+          "races": {
+            "26WASH": 2,
+            "H2026": 5,
+            "26RAO4M": 5,
+            "B2026": 6,
+            "26QUEENS": 6,
+            "26CHAMPS5M": 2,
+            "26HAR": 6,
+            "26FAM": 12,
+            "26BX10M": 4,
+            "26SIHALF": 4,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "HHRT",
+          "teamName": "Henwood's Hound's Racing Team",
+          "place": 7,
+          "points": 44,
+          "races": {
+            "26WASH": 0,
+            "H2026": 8,
+            "26RAO4M": 0,
+            "B2026": 4,
+            "26QUEENS": 10,
+            "26CHAMPS5M": 20,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 2,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "NYF",
+          "teamName": "New York Flyers",
+          "place": 8,
+          "points": 33,
+          "races": {
+            "26WASH": 4,
+            "H2026": 1,
+            "26RAO4M": 4,
+            "B2026": 1,
+            "26QUEENS": 4,
+            "26CHAMPS5M": 8,
+            "26HAR": 5,
+            "26FAM": 3,
+            "26BX10M": 1,
+            "26SIHALF": 2,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "QDR",
+          "teamName": "Queens Distance Runners",
+          "place": 9,
+          "points": 29,
+          "races": {
+            "26WASH": 3,
+            "H2026": 1,
+            "26RAO4M": 3,
+            "B2026": 1,
+            "26QUEENS": 3,
+            "26CHAMPS5M": 4,
+            "26HAR": 0,
+            "26FAM": 6,
+            "26BX10M": 5,
+            "26SIHALF": 3,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "SBRC",
+          "teamName": "South Brooklyn Running Club",
+          "place": 10,
+          "points": 24,
+          "races": {
+            "26WASH": 1,
+            "H2026": 6,
+            "26RAO4M": 0,
+            "B2026": 5,
+            "26QUEENS": 2,
+            "26CHAMPS5M": 2,
+            "26HAR": 0,
+            "26FAM": 4,
+            "26BX10M": 3,
+            "26SIHALF": 1,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "URC",
+          "teamName": "Ukrainian Running Club NY",
+          "place": 11,
+          "points": 23,
+          "races": {
+            "26WASH": 0,
+            "H2026": 2,
+            "26RAO4M": 0,
+            "B2026": 1,
+            "26QUEENS": 1,
+            "26CHAMPS5M": 12,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 1,
+            "26SIHALF": 6,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "VCTC",
+          "teamName": "Van Cortlandt TC",
+          "place": 12,
+          "points": 16,
+          "races": {
+            "26WASH": 1,
+            "H2026": 1,
+            "26RAO4M": 2,
+            "B2026": 2,
+            "26QUEENS": 1,
+            "26CHAMPS5M": 2,
+            "26HAR": 3,
+            "26FAM": 2,
+            "26BX10M": 1,
+            "26SIHALF": 1,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "3RPL",
+          "teamName": "3RunPL",
+          "place": 13,
+          "points": 15,
+          "races": {
+            "26WASH": 6,
+            "H2026": 3,
+            "26RAO4M": 1,
+            "B2026": 1,
+            "26QUEENS": 1,
+            "26CHAMPS5M": 2,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 0,
+            "26SIHALF": 1,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "UATH",
+          "teamName": "Urban Athletics",
+          "place": 14,
+          "points": 3,
+          "races": {
+            "26WASH": 0,
+            "H2026": 1,
+            "26RAO4M": 0,
+            "B2026": 1,
+            "26QUEENS": 0,
+            "26CHAMPS5M": 0,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 1,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        }
+      ]
+    },
+    {
+      "divisionCode": "BW",
+      "divisionName": "OPEN WOMEN B Standings",
+      "teams": [
+        {
+          "teamCode": "NYF",
+          "teamName": "New York Flyers",
+          "place": 1,
+          "points": 126,
+          "races": {
+            "26WASH": 15,
+            "H2026": 8,
+            "26RAO4M": 15,
+            "B2026": 10,
+            "26QUEENS": 15,
+            "26CHAMPS5M": 16,
+            "26HAR": 15,
+            "26FAM": 8,
+            "26BX10M": 12,
+            "26SIHALF": 12,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "ManTC",
+          "teamName": "Manhattan Track Club",
+          "place": 2,
+          "points": 100,
+          "races": {
+            "26WASH": 0,
+            "H2026": 10,
+            "26RAO4M": 0,
+            "B2026": 15,
+            "26QUEENS": 0,
+            "26CHAMPS5M": 30,
+            "26HAR": 0,
+            "26FAM": 15,
+            "26BX10M": 15,
+            "26SIHALF": 15,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "POLS",
+          "teamName": "POLSKA Running Team",
+          "place": 3,
+          "points": 92,
+          "races": {
+            "26WASH": 10,
+            "H2026": 5,
+            "26RAO4M": 12,
+            "B2026": 5,
+            "26QUEENS": 12,
+            "26CHAMPS5M": 20,
+            "26HAR": 10,
+            "26FAM": 0,
+            "26BX10M": 8,
+            "26SIHALF": 10,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "UESRC",
+          "teamName": "Upper East Side Run Club",
+          "place": 4,
+          "points": 84,
+          "races": {
+            "26WASH": 8,
+            "H2026": 12,
+            "26RAO4M": 8,
+            "B2026": 6,
+            "26QUEENS": 10,
+            "26CHAMPS5M": 0,
+            "26HAR": 12,
+            "26FAM": 12,
+            "26BX10M": 10,
+            "26SIHALF": 6,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "DPN",
+          "teamName": "Distance Project NYC",
+          "place": 5,
+          "points": 61,
+          "races": {
+            "26WASH": 0,
+            "H2026": 15,
+            "26RAO4M": 0,
+            "B2026": 12,
+            "26QUEENS": 0,
+            "26CHAMPS5M": 24,
+            "26HAR": 0,
+            "26FAM": 10,
+            "26BX10M": 0,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "QDR",
+          "teamName": "Queens Distance Runners",
+          "place": 6,
+          "points": 47,
+          "races": {
+            "26WASH": 5,
+            "H2026": 1,
+            "26RAO4M": 3,
+            "B2026": 1,
+            "26QUEENS": 5,
+            "26CHAMPS5M": 8,
+            "26HAR": 8,
+            "26FAM": 6,
+            "26BX10M": 5,
+            "26SIHALF": 5,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "HRR",
+          "teamName": "Hellgate RR",
+          "place": 7,
+          "points": 46,
+          "races": {
+            "26WASH": 6,
+            "H2026": 6,
+            "26RAO4M": 0,
+            "B2026": 3,
+            "26QUEENS": 4,
+            "26CHAMPS5M": 12,
+            "26HAR": 0,
+            "26FAM": 5,
+            "26BX10M": 6,
+            "26SIHALF": 4,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "3RPL",
+          "teamName": "3RunPL",
+          "place": 8,
+          "points": 41,
+          "races": {
+            "26WASH": 12,
+            "H2026": 1,
+            "26RAO4M": 10,
+            "B2026": 1,
+            "26QUEENS": 0,
+            "26CHAMPS5M": 10,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 4,
+            "26SIHALF": 3,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "URC",
+          "teamName": "Ukrainian Running Club NY",
+          "place": 9,
+          "points": 32,
+          "races": {
+            "26WASH": 0,
+            "H2026": 3,
+            "26RAO4M": 6,
+            "B2026": 8,
+            "26QUEENS": 6,
+            "26CHAMPS5M": 0,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 1,
+            "26SIHALF": 8,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "101",
+          "teamName": "Streets 101",
+          "place": 10,
+          "points": 19,
+          "races": {
+            "26WASH": 0,
+            "H2026": 4,
+            "26RAO4M": 5,
+            "B2026": 4,
+            "26QUEENS": 3,
+            "26CHAMPS5M": 0,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 3,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "TRR",
+          "teamName": "Taconic Road Runners Club",
+          "place": 11,
+          "points": 18,
+          "races": {
+            "26WASH": 0,
+            "H2026": 2,
+            "26RAO4M": 4,
+            "B2026": 2,
+            "26QUEENS": 8,
+            "26CHAMPS5M": 0,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 2,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        },
+        {
+          "teamCode": "WSX",
+          "teamName": "West Side Runners",
+          "place": 12,
+          "points": 0,
+          "races": {
+            "26WASH": 0,
+            "H2026": 0,
+            "26RAO4M": 0,
+            "B2026": 0,
+            "26QUEENS": 0,
+            "26CHAMPS5M": 0,
+            "26HAR": 0,
+            "26FAM": 0,
+            "26BX10M": 0,
+            "26SIHALF": 0,
+            "M2026_draft": null,
+            "26TC15K_draft": null
+          }
+        }
+      ]
+    }
+  ]
+}

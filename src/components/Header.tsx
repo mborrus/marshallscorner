@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/food', label: 'Food' },
   { href: '/work', label: 'Work' },
   { href: '/art', label: 'Art' },
+  { href: '/nyrr', label: 'NYRR' },
 ];
 
 export default function Header() {

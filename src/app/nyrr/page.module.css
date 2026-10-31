@@ -1,0 +1,351 @@
+/* NYRR team standings dashboard */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.titleBlock p {
+  margin-bottom: 0;
+}
+
+.kicker {
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.card p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.cardLabel {
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.bigNumber {
+  font-family: var(--font-pixel);
+  font-size: 3rem;
+  line-height: 1;
+  color: #d62828;
+}
+
+.unit {
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.section h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.chart {
+  margin-bottom: var(--spacing-md);
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--border-mid);
+}
+
+.axisText {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  fill: var(--color-text-muted);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch {
+  width: 14px;
+  height: 4px;
+  display: inline-block;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  background: var(--color-bg-panel);
+}
+
+.table th,
+.table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-mid);
+  text-align: left;
+}
+
+.table th {
+  font-family: var(--font-pixel);
+  font-size: 1.0625rem;
+  background: var(--color-bg-secondary);
+}
+
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.win {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.highlightRow td {
+  background: #fff3c4;
+  font-weight: bold;
+}
+
+.division {
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-sm);
+}
+
+.division summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.division table {
+  margin-top: var(--spacing-sm);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.tab {
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  padding: 4px 16px;
+  background: var(--color-bg-secondary);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) transparent var(--border-light);
+  cursor: pointer;
+  color: var(--color-text);
+  margin-bottom: -2px;
+}
+
+.tabActive {
+  background: var(--color-bg-panel);
+  border-bottom-color: var(--color-bg-panel);
+  color: var(--color-secondary);
+}
+
+.tabPanel {
+  padding-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.callout {
+  font-size: 1rem;
+}
+
+.probCell {
+  position: relative;
+  display: inline-block;
+  min-width: 72px;
+  height: 18px;
+  background: var(--color-bg-secondary);
+  vertical-align: middle;
+}
+
+.probBar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: #9fc3e6;
+}
+
+.probText {
+  position: relative;
+  padding: 0 4px;
+  font-size: 0.8125rem;
+  line-height: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rowLabel {
+  font-size: 13px;
+  fill: var(--color-text);
+}
+
+.tickSwatch {
+  width: 2px;
+  height: 14px;
+  background: #5a5a5a;
+  display: inline-block;
+}
+
+.dotSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #336699;
+  display: inline-block;
+}
+
+.rangeSwatch {
+  width: 24px;
+  height: 8px;
+  border-radius: 4px;
+  background: #336699;
+  opacity: 0.35;
+  display: inline-block;
+}
+
+.method p {
+  margin: var(--spacing-sm) 0;
+  font-size: 0.9375rem;
+}
+
+.tabPanel[hidden] {
+  display: none;
+}
+
+.moreRunners {
+  margin-top: var(--spacing-sm);
+}
+
+.moreRunners summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+}
+
+
+/* Season history */
+.history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.subhead {
+  font-size: 1.125rem;
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.racePicker {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+}
+
+.racePicker .tab {
+  margin-bottom: 0;
+  border-bottom-color: var(--border-dark);
+}
+
+.racePicker .tab:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.raceSelect {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-pixel);
+  font-size: 1.125rem;
+  padding: 2px 6px;
+  background: var(--color-bg-panel);
+  border: 2px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  color: var(--color-text);
+}
+
+.up {
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+}
+
+.down {
+  color: #d62828;
+  font-size: 0.8125rem;
+}
+
+.runnerList {
+  columns: 2 220px;
+  padding-left: 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.scored {
+  font-weight: bold;
+}
+
+.placeOdds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.9375rem;
+}
+
+.placeOdd {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.promoted {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.grid th {
+  white-space: nowrap;
+}
+
+.grid td {
+  text-align: center !important;
+}
