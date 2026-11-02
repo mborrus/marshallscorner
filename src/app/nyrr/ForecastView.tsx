@@ -1,12 +1,11 @@
-// Promotion forecast for one division: who's in the race, what the focus team
-// needs at the next race, and its fastest runners
+// Forecast for one division: headline odds, a step-by-step walkthrough of the
+// next race, a two-race grid when two races are left, and the focus team's runners
 
 import { Fragment } from 'react';
 import type { DivisionForecast } from '@/lib/nyrr/forecast';
-import { pointsForPlace } from '@/lib/nyrr/model';
 import { formatDay, formatDuration, formatPct, ordinal, shortEventName } from '@/lib/nyrr/format';
 import ProbBar from './ProbBar';
-import RangeChart from './RangeChart';
+import RaceWalkthrough from './RaceWalkthrough';
 import styles from './page.module.css';
 
 const PROMOTED = 2;
@@ -43,12 +42,6 @@ export default function ForecastView({ division, focusCode }: Props) {
   const goal = focus.pTop2 > 0.999 && focus.pFirst > 0 ? 'title' : 'promotion';
   const given = (n: { pTop2Given: number | null; pFirstGiven: number | null }) =>
     goal === 'title' ? n.pFirstGiven : n.pTop2Given;
-  // Places down to the last one that still gives a real (1%+) chance
-  const lastUseful = Math.max(
-    3,
-    ...division.needs.filter((n) => n.place !== null && (given(n) ?? 0) >= 0.01).map((n) => n.place!)
-  );
-  const needs = division.needs.filter((n) => n.place === null || n.place <= lastUseful);
   const placeNeeded = division.needs.find((n) => n.place !== null && (given(n) ?? 0) >= 0.5);
   const winRow = division.needs.find((n) => n.place === 1);
 
@@ -126,101 +119,7 @@ export default function ForecastView({ division, focusCode }: Props) {
         </p>
       )}
 
-      <section className={styles.section}>
-        <h2>Who&apos;s in the hunt</h2>
-        <p className={styles.muted}>
-          &ldquo;Shows up&rdquo; is the chance of a full team at the {shortEventName(next.eventName)}; &ldquo;Pred.
-          avg&rdquo; is the expected average time of its top {next.scorers} there.
-        </p>
-        <div className={styles.tableWrap}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Team</th>
-                <th className={styles.num}>Pts</th>
-                <th className={styles.num}>vs 2nd</th>
-                <th className={styles.num} title={`Chance of fielding a full team at the ${shortEventName(next.eventName)}`}>Shows up</th>
-                <th className={styles.num} title={`Predicted average time of the top ${next.scorers} scorers`}>Pred. avg</th>
-                <th className={styles.num} title="Average projected final points (likely range)">Final pts</th>
-                <th>Top 2</th>
-                <th>1st</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contenders.map((t) => {
-                const r = t.races[next.eventCode];
-                const vs = t.counted - second.counted;
-                return (
-                  <tr key={t.teamCode} className={t.teamCode === focusCode ? styles.highlightRow : ''}>
-                    <td>{rank(t)}</td>
-                    <td>{t.teamName}</td>
-                    <td className={styles.num}>
-                      {t.counted}
-                      {t.counted !== t.points && <span className={styles.muted}> ({t.points})</span>}
-                    </td>
-                    <td className={styles.num}>{t.teamCode === second.teamCode ? '–' : vs > 0 ? `+${vs}` : vs}</td>
-                    <td className={styles.num}>{formatPct(r.pField)}</td>
-                    <td className={styles.num}>{Number.isFinite(r.medianAvgSeconds) ? formatDuration(r.medianAvgSeconds) : '–'}</td>
-                    <td className={styles.num}>
-                      {Math.round(t.meanPoints)}{' '}
-                      <span className={styles.muted}>
-                        ({Math.round(t.p10Points)}–{Math.round(t.p90Points)})
-                      </span>
-                    </td>
-                    <td><ProbBar p={t.pTop2} /></td>
-                    <td><ProbBar p={t.pFirst} /></td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <RangeChart teams={contenders} highlightCode={focusCode} />
-      </section>
-
-      <section className={styles.section}>
-        <h2>What {focusName} needs at the {shortEventName(next.eventName)}</h2>
-        <p>
-          Each row is a finishing place among the division&apos;s teams. The time is roughly what {focusName}
-          &apos;s top {next.scorers} would need to average to finish that high (the middle of the simulations). A
-          tie on points counts as half a chance, since NYRR doesn&apos;t publish a tiebreak.
-          {division.remainingRaces.length > 1 &&
-            ` Promotion odds still include the ${division.remainingRaces.slice(1).map((r) => shortEventName(r.eventName)).join(' and ')}.`}
-        </p>
-        <div className={styles.tableWrap}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Place</th>
-                <th className={styles.num}>Pts</th>
-                <th className={styles.num}>Avg time needed</th>
-                <th className={styles.num}>Chance of this</th>
-                <th>{goal === 'title' ? 'Wins division if so' : 'Promoted if so'}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {needs.map((n) => (
-                <tr key={n.place ?? 'none'}>
-                  <td>{n.place ? ordinal(n.place) : 'No full team'}</td>
-                  <td className={styles.num}>{n.place ? pointsForPlace(n.place - 1, next.multiplier) : 0}</td>
-                  <td className={styles.num}>
-                    {n.place && n.cutoffAvgSeconds ? `under ${formatDuration(n.cutoffAvgSeconds)}` : '–'}
-                  </td>
-                  <td className={styles.num}>{formatPct(n.pPlace)}</td>
-                  <td>
-                    {given(n) !== null && n.samples >= 200 ? (
-                      <ProbBar p={given(n)!} />
-                    ) : (
-                      <span className={styles.muted}>too rare to say</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <RaceWalkthrough division={division} teams={contenders} focusCode={focusCode} goal={goal} />
 
       {division.remainingRaces.length >= 2 && (
         <ScenarioGrid division={division} focusName={focusName} />

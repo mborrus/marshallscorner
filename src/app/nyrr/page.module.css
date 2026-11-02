@@ -349,3 +349,179 @@
 .grid td {
   text-align: center !important;
 }
+
+/* Race walkthrough */
+.step {
+  margin-bottom: var(--spacing-lg);
+}
+
+.step p {
+  font-size: 0.9375rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stepNumber {
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  line-height: 1.6em;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: #fffef8;
+  font-size: 0.875rem;
+  margin-right: 4px;
+}
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--border-mid);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.formChart svg {
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--border-mid);
+}
+
+.barList {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px var(--spacing-md);
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.barRow {
+  display: contents;
+}
+
+.focusName {
+  font-weight: bold;
+  color: #d62828;
+}
+
+.barValue {
+  font-size: 12px;
+  fill: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.stackLabel {
+  font-size: 11px;
+  fill: var(--color-text);
+}
+
+.stackLabelLight {
+  font-size: 11px;
+  fill: #fffef8;
+}
+
+.hbars {
+  display: grid;
+  grid-template-columns: minmax(110px, max-content) 1fr;
+  gap: 8px var(--spacing-sm);
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.hbarRow {
+  display: contents;
+}
+
+.hbarTrack,
+.rangeTrack,
+.stack {
+  position: relative;
+  display: flex;
+  height: 18px;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.hbarFill {
+  position: relative;
+  z-index: 1;
+  color: #fffef8;
+  font-size: 0.75rem;
+  line-height: 18px;
+  text-align: right;
+  padding-right: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hbarExtra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0.25;
+}
+
+.rangeTrack {
+  overflow: visible;
+  background: transparent;
+  border-bottom: 1px solid #e0d9cc;
+}
+
+.rangeBar {
+  position: absolute;
+  top: 5px;
+  height: 8px;
+  border-radius: 4px;
+  opacity: 0.3;
+}
+
+.rangeDot {
+  position: absolute;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  border: 2px solid #fffef8;
+}
+
+.rangeAxis {
+  position: relative;
+  height: 16px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.rangeAxis span {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.stackSeg,
+.stackSegLight {
+  font-size: 0.6875rem;
+  line-height: 18px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--color-text);
+  border-right: 1px solid var(--color-bg-panel);
+}
+
+.stackSegLight {
+  color: #fffef8;
+}
+
+.rangeTick {
+  position: absolute;
+  top: 1px;
+  width: 2px;
+  height: 16px;
+  margin-left: -1px;
+  background: #5a5a5a;
+}

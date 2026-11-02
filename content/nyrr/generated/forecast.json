@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T19:00:39.929Z",
+  "generatedAt": "2026-11-02T19:14:30.598Z",
   "year": 2026,
   "sims": 50000,
   "divisions": [
@@ -47,7 +47,25 @@
             "26TC15K_draft": {
               "pField": 0.97274,
               "medianAvgSeconds": 3480.2376728680792,
-              "pWin": 0.24312
+              "p10AvgSeconds": 3248.9195843163006,
+              "p90AvgSeconds": 3717.6599254510966,
+              "pWin": 0.24312,
+              "placeOdds": [
+                0.24312,
+                0.19764,
+                0.1788,
+                0.14,
+                0.09492,
+                0.05798,
+                0.03114,
+                0.01676,
+                0.00778,
+                0.00338,
+                0.00086,
+                0.00036,
+                0,
+                0
+              ]
             }
           },
           "teamName": "Rebeldes Running Club.",
@@ -82,7 +100,25 @@
             "26TC15K_draft": {
               "pField": 0.94552,
               "medianAvgSeconds": 3538.5960651403993,
-              "pWin": 0.1565
+              "p10AvgSeconds": 3288.5892115087327,
+              "p90AvgSeconds": 3801.9140422597256,
+              "pWin": 0.1565,
+              "placeOdds": [
+                0.1565,
+                0.1479,
+                0.1606,
+                0.15654,
+                0.12078,
+                0.0847,
+                0.0524,
+                0.0332,
+                0.01824,
+                0.00978,
+                0.00382,
+                0.00096,
+                0.0001,
+                0
+              ]
             }
           },
           "teamName": "Lone Wolf Track Club",
@@ -117,7 +153,25 @@
             "26TC15K_draft": {
               "pField": 0.9574,
               "medianAvgSeconds": 3553.9772569981224,
-              "pWin": 0.16116
+              "p10AvgSeconds": 3280.78997834537,
+              "p90AvgSeconds": 3844.1921022621427,
+              "pWin": 0.16116,
+              "placeOdds": [
+                0.16116,
+                0.14348,
+                0.1478,
+                0.14592,
+                0.12518,
+                0.09042,
+                0.06062,
+                0.0391,
+                0.02334,
+                0.01282,
+                0.00574,
+                0.0015,
+                0.00032,
+                0
+              ]
             }
           },
           "teamName": "Hellgate RR",
@@ -152,7 +206,25 @@
             "26TC15K_draft": {
               "pField": 0.98932,
               "medianAvgSeconds": 3433.0116830777774,
-              "pWin": 0.26512
+              "p10AvgSeconds": 3305.4993239669097,
+              "p90AvgSeconds": 3556.7433148506193,
+              "pWin": 0.26512,
+              "placeOdds": [
+                0.26512,
+                0.32094,
+                0.22772,
+                0.11404,
+                0.04118,
+                0.01418,
+                0.00448,
+                0.00112,
+                0.0004,
+                0.00014,
+                0,
+                0,
+                0,
+                0
+              ]
             }
           },
           "teamName": "Manhattan Track Club",
@@ -187,7 +259,25 @@
             "26TC15K_draft": {
               "pField": 0.97038,
               "medianAvgSeconds": 3724.223925177779,
-              "pWin": 0.00768
+              "p10AvgSeconds": 3536.62952909474,
+              "p90AvgSeconds": 3917.987982930696,
+              "pWin": 0.00768,
+              "placeOdds": [
+                0.00768,
+                0.02774,
+                0.0668,
+                0.13108,
+                0.19452,
+                0.19736,
+                0.15396,
+                0.09974,
+                0.0555,
+                0.02492,
+                0.00878,
+                0.00208,
+                0.0002,
+                0.00002
+              ]
             }
           },
           "teamName": "Striders Track USA",
@@ -222,7 +312,25 @@
             "26TC15K_draft": {
               "pField": 0.9875,
               "medianAvgSeconds": 3812.3886687308777,
-              "pWin": 0.05168
+              "p10AvgSeconds": 3431.7432718878845,
+              "p90AvgSeconds": 4214.065129423798,
+              "pWin": 0.05168,
+              "placeOdds": [
+                0.05168,
+                0.05198,
+                0.06758,
+                0.08592,
+                0.0991,
+                0.11,
+                0.10944,
+                0.10624,
+                0.1049,
+                0.09374,
+                0.06552,
+                0.03168,
+                0.00866,
+                0.00106
+              ]
             }
           },
           "teamName": "Team For Kids",
@@ -257,7 +365,25 @@
             "26TC15K_draft": {
               "pField": 0.40556,
               "medianAvgSeconds": 3655.7417642943396,
-              "pWin": 0.0259
+              "p10AvgSeconds": 3399.722093908774,
+              "p90AvgSeconds": 3931.4213851207155,
+              "pWin": 0.0259,
+              "placeOdds": [
+                0.0259,
+                0.03308,
+                0.04334,
+                0.05676,
+                0.05978,
+                0.05458,
+                0.04672,
+                0.03446,
+                0.02372,
+                0.0154,
+                0.00784,
+                0.00316,
+                0.00074,
+                0.00008
+              ]
             }
           },
           "teamName": "Henwood's Hound's Racing Team",
@@ -292,7 +418,25 @@
             "26TC15K_draft": {
               "pField": 0.84286,
               "medianAvgSeconds": 3759.7967358038363,
-              "pWin": 0.07986
+              "p10AvgSeconds": 3339.7045660457525,
+              "p90AvgSeconds": 4235.623570922219,
+              "pWin": 0.07986,
+              "placeOdds": [
+                0.07986,
+                0.0579,
+                0.06292,
+                0.0712,
+                0.0795,
+                0.08138,
+                0.07822,
+                0.07884,
+                0.07786,
+                0.07408,
+                0.05906,
+                0.03182,
+                0.00918,
+                0.00104
+              ]
             }
           },
           "teamName": "Ukrainian Running Club NY",
@@ -327,7 +471,25 @@
             "26TC15K_draft": {
               "pField": 0.98472,
               "medianAvgSeconds": 3932.3024670781165,
-              "pWin": 0.00012
+              "p10AvgSeconds": 3738.4223284365157,
+              "p90AvgSeconds": 4131.115840818925,
+              "pWin": 0.00012,
+              "placeOdds": [
+                0.00012,
+                0.00144,
+                0.00558,
+                0.01918,
+                0.0515,
+                0.10016,
+                0.16308,
+                0.20444,
+                0.19986,
+                0.14378,
+                0.07004,
+                0.0214,
+                0.00394,
+                0.0002
+              ]
             }
           },
           "teamName": "New York Flyers",
@@ -362,7 +524,25 @@
             "26TC15K_draft": {
               "pField": 0.95094,
               "medianAvgSeconds": 3933.712781166189,
-              "pWin": 0.00108
+              "p10AvgSeconds": 3681.694269678875,
+              "p90AvgSeconds": 4190.9203550494985,
+              "pWin": 0.00108,
+              "placeOdds": [
+                0.00108,
+                0.00446,
+                0.01362,
+                0.03176,
+                0.05862,
+                0.0962,
+                0.13818,
+                0.1626,
+                0.17162,
+                0.14618,
+                0.0866,
+                0.03206,
+                0.0072,
+                0.00076
+              ]
             }
           },
           "teamName": "Queens Distance Runners",
@@ -397,7 +577,25 @@
             "26TC15K_draft": {
               "pField": 0.89654,
               "medianAvgSeconds": 4045.4250079737776,
-              "pWin": 0.00368
+              "p10AvgSeconds": 3697.9156755340928,
+              "p90AvgSeconds": 4429.924378093933,
+              "pWin": 0.00368,
+              "placeOdds": [
+                0.00368,
+                0.007,
+                0.01312,
+                0.0248,
+                0.03876,
+                0.0575,
+                0.07838,
+                0.10502,
+                0.1366,
+                0.16824,
+                0.15284,
+                0.08368,
+                0.02438,
+                0.00254
+              ]
             }
           },
           "teamName": "South Brooklyn Running Club",
@@ -432,7 +630,25 @@
             "26TC15K_draft": {
               "pField": 0.6125,
               "medianAvgSeconds": 4085.625162533286,
-              "pWin": 0.00118
+              "p10AvgSeconds": 3756.157377375535,
+              "p90AvgSeconds": 4445.114695931821,
+              "pWin": 0.00118,
+              "placeOdds": [
+                0.00118,
+                0.00244,
+                0.00544,
+                0.0113,
+                0.01854,
+                0.02894,
+                0.0454,
+                0.06208,
+                0.08444,
+                0.11424,
+                0.12224,
+                0.08444,
+                0.0283,
+                0.00352
+              ]
             }
           },
           "teamName": "3RunPL",
@@ -467,7 +683,25 @@
             "26TC15K_draft": {
               "pField": 0.9593,
               "medianAvgSeconds": 4554.78278069451,
-              "pWin": 0.00272
+              "p10AvgSeconds": 3950.0570036122167,
+              "p90AvgSeconds": 5279.5275187186035,
+              "pWin": 0.00272,
+              "placeOdds": [
+                0.00272,
+                0.00314,
+                0.00466,
+                0.00702,
+                0.01028,
+                0.01438,
+                0.02044,
+                0.03018,
+                0.05724,
+                0.12282,
+                0.24436,
+                0.27304,
+                0.14332,
+                0.0257
+              ]
             }
           },
           "teamName": "Van Cortlandt TC",
@@ -502,7 +736,25 @@
             "26TC15K_draft": {
               "pField": 0.27972,
               "medianAvgSeconds": 4104.222094229881,
-              "pWin": 0.0002
+              "p10AvgSeconds": 3772.898008999833,
+              "p90AvgSeconds": 4477.317586459934,
+              "pWin": 0.0002,
+              "placeOdds": [
+                0.0002,
+                0.00086,
+                0.00202,
+                0.00448,
+                0.00734,
+                0.01222,
+                0.01754,
+                0.02602,
+                0.03586,
+                0.04726,
+                0.05562,
+                0.04526,
+                0.02044,
+                0.0046
+              ]
             }
           },
           "teamName": "Urban Athletics",
@@ -4021,7 +4273,841 @@
             "eventName": "2026 TCS New York City Marathon"
           }
         }
-      ]
+      ],
+      "form": {
+        "ReRC": {
+          "strength": -0.09286375424356041,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.13687782568068252,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.054586182808069594,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.11580938656446393,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.07706453091168564,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.13305467202287213,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.1262651959820128,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.1417659180501576,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.037675650418833695,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.12376734483475194,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.07575467045331585,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.0356985930146233,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "LWTC": {
+          "strength": -0.0757869650615669,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.12819087633793247,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.06692649197193135,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.12284097761983681,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.03771269564506763,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.05541777698014405,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.02499810087397214,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.13404968501978298,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.010530954444343266,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.10751628570697724,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.09640948424812013,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.06510949408852573,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "HRR": {
+          "strength": -0.07339681063320436,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.003623300856982703,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.010989169512056418,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.0534199968367981,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.02101297049488071,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.1091411980223691,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.091826447335704,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.15483627195875171,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.10697264490965064,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.0925897643137551,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.09687018641454714,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.012189328098879182,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "ManTC": {
+          "strength": -0.05553676939532115,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.09245965073944906,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.07545104764433685,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.0499681248641608,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.086852141935011,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.1497686523139048,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": 0.016653070287740324,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.02004585146751592,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.07299045745475496,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.0332017469477095,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "STR": {
+          "strength": -0.0281746065085573,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.054597663981424405,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.03792554279864557,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.04063528582703013,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.02494449525661535,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.004529698938924076,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.020771787772343342,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.05987936344209899,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.04731697139146873,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.0491347378686412,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.04469566606670561,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.012065747979709274,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "TFK": {
+          "strength": -0.0072892589814571584,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.07914857495601701,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.03014912321384322,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.03641633119380705,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.015720779518585637,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.05296091321296925,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.20139772576490733,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.052950501129109706,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.05153504931699704,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.002164592051062786,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.02722737558968691,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.05032297712083056,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "HHRT": {
+          "strength": -0.04626673714273288,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.05008034623836988,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.010057290666302121,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.07687438721347184,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.117803951702532,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.007005284572759507,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.06757391358314224,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "URC": {
+          "strength": -0.01814921822051796,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.009104426001467658,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.05488696584720931,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.07962783475557167,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.12745273903878185,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.04236025333349702,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.05003213282781627,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.08699743038939178,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "NYF": {
+          "strength": 0.02464457982211732,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.0488262046086807,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.09158965041254641,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.0038153181188990137,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.029672790947615546,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.006577085411570316,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.011914695807272446,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.010747430677263803,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.04066008248382813,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.01592044240147561,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.024371267050121048,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.07169821443495494,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "QDR": {
+          "strength": 0.02571878607285516,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.06783915033998333,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.014016193793663145,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.08414349362830298,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.04602575422115307,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.022628595357112813,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.020643776332485153,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.0015206967714507247,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.0023683670871468276,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.00836186676678885,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.06625055028896232,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "SBRC": {
+          "strength": 0.05415841458050785,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.15044712144840222,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.0350608910060386,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.004861398394661931,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.025249250042099325,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.11149082017533352,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.018364527734609393,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.0016052461165088072,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.1883428464508825,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.0029214545917917167,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "3RPL": {
+          "strength": 0.0667244966762417,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.01722739133713902,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.008414342923224849,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.1668605738615001,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.041071531357495195,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.17233349423697208,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.12658251318844327,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.07355122331618835,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.006806517097481146,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "VCTC": {
+          "strength": 0.19027788558914804,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.1327454133537409,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.1277175292146424,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.16251377211817908,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.02379216868668821,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.1536613296064433,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.1790818124897846,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": 0.5349004764706637,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.2019719522076755,
+              "weight": 0.9890016962927409
+            }
+          ]
+        },
+        "UATH": {
+          "strength": 0.07246984908639464,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.05777557957867474,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.02379216868668821,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.12025326087696553,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.04776740407934321,
+              "weight": 0.7326390630286144
+            }
+          ]
+        }
+      }
     },
     {
       "divisionCode": "BW",
@@ -4065,7 +5151,23 @@
             "26TC15K_draft": {
               "pField": 0.98518,
               "medianAvgSeconds": 4299.310745129054,
-              "pWin": 0.21202
+              "p10AvgSeconds": 3966.440490419034,
+              "p90AvgSeconds": 4653.299227839647,
+              "pWin": 0.21202,
+              "placeOdds": [
+                0.21202,
+                0.36666,
+                0.21248,
+                0.1058,
+                0.05296,
+                0.02322,
+                0.00874,
+                0.00266,
+                0.00056,
+                0.00006,
+                0.00002,
+                0
+              ]
             }
           },
           "teamName": "New York Flyers",
@@ -4098,7 +5200,23 @@
             "26TC15K_draft": {
               "pField": 0.88732,
               "medianAvgSeconds": 4030.690540916007,
-              "pWin": 0.63194
+              "p10AvgSeconds": 3810.542463963975,
+              "p90AvgSeconds": 4271.342254246759,
+              "pWin": 0.63194,
+              "placeOdds": [
+                0.63194,
+                0.19694,
+                0.04444,
+                0.0107,
+                0.00278,
+                0.0003,
+                0.00018,
+                0.00002,
+                0.00002,
+                0,
+                0,
+                0
+              ]
             }
           },
           "teamName": "Manhattan Track Club",
@@ -4131,7 +5249,23 @@
             "26TC15K_draft": {
               "pField": 0.55232,
               "medianAvgSeconds": 4609.936308694783,
-              "pWin": 0.01058
+              "p10AvgSeconds": 4324.3220311648965,
+              "p90AvgSeconds": 4902.904499634381,
+              "pWin": 0.01058,
+              "placeOdds": [
+                0.01058,
+                0.05336,
+                0.11952,
+                0.1428,
+                0.11332,
+                0.06808,
+                0.0308,
+                0.0103,
+                0.00308,
+                0.00038,
+                0.00008,
+                0.00002
+              ]
             }
           },
           "teamName": "POLSKA Running Team",
@@ -4164,7 +5298,23 @@
             "26TC15K_draft": {
               "pField": 0.94422,
               "medianAvgSeconds": 4572.421061479725,
-              "pWin": 0.03866
+              "p10AvgSeconds": 4229.721633864176,
+              "p90AvgSeconds": 4931.911738381428,
+              "pWin": 0.03866,
+              "placeOdds": [
+                0.03866,
+                0.14146,
+                0.24126,
+                0.2198,
+                0.1517,
+                0.08882,
+                0.04048,
+                0.01632,
+                0.00488,
+                0.00072,
+                0.00012,
+                0
+              ]
             }
           },
           "teamName": "Upper East Side Run Club",
@@ -4197,7 +5347,23 @@
             "26TC15K_draft": {
               "pField": 0.31226,
               "medianAvgSeconds": 4299.122698890756,
-              "pWin": 0.05708
+              "p10AvgSeconds": 3983.7776051659944,
+              "p90AvgSeconds": 4645.598977457885,
+              "pWin": 0.05708,
+              "placeOdds": [
+                0.05708,
+                0.0902,
+                0.07872,
+                0.0459,
+                0.02346,
+                0.01084,
+                0.00426,
+                0.00112,
+                0.00054,
+                0.00012,
+                0.00002,
+                0
+              ]
             }
           },
           "teamName": "Distance Project NYC",
@@ -4230,7 +5396,23 @@
             "26TC15K_draft": {
               "pField": 0.87668,
               "medianAvgSeconds": 4956.135169277276,
-              "pWin": 0.01132
+              "p10AvgSeconds": 4455.641017032637,
+              "p90AvgSeconds": 5543.269452472042,
+              "pWin": 0.01132,
+              "placeOdds": [
+                0.01132,
+                0.03532,
+                0.07136,
+                0.1131,
+                0.15184,
+                0.1685,
+                0.15318,
+                0.10412,
+                0.04986,
+                0.01518,
+                0.00272,
+                0.00018
+              ]
             }
           },
           "teamName": "Hellgate RR",
@@ -4263,7 +5445,23 @@
             "26TC15K_draft": {
               "pField": 0.77486,
               "medianAvgSeconds": 5210.4918693590425,
-              "pWin": 0.00546
+              "p10AvgSeconds": 4593.403522076526,
+              "p90AvgSeconds": 5904.458433376085,
+              "pWin": 0.00546,
+              "placeOdds": [
+                0.00546,
+                0.01652,
+                0.03224,
+                0.06166,
+                0.09666,
+                0.13758,
+                0.16232,
+                0.14006,
+                0.08444,
+                0.03202,
+                0.00542,
+                0.00048
+              ]
             }
           },
           "teamName": "Queens Distance Runners",
@@ -4296,7 +5494,23 @@
             "26TC15K_draft": {
               "pField": 0.63206,
               "medianAvgSeconds": 5025.112397544159,
-              "pWin": 0.0033
+              "p10AvgSeconds": 4553.344058552188,
+              "p90AvgSeconds": 5550.139428444237,
+              "pWin": 0.0033,
+              "placeOdds": [
+                0.0033,
+                0.01504,
+                0.03558,
+                0.06652,
+                0.10254,
+                0.12786,
+                0.12246,
+                0.0931,
+                0.04708,
+                0.0156,
+                0.00288,
+                0.0001
+              ]
             }
           },
           "teamName": "3RunPL",
@@ -4329,7 +5543,23 @@
             "26TC15K_draft": {
               "pField": 0.47836,
               "medianAvgSeconds": 4630.029236817303,
-              "pWin": 0.01744
+              "p10AvgSeconds": 4249.233485603722,
+              "p90AvgSeconds": 5064.413251156418,
+              "pWin": 0.01744,
+              "placeOdds": [
+                0.01744,
+                0.05084,
+                0.09002,
+                0.09828,
+                0.0888,
+                0.0625,
+                0.04062,
+                0.02024,
+                0.0075,
+                0.00186,
+                0.00024,
+                0.00002
+              ]
             }
           },
           "teamName": "Ukrainian Running Club NY",
@@ -4362,7 +5592,23 @@
             "26TC15K_draft": {
               "pField": 0.38956,
               "medianAvgSeconds": 4990.859118367419,
-              "pWin": 0.00268
+              "p10AvgSeconds": 4496.449393284266,
+              "p90AvgSeconds": 5502.798734231589,
+              "pWin": 0.00268,
+              "placeOdds": [
+                0.00268,
+                0.01094,
+                0.02584,
+                0.04416,
+                0.06008,
+                0.07224,
+                0.0708,
+                0.0578,
+                0.0313,
+                0.01098,
+                0.0026,
+                0.00014
+              ]
             }
           },
           "teamName": "Streets 101",
@@ -4395,7 +5641,23 @@
             "26TC15K_draft": {
               "pField": 0.76038,
               "medianAvgSeconds": 5067.59349402761,
-              "pWin": 0.00102
+              "p10AvgSeconds": 4667.490296537693,
+              "p90AvgSeconds": 5515.413768000501,
+              "pWin": 0.00102,
+              "placeOdds": [
+                0.00102,
+                0.00824,
+                0.02994,
+                0.07,
+                0.12558,
+                0.16756,
+                0.16674,
+                0.11594,
+                0.05662,
+                0.0162,
+                0.00238,
+                0.00016
+              ]
             }
           },
           "teamName": "Taconic Road Runners Club",
@@ -4428,7 +5690,23 @@
             "26TC15K_draft": {
               "pField": 0.14034,
               "medianAvgSeconds": 4705.350906880599,
-              "pWin": 0.0085
+              "p10AvgSeconds": 4170.758419147052,
+              "p90AvgSeconds": 5324.07780995043,
+              "pWin": 0.0085,
+              "placeOdds": [
+                0.0085,
+                0.01448,
+                0.01854,
+                0.02016,
+                0.02018,
+                0.01896,
+                0.01696,
+                0.01226,
+                0.00676,
+                0.00286,
+                0.00062,
+                0.00006
+              ]
             }
           },
           "teamName": "West Side Runners",
@@ -7559,7 +8837,590 @@
             "eventName": "2026 TCS New York City Marathon"
           }
         }
-      ]
+      ],
+      "form": {
+        "101": {
+          "strength": 0.06564080263942307,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.02792933893697125,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.09885030953040919,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.03452778264505563,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.1750362099810383,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.12357659575363877,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.03749469369838243,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "NYF": {
+          "strength": -0.08171181133071814,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.1387591741561599,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.041109433441702925,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.10142251241843181,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.03711476583728035,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.10685911591580455,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.03799561586944045,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.12571856529546455,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.01256335872038239,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.10467946778731552,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.1348787826640261,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.01884663757422278,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "ManTC": {
+          "strength": -0.14908468048030454,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.045356936039220086,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.12775699859907508,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.20109285114588404,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.18586116947790066,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.16725224275948603,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.19046841466027598,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.05954588172650577,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "POLS": {
+          "strength": -0.016873622413291156,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.04849812690615063,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.01656895500551836,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.0642156259328659,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.011272437160143811,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.056372368280316776,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.0404782621236488,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.02319248932168594,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.01714400606643296,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.0386263643001481,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.009826954641765084,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "UESRC": {
+          "strength": -0.024056136638991088,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.009008918734271565,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.07313425461345269,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.022435826024493344,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.004269026199990922,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.010433382507555433,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": -0.06178025725822345,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.11406938038103487,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": -0.0738135962620653,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.03709785662720444,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.006700500128367426,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "DPN": {
+          "strength": -0.08223814371058524,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.1232278169936809,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.11676599958026868,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.13784848978868747,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": -0.06770384992264145,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.022249769478186354,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "HRR": {
+          "strength": 0.06104982029506667,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.18517769541887374,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": -0.015725548870834216,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.04947286057916189,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.16475431359574344,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.061183998048665256,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.1716021137335786,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.053308378698196934,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.11494150796835911,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.043277251161214614,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "QDR": {
+          "strength": 0.11236482827391692,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": 0.28408875969700986,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.0769104601607089,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.12940568558280208,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.10285292593573891,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": 0.047435239455837275,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.2540729883756041,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 Percy Sutton Harlem 5K",
+              "date": "2026-08-08T08:00:00",
+              "relative": 0.22319477973588486,
+              "weight": 0.36459461477299276
+            },
+            {
+              "eventName": "2026 New Balance 5th Ave Mile",
+              "date": "2026-09-13T07:25:00",
+              "relative": 0.03549684690410282,
+              "weight": 0.2259055349648692
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.06718540540573592,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.09408025718109525,
+              "weight": 0.9890016962927409
+            }
+          ]
+        },
+        "3RPL": {
+          "strength": 0.073167701743162,
+          "races": [
+            {
+              "eventName": "2026 NYRR Washington Heights Salsa, Blues, and Shamrocks 5K",
+              "date": "2026-03-01T09:00:00",
+              "relative": -0.09701343980303045,
+              "weight": 0.10636167759453893
+            },
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.10735089544290588,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": -0.028775546906111837,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": 0.07363930806977659,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.08648708800803839,
+              "weight": 1
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": 0.14497686468964455,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": 0.015848707202777312,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "URC": {
+          "strength": -0.010741167263331963,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.03696370954121231,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.08637872746820907,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": -0.03205488519142774,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.003644694509572388,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 NYRR Team Championship 5M",
+              "date": "2026-07-26T07:30:00",
+              "relative": -0.027518007101681285,
+              "weight": 0.4529230046835347
+            },
+            {
+              "eventName": "2026 NYRR Staten Island Half",
+              "date": "2026-10-11T08:00:00",
+              "relative": -0.03674915450506877,
+              "weight": 0.9890016962927409
+            },
+            {
+              "eventName": "2026 TCS New York City Marathon",
+              "date": "2026-11-01T09:00:00",
+              "relative": -0.004957432567800679,
+              "weight": 0.7326390630286144
+            }
+          ]
+        },
+        "TRR": {
+          "strength": 0.08186674227916857,
+          "races": [
+            {
+              "eventName": "2026 United Airlines NYC Half",
+              "date": "2026-03-15T07:00:00",
+              "relative": 0.05054897578564721,
+              "weight": 0.19617982713911908
+            },
+            {
+              "eventName": "2026 Run as One 4M Presented by JPMorgan Chase",
+              "date": "2026-04-12T08:30:00",
+              "relative": 0.1144397871081606,
+              "weight": 0.17392235547614718
+            },
+            {
+              "eventName": "2026 RBC Brooklyn Half",
+              "date": "2026-05-16T07:00:00",
+              "relative": 0.060765441888117167,
+              "weight": 0.3162500237226701
+            },
+            {
+              "eventName": "2026 Citizens Queens 10K",
+              "date": "2026-06-20T07:45:00",
+              "relative": -0.004369700023920786,
+              "weight": 0.39679661922229326
+            },
+            {
+              "eventName": "2026 New Balance Bronx 10M",
+              "date": "2026-09-19T08:00:00",
+              "relative": 0.13589771340608814,
+              "weight": 1
+            }
+          ]
+        },
+        "WSX": {
+          "strength": 0.006063291542480309,
+          "races": []
+        }
+      }
     }
   ]
 }

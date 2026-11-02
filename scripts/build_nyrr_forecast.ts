@@ -32,6 +32,7 @@ import {
   blendTurnout,
   countedPoints,
   expectedPointsIfFielded,
+  fitRace,
   isComparable,
   paramsForDivision,
   pointsForPlace,
@@ -55,6 +56,7 @@ import {
   type ForecastRunner,
   type HistoryRace,
   type LeaderboardRow,
+  type TeamForm,
   type Lineup,
   type LineupKind,
 } from '../src/lib/nyrr/forecast';
@@ -145,6 +147,30 @@ function buildHistory(
       focusMargins,
     };
   });
+}
+
+// Each team's results this season against the field, and the strength the
+// model fits from them for the next race
+function buildForm(season: DivisionSeason, next: RaceInfo, params: ModelParams, past: PastScores): Record<string, TeamForm> {
+  const fit = fitRace(season.teams, season.races, next, params, past);
+  const done = season.races.filter((r) => r.published);
+  const maxWeight = Math.max(...done.map((r) => fit.raceWeight[r.eventCode] ?? 0));
+  return Object.fromEntries(
+    season.teams.map((t) => [
+      t.teamCode,
+      {
+        strength: Math.exp(fit.teams[t.teamCode].strength) - 1,
+        races: done
+          .filter((r) => t.races[r.eventCode]?.score != null && fit.raceEffect[r.eventCode] !== undefined)
+          .map((r) => ({
+            eventName: r.eventName,
+            date: r.date,
+            relative: Math.exp(t.races[r.eventCode].score! - fit.raceEffect[r.eventCode]) - 1,
+            weight: (fit.raceWeight[r.eventCode] ?? 0) / maxWeight,
+          })),
+      },
+    ])
+  );
 }
 
 // Each focus team runner's season: races run, times among the team's scorers, best age grade
@@ -351,6 +377,7 @@ async function buildDivision(
     ),
     history: buildHistory(season, attendance, past, focusIdx >= 0 ? rosters[focusIdx] : [], params),
     leaderboard: buildLeaderboard(season, current),
+    form: next ? buildForm(season, next, params, past) : {},
   };
 }
 
