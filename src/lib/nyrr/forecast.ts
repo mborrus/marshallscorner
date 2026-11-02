@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import type { NeedsRow, ScenarioCell } from './model';
+import type { Division } from './standings';
 
 export const FORECAST_PATH = path.join(process.cwd(), 'content', 'nyrr', 'generated', 'forecast.json');
 export const LINEUPS_PATH = path.join(process.cwd(), 'content', 'nyrr', 'lineups.json');
@@ -151,6 +152,32 @@ export interface Forecast {
   year: number;
   sims: number;
   divisions: DivisionForecast[];
+}
+
+// Standings for the forecast's divisions as of when it was built, in the shape
+// the live NYRR data comes in, for when NYRR can't be reached
+export function standingsFromForecast(forecast: Forecast): Division[] {
+  return forecast.divisions.map((d, i) => ({
+    divisionCode: d.divisionCode,
+    divisionName: d.divisionName,
+    divisionGender: d.gender,
+    divisionOrder: i,
+    teamResults: [...d.teams]
+      .sort((a, b) => a.place - b.place)
+      .map((t) => ({
+        teamCode: t.teamCode,
+        teamName: t.teamName,
+        teamPlace: t.place,
+        totalPoints: t.points,
+        eventDetails: d.history.map((h) => ({
+          eventCode: h.eventCode,
+          eventName: h.eventName,
+          startDateTime: h.date,
+          points: h.teams.find((x) => x.teamCode === t.teamCode)?.points ?? 0,
+          isClubPointsPublished: true,
+        })),
+      })),
+  }));
 }
 
 export function readForecast(): Forecast | null {
