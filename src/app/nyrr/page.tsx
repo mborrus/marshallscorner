@@ -11,7 +11,7 @@ import {
   type Division,
   type TeamResult,
 } from '@/lib/nyrr/standings';
-import { readForecast, type DivisionForecast, type LeaderboardRow } from '@/lib/nyrr/forecast';
+import { readForecast, standingsFromForecast, type DivisionForecast, type LeaderboardRow } from '@/lib/nyrr/forecast';
 import { formatPct, ordinal, shortEventName } from '@/lib/nyrr/format';
 import DivisionTabs from './DivisionTabs';
 import ForecastView from './ForecastView';
@@ -24,22 +24,30 @@ export const metadata: Metadata = {
   description: 'NYRR club points standings and a promotion forecast for Manhattan Track Club.',
 };
 
-// Rebuild the page from fresh NYRR data at most every 6 hours
-export const revalidate = 21600;
+// Rebuild the page from fresh NYRR data at most every hour
+export const revalidate = 3600;
 
 export default async function NyrrPage() {
+  const forecast = readForecast();
   let year: number;
   let divisions: Division[];
+  // If NYRR doesn't answer, fall back to the standings saved with the forecast
+  let offline = false;
   try {
     year = await getLatestYear();
     divisions = await getDivisions(year);
   } catch {
-    return (
-      <div className={styles.page}>
-        <h1>NYRR Team Standings</h1>
-        <p className="win98-box-inset">Couldn&apos;t reach the NYRR results site right now. Try again later.</p>
-      </div>
-    );
+    if (!forecast) {
+      return (
+        <div className={styles.page}>
+          <h1>NYRR Team Standings</h1>
+          <p className="win98-box-inset">Couldn&apos;t reach the NYRR results site right now. Try again later.</p>
+        </div>
+      );
+    }
+    offline = true;
+    year = forecast.year;
+    divisions = standingsFromForecast(forecast);
   }
 
   const teamDivisions = await Promise.all(
@@ -47,13 +55,14 @@ export default async function NyrrPage() {
       .filter((d) => isOpenDivision(d.divisionCode) && d.teamResults.some((t) => t.teamCode === TEAM_CODE))
       .map(async (division) => {
         const team = division.teamResults.find((t) => t.teamCode === TEAM_CODE)!;
-        const detail = await getDivisionDetail(division.divisionCode, year).catch(() => [] as TeamResult[]);
+        const detail = offline
+          ? division.teamResults
+          : await getDivisionDetail(division.divisionCode, year).catch(() => [] as TeamResult[]);
         return { division, team, detail };
       })
   );
 
   const teamName = teamDivisions[0]?.team.teamName ?? 'Manhattan Track Club';
-  const forecast = readForecast();
   const genderLabel: Record<string, string> = { M: 'Men', W: 'Women', X: 'Nonbinary' };
 
   const tabs = teamDivisions.map(({ division, team, detail }) => {
@@ -100,6 +109,14 @@ export default async function NyrrPage() {
           simulates the rest of the season {forecast ? forecast.sims.toLocaleString() : ''} times.
         </p>
       </div>
+
+      {offline && forecast && (
+        <p className={`${styles.callout} win98-box-inset`}>
+          NYRR&apos;s results site didn&apos;t respond, so these standings are as of{' '}
+          {new Date(forecast.generatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' })}
+          , when the forecast was built. The page tries again within the hour.
+        </p>
+      )}
 
       {teamDivisions.length === 0 && (
         <p className="win98-box-inset">{teamName} isn&apos;t in any {year} division standings yet.</p>

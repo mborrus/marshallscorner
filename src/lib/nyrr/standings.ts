@@ -3,8 +3,8 @@
 
 const BASE_URL = 'https://rmsprodapi.nyrr.org/api/v2/ClubStandings';
 
-// Re-fetch at most every 6 hours
-const REVALIDATE_SECONDS = 60 * 60 * 6;
+// Re-fetch at most every hour
+const REVALIDATE_SECONDS = 60 * 60;
 
 export const TEAM_CODE = 'ManTC';
 

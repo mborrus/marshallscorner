@@ -30,7 +30,10 @@ big division). MTC was in the C divisions in 2025 (~300 teams each; men 2nd, wom
 promoted to B for 2026). The fit and the simulation's standings are written to stay fast for divisions that
 size (indexed observations, one sort per simulated season); a 2025 C-division rebuild takes ~2 minutes.
 
-The live standings refresh every 6h; the forecast refreshes on deploy and from the weekly job below.
+The live standings refresh hourly; the forecast refreshes on deploy and from the weekly job below. If NYRR's
+site doesn't answer (it sometimes fails during a build, and ISR would then cache the error page), `/nyrr`
+falls back to the standings saved in `forecast.json` (`standingsFromForecast`) with a note saying how old
+they are, and tries again within the hour.
 
 **Weekly job** (`.github/workflows/nyrr-weekly.yml`, Tuesdays 15:17 UTC, plus a manual "Run workflow"
 button; scheduled runs only happen once it's on `main`): `scripts/nyrr_snapshot.ts` fetches MTC's divisions
