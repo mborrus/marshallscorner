@@ -58,6 +58,10 @@ export interface ModelParams {
   timeOffsetMarathon: number;
   // How much a past season at the same race counts vs one 2026 race
   historyWeight: number;
+  // Lowest race scores left out of each team's year-end total. NYRR's running
+  // totals add every race, but the year-end ranking counts only the best ones
+  // (e.g. best 8 of 10 races in 2025: northbrooklynrunners team points page).
+  droppedRaces: number;
   // Typical chance a division team fields a full team (A/B, 2022-2025: ~83%)
   turnoutPrior: number;
   // Typical race-to-race spread of a team's score, before it has its own
@@ -83,6 +87,7 @@ export const DEFAULT_PARAMS: ModelParams = {
   strengthScaleOther: 1,
   timeOffsetMarathon: -0.032,
   historyWeight: 6,
+  droppedRaces: 2,
   turnoutPrior: 0.8,
   teamSigmaPrior: 0.045,
   runnerTurnoutWeightMarathon: 0,
@@ -346,6 +351,12 @@ export function fieldProbability(
   return (fielded + hw * hf + 2 * params.turnoutPrior) / (done.length + hw * hn + 2);
 }
 
+// A season total that leaves out the `dropped` lowest race scores
+export function countedPoints(racePoints: number[], dropped: number): number {
+  const sorted = [...racePoints].sort((a, b) => a - b);
+  return sorted.slice(Math.min(dropped, sorted.length)).reduce((s, p) => s + p, 0);
+}
+
 export function pointsForPlace(index: number, multiplier: number): number {
   return (index < POINTS_SCALE.length ? POINTS_SCALE[index] : POINTS_OUTSIDE_TOP) * multiplier;
 }
@@ -375,6 +386,9 @@ function standings(totals: number[]): Standing[] {
 export interface SimTeamInput {
   teamCode: string;
   currentPoints: number;
+  // Points at each completed race (0 without a full team). When given, the
+  // final total drops the team's lowest race scores (see droppedRaces).
+  racePoints?: number[];
   fit: Record<string, TeamFit>; // per remaining race
   fieldProb: Record<string, number>;
   // Races where the team's lineup is known, in place of fit and fieldProb
@@ -467,7 +481,8 @@ export function simulate(
   races: SimRaceInput[],
   focusTeam: string,
   sims = 50000,
-  seed = 2026
+  seed = 2026,
+  droppedRaces = 0
 ): SimResult {
   const rand = mulberry32(seed);
   const n = teams.length;
@@ -491,6 +506,7 @@ export function simulate(
 
   for (let s = 0; s < sims; s++) {
     const totals = teams.map((t) => t.currentPoints);
+    const earned = teams.map(() => [] as number[]);
     // Season-long form for this simulation, shared across remaining races
     const formShock = teams.map(() => normal(rand));
     let focusNextPlace = 0;
@@ -523,8 +539,11 @@ export function simulate(
         entries.push({ i, x });
       });
       entries.sort((p, q) => p.x - q.x);
+      for (const scores of earned) scores.push(0);
       entries.forEach((e, place) => {
-        totals[e.i] += pointsForPlace(place, r.race.multiplier);
+        const points = pointsForPlace(place, r.race.multiplier);
+        totals[e.i] += points;
+        earned[e.i][ri] = points;
         const st = raceStats[e.i][r.race.eventCode];
         st.fielded++;
         if (place === 0) st.wins++;
@@ -539,6 +558,12 @@ export function simulate(
       }
     });
 
+    // The year-end ranking leaves out each team's lowest race scores
+    if (droppedRaces > 0) {
+      teams.forEach((t, i) => {
+        if (t.racePoints) totals[i] = countedPoints([...t.racePoints, ...earned[i]], droppedRaces);
+      });
+    }
     const table = standings(totals);
     for (let i = 0; i < n; i++) {
       first[i] += slotShare(table[i], 1);
@@ -642,12 +667,16 @@ export function prepareSimulation(
     .filter((r) => !r.published && Date.parse(r.date) > lastDone)
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
-  const simTeams: SimTeamInput[] = teams.map((t) => ({
-    teamCode: t.teamCode,
-    currentPoints: done.reduce((sum, r) => sum + (t.races[r.eventCode]?.points ?? 0), 0),
-    fit: {},
-    fieldProb: {},
-  }));
+  const simTeams: SimTeamInput[] = teams.map((t) => {
+    const racePoints = done.map((r) => t.races[r.eventCode]?.points ?? 0);
+    return {
+      teamCode: t.teamCode,
+      currentPoints: racePoints.reduce((sum, p) => sum + p, 0),
+      racePoints,
+      fit: {},
+      fieldProb: {},
+    };
+  });
   const simRaces = left.map((race) => {
     const fit = fitRace(teams, races, race, params, past);
     teams.forEach((t, i) => {

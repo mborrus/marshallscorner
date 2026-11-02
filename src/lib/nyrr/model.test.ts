@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
+  countedPoints,
   courseOffset,
   expectedPointsIfFielded,
   fieldProbability,
@@ -183,4 +184,16 @@ test('two-race scenarios cover every simulation', () => {
   // Winning both races beats missing both
   const cell = (a: number | null, b: number | null) => result.scenarios.find((c) => c.first === a && c.second === b)!;
   assert.ok(cell(1, 1).pTop2 > cell(null, null).pTop2);
+});
+
+test('the year-end total drops each team\'s lowest race scores', () => {
+  assert.equal(countedPoints([15, 0, 12, 1, 10], 2), 37);
+  assert.equal(countedPoints([15], 2), 0);
+  // A wins the last race, but B, which has more low scores to drop, ends level
+  const a: SimTeamInput = { ...team('A', 30, -0.5), racePoints: [15, 15, 0] };
+  const b: SimTeamInput = { ...team('B', 27, 0.5, 0), racePoints: [12, 15, 0] };
+  const result = simulate([a, b], oneRace, 'A', 200, 1, 2);
+  // A: best 2 of [15, 15, 0, 15] = 30; B: best 2 of [12, 15, 0, 0] = 27
+  assert.equal(result.teams[0].meanPoints, 30);
+  assert.equal(result.teams[1].meanPoints, 27);
 });

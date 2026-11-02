@@ -18,7 +18,7 @@ export default function RangeChart({ teams, highlightCode }: Props) {
   const width = 640;
   const pad = { top: 8, right: 24, bottom: 28 };
   const height = pad.top + teams.length * rowH + pad.bottom;
-  const lo = Math.floor(Math.min(...teams.map((t) => t.points)) / 10) * 10;
+  const lo = Math.floor(Math.min(...teams.map((t) => t.counted)) / 10) * 10;
   const hi = Math.ceil(Math.max(...teams.map((t) => t.p90Points)) / 10) * 10;
   const x = (v: number) => labelW + ((v - lo) / Math.max(1, hi - lo)) * (width - labelW - pad.right);
   const ticks = Array.from({ length: Math.floor((hi - lo) / 10) + 1 }, (_, i) => lo + i * 10);
@@ -37,7 +37,7 @@ export default function RangeChart({ teams, highlightCode }: Props) {
         {teams.map((t, i) => {
           const y = pad.top + i * rowH + rowH / 2;
           const color = t.teamCode === highlightCode ? HIGHLIGHT : BASE;
-          const tip = `${t.teamName}: ${t.points} now, about ${Math.round(t.meanPoints)} projected (likely ${Math.round(t.p10Points)}–${Math.round(t.p90Points)})`;
+          const tip = `${t.teamName}: ${t.counted} now, about ${Math.round(t.meanPoints)} projected (likely ${Math.round(t.p10Points)}–${Math.round(t.p90Points)})`;
           return (
             <g key={t.teamCode}>
               <title>{tip}</title>
@@ -51,7 +51,7 @@ export default function RangeChart({ teams, highlightCode }: Props) {
               >
                 {t.teamName.length > 24 ? `${t.teamName.slice(0, 23)}…` : t.teamName}
               </text>
-              <line x1={x(t.points)} x2={x(t.points)} y1={y - 8} y2={y + 8} stroke="#5a5a5a" strokeWidth={2} />
+              <line x1={x(t.counted)} x2={x(t.counted)} y1={y - 8} y2={y + 8} stroke="#5a5a5a" strokeWidth={2} />
               <rect
                 x={x(t.p10Points)}
                 y={y - 4}

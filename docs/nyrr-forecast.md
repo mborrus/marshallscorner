@@ -74,6 +74,15 @@ Quirks:
 - Team score = combined time of the top N team finishers of that gender. **N = 5 at most races,
   3 at the NYC Marathon, 10 at the Team Championships.**
 - **Team Championships count double** (30, 24, 20, …).
+- **The year-end ranking drops each team's two lowest race scores** (missed races count as 0), per
+  Marshall and NBR's team points page ("top 8 races" of 10 in 2025). NYRR's posted running totals add every
+  race (checked 2023–2026), so the drop seems to apply only to the final ranking. 2026 has 12 races → best
+  10 count. `droppedRaces` (2) in the model; `counted` in `forecast.json` = points so far with the lowest
+  ones dropped as far as the remaining races allow (the floor if a team scores nothing more). Backtests
+  still score finals on NYRR's raw totals (whether past promotions used the drop isn't confirmed).
+- **Age-group divisions** (40M, 50W, …) score only older runners (team awards with `minimumAge` 40+). The
+  forecast and tabs cover open A/B/C divisions only (`isOpenDivision`). MTC men scored in 40M at the 2026
+  marathon; including it made the build 6+ minutes and gave two "men" tabs.
 - Ties share a place in the standings (e.g. 60W 2026). Promotion tie-break unknown → the sim splits ties evenly.
 - One unexplained case: URC at 2026 Team Champs placed 2nd on time but got 12 pts (probably a DQ).
 - 2026 remaining races (as of Oct 24): **NYC Marathon (Nov 1)** and **Ted Corbitt 15K (Dec 5)**.
@@ -228,6 +237,10 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
 - **Season leaderboard** (`leaderboard` in `forecast.json`): each MTC runner's races, times among the team's
   scorers (top N at races where MTC had a full team), and best age grade (`ageGradePercent` from
   `teams/teamRunners`, kept on each roster result).
+
+- **Nov 2 (after the marathon, with the drop rule):** men B counted Rebeldes 133, Lone Wolf 107,
+  Hellgate 106, MTC 102 → MTC promotion ~49%; a Corbitt win → certain, 2nd → ~57%. Women B: promotion
+  locked, title ~41% (NY Flyers 126 counted vs MTC 115). Marathon: MTC men 6th (+5), women 1st (+15).
 
 ## Gaps and ideas
 
