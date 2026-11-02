@@ -1,5 +1,5 @@
 // Projected final points per team: bar = likely range (10th-90th percentile),
-// dot = average, tick = points today
+// dot = average, tick = points that count today
 
 import type { ForecastTeam } from '@/lib/nyrr/forecast';
 import styles from './page.module.css';
@@ -12,60 +12,52 @@ interface Props {
   highlightCode: string;
 }
 
+// Axis labels centred on their tick, except at the edges where they stay inside
+export function axisLabel(fraction: number): React.CSSProperties {
+  const shift = fraction > 0.92 ? '-100%' : fraction < 0.08 ? '0' : '-50%';
+  return { left: `${fraction * 100}%`, transform: `translateX(${shift})` };
+}
+
 export default function RangeChart({ teams, highlightCode }: Props) {
-  const rowH = 30;
-  const labelW = 170;
-  const width = 640;
-  const pad = { top: 8, right: 24, bottom: 28 };
-  const height = pad.top + teams.length * rowH + pad.bottom;
   const lo = Math.floor(Math.min(...teams.map((t) => t.counted)) / 10) * 10;
   const hi = Math.ceil(Math.max(...teams.map((t) => t.p90Points)) / 10) * 10;
-  const x = (v: number) => labelW + ((v - lo) / Math.max(1, hi - lo)) * (width - labelW - pad.right);
+  const pct = (v: number) => `${((v - lo) / Math.max(1, hi - lo)) * 100}%`;
   const ticks = Array.from({ length: Math.floor((hi - lo) / 10) + 1 }, (_, i) => lo + i * 10);
 
   return (
     <figure className={styles.chart}>
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Projected final points by team">
-        {ticks.map((t) => (
-          <g key={t}>
-            <line x1={x(t)} x2={x(t)} y1={pad.top} y2={height - pad.bottom} stroke="#e0d9cc" />
-            <text x={x(t)} y={height - 8} textAnchor="middle" className={styles.axisText}>
-              {t}
-            </text>
-          </g>
-        ))}
-        {teams.map((t, i) => {
-          const y = pad.top + i * rowH + rowH / 2;
+      <div className={styles.hbars}>
+        {teams.map((t) => {
           const color = t.teamCode === highlightCode ? HIGHLIGHT : BASE;
-          const tip = `${t.teamName}: ${t.counted} now, about ${Math.round(t.meanPoints)} projected (likely ${Math.round(t.p10Points)}–${Math.round(t.p90Points)})`;
           return (
-            <g key={t.teamCode}>
-              <title>{tip}</title>
-              <rect x={0} y={y - rowH / 2} width={width} height={rowH} fill="transparent" />
-              <text
-                x={labelW - 8}
-                y={y + 4}
-                textAnchor="end"
-                className={styles.rowLabel}
-                fontWeight={t.teamCode === highlightCode ? 'bold' : 'normal'}
-              >
-                {t.teamName.length > 24 ? `${t.teamName.slice(0, 23)}…` : t.teamName}
-              </text>
-              <line x1={x(t.counted)} x2={x(t.counted)} y1={y - 8} y2={y + 8} stroke="#5a5a5a" strokeWidth={2} />
-              <rect
-                x={x(t.p10Points)}
-                y={y - 4}
-                width={Math.max(2, x(t.p90Points) - x(t.p10Points))}
-                height={8}
-                rx={4}
-                fill={color}
-                opacity={0.35}
-              />
-              <circle cx={x(t.meanPoints)} cy={y} r={5} fill={color} stroke="#fffef8" strokeWidth={2} />
-            </g>
+            <div
+              key={t.teamCode}
+              className={styles.hbarRow}
+              title={`${t.teamName}: ${t.counted} counted now, about ${Math.round(t.meanPoints)} projected (likely ${Math.round(t.p10Points)}–${Math.round(t.p90Points)})`}
+            >
+              <span className={t.teamCode === highlightCode ? styles.focusName : undefined}>{t.teamName}</span>
+              <span className={styles.rangeTrack}>
+                <span className={styles.rangeTick} style={{ left: pct(t.counted) }} />
+                <span
+                  className={styles.rangeBar}
+                  style={{ left: pct(t.p10Points), width: `calc(${pct(t.p90Points)} - ${pct(t.p10Points)})`, background: color }}
+                />
+                <span className={styles.rangeDot} style={{ left: pct(t.meanPoints), background: color }} />
+              </span>
+            </div>
           );
         })}
-      </svg>
+        <div className={styles.hbarRow}>
+          <span />
+          <span className={styles.rangeAxis}>
+            {ticks.map((t) => (
+              <span key={t} style={axisLabel((t - lo) / Math.max(1, hi - lo))}>
+                {t}
+              </span>
+            ))}
+          </span>
+        </div>
+      </div>
       <figcaption className={styles.legend}>
         <span className={styles.legendItem}>
           <span className={styles.tickSwatch} /> points now

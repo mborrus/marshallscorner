@@ -213,6 +213,9 @@ export interface TeamFit {
 export interface RaceFit {
   teams: Record<string, TeamFit>;
   targetEffect: number;
+  // How fast each race ran (log scale) and how much it counted toward this fit
+  raceEffect: Record<string, number>;
+  raceWeight: Record<string, number>;
 }
 
 const DAY_MS = 86_400_000;
@@ -335,6 +338,8 @@ export function fitRace(
     teams: fits,
     targetEffect:
       (den > 0 ? num / den : NaN) + (isMarathon(target) ? params.timeOffsetMarathon : courseOffset(target)),
+    raceEffect: Object.fromEntries(b),
+    raceWeight: Object.fromEntries(weights),
   };
 }
 
@@ -426,7 +431,17 @@ export interface SimTeamResult {
   // Per remaining race
   races: Record<
     string,
-    { pField: number; medianAvgSeconds: number; pWin: number; pScore?: number[] }
+    {
+      pField: number;
+      medianAvgSeconds: number;
+      // Middle 80% of the team's simulated average scorer time
+      p10AvgSeconds: number;
+      p90AvgSeconds: number;
+      pWin: number;
+      // Chance of each finishing place (index 0 = 1st) among teams that field a full team
+      placeOdds: number[];
+      pScore?: number[];
+    }
   >;
 }
 
@@ -501,7 +516,10 @@ export function simulate(
   const placeCounts = teams.map(() => new Array(n).fill(0));
   const raceStats = teams.map(() =>
     Object.fromEntries(
-      races.map((r) => [r.race.eventCode, { fielded: 0, wins: 0, scores: [] as number[], scorerCounts: [] as number[] }])
+      races.map((r) => [
+        r.race.eventCode,
+        { fielded: 0, wins: 0, places: new Array(n).fill(0), scores: [] as number[], scorerCounts: [] as number[] },
+      ])
     )
   );
   // Needs table: keyed by focus team's place in the next race (0 = no team)
@@ -552,6 +570,7 @@ export function simulate(
         const st = raceStats[e.i][r.race.eventCode];
         st.fielded++;
         if (place === 0) st.wins++;
+        st.places[place]++;
         if (st.scores.length < 5000) st.scores.push(e.x);
       });
       if (ri === 1 && focusIdx >= 0) focusSecondPlace = entries.findIndex((e) => e.i === focusIdx) + 1;
@@ -614,7 +633,10 @@ export function simulate(
             {
               pField: st.fielded / sims,
               medianAvgSeconds: scores.length ? Math.exp(quantile(scores, 0.5)) : NaN,
+              p10AvgSeconds: scores.length ? Math.exp(quantile(scores, 0.1)) : NaN,
+              p90AvgSeconds: scores.length ? Math.exp(quantile(scores, 0.9)) : NaN,
               pWin: st.wins / sims,
+              placeOdds: st.places.map((c: number) => c / sims),
               ...(t.lineup?.[r.race.eventCode] && {
                 pScore: t.lineup[r.race.eventCode].map((_, j) => (st.scorerCounts[j] ?? 0) / sims),
               }),

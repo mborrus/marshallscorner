@@ -241,6 +241,14 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
 
 ## Page extras
 
+- **Next-race walkthrough** (`RaceWalkthrough.tsx`, Nov 2): replaces the old contenders table and "what MTC
+  needs" table with seven steps: counted points (and what a win adds), each team's race-by-race form vs the
+  division with its fitted strength (`form` in `forecast.json`: `exp(score - raceEffect) - 1` per race, with
+  the race's weight toward the next race), predicted time ranges (`p10/p90AvgSeconds`), turnout, simulated
+  finishing places (`placeOdds`), what each focus-team place means, and final standings. Bars are HTML so
+  they stay readable on phones. MTC's time comes from its entry list, so it can beat its own season form
+  (the page says so).
+
 - **Final place odds** for MTC (from the simulation's `placeDistribution`), above the forecast callout.
 - **Both-races grid** (`scenarios` in `forecast.json`, from `simulate`): promotion chance for each pair of
   MTC places at the next two races (null = no full team). Cells with <100 sims show "·". Oct 30: men need

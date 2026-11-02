@@ -48,7 +48,30 @@ export interface ForecastTeam {
   p10Points: number;
   p90Points: number;
   placeDistribution: number[];
-  races: Record<string, { pField: number; medianAvgSeconds: number; pWin: number }>;
+  races: Record<
+    string,
+    {
+      pField: number;
+      medianAvgSeconds: number;
+      p10AvgSeconds: number;
+      p90AvgSeconds: number;
+      pWin: number;
+      placeOdds: number[];
+    }
+  >;
+}
+
+// How a team has run this season against the rest of the division, as the
+// model sees it going into the next race
+export interface TeamForm {
+  // Team's fitted strength: fraction slower (+) or faster (-) than the average team
+  strength: number;
+  races: {
+    eventName: string;
+    date: string;
+    relative: number; // same scale, at that race
+    weight: number; // how much it counts toward the next race (1 = the most)
+  }[];
 }
 
 export interface ForecastRunner {
@@ -112,6 +135,8 @@ export interface DivisionForecast {
   history: HistoryRace[];
   // Focus team's runners this season, most times scored first
   leaderboard: LeaderboardRow[];
+  // Each team's season form going into the next race (team code → form)
+  form: Record<string, TeamForm>;
 }
 
 export interface LeaderboardRow {
