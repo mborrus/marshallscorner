@@ -17,9 +17,16 @@ interface Props {
 }
 
 export default function ForecastView({ division, focusCode }: Props) {
-  const teams = [...division.teams].sort((a, b) => b.points - a.points);
+  // Ranked by the points that count at year end (lowest race scores dropped)
+  const teams = [...division.teams].sort((a, b) => b.counted - a.counted || b.points - a.points);
+  const rank = (t: (typeof teams)[number]) => 1 + teams.filter((o) => o.counted > t.counted).length;
   const focus = teams.find((t) => t.teamCode === focusCode);
   if (!focus) return null;
+  const totalRaces = division.racesDone + division.remainingRaces.length;
+  const countsNote =
+    division.droppedRaces > 0
+      ? `Points count each team's best ${totalRaces - division.droppedRaces} of ${totalRaces} races: the year-end ranking drops the ${division.droppedRaces} lowest scores (missed races are 0), while NYRR's running totals, shown in brackets, add every race.`
+      : null;
   const next = division.remainingRaces[0];
   const nextLineup = next && division.lineups[next.eventCode];
   const second = teams[PROMOTED - 1];
@@ -27,10 +34,10 @@ export default function ForecastView({ division, focusCode }: Props) {
   const focusName = focus.teamName;
 
   // Teams with a real shot, plus everyone at or above the focus team
-  const contenders = teams.filter((t) => t.pTop2 >= 0.001 || t.place <= Math.max(PROMOTED + 2, focus.place + 1));
+  const contenders = teams.filter((t) => t.pTop2 >= 0.001 || rank(t) <= Math.max(PROMOTED + 2, rank(focus) + 1));
 
-  const inPromotion = focus.place <= PROMOTED;
-  const gapToLine = inPromotion ? focus.points - (third?.points ?? 0) : second.points - focus.points;
+  const inPromotion = rank(focus) <= PROMOTED;
+  const gapToLine = inPromotion ? focus.counted - (third?.counted ?? 0) : second.counted - focus.counted;
 
   // Places down to the last one that still gives a real (1%+) promotion chance
   const lastUseful = Math.max(
@@ -44,7 +51,7 @@ export default function ForecastView({ division, focusCode }: Props) {
   if (!next) {
     return (
       <p className="win98-box-inset">
-        The {division.divisionName} season is over. {focusName} finished {ordinal(focus.place)}.
+        The {division.divisionName} season is over. {focusName} finished {ordinal(rank(focus))}.
       </p>
     );
   }
@@ -63,7 +70,7 @@ export default function ForecastView({ division, focusCode }: Props) {
             {gapToLine} <span className={styles.unit}>pts</span>
           </p>
           <p className={styles.muted}>
-            {ordinal(focus.place)} with {focus.points} &middot;{' '}
+            {ordinal(rank(focus))} with {focus.counted} &middot;{' '}
             {inPromotion ? `ahead of ${third?.teamName}` : `behind ${second.teamName}`}
           </p>
         </div>
@@ -73,10 +80,11 @@ export default function ForecastView({ division, focusCode }: Props) {
           <p className={styles.muted}>
             {teams[0].teamCode === focusCode
               ? 'Currently leading'
-              : `${teams[0].points - focus.points} pts behind ${teams[0].teamName}`}
+              : `${teams[0].counted - focus.counted} pts behind ${teams[0].teamName}`}
           </p>
         </div>
       </div>
+      {countsNote && <p className={styles.muted}>{countsNote}</p>}
 
       <PlaceOdds distribution={focus.placeDistribution} />
 
@@ -136,13 +144,16 @@ export default function ForecastView({ division, focusCode }: Props) {
             <tbody>
               {contenders.map((t) => {
                 const r = t.races[next.eventCode];
-                const vs = t.points - second.points;
+                const vs = t.counted - second.counted;
                 return (
                   <tr key={t.teamCode} className={t.teamCode === focusCode ? styles.highlightRow : ''}>
-                    <td>{t.place}</td>
+                    <td>{rank(t)}</td>
                     <td>{t.teamName}</td>
-                    <td className={styles.num}>{t.points}</td>
-                    <td className={styles.num}>{t.place === PROMOTED ? '–' : vs > 0 ? `+${vs}` : vs}</td>
+                    <td className={styles.num}>
+                      {t.counted}
+                      {t.counted !== t.points && <span className={styles.muted}> ({t.points})</span>}
+                    </td>
+                    <td className={styles.num}>{t.teamCode === second.teamCode ? '–' : vs > 0 ? `+${vs}` : vs}</td>
                     <td className={styles.num}>{formatPct(r.pField)}</td>
                     <td className={styles.num}>{Number.isFinite(r.medianAvgSeconds) ? formatDuration(r.medianAvgSeconds) : '–'}</td>
                     <td className={styles.num}>

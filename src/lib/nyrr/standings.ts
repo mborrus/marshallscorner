@@ -8,6 +8,12 @@ const REVALIDATE_SECONDS = 60 * 60 * 6;
 
 export const TEAM_CODE = 'ManTC';
 
+// Open divisions (A, B and C, by gender). Age-group divisions like "40M" score
+// only older runners, which the forecast doesn't model.
+export function isOpenDivision(divisionCode: string): boolean {
+  return /^[ABC][MWX]$/.test(divisionCode);
+}
+
 export interface EventPoints {
   eventCode: string;
   eventName: string;

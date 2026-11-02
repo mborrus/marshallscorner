@@ -30,6 +30,7 @@ import {
   LINEUP_CHANCE,
   UNLISTED_FACTOR,
   blendTurnout,
+  countedPoints,
   expectedPointsIfFielded,
   isComparable,
   paramsForDivision,
@@ -57,7 +58,7 @@ import {
   type Lineup,
   type LineupKind,
 } from '../src/lib/nyrr/forecast';
-import { TEAM_CODE } from '../src/lib/nyrr/standings';
+import { TEAM_CODE, isOpenDivision } from '../src/lib/nyrr/standings';
 
 const SIMS = 50000;
 // Fewer simulations per point for the season-so-far odds; there are many points
@@ -89,7 +90,7 @@ function buildHistory(
   return done.map((race, n) => {
     const { simTeams, simRaces } = prepareSimulation(season.teams, seasonAsOf(season.races, n + 1), attendance, params, past);
     const focusTeam = season.teams.find((t) => t.teamCode === TEAM_CODE);
-    const odds = simulate(simTeams, simRaces, TEAM_CODE, HISTORY_SIMS, 2026 + n).teams;
+    const odds = simulate(simTeams, simRaces, TEAM_CODE, HISTORY_SIMS, 2026 + n, params.droppedRaces).teams;
     const totals = simTeams.map((t) => t.currentPoints);
     const ranked = season.teams
       .filter((t) => t.races[race.eventCode]?.score != null)
@@ -282,7 +283,10 @@ async function buildDivision(
     });
   }
 
-  const result = simulate(simTeams, simRaces, TEAM_CODE, SIMS);
+  const result = simulate(simTeams, simRaces, TEAM_CODE, SIMS, undefined, params.droppedRaces);
+  // Points that count so far: if the season ended with zeros, this is where each team would finish
+  const droppedNow = Math.max(0, params.droppedRaces - remaining.length);
+  const counted = simTeams.map((t) => countedPoints(t.racePoints ?? [], droppedNow));
   const next = remaining[0];
 
   // The page never shows who is on a sign-up or invite list: only this season's
@@ -313,6 +317,7 @@ async function buildDivision(
     divisionName,
     gender,
     racesDone: done.length,
+    droppedRaces: params.droppedRaces,
     remainingRaces: remaining.map((r) => ({
       eventCode: r.eventCode,
       eventName: r.eventName,
@@ -330,6 +335,7 @@ async function buildDivision(
       teamName: t.teamName,
       place: t.place,
       points: t.totalPoints,
+      counted: counted[i],
     })),
     needs: result.needs,
     scenarios: result.scenarios,
@@ -360,7 +366,7 @@ function checkForecast(forecast: Forecast) {
     if (Math.abs(sum('pFirst') - 1) > 1e-6) problems.push(`${where}: title odds add to ${sum('pFirst')}`);
     for (const t of d.teams) {
       if (![t.pTop2, t.pFirst].every(isProb)) problems.push(`${where} ${t.teamCode}: odds out of range`);
-      if (t.meanPoints < t.points - 1e-9) problems.push(`${where} ${t.teamCode}: projected below current points`);
+      if (t.meanPoints < t.counted - 1e-9) problems.push(`${where} ${t.teamCode}: projected below counted points`);
       for (const [code, r] of Object.entries(t.races)) {
         if (!isProb(r.pField)) problems.push(`${where} ${t.teamCode} ${code}: bad turnout ${r.pField}`);
         if (r.pField > 0 && !Number.isFinite(r.medianAvgSeconds)) problems.push(`${where} ${t.teamCode} ${code}: no time`);
@@ -374,7 +380,9 @@ function checkForecast(forecast: Forecast) {
 async function main() {
   // NYRR_YEAR=2025 rebuilds a past season, to check how a finished season looks
   const year = Number(process.env.NYRR_YEAR) || (await getLatestYear());
-  const mine = (await getDivisions(year)).filter((d) => d.teamResults.some((t) => t.teamCode === TEAM_CODE));
+  const mine = (await getDivisions(year)).filter(
+    (d) => isOpenDivision(d.divisionCode) && d.teamResults.some((t) => t.teamCode === TEAM_CODE)
+  );
   const divisions = await mapLimit(mine, 1, (d) => buildDivision(year, d.divisionCode, d.divisionName, d.divisionGender));
 
   const forecast: Forecast = {

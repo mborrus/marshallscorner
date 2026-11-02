@@ -12,13 +12,15 @@
 import fs from 'fs';
 import path from 'path';
 import { getDivisionTeams, getDivisions, getLatestYear } from '../src/lib/nyrr/collect';
-import { TEAM_CODE } from '../src/lib/nyrr/standings';
+import { TEAM_CODE, isOpenDivision } from '../src/lib/nyrr/standings';
 
 const DIR = path.join(process.cwd(), 'content', 'nyrr', 'snapshots');
 
 async function current() {
   const year = await getLatestYear();
-  const mine = (await getDivisions(year)).filter((d) => d.teamResults.some((t) => t.teamCode === TEAM_CODE));
+  const mine = (await getDivisions(year)).filter(
+    (d) => isOpenDivision(d.divisionCode) && d.teamResults.some((t) => t.teamCode === TEAM_CODE)
+  );
   const divisions = [];
   for (const d of mine) {
     const teams = await getDivisionTeams(year, d.divisionCode);

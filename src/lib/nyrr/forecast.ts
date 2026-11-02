@@ -40,7 +40,8 @@ export interface ForecastTeam {
   teamCode: string;
   teamName: string;
   place: number;
-  points: number;
+  points: number; // NYRR's running total (every race)
+  counted: number; // with the lowest scores dropped, as the year-end ranking counts them
   pFirst: number;
   pTop2: number;
   meanPoints: number;
@@ -97,6 +98,8 @@ export interface DivisionForecast {
   divisionName: string;
   gender: string;
   racesDone: number;
+  // Lowest race scores left out of the year-end total
+  droppedRaces: number;
   remainingRaces: ForecastRace[];
   teams: ForecastTeam[];
   needs: NeedsRow[];

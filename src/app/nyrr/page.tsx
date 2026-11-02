@@ -7,6 +7,7 @@ import {
   getDivisionDetail,
   getDivisions,
   getLatestYear,
+  isOpenDivision,
   type Division,
   type TeamResult,
 } from '@/lib/nyrr/standings';
@@ -43,7 +44,7 @@ export default async function NyrrPage() {
 
   const teamDivisions = await Promise.all(
     divisions
-      .filter((d) => d.teamResults.some((t) => t.teamCode === TEAM_CODE))
+      .filter((d) => isOpenDivision(d.divisionCode) && d.teamResults.some((t) => t.teamCode === TEAM_CODE))
       .map(async (division) => {
         const team = division.teamResults.find((t) => t.teamCode === TEAM_CODE)!;
         const detail = await getDivisionDetail(division.divisionCode, year).catch(() => [] as TeamResult[]);
@@ -277,7 +278,8 @@ function Method({ generatedAt }: { generatedAt: string }) {
         <p>
           <strong>Simulating.</strong> Each simulation decides who shows up, draws each team&apos;s time from its
           strength plus race-day randomness, scores the race (15, 12, 10, 8, 6, 5, 4, 3, 2, 1, then 1 for any
-          other full team), and adds up the final standings. Ties for a promotion spot are split evenly.
+          other full team), and adds up the final standings the way the year-end ranking does: each
+          team&apos;s two lowest race scores are dropped. Ties for a promotion spot are split evenly.
         </p>
         <p>
           <strong>Checked against history.</strong> Replayed race by race through the 2022–2025 A and B
