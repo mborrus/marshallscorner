@@ -32,21 +32,25 @@
       "year": 2026,
       "race": "nyrr ted corbitt 15k",
       "team": "ManTC",
-      "kind": "asked",
+      "kind": "signed-up",
       "runners": [
-        "d9f9127bbbc48718",
         "366d855cd4341833",
-        "f34c3afec9ec153d",
-        "563cdc89dad3d3d0",
-        "71122568648c903f",
-        "3164d46b9fdd7eac",
         "9e328f1461f2ecce",
         "5ec9b34a0b2b7c3a",
+        "3164d46b9fdd7eac",
+        "d9f9127bbbc48718",
+        "9664a73a99c5a7a5",
         "402c9cab7e15086b",
-        "a13c4bc8c6bd0208"
+        "5baa495b1a5cf823",
+        "df48173e6c820266",
+        "a13c4bc8c6bd0208",
+        "71122568648c903f",
+        "563cdc89dad3d3d0",
+        "6ad1a1e83e68e745",
+        "f34c3afec9ec153d"
       ],
       "unmatched": 0,
-      "updated": "2026-10-24"
+      "updated": "2026-11-02"
     }
   ]
 }

@@ -220,15 +220,28 @@ export async function collectDivision(
     races: Object.fromEntries(
       published.map((r) => [
         r.eventCode,
-        {
-          score: scoreOf(t.teamCode, r),
-          points: t.eventDetails?.find((x) => x.eventCode === r.eventCode)?.points ?? 0,
-        },
+        (() => {
+          const score = scoreOf(t.teamCode, r);
+          const points = t.eventDetails?.find((x) => x.eventCode === r.eventCode)?.points ?? 0;
+          return { score, points, fielded: score !== null || points > 0 };
+        })(),
       ])
     ),
   }));
 
   return { races, teams };
+}
+
+// Club points every team earned at each race in a season, across the open
+// divisions of one gender (team → event code → points)
+async function seasonPoints(year: number, gender: string): Promise<Map<string, Record<string, number>>> {
+  const points = new Map<string, Record<string, number>>();
+  for (const level of ['A', 'B', 'C']) {
+    for (const t of await getDivisionTeams(year, `${level}${gender}`).catch(() => [])) {
+      points.set(t.teamCode, Object.fromEntries((t.eventDetails ?? []).map((e) => [e.eventCode, e.points ?? 0])));
+    }
+  }
+  return points;
 }
 
 // Did each team field a full team at this same race in earlier seasons?
@@ -251,9 +264,11 @@ export async function collectHistory(
     const awards = await mapLimit(present, 8, (t) => getAward(match.eventCode, t, gender));
     const required = Math.max(0, ...awards.map((a) => a?.runnersCount ?? 0));
     scorers ||= required;
+    const points = await seasonPoints(year, gender);
     present.forEach((t, i) => {
       history[t].seasons++;
-      if (awards[i] && awards[i]!.runnersCount >= required) history[t].fielded++;
+      const fullAward = awards[i] && awards[i]!.runnersCount >= required;
+      if (fullAward || (points.get(t)?.[match.eventCode] ?? 0) > 0) history[t].fielded++;
     });
   }
   return { history, scorers, lastEventCode };

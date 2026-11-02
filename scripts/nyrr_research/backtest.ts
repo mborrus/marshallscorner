@@ -89,7 +89,7 @@ async function main() {
         }
         for (const t of season.teams) {
           const p = fieldProbability(t, train, hist[t.teamCode], params);
-          part.push({ p, y: t.races[target.eventCode]?.score != null ? 1 : 0, hw: params.historyWeight });
+          part.push({ p, y: t.races[target.eventCode]?.fielded ? 1 : 0, hw: params.historyWeight });
           const st = simTeams.find((s) => s.teamCode === t.teamCode)!;
           st.fit[target.eventCode] = fit.teams[t.teamCode];
           st.fieldProb[target.eventCode] = p;

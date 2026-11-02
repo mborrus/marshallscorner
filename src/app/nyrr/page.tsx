@@ -161,6 +161,10 @@ function RaceByRace({
   forecast?: DivisionForecast;
 }) {
   const history = forecast?.history;
+  const todayTop2 = forecast?.teams.find((t) => t.teamCode === TEAM_CODE)?.pTop2;
+  const byCounted = [...(forecast?.teams ?? [])].sort((a, b) => b.counted - a.counted);
+  const focusCounted = byCounted.find((t) => t.teamCode === TEAM_CODE)?.counted;
+  const gapToSecond = focusCounted !== undefined && byCounted[1] ? byCounted[1].counted - focusCounted : undefined;
   const leaderboard = forecast?.leaderboard ?? [];
   const top = detail.slice(0, 5);
   const chartTeams = top.some((t) => t.teamCode === TEAM_CODE)
@@ -174,15 +178,18 @@ function RaceByRace({
         <>
           <h3 className={styles.subhead}>Chance of a top 2 finish after each race</h3>
           <p className={styles.muted}>
-            What the forecast would have said right after each race, using only results up to then (without
-            sign-up lists, which didn&apos;t exist yet). Early-season odds are the shakiest: with many races
-            left, teams can rise or fade in ways no model sees coming. Click a race to see the standings at that
-            point.
+            What the forecast would have said right after each race, using only results up to then. Early in
+            the season the odds lean on last season&apos;s results, so a team that was strong last year can look
+            likely to move up before it has scored much. These replays leave out sign-up lists, so the last
+            point can differ from today&apos;s forecast above
+            {todayTop2 !== undefined && <> (which has {team.teamName} at {formatPct(todayTop2)} for a top 2 finish)</>}
+            . Click a race to see the standings at that point.
           </p>
           <SeasonHistory
             history={history}
             teamNames={Object.fromEntries(detail.map((t) => [t.teamCode, t.teamName]))}
             focusCode={TEAM_CODE}
+            gapToSecond={gapToSecond}
           />
         </>
       )}

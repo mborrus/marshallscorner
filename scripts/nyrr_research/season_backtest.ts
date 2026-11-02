@@ -93,7 +93,7 @@ function distanceGroup(m: number): string {
             team: t.teamCode,
             hadData: f.races > 0,
             pField: simTeams[i].fieldProb[target.eventCode],
-            fielded: actual !== null ? 1 : 0,
+            fielded: t.races[target.eventCode]?.fielded ? 1 : 0,
             predicted: race.targetEffect + k * f.strength,
             sd: Math.sqrt(k * k * (f.sigma ** 2 + f.strengthSe ** 2) + race.extraSigma ** 2),
             actual,

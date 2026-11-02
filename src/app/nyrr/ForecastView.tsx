@@ -25,7 +25,7 @@ export default function ForecastView({ division, focusCode }: Props) {
   const totalRaces = division.racesDone + division.remainingRaces.length;
   const countsNote =
     division.droppedRaces > 0
-      ? `Points count each team's best ${totalRaces - division.droppedRaces} of ${totalRaces} races: the year-end ranking drops the ${division.droppedRaces} lowest scores (missed races are 0), while NYRR's running totals, shown in brackets, add every race.`
+      ? `Points count each team's best ${totalRaces - division.droppedRaces} of ${totalRaces} races: the year-end ranking drops the ${division.droppedRaces} lowest scores (missed races are 0), so these totals already leave out each team's ${division.droppedRaces} worst so far. NYRR's running totals, in brackets, add every race. A team's final total is about this plus what it scores in the ${division.remainingRaces.length === 1 ? 'last race' : 'races left'}; if that score is worse than ones already dropped, it gets dropped instead, so no team can finish below its total with only its single worst race left out.`
       : null;
   const next = division.remainingRaces[0];
   const nextLineup = next && division.lineups[next.eventCode];
@@ -39,13 +39,17 @@ export default function ForecastView({ division, focusCode }: Props) {
   const inPromotion = rank(focus) <= PROMOTED;
   const gapToLine = inPromotion ? focus.counted - (third?.counted ?? 0) : second.counted - focus.counted;
 
-  // Places down to the last one that still gives a real (1%+) promotion chance
+  // Once promotion is certain, the race that matters is for the title
+  const goal = focus.pTop2 > 0.999 && focus.pFirst > 0 ? 'title' : 'promotion';
+  const given = (n: { pTop2Given: number | null; pFirstGiven: number | null }) =>
+    goal === 'title' ? n.pFirstGiven : n.pTop2Given;
+  // Places down to the last one that still gives a real (1%+) chance
   const lastUseful = Math.max(
     3,
-    ...division.needs.filter((n) => n.place !== null && (n.pTop2Given ?? 0) >= 0.01).map((n) => n.place!)
+    ...division.needs.filter((n) => n.place !== null && (given(n) ?? 0) >= 0.01).map((n) => n.place!)
   );
   const needs = division.needs.filter((n) => n.place === null || n.place <= lastUseful);
-  const placeNeeded = division.needs.find((n) => n.place !== null && (n.pTop2Given ?? 0) >= 0.5);
+  const placeNeeded = division.needs.find((n) => n.place !== null && (given(n) ?? 0) >= 0.5);
   const winRow = division.needs.find((n) => n.place === 1);
 
   if (!next) {
@@ -67,7 +71,7 @@ export default function ForecastView({ division, focusCode }: Props) {
         <div className={`${styles.card} win98-box`}>
           <p className={styles.cardLabel}>{inPromotion ? 'Cushion' : 'Gap to 2nd'}</p>
           <p className={styles.bigNumber}>
-            {gapToLine} <span className={styles.unit}>pts</span>
+            {gapToLine} <span className={styles.unit}>{gapToLine === 1 ? 'pt' : 'pts'}</span>
           </p>
           <p className={styles.muted}>
             {ordinal(rank(focus))} with {focus.counted} &middot;{' '}
@@ -94,18 +98,20 @@ export default function ForecastView({ division, focusCode }: Props) {
           .map((r) => `${shortEventName(r.eventName)} (${formatDay(r.date)}, top ${r.scorers} score)`)
           .join(' and ')}
         .{' '}
+        {goal === 'title' && <>Promotion is locked up; what&apos;s left is the division title. </>}
         {placeNeeded ? (
           <>
             The clearest path: <strong>{placeNeeded.place === 1 ? 'win' : `finish ${ordinal(placeNeeded.place!)} or better at`}</strong> the{' '}
             {shortEventName(next.eventName)}, which means the top {next.scorers} averaging about{' '}
             <strong>{formatDuration(placeNeeded.cutoffAvgSeconds ?? 0)}</strong>. That gives a{' '}
-            {formatPct(placeNeeded.pTop2Given ?? 0)} promotion chance.
+            {formatPct(given(placeNeeded) ?? 0)} {goal === 'title' ? 'chance of winning the division' : 'promotion chance'}.
           </>
         ) : (
           <>
             Even winning the {shortEventName(next.eventName)} (top {next.scorers} averaging about{' '}
             {winRow?.cutoffAvgSeconds ? formatDuration(winRow.cutoffAvgSeconds) : '?'}) only gives a{' '}
-            {formatPct(winRow?.pTop2Given ?? 0)} promotion chance. {focusName} also needs teams ahead to have bad days.
+            {formatPct(winRow ? given(winRow) ?? 0 : 0)} {goal === 'title' ? 'chance of winning the division' : 'promotion chance'}.{' '}
+            {focusName} also needs teams ahead to have bad days.
           </>
         )}
       </p>
@@ -176,9 +182,9 @@ export default function ForecastView({ division, focusCode }: Props) {
       <section className={styles.section}>
         <h2>What {focusName} needs at the {shortEventName(next.eventName)}</h2>
         <p>
-          Each row is a finishing place among the division&apos;s teams. The time is what {focusName}&apos;s top{' '}
-          {next.scorers} would need to average to beat the team that usually lands one spot behind (median over
-          the simulations).
+          Each row is a finishing place among the division&apos;s teams. The time is roughly what {focusName}
+          &apos;s top {next.scorers} would need to average to finish that high (the middle of the simulations). A
+          tie on points counts as half a chance, since NYRR doesn&apos;t publish a tiebreak.
           {division.remainingRaces.length > 1 &&
             ` Promotion odds still include the ${division.remainingRaces.slice(1).map((r) => shortEventName(r.eventName)).join(' and ')}.`}
         </p>
@@ -190,7 +196,7 @@ export default function ForecastView({ division, focusCode }: Props) {
                 <th className={styles.num}>Pts</th>
                 <th className={styles.num}>Avg time needed</th>
                 <th className={styles.num}>Chance of this</th>
-                <th>Promoted if so</th>
+                <th>{goal === 'title' ? 'Wins division if so' : 'Promoted if so'}</th>
               </tr>
             </thead>
             <tbody>
@@ -202,7 +208,13 @@ export default function ForecastView({ division, focusCode }: Props) {
                     {n.place && n.cutoffAvgSeconds ? `under ${formatDuration(n.cutoffAvgSeconds)}` : '–'}
                   </td>
                   <td className={styles.num}>{formatPct(n.pPlace)}</td>
-                  <td>{n.pTop2Given !== null && n.samples >= 200 ? <ProbBar p={n.pTop2Given} /> : <span className={styles.muted}>too rare to say</span>}</td>
+                  <td>
+                    {given(n) !== null && n.samples >= 200 ? (
+                      <ProbBar p={given(n)!} />
+                    ) : (
+                      <span className={styles.muted}>too rare to say</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

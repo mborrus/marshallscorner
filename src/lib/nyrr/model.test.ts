@@ -108,12 +108,15 @@ test('turnout starts near the usual rate and follows the team', () => {
   const races = [race('A', '2026-03-01'), race('B', '2026-04-01')];
   const always: TeamSeason = {
     teamCode: 'T', teamName: 'T', place: 1, totalPoints: 0,
-    races: { A: { score: 7, points: 15 }, B: { score: 7, points: 15 } },
+    races: { A: { score: 7, points: 15, fielded: true }, B: { score: 7, points: 15, fielded: true } },
   };
   const never: TeamSeason = { ...always, races: {} };
   assert.ok(fieldProbability(always, [], undefined) > 0.75);
   assert.ok(fieldProbability(always, races, undefined) > fieldProbability(never, races, undefined));
   assert.ok(fieldProbability(never, races, { fielded: 2, seasons: 2 }) > fieldProbability(never, races, undefined));
+  // Points without a listed team score still count as fielding a team
+  const pointsOnly: TeamSeason = { ...never, races: { A: { score: null, points: 1, fielded: true } } };
+  assert.ok(fieldProbability(pointsOnly, races, undefined) > fieldProbability(never, races, undefined));
 });
 
 test('runner attendance rises with races run and last year', () => {
@@ -164,7 +167,7 @@ test('race names drop the year and sponsor', () => {
 test('a missed race is valued by where the team would have finished', () => {
   const races = [race('A', '2026-03-01'), race('B', '2026-04-01'), race('C', '2026-05-01')];
   const scoresOf = (a: number, b: number, c: number | null) => ({
-    A: { score: a, points: 0 }, B: { score: b, points: 0 }, C: { score: c, points: 0 },
+    A: { score: a, points: 0, fielded: true }, B: { score: b, points: 0, fielded: true }, C: { score: c, points: 0, fielded: c !== null },
   });
   const teams: TeamSeason[] = [
     { teamCode: 'FAST', teamName: '', place: 1, totalPoints: 0, races: scoresOf(7.0, 7.0, null) },

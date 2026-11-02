@@ -23,9 +23,12 @@ export interface RaceInfo {
 }
 
 export interface TeamRace {
-  // log(mean scorer time in seconds), null when no full team
+  // log(mean scorer time in seconds), null when NYRR's team results don't list one
   score: number | null;
   points: number;
+  // Fielded a full team. NYRR's team results leave out some low-placed teams,
+  // so any points (even the 1 for finishing 10th or lower) also count.
+  fielded: boolean;
 }
 
 export interface TeamSeason {
@@ -343,7 +346,7 @@ export function fieldProbability(
   params: ModelParams = DEFAULT_PARAMS
 ): number {
   const done = races.filter((r) => r.published);
-  const fielded = done.filter((r) => team.races[r.eventCode]?.score != null).length;
+  const fielded = done.filter((r) => team.races[r.eventCode]?.fielded).length;
   const hw = params.historyWeight;
   const hf = history?.fielded ?? 0;
   const hn = history?.seasons ?? 0;
@@ -432,6 +435,7 @@ export interface NeedsRow {
   pPlace: number;
   cutoffAvgSeconds: number | null; // avg scorer time needed to finish this high
   pTop2Given: number | null;
+  pFirstGiven: number | null;
   samples: number;
 }
 
@@ -442,6 +446,7 @@ export interface ScenarioCell {
   second: number | null;
   p: number;
   pTop2: number;
+  pFirst: number;
   samples: number;
 }
 
@@ -500,8 +505,8 @@ export function simulate(
     )
   );
   // Needs table: keyed by focus team's place in the next race (0 = no team)
-  const needs = new Map<number, { count: number; top2: number }>();
-  const scenarios = new Map<string, { count: number; top2: number }>();
+  const needs = new Map<number, { count: number; top2: number; first: number }>();
+  const scenarios = new Map<string, { count: number; top2: number; first: number }>();
   const cutoffs: number[][] = teams.map(() => []);
 
   for (let s = 0; s < sims; s++) {
@@ -570,18 +575,21 @@ export function simulate(
       top2[i] += slotShare(table[i], 2);
       pointSums[i] += totals[i];
       if (finals[i].length < 20000) finals[i].push(totals[i]);
-      placeCounts[i][table[i].better]++;
+      // Tied teams share the places they tie for, as the title and promotion odds do
+      for (let p = table[i].better; p < table[i].better + table[i].tied; p++) placeCounts[i][p] += 1 / table[i].tied;
     }
     if (focusIdx >= 0) {
-      const row = needs.get(focusNextPlace) ?? { count: 0, top2: 0 };
+      const row = needs.get(focusNextPlace) ?? { count: 0, top2: 0, first: 0 };
       row.count++;
       row.top2 += slotShare(table[focusIdx], 2);
+      row.first += slotShare(table[focusIdx], 1);
       needs.set(focusNextPlace, row);
       if (races.length >= 2) {
         const key = `${focusNextPlace}|${focusSecondPlace}`;
-        const cell = scenarios.get(key) ?? { count: 0, top2: 0 };
+        const cell = scenarios.get(key) ?? { count: 0, top2: 0, first: 0 };
         cell.count++;
         cell.top2 += slotShare(table[focusIdx], 2);
+        cell.first += slotShare(table[focusIdx], 1);
         scenarios.set(key, cell);
       }
     }
@@ -621,7 +629,7 @@ export function simulate(
   if (focusIdx >= 0 && next) {
     const maxPlace = Math.max(...needs.keys());
     for (let place = 1; place <= maxPlace; place++) {
-      const row = needs.get(place) ?? { count: 0, top2: 0 };
+      const row = needs.get(place) ?? { count: 0, top2: 0, first: 0 };
       // To finish k-th you must beat the k-th best of the other teams
       const c = cutoffs[place - 1].filter((x) => Number.isFinite(x)).sort((p, q) => p - q);
       needsRows.push({
@@ -629,6 +637,7 @@ export function simulate(
         pPlace: row.count / sims,
         cutoffAvgSeconds: c.length > sims * 0.5 ? Math.exp(quantile(c, 0.5)) : null,
         pTop2Given: row.count ? row.top2 / row.count : null,
+        pFirstGiven: row.count ? row.first / row.count : null,
         samples: row.count,
       });
     }
@@ -639,6 +648,7 @@ export function simulate(
         pPlace: none.count / sims,
         cutoffAvgSeconds: null,
         pTop2Given: none.top2 / none.count,
+        pFirstGiven: none.first / none.count,
         samples: none.count,
       });
     }
@@ -646,7 +656,14 @@ export function simulate(
 
   const scenarioCells: ScenarioCell[] = [...scenarios].map(([key, cell]) => {
     const [a, b] = key.split('|').map(Number);
-    return { first: a || null, second: b || null, p: cell.count / sims, pTop2: cell.top2 / cell.count, samples: cell.count };
+    return {
+      first: a || null,
+      second: b || null,
+      p: cell.count / sims,
+      pTop2: cell.top2 / cell.count,
+      pFirst: cell.first / cell.count,
+      samples: cell.count,
+    };
   });
 
   return { sims, teams: teamResults, needs: needsRows, scenarios: scenarioCells };
