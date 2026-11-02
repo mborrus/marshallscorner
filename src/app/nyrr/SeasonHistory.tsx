@@ -16,9 +16,11 @@ interface Props {
   history: HistoryRace[];
   teamNames: Record<string, string>;
   focusCode: string;
+  // Points behind 2nd today, counted the year-end way
+  gapToSecond?: number;
 }
 
-export default function SeasonHistory({ history, teamNames, focusCode }: Props) {
+export default function SeasonHistory({ history, teamNames, focusCode, gapToSecond }: Props) {
   const [selected, setSelected] = useState(history.length - 1);
   if (!history.length) return null;
   const race = history[selected];
@@ -48,9 +50,6 @@ export default function SeasonHistory({ history, teamNames, focusCode }: Props) 
   // Points the focus team likely missed by not fielding full teams
   const missed = history.filter((h) => h.focusMargins.missed);
   const missedPoints = missed.reduce((s, h) => s + h.focusMargins.missed!.points, 0);
-  const now = history[history.length - 1].teams;
-  const focusNow = now.find((t) => t.teamCode === focusCode);
-  const secondNow = [...now].sort((a, b) => b.total - a.total)[1];
   const closeCalls = history.filter((h) => h.focusMargins.ahead && h.focusMargins.ahead.seconds < 20);
 
   return (
@@ -63,16 +62,17 @@ export default function SeasonHistory({ history, teamNames, focusCode }: Props) 
               {missed.length === 1 ? 'race' : 'races'} without a full team (
               {missed.map((h) => shortEventName(h.eventName)).join(', ')}), going by how a typical{' '}
               {teamNames[focusCode]} team was running then.
-              {focusNow && secondNow && focusNow.teamCode !== secondNow.teamCode && focusNow.total < secondNow.total && (
-                <> The gap to 2nd is {secondNow.total - focusNow.total}.</>
-              )}{' '}
+              {gapToSecond !== undefined && gapToSecond > 0 && <> The gap to 2nd is {gapToSecond}.</>}{' '}
             </>
           )}
           {closeCalls.length > 0 && (
             <>
               <strong>Close calls:</strong>{' '}
               {closeCalls
-                .map((h) => `${Math.round(h.focusMargins.ahead!.seconds)}s per runner from +${h.focusMargins.ahead!.points} at the ${shortEventName(h.eventName)}`)
+                .map(
+                  (h) =>
+                    `${Math.round(h.focusMargins.ahead!.seconds)}s per runner short of ${h.focusMargins.ahead!.points} more points at the ${shortEventName(h.eventName)}`
+                )
                 .join('; ')}
               .
             </>
@@ -183,7 +183,7 @@ export default function SeasonHistory({ history, teamNames, focusCode }: Props) 
               <th className={styles.num}>Race</th>
               <th className={styles.num} title="Team's average scorer time">Avg time</th>
               <th className={styles.num}>Pts</th>
-              <th className={styles.num}>Total</th>
+              <th className={styles.num} title="NYRR's running total: every race counts">NYRR total</th>
               <th>Top 2 odds</th>
             </tr>
           </thead>
@@ -199,7 +199,17 @@ export default function SeasonHistory({ history, teamNames, focusCode }: Props) 
                     {move < 0 && <span className={styles.down}> ▼{-move}</span>}
                   </td>
                   <td>{teamNames[t.teamCode]}</td>
-                  <td className={styles.num}>{t.racePlace ? ordinal(t.racePlace) : <span className={styles.muted}>no team</span>}</td>
+                  <td className={styles.num}>
+                    {t.racePlace ? (
+                      ordinal(t.racePlace)
+                    ) : t.points > 0 ? (
+                      <span className={styles.muted} title="NYRR gave points but posted no team time">
+                        –
+                      </span>
+                    ) : (
+                      <span className={styles.muted}>no team</span>
+                    )}
+                  </td>
                   <td className={styles.num}>{t.avgSeconds ? formatDuration(t.avgSeconds) : '–'}</td>
                   <td className={styles.num}>{t.points ? `+${t.points}` : 0}</td>
                   <td className={styles.num}>{t.total}</td>
@@ -231,7 +241,9 @@ export default function SeasonHistory({ history, teamNames, focusCode }: Props) 
             {race.focusRunners.length} finished;{' '}
             {race.focusRunners.some((r) => r.scored)
               ? `✓ the ${race.scorers} who scored`
-              : `fewer than ${race.scorers}, so no team score`}
+              : race.focusRunners.length >= race.scorers
+                ? 'but NYRR posted no team score for them'
+                : `fewer than ${race.scorers}, so no team score`}
             .
           </p>
         </>

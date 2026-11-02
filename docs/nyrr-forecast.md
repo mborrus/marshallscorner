@@ -74,12 +74,23 @@ Quirks:
 - Team score = combined time of the top N team finishers of that gender. **N = 5 at most races,
   3 at the NYC Marathon, 10 at the Team Championships.**
 - **Team Championships count double** (30, 24, 20, …).
-- **The year-end ranking drops each team's two lowest race scores** (missed races count as 0), per
-  Marshall and NBR's team points page ("top 8 races" of 10 in 2025). NYRR's posted running totals add every
+- **The year-end ranking drops each team's two lowest race scores** (missed races count as 0). Written on
+  club sites, not readable on NYRR's own page (its waiting room blocks automated visits): NY Flyers' points
+  page ("each club's point totals in the nine best races of the series (the lowest two scores for each club
+  will be automatically dropped)", 11-race 2024 series) and NBR's team points page ("top 8 races" of 10 in
+  2025). History can't confirm it: in 2022–2025 every promoted B/C team was top 2 either way (dropping never
+  changed the top 2). 2026 Men B is the first season where it decides promotion. NYRR's posted running totals add every
   race (checked 2023–2026), so the drop seems to apply only to the final ranking. 2026 has 12 races → best
-  10 count. `droppedRaces` (2) in the model; `counted` in `forecast.json` = points so far with the lowest
-  ones dropped as far as the remaining races allow (the floor if a team scores nothing more). Backtests
+  10 count. `droppedRaces` (2) in the model; `counted` in `forecast.json` = points so far with the two
+  lowest already dropped (Erin's "effective total"): the final is about this plus what's scored in the races
+  left, except that a score worse than ones already dropped is dropped instead (so the floor is the running
+  total minus only the single worst). Backtests
   still score finals on NYRR's raw totals (whether past promotions used the drop isn't confirmed).
+- **NYRR's team-results lookup (`awards/teamAwards`) leaves out some full teams** (often ones placed 10th+:
+  e.g. Van Cortlandt men, QDR/Taconic/West Side women at the 2026 marathon, all given 1 point). So
+  "fielded a full team" = a listed team score **or** any points that race (`TeamRace.fielded`), including in
+  past-season attendance (`seasonPoints`). Before this fix turnout was undercounted; turnout Brier in the
+  pre-marathon backtest 0.094 → 0.073, and marathon turnout turned out to be ~98% (model said ~91%).
 - **Age-group divisions** (40M, 50W, …) score only older runners (team awards with `minimumAge` 40+). The
   forecast and tabs cover open A/B/C divisions only (`isOpenDivision`). MTC men scored in 40M at the 2026
   marathon; including it made the build 6+ minutes and gave two "men" tabs.
@@ -241,6 +252,22 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
 - **Nov 2 (after the marathon, with the drop rule):** men B counted Rebeldes 133, Lone Wolf 107,
   Hellgate 106, MTC 102 → MTC promotion ~49%; a Corbitt win → certain, 2nd → ~57%. Women B: promotion
   locked, title ~41% (NY Flyers 126 counted vs MTC 115). Marathon: MTC men 6th (+5), women 1st (+15).
+
+- **Erin's Corbitt projections (Nov 2) checked:** effective totals (Hellgate 102, Lone Wolf 101, MTC 101;
+  NY Flyers floor 126; POLSKA max 107), every scenario row, and the Bronx/SI/Corbitt-2025 team times all match
+  NYRR data. Only caveat: "whoever of the three finishes highest takes 2nd" fails for low finishes, because a
+  score below a team's second-lowest is dropped instead (Lone Wolf's floor is 107); her "5th or lower: risky"
+  row covers it. Her runner estimates use registration paces, ~3–5% faster than our results-based projections.
+- **Marathon prediction vs result (Nov 1):** all 26 division teams fielded (model gave some weak teams low
+  odds: the awards bug above). Winners: women MTC (model favourite, 40%); men URC (7%; favourite Rebeldes 20%
+  finished 5th) — consistent with B marathons being near toss-ups. MTC top-3 averages: men predicted 2:50:56
+  vs 2:45:38 actual (−3.1%), women 3:11:18 vs 3:08:50 (−1.3%). Team-time rank correlation 0.48 (men),
+  0.40 (women). MTC individuals: men median +0.9% vs projection (wide spread: some ran easy), women −3.6%.
+- **Line-by-line review (Nov 2) fixed:** final place odds counted ties as a full 1st (women showed 67% 1st vs
+  51% title) — ties now split; "gap to 2nd" used one drop while Erin's sheet used two — now two;
+  season-chart last point (no lineups, 18%) vs headline (51%) — now explained on the page; "no team" shown
+  next to +1 points; "5 finished; fewer than 5"; the needs table showed "promoted 100%" on every row once
+  promotion was locked — it now shows title odds then.
 
 ## Gaps and ideas
 

@@ -75,7 +75,7 @@ function atLeast(ps: number[], k: number): number {
             expected: ps.reduce((a: number, b: number) => a + b, 0),
             roster: roster.length,
             k: target.scorers,
-            y: t.races[target.eventCode]?.score != null ? 1 : 0,
+            y: t.races[target.eventCode]?.fielded ? 1 : 0,
           });
         }
       }

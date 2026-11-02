@@ -284,9 +284,9 @@ async function buildDivision(
   }
 
   const result = simulate(simTeams, simRaces, TEAM_CODE, SIMS, undefined, params.droppedRaces);
-  // Points that count so far: if the season ended with zeros, this is where each team would finish
-  const droppedNow = Math.max(0, params.droppedRaces - remaining.length);
-  const counted = simTeams.map((t) => countedPoints(t.racePoints ?? [], droppedNow));
+  // Points so far with each team's lowest scores already dropped: roughly, a team's
+  // final total is this plus what it scores in the races left
+  const counted = simTeams.map((t) => countedPoints(t.racePoints ?? [], params.droppedRaces));
   const next = remaining[0];
 
   // The page never shows who is on a sign-up or invite list: only this season's
@@ -367,6 +367,9 @@ function checkForecast(forecast: Forecast) {
     for (const t of d.teams) {
       if (![t.pTop2, t.pFirst].every(isProb)) problems.push(`${where} ${t.teamCode}: odds out of range`);
       if (t.meanPoints < t.counted - 1e-9) problems.push(`${where} ${t.teamCode}: projected below counted points`);
+      const placeSum = t.placeDistribution.reduce((s, p) => s + p, 0);
+      if (Math.abs(placeSum - 1) > 1e-6) problems.push(`${where} ${t.teamCode}: place odds add to ${placeSum}`);
+      if (Math.abs(t.placeDistribution[0] - t.pFirst) > 1e-6) problems.push(`${where} ${t.teamCode}: 1st place odds differ from title odds`);
       for (const [code, r] of Object.entries(t.races)) {
         if (!isProb(r.pField)) problems.push(`${where} ${t.teamCode} ${code}: bad turnout ${r.pField}`);
         if (r.pField > 0 && !Number.isFinite(r.medianAvgSeconds)) problems.push(`${where} ${t.teamCode} ${code}: no time`);
