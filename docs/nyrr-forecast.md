@@ -82,7 +82,7 @@ Quirks:
   changed the top 2). 2026 Men B is the first season where it decides promotion. NYRR's posted running totals add every
   race (checked 2023–2026), so the drop seems to apply only to the final ranking. 2026 has 12 races → best
   10 count. `droppedRaces` (2) in the model; `counted` in `forecast.json` = points so far with the two
-  lowest already dropped (Erin's "effective total"): the final is about this plus what's scored in the races
+  lowest already dropped (the "effective total" clubs usually quote): the final is about this plus what's scored in the races
   left, except that a score worse than ones already dropped is dropped instead (so the floor is the running
   total minus only the single worst). Backtests
   still score finals on NYRR's raw totals (whether past promotions used the drop isn't confirmed).
@@ -253,7 +253,7 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   Hellgate 106, MTC 102 → MTC promotion ~49%; a Corbitt win → certain, 2nd → ~57%. Women B: promotion
   locked, title ~41% (NY Flyers 126 counted vs MTC 115). Marathon: MTC men 6th (+5), women 1st (+15).
 
-- **Erin's Corbitt projections (Nov 2) checked:** effective totals (Hellgate 102, Lone Wolf 101, MTC 101;
+- **A teammate's Corbitt projection sheet (Nov 2) checked:** effective totals (Hellgate 102, Lone Wolf 101, MTC 101;
   NY Flyers floor 126; POLSKA max 107), every scenario row, and the Bronx/SI/Corbitt-2025 team times all match
   NYRR data. Only caveat: "whoever of the three finishes highest takes 2nd" fails for low finishes, because a
   score below a team's second-lowest is dropped instead (Lone Wolf's floor is 107); her "5th or lower: risky"
@@ -264,7 +264,7 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   vs 2:45:38 actual (−3.1%), women 3:11:18 vs 3:08:50 (−1.3%). Team-time rank correlation 0.48 (men),
   0.40 (women). MTC individuals: men median +0.9% vs projection (wide spread: some ran easy), women −3.6%.
 - **Line-by-line review (Nov 2) fixed:** final place odds counted ties as a full 1st (women showed 67% 1st vs
-  51% title) — ties now split; "gap to 2nd" used one drop while Erin's sheet used two — now two;
+  51% title) — ties now split; "gap to 2nd" used one drop while the teammate's sheet used two — now two;
   season-chart last point (no lineups, 18%) vs headline (51%) — now explained on the page; "no team" shown
   next to +1 points; "5 finished; fewer than 5"; the needs table showed "promoted 100%" on every row once
   promotion was locked — it now shows title odds then.
