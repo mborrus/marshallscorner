@@ -1,0 +1,152 @@
+/* Training tracker - mobile first */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.kicker {
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.statLabel {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.bigNumber {
+  font-family: var(--font-pixel);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.toolbar {
+  margin: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: #fc4c02;
+  color: #fff !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.runs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.run {
+  background: var(--color-bg-panel);
+  border: 2px solid var(--border-mid);
+  border-left-width: 6px;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.run select {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
+
+.runHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.miles {
+  margin-left: auto;
+  font-family: var(--font-pixel);
+  font-size: 1.3rem;
+}
+
+.runBody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.badge {
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0 6px;
+  border: 1px solid currentColor;
+}
+
+.done { border-left-color: #2e8b57; }
+.done .badge { color: #2e8b57; }
+.upcoming { border-left-color: #336699; }
+.upcoming .badge { color: #336699; }
+.missed { border-left-color: #b00020; }
+.missed .badge { color: #b00020; }
+.skipped, .optional { border-left-color: #a89f8f; opacity: 0.8; }
+.skipped .badge, .optional .badge { color: #5a5a5a; }
+.unplanned { border-left-color: #8a2be2; border-style: dashed; }
+.unplanned .badge { color: #8a2be2; }
+
+.flag {
+  color: #b5541a;
+  font-weight: bold;
+  margin: 0;
+}
+
+.note {
+  font-style: italic;
+}
+
+.week {
+  margin-bottom: var(--spacing-sm);
+}
+
+.week summary {
+  cursor: pointer;
+  padding: var(--spacing-sm) 0;
+}
+
+.warn {
+  color: #b00020;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 320px;
+}
+
+.login input,
+.login button {
+  font-size: 1rem;
+  padding: 0.4rem;
+}

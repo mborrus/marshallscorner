@@ -125,6 +125,13 @@ Keep that file updated with anything new you learn.
 - Team sign-up lists: `npx tsx scripts/nyrr_lineup.ts [--asked] <year> "<race>" ManTC "Name" ...`
   (names are stored hashed; the repo is public).
 
+## Training tracker (`/training`)
+
+Password-protected half-marathon plan + Strava tracker. See `docs/training.md` for setup, env
+vars and how matching works. Plan lives in `content/training/plan.json`; matcher tests run with
+`npm test`.
+
 ## External Services
 - **Vercel KV:** Visitor counter API (`/api/visitor-count`)
+- **Postgres (Neon) + Strava API:** training tracker
 - **Leaflet:** Pizza location maps (client-side)

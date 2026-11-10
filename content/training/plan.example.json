@@ -1,0 +1,694 @@
+{
+  "goal": {
+    "race": "Sample Half Marathon",
+    "date": "2027-03-21",
+    "time": "1:30:00"
+  },
+  "paces": {
+    "easy": "8:15-9:00",
+    "mtc": "see workout",
+    "long": "7:45-8:30",
+    "race": "6:52",
+    "extra": "8:30+"
+  },
+  "weeks": [
+    {
+      "start": "2026-11-09",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 9,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-11-16",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 10,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-11-23",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 11,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-11-30",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 5,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 8,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-12-07",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 7,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 11,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-12-14",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 7,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 12,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-12-21",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 7,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 12,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2026-12-28",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 9,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-01-04",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 7,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 13,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-01-11",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 8,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 13,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-01-18",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 8,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 14,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-01-25",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 10,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-02-01",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 8,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 14,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-02-08",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 8,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 15,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-02-15",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 9,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 15,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-02-22",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 7,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 12,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-03-01",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 8,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 6,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 13,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-03-08",
+      "note": "",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 6,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 5,
+          "note": ""
+        },
+        {
+          "day": "Sat/Sun",
+          "kind": "long",
+          "miles": 10,
+          "note": ""
+        },
+        {
+          "day": "Mon",
+          "kind": "extra",
+          "miles": 3,
+          "note": "Optional shakeout"
+        }
+      ]
+    },
+    {
+      "start": "2027-03-15",
+      "note": "Race week",
+      "runs": [
+        {
+          "day": "Tue",
+          "kind": "easy",
+          "miles": 4,
+          "note": ""
+        },
+        {
+          "day": "Wed",
+          "kind": "mtc",
+          "miles": 5,
+          "note": "MTC workout"
+        },
+        {
+          "day": "Fri",
+          "kind": "easy",
+          "miles": 3,
+          "note": ""
+        },
+        {
+          "day": "Sun",
+          "kind": "race",
+          "miles": 13.1,
+          "note": "Race day"
+        }
+      ]
+    }
+  ]
+}
