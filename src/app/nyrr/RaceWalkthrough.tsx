@@ -5,6 +5,7 @@
 import type { DivisionForecast, ForecastTeam, TeamForm } from '@/lib/nyrr/forecast';
 import { pointsForPlace } from '@/lib/nyrr/model';
 import { formatDuration, formatPct, ordinal, shortEventName } from '@/lib/nyrr/format';
+import { RuleTable, joinNames } from './OutcomeRules';
 import ProbBar from './ProbBar';
 import RangeChart, { axisLabel } from './RangeChart';
 import styles from './page.module.css';
@@ -30,7 +31,12 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
   const lineup = division.lineups[code];
   const focusName = teams.find((t) => t.teamCode === focusCode)?.teamName ?? focusCode;
   const maxGain = pointsForPlace(0, race.multiplier);
-  const given = (n: DivisionForecast['needs'][number]) => (goal === 'title' ? n.pFirstGiven : n.pTop2Given);
+  type Need = DivisionForecast['needs'][number];
+  const outrightGiven = (n: Need) => (goal === 'title' ? n.pFirstOutrightGiven : n.pTop2OutrightGiven);
+  const tiedGiven = (n: Need) => (goal === 'title' ? n.pFirstTiedGiven : n.pTop2TiedGiven);
+  const names = (teamCode: string) => division.teams.find((t) => t.teamCode === teamCode)?.teamName ?? teamCode;
+  // Teams made faster for the last race because their place is still open
+  const shifted = division.lastRaceShift.teams.filter((c) => teams.some((t) => t.teamCode === c));
   const needs = division.needs.filter((n) => n.pPlace >= 0.005);
 
   return (
@@ -78,6 +84,15 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
               it can be faster than its team results above. Its range is narrower because its lineup is known.
             </>
           )}
+          {shifted.length > 0 && (
+            <>
+              {' '}
+              {joinNames(shifted.map(names))} still {shifted.length === 1 ? 'has its' : 'have their'} place to race
+              for. In 2022&ndash;2025, teams in that spot ran the last race about 3.5% faster than their season form
+              (most likely by sending their best runners), so {shifted.length === 1 ? 'its time here is' : 'their times here are'}{' '}
+              {Math.round(-division.lastRaceShift.shift * 1000) / 10}% faster than the season alone suggests.
+            </>
+          )}
         </p>
         <TimeRanges teams={teams} code={code} focusCode={focusCode} />
       </Step>
@@ -109,8 +124,19 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
       <Step n={6} title={`What each ${focusName} finish means`}>
         <p>
           Each place adds its points to the totals in step 1, then the final standings drop each team&apos;s two
-          worst races. The time is roughly what {focusName}&apos;s top {race.scorers} need to average to finish that
-          high.
+          worst races.{' '}
+          {division.rules && (
+            <>
+              That part is plain arithmetic, no forecast needed: for each {focusName} finish, where each rival
+              has to finish to end up behind it on final points. Places count only this division&apos;s teams, and
+              &ldquo;level&rdquo; means the two finish on the same points.
+            </>
+          )}
+        </p>
+        {division.rules && <RuleTable rules={division.rules} focusName={focusName} names={names} />}
+        <p>
+          How likely each finish is, from step 5. The time is roughly what {focusName}&apos;s top {race.scorers} need
+          to average to finish that high.
         </p>
         <div className={styles.tableWrap}>
           <table className={styles.table}>
@@ -135,8 +161,13 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
                     <ProbBar p={n.pPlace} />
                   </td>
                   <td>
-                    {given(n) !== null && n.samples >= 200 ? (
-                      <ProbBar p={given(n)!} />
+                    {outrightGiven(n) !== null && n.samples >= 200 ? (
+                      <>
+                        <ProbBar p={outrightGiven(n)!} />
+                        {(tiedGiven(n) ?? 0) >= 0.01 && (
+                          <span className={styles.muted}> + {formatPct(tiedGiven(n)!)} level</span>
+                        )}
+                      </>
                     ) : (
                       <span className={styles.muted}>too rare to say</span>
                     )}
@@ -150,8 +181,8 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
 
       <Step n={7} title="Final standings">
         <p>
-          Projected final points after the {raceName}. A tie on points counts as half a chance, since NYRR
-          doesn&apos;t publish a tiebreak.
+          Projected final points after the {raceName}. Teams that finish level on points share a place in
+          NYRR&apos;s standings.
         </p>
         <RangeChart teams={teams} highlightCode={focusCode} />
       </Step>

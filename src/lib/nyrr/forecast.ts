@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import type { NeedsRow, ScenarioCell } from './model';
+import type { NeedsRow, OutcomeRules, ScenarioCell } from './model';
 import type { Division } from './standings';
 
 export const FORECAST_PATH = path.join(process.cwd(), 'content', 'nyrr', 'generated', 'forecast.json');
@@ -43,8 +43,14 @@ export interface ForecastTeam {
   place: number;
   points: number; // NYRR's running total (every race)
   counted: number; // with the lowest scores so far dropped, as the year-end ranking counts them
+  // Ties across the line count as a split chance in pFirst and pTop2; the
+  // outright and tied numbers separate finishing clear from finishing level on points
   pFirst: number;
   pTop2: number;
+  pFirstOutright: number;
+  pFirstTied: number;
+  pTop2Outright: number;
+  pTop2Tied: number;
   meanPoints: number;
   p10Points: number;
   p90Points: number;
@@ -128,6 +134,13 @@ export interface DivisionForecast {
   teams: ForecastTeam[];
   needs: NeedsRow[];
   scenarios: ScenarioCell[];
+  // With one race left: where rivals must finish for each focus-team finish (no model involved)
+  rules: OutcomeRules | null;
+  // Teams whose place is still open going into the last race, and the change to
+  // their predicted time for it (log scale). Empty when more races are left.
+  lastRaceShift: { teams: string[]; shift: number };
+  // The focus team's odds if its lineup lists were ignored; null when none were used
+  withoutLineup: { pTop2: number; pFirst: number; pTop2Outright: number; pFirstOutright: number } | null;
   runners: ForecastRunner[];
   rosterSize: number;
   // Per race with a known lineup for the focus team

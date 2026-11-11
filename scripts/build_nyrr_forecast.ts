@@ -4,7 +4,8 @@
  * Build script for the NYRR club points forecast
  * Pulls the season from the NYRR results API, fits the model, simulates the
  * remaining races, and writes content/nyrr/generated/forecast.json.
- * If NYRR can't be reached, the last committed forecast is kept.
+ * If NYRR can't be reached, the last committed forecast is kept (and with
+ * NYRR_STRICT=1 the script exits with an error).
  */
 
 import fs from 'fs';
@@ -34,6 +35,7 @@ import {
   expectedPointsIfFielded,
   fitRace,
   isComparable,
+  outcomeRules,
   paramsForDivision,
   pointsForPlace,
   prepareSimulation,
@@ -41,7 +43,7 @@ import {
   runnerAttendance,
   runnerTurnout,
   seasonAsOf,
-  simulate,
+  simulateSeason,
   type ModelParams,
   type PastScores,
   type RaceHistory,
@@ -65,8 +67,11 @@ import { TEAM_CODE, isOpenDivision } from '../src/lib/nyrr/standings';
 const SIMS = 50000;
 // Fewer simulations per point for the season-so-far odds; there are many points
 const HISTORY_SIMS = 10000;
-// Give up and keep the last forecast if NYRR is this slow
-const DEADLINE_MS = 5 * 60 * 1000;
+// NYRR_STRICT=1 (the weekly job) makes a failed run exit with an error, so it
+// shows up red. Otherwise (the site build) a failed run keeps the last forecast.
+const STRICT = process.env.NYRR_STRICT === '1';
+// Give up if NYRR is this slow. The weekly job can wait out rate limiting; a deploy shouldn't.
+const DEADLINE_MS = (STRICT ? 12 : 5) * 60 * 1000;
 
 type Attendance = Record<string, Record<string, RaceHistory>>;
 
@@ -92,7 +97,7 @@ function buildHistory(
   return done.map((race, n) => {
     const { simTeams, simRaces } = prepareSimulation(season.teams, seasonAsOf(season.races, n + 1), attendance, params, past);
     const focusTeam = season.teams.find((t) => t.teamCode === TEAM_CODE);
-    const odds = simulate(simTeams, simRaces, TEAM_CODE, HISTORY_SIMS, 2026 + n, params.droppedRaces).teams;
+    const odds = simulateSeason(simTeams, simRaces, TEAM_CODE, HISTORY_SIMS, 2026 + n, params).teams;
     const totals = simTeams.map((t) => t.currentPoints);
     const ranked = season.teams
       .filter((t) => t.races[race.eventCode]?.score != null)
@@ -309,7 +314,27 @@ async function buildDivision(
     });
   }
 
-  const result = simulate(simTeams, simRaces, TEAM_CODE, SIMS, undefined, params.droppedRaces);
+  const result = simulateSeason(simTeams, simRaces, TEAM_CODE, SIMS, undefined, params);
+  const focusResult = focusIdx >= 0 ? result.teams[focusIdx] : undefined;
+  // How much the forecast leans on the lineup lists: the same simulation with the
+  // focus team treated like every other team
+  const hasLineup = focusIdx >= 0 && !!simTeams[focusIdx].lineup;
+  const plain = hasLineup
+    ? simulateSeason(simTeams.map((t) => ({ ...t, lineup: undefined })), simRaces, TEAM_CODE, SIMS, undefined, params).teams[focusIdx]
+    : undefined;
+  // With one race left, what the focus team needs is arithmetic. The goal is the
+  // title once promotion is certain, as on the page.
+  const titleRace = !!focusResult && focusResult.pTop2 > 0.999 && focusResult.pFirst > 0;
+  const rules =
+    remaining.length === 1 && focusIdx >= 0
+      ? outcomeRules(
+          simTeams.map((t) => ({ teamCode: t.teamCode, racePoints: t.racePoints ?? [] })),
+          TEAM_CODE,
+          remaining[0].multiplier,
+          params.droppedRaces,
+          titleRace ? 1 : 2
+        )
+      : null;
   // Points so far with each team's lowest scores already dropped: roughly, a team's
   // final total is this plus what it scores in the races left
   const counted = simTeams.map((t) => countedPoints(t.racePoints ?? [], params.droppedRaces));
@@ -365,6 +390,11 @@ async function buildDivision(
     })),
     needs: result.needs,
     scenarios: result.scenarios,
+    rules,
+    lastRaceShift: { teams: result.inFight, shift: params.lastRaceFightShift },
+    withoutLineup: plain
+      ? { pTop2: plain.pTop2, pFirst: plain.pFirst, pTop2Outright: plain.pTop2Outright, pFirstOutright: plain.pFirstOutright }
+      : null,
     runners: runners.slice(0, 40),
     rosterSize: current.length,
     lineups: Object.fromEntries(
@@ -397,6 +427,9 @@ function checkForecast(forecast: Forecast) {
       const placeSum = t.placeDistribution.reduce((s, p) => s + p, 0);
       if (Math.abs(placeSum - 1) > 1e-6) problems.push(`${where} ${t.teamCode}: place odds add to ${placeSum}`);
       if (Math.abs(t.placeDistribution[0] - t.pFirst) > 1e-6) problems.push(`${where} ${t.teamCode}: 1st place odds differ from title odds`);
+      for (const [p, outright, tied] of [[t.pFirst, t.pFirstOutright, t.pFirstTied], [t.pTop2, t.pTop2Outright, t.pTop2Tied]]) {
+        if (!(outright <= p + 1e-9 && p <= outright + tied + 1e-9)) problems.push(`${where} ${t.teamCode}: outright ${outright} and tied ${tied} don't bracket ${p}`);
+      }
       for (const [code, r] of Object.entries(t.races)) {
         if (!isProb(r.pField)) problems.push(`${where} ${t.teamCode} ${code}: bad turnout ${r.pField}`);
         if (r.pField > 0 && !Number.isFinite(r.medianAvgSeconds)) problems.push(`${where} ${t.teamCode} ${code}: no time`);
@@ -431,8 +464,9 @@ const deadline = new Promise<never>((_, reject) =>
   setTimeout(() => reject(new Error(`gave up after ${DEADLINE_MS / 60000} minutes`)), DEADLINE_MS).unref()
 );
 Promise.race([main(), deadline])
+  .then(() => process.exit(0))
   .catch((err) => {
-    // Don't fail the site build over NYRR being down or a bad run
     console.warn(`⚠ NYRR forecast not updated (${err.message ?? err}). Keeping the existing file.`);
-  })
-  .finally(() => process.exit(0));
+    // Don't fail the site build over NYRR being down or a bad run
+    process.exit(STRICT ? 1 : 0);
+  });

@@ -62,9 +62,13 @@ export interface ModelParams {
   // How much a past season at the same race counts vs one 2026 race
   historyWeight: number;
   // Lowest race scores left out of each team's year-end total. NYRR's running
-  // totals add every race, but the year-end ranking counts only the best ones
-  // (e.g. best 8 of 10 races in 2025: northbrooklynrunners team points page).
+  // totals add every race; at year end it blanks each team's lowest scores and
+  // ranks on the rest (2022-2024 final data: two blanked per team).
   droppedRaces: number;
+  // Change to a team's time (log scale) in the season's last race when its
+  // place is still open. In 2022-2025 such teams ran about 3.5% faster than
+  // their season form (21 teams), everyone else as predicted.
+  lastRaceFightShift: number;
   // Typical chance a division team fields a full team (A/B, 2022-2025: ~83%)
   turnoutPrior: number;
   // Typical race-to-race spread of a team's score, before it has its own
@@ -91,6 +95,7 @@ export const DEFAULT_PARAMS: ModelParams = {
   timeOffsetMarathon: -0.032,
   historyWeight: 6,
   droppedRaces: 2,
+  lastRaceFightShift: -0.025,
   turnoutPrior: 0.8,
   teamSigmaPrior: 0.045,
   runnerTurnoutWeightMarathon: 0,
@@ -369,9 +374,116 @@ export function pointsForPlace(index: number, multiplier: number): number {
   return (index < POINTS_SCALE.length ? POINTS_SCALE[index] : POINTS_OUTSIDE_TOP) * multiplier;
 }
 
+// Where a rival finishes the last race: a place among the division's teams, or
+// 'none' for no full team
+export type RivalPlace = number | 'none';
+
+export interface RivalRule {
+  teamCode: string;
+  // The rival's best finish that still leaves it behind the focus team on final
+  // points (it stays behind anywhere lower). null = never behind.
+  behindFrom: RivalPlace | null;
+  // Behind wherever it finishes
+  always: boolean;
+  // The rival's best finish that leaves the two level on points (they stay level
+  // down to behindFrom). null = they can't end level.
+  levelFrom: RivalPlace | null;
+}
+
+export interface RuleRow {
+  place: number; // focus team's place in the last race
+  finalPoints: number;
+  rivals: RivalRule[];
+  // The best this finish can lead to: clear of the rivals it needs to beat, or level with one
+  best: 'clear' | 'level';
+}
+
+export interface OutcomeRules {
+  slots: number; // 1 = the title, 2 = promotion
+  rivals: string[]; // teams that could still end up either side of the focus team
+  mustBeat: number; // how many of them it has to finish ahead of
+  rows: RuleRow[];
+}
+
+// With one race left the final standings are plain arithmetic: for each place
+// the focus team could finish, where each rival has to finish to end up behind
+// it. No model involved, only the points scale and the dropped scores.
+export function outcomeRules(
+  teams: { teamCode: string; racePoints: number[] }[],
+  focusTeam: string,
+  multiplier: number,
+  dropped: number,
+  slots: number
+): OutcomeRules | null {
+  const focus = teams.find((t) => t.teamCode === focusTeam);
+  if (!focus) return null;
+  // Every place outside the top 10 scores the same, so one more place covers them all
+  const maxPlace = Math.min(teams.length, POINTS_SCALE.length + 1);
+  const final = (t: { racePoints: number[] }, place: RivalPlace) =>
+    countedPoints([...t.racePoints, place === 'none' ? 0 : pointsForPlace(place - 1, multiplier)], dropped);
+
+  const others = teams.filter((t) => t !== focus);
+  const lockedAhead = others.filter((t) => final(t, 'none') > final(focus, 1));
+  const live = others.filter((t) => !lockedAhead.includes(t) && final(t, 1) >= final(focus, 'none'));
+  const mustBeat = live.length - (slots - 1 - lockedAhead.length);
+  if (lockedAhead.length >= slots || mustBeat <= 0) return null;
+
+  const rows: RuleRow[] = [];
+  for (let place = 1; place <= maxPlace; place++) {
+    const mine = final(focus, place);
+    const rivals = live.map((t): RivalRule => {
+      const options: RivalPlace[] = [];
+      for (let q = 1; q <= maxPlace; q++) if (q !== place) options.push(q);
+      options.push('none');
+      const behindFrom = options.find((q) => final(t, q) < mine) ?? null;
+      return {
+        teamCode: t.teamCode,
+        behindFrom,
+        always: behindFrom === options[0],
+        levelFrom: options.find((q) => final(t, q) === mine) ?? null,
+      };
+    });
+    const clear = rivals.filter((r) => r.behindFrom !== null).length;
+    const level = rivals.filter((r) => r.behindFrom !== null || r.levelFrom !== null).length;
+    if (level < mustBeat) continue;
+    rows.push({ place, finalPoints: mine, rivals, best: clear >= mustBeat ? 'clear' : 'level' });
+  }
+  if (!rows.length) return null;
+
+  // Leave out rivals that are behind in every one of these finishes
+  const beaten = live.filter((t) => rows.every((row) => row.rivals.find((r) => r.teamCode === t.teamCode)!.always));
+  const kept = live.filter((t) => !beaten.includes(t)).map((t) => t.teamCode);
+  if (mustBeat - beaten.length <= 0) return null;
+  return {
+    slots,
+    rivals: kept,
+    mustBeat: mustBeat - beaten.length,
+    rows: rows.map((row) => ({ ...row, rivals: row.rivals.filter((r) => kept.includes(r.teamCode)) })),
+  };
+}
+
 // Share of the given top-N slots a team gets when it is tied with others
 function slotShare({ better, tied }: Standing, slots: number): number {
   return Math.max(0, Math.min(slots, better + tied) - better) / tied;
+}
+
+// Against a cut-off of the top `slots` places: `share` splits a tie across the
+// cut-off evenly, `outright` is clear of it, `tied` is level on points across it
+function slotResult(standing: Standing, slots: number): Odds {
+  const share = slotShare(standing, slots);
+  return { share, outright: share === 1 ? 1 : 0, tied: share > 0 && share < 1 ? 1 : 0 };
+}
+
+interface Odds {
+  share: number;
+  outright: number;
+  tied: number;
+}
+
+function addOdds(sum: Odds, x: Odds) {
+  sum.share += x.share;
+  sum.outright += x.outright;
+  sum.tied += x.tied;
 }
 
 interface Standing {
@@ -401,6 +513,8 @@ export interface SimTeamInput {
   fieldProb: Record<string, number>;
   // Races where the team's lineup is known, in place of fit and fieldProb
   lineup?: Record<string, LineupRunner[]>;
+  // Added to the team's time (log scale) at a race, when it isn't run from a lineup
+  timeShift?: Record<string, number>;
 }
 
 export interface SimRaceInput {
@@ -422,8 +536,14 @@ export function simRaceInput(race: RaceInfo, fit: RaceFit, params: ModelParams =
 
 export interface SimTeamResult {
   teamCode: string;
+  // Title and promotion odds with ties split evenly, then the same split into
+  // finishing clear of the line and finishing level on points across it
   pFirst: number;
   pTop2: number;
+  pFirstOutright: number;
+  pFirstTied: number;
+  pTop2Outright: number;
+  pTop2Tied: number;
   meanPoints: number;
   p10Points: number;
   p90Points: number;
@@ -451,6 +571,11 @@ export interface NeedsRow {
   cutoffAvgSeconds: number | null; // avg scorer time needed to finish this high
   pTop2Given: number | null;
   pFirstGiven: number | null;
+  // The same split into finishing clear of that line and level on points across it
+  pTop2OutrightGiven: number | null;
+  pTop2TiedGiven: number | null;
+  pFirstOutrightGiven: number | null;
+  pFirstTiedGiven: number | null;
   samples: number;
 }
 
@@ -509,8 +634,9 @@ export function simulate(
   const focusIdx = teams.findIndex((t) => t.teamCode === focusTeam);
   const next = races[0]?.race.eventCode;
 
-  const first = new Float64Array(n);
-  const top2 = new Float64Array(n);
+  const zero = (): Odds => ({ share: 0, outright: 0, tied: 0 });
+  const first = teams.map(zero);
+  const top2 = teams.map(zero);
   const pointSums = new Float64Array(n);
   const finals: number[][] = teams.map(() => []);
   const placeCounts = teams.map(() => new Array(n).fill(0));
@@ -523,7 +649,7 @@ export function simulate(
     )
   );
   // Needs table: keyed by focus team's place in the next race (0 = no team)
-  const needs = new Map<number, { count: number; top2: number; first: number }>();
+  const needs = new Map<number, { count: number; top2: Odds; first: Odds }>();
   const scenarios = new Map<string, { count: number; top2: number; first: number }>();
   const cutoffs: number[][] = teams.map(() => []);
 
@@ -558,7 +684,8 @@ export function simulate(
         if (rand() >= t.fieldProb[r.race.eventCode]) return;
         const k = r.strengthScale;
         const sigma = Math.sqrt(k * k * fit.sigma * fit.sigma + r.extraSigma * r.extraSigma);
-        const x = r.targetEffect + k * (fit.strength + fit.strengthSe * formShock[i]) + sigma * normal(rand);
+        const shift = t.timeShift?.[r.race.eventCode] ?? 0;
+        const x = r.targetEffect + shift + k * (fit.strength + fit.strengthSe * formShock[i]) + sigma * normal(rand);
         entries.push({ i, x });
       });
       entries.sort((p, q) => p.x - q.x);
@@ -590,18 +717,18 @@ export function simulate(
     }
     const table = standings(totals);
     for (let i = 0; i < n; i++) {
-      first[i] += slotShare(table[i], 1);
-      top2[i] += slotShare(table[i], 2);
+      addOdds(first[i], slotResult(table[i], 1));
+      addOdds(top2[i], slotResult(table[i], 2));
       pointSums[i] += totals[i];
       if (finals[i].length < 20000) finals[i].push(totals[i]);
       // Tied teams share the places they tie for, as the title and promotion odds do
       for (let p = table[i].better; p < table[i].better + table[i].tied; p++) placeCounts[i][p] += 1 / table[i].tied;
     }
     if (focusIdx >= 0) {
-      const row = needs.get(focusNextPlace) ?? { count: 0, top2: 0, first: 0 };
+      const row = needs.get(focusNextPlace) ?? { count: 0, top2: zero(), first: zero() };
       row.count++;
-      row.top2 += slotShare(table[focusIdx], 2);
-      row.first += slotShare(table[focusIdx], 1);
+      addOdds(row.top2, slotResult(table[focusIdx], 2));
+      addOdds(row.first, slotResult(table[focusIdx], 1));
       needs.set(focusNextPlace, row);
       if (races.length >= 2) {
         const key = `${focusNextPlace}|${focusSecondPlace}`;
@@ -618,8 +745,12 @@ export function simulate(
     const sorted = [...finals[i]].sort((p, q) => p - q);
     return {
       teamCode: t.teamCode,
-      pFirst: first[i] / sims,
-      pTop2: top2[i] / sims,
+      pFirst: first[i].share / sims,
+      pTop2: top2[i].share / sims,
+      pFirstOutright: first[i].outright / sims,
+      pFirstTied: first[i].tied / sims,
+      pTop2Outright: top2[i].outright / sims,
+      pTop2Tied: top2[i].tied / sims,
       meanPoints: pointSums[i] / sims,
       p10Points: quantile(sorted, 0.1),
       p90Points: quantile(sorted, 0.9),
@@ -651,15 +782,19 @@ export function simulate(
   if (focusIdx >= 0 && next) {
     const maxPlace = Math.max(...needs.keys());
     for (let place = 1; place <= maxPlace; place++) {
-      const row = needs.get(place) ?? { count: 0, top2: 0, first: 0 };
+      const row = needs.get(place) ?? { count: 0, top2: zero(), first: zero() };
       // To finish k-th you must beat the k-th best of the other teams
       const c = cutoffs[place - 1].filter((x) => Number.isFinite(x)).sort((p, q) => p - q);
       needsRows.push({
         place,
         pPlace: row.count / sims,
         cutoffAvgSeconds: c.length > sims * 0.5 ? Math.exp(quantile(c, 0.5)) : null,
-        pTop2Given: row.count ? row.top2 / row.count : null,
-        pFirstGiven: row.count ? row.first / row.count : null,
+        pTop2Given: row.count ? row.top2.share / row.count : null,
+        pFirstGiven: row.count ? row.first.share / row.count : null,
+        pTop2OutrightGiven: row.count ? row.top2.outright / row.count : null,
+        pTop2TiedGiven: row.count ? row.top2.tied / row.count : null,
+        pFirstOutrightGiven: row.count ? row.first.outright / row.count : null,
+        pFirstTiedGiven: row.count ? row.first.tied / row.count : null,
         samples: row.count,
       });
     }
@@ -669,8 +804,12 @@ export function simulate(
         place: null,
         pPlace: none.count / sims,
         cutoffAvgSeconds: null,
-        pTop2Given: none.top2 / none.count,
-        pFirstGiven: none.first / none.count,
+        pTop2Given: none.top2.share / none.count,
+        pFirstGiven: none.first.share / none.count,
+        pTop2OutrightGiven: none.top2.outright / none.count,
+        pTop2TiedGiven: none.top2.tied / none.count,
+        pFirstOutrightGiven: none.first.outright / none.count,
+        pFirstTiedGiven: none.first.tied / none.count,
         samples: none.count,
       });
     }
@@ -689,6 +828,31 @@ export function simulate(
   });
 
   return { sims, teams: teamResults, needs: needsRows, scenarios: scenarioCells };
+}
+
+// A team whose title or top-2 place is still open (neither safe nor out of reach)
+const OPEN_ODDS = [0.05, 0.95];
+const isOpen = (p: number) => p >= OPEN_ODDS[0] && p <= OPEN_ODDS[1];
+
+// simulate(), plus what past seasons show about the last race: teams whose place
+// is still open run faster than their season form. Those teams are found with a
+// first pass, then the race is run again with their times shifted. A team run
+// from a known lineup is left alone: its list already says who is turning up.
+export function simulateSeason(
+  teams: SimTeamInput[],
+  races: SimRaceInput[],
+  focusTeam: string,
+  sims: number,
+  seed: number | undefined,
+  params: ModelParams
+): SimResult & { inFight: string[] } {
+  const first = simulate(teams, races, focusTeam, sims, seed, params.droppedRaces);
+  if (races.length !== 1 || !params.lastRaceFightShift) return { ...first, inFight: [] };
+  const code = races[0].race.eventCode;
+  const inFight = teams.filter((t, i) => !t.lineup?.[code] && (isOpen(first.teams[i].pTop2) || isOpen(first.teams[i].pFirst)));
+  if (!inFight.length) return { ...first, inFight: [] };
+  const shifted = teams.map((t) => (inFight.includes(t) ? { ...t, timeShift: { [code]: params.lastRaceFightShift } } : t));
+  return { ...simulate(shifted, races, focusTeam, sims, seed, params.droppedRaces), inFight: inFight.map((t) => t.teamCode) };
 }
 
 // Inputs for simulating the races still to run (unpublished, after the last
