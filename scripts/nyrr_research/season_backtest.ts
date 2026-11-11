@@ -11,7 +11,7 @@ import {
   isMarathon,
   prepareSimulation,
   seasonAsOf,
-  simulate,
+  simulateSeason,
   paramsForDivision,
   type ModelParams,
   type RaceHistory,
@@ -58,7 +58,13 @@ function distanceGroup(m: number): string {
       for (let n = 1; n < done.length; n++) {
         const asOf = seasonAsOf(season.races, n);
         const { simTeams, simRaces } = prepareSimulation(season.teams, asOf, attendance, params, past);
-        const sim = simulate(simTeams, simRaces, '', 3000, year * 100 + n);
+        // The data already has each team's dropped scores blanked, so none are dropped here.
+        // FIGHT=0 turns off the last-race shift for teams whose place is still open.
+        const sim = simulateSeason(simTeams, simRaces, '', 3000, year * 100 + n, {
+          ...params,
+          droppedRaces: 0,
+          ...(process.env.FIGHT === '0' && { lastRaceFightShift: 0 }),
+        });
         season.teams.forEach((t, i) => {
           const better = finals.filter((p) => p > finals[i]).length;
           const now = simTeams.map((s) => s.currentPoints);
@@ -109,7 +115,7 @@ function distanceGroup(m: number): string {
     return `Brier ${brier.toFixed(4)} log-loss ${ll.toFixed(3)}`;
   };
   console.log(
-    `all: ${score(rows)} | 6+ left: ${score(rows.filter((r) => r.left >= 6))} | <6 left: ${score(rows.filter((r) => r.left < 6))}`,
+    `all: ${score(rows)} | 6+ left: ${score(rows.filter((r) => r.left >= 6))} | <6 left: ${score(rows.filter((r) => r.left < 6))} | 1 left: ${score(rows.filter((r) => r.left === 1))}`,
   );
   fs.mkdirSync(OUT, { recursive: true });
   fs.writeFileSync(path.join(OUT, 'season_odds.json'), JSON.stringify(odds));

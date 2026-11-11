@@ -25,6 +25,28 @@ function post<T>(endpoint: string, body: object): Promise<T> {
   return inFlight.get(key) as Promise<T>;
 }
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// NYRR turns away bursts of requests (HTTP 429), which once left a weekly rebuild
+// with nothing. So requests are spaced out, and a refusal holds every request
+// back for a while before trying again.
+const MIN_GAP_MS = 60;
+const MAX_ATTEMPTS = 6;
+let nextSlot = 0;
+
+async function takeTurn() {
+  const now = Date.now();
+  const at = Math.max(now, nextSlot);
+  nextSlot = at + MIN_GAP_MS;
+  if (at > now) await sleep(at - now);
+}
+
+class NyrrError extends Error {
+  constructor(endpoint: string, readonly status: number, readonly retryAfterMs: number | null) {
+    super(`NYRR ${endpoint} ${status}`);
+  }
+}
+
 async function fetchNyrr<T>(endpoint: string, body: object): Promise<T> {
   const payload = JSON.stringify(body);
   const cacheFile = CACHE_DIR
@@ -32,7 +54,8 @@ async function fetchNyrr<T>(endpoint: string, body: object): Promise<T> {
     : null;
   if (cacheFile && fs.existsSync(cacheFile)) return JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
 
-  for (let attempt = 0; ; attempt++) {
+  for (let attempt = 1; ; attempt++) {
+    await takeTurn();
     try {
       const res = await fetch(`${BASE_URL}/${endpoint}`, {
         method: 'POST',
@@ -40,7 +63,10 @@ async function fetchNyrr<T>(endpoint: string, body: object): Promise<T> {
         body: payload,
         signal: AbortSignal.timeout(30000),
       });
-      if (!res.ok) throw new Error(`NYRR ${endpoint} ${res.status}`);
+      if (!res.ok) {
+        const retryAfter = Number(res.headers.get('retry-after'));
+        throw new NyrrError(endpoint, res.status, retryAfter > 0 ? retryAfter * 1000 : null);
+      }
       const data = await res.json();
       if (cacheFile) {
         fs.mkdirSync(CACHE_DIR!, { recursive: true });
@@ -48,8 +74,15 @@ async function fetchNyrr<T>(endpoint: string, body: object): Promise<T> {
       }
       return data;
     } catch (err) {
-      if (attempt >= 3) throw err;
-      await new Promise((r) => setTimeout(r, 1000 * 2 ** attempt));
+      if (attempt >= MAX_ATTEMPTS) throw err;
+      const limited = err instanceof NyrrError && err.status === 429;
+      // Rate limited: 5s, 10s, 20s, 40s, 60s (or what NYRR asks for). Anything else: 1s, 2s, 4s...
+      const wait = limited
+        ? Math.min(60000, (err as NyrrError).retryAfterMs ?? 5000 * 2 ** (attempt - 1))
+        : 1000 * 2 ** (attempt - 1);
+      // A refusal applies to everything, so hold the other requests back too
+      if (limited) nextSlot = Math.max(nextSlot, Date.now() + wait);
+      else await sleep(wait);
     }
   }
 }

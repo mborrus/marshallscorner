@@ -300,10 +300,20 @@ function Method({ generatedAt }: { generatedAt: string }) {
           marathons, this landed within about 1% of the real team score on average.
         </p>
         <p>
+          <strong>The last race.</strong> In the 2022&ndash;2025 seasons, teams whose title or top-2 place was
+          still open ran the final race about 3.5% faster than their season form predicted (21 teams), most
+          likely because they send their best lineup. Everyone else ran as predicted. So in the last race, teams
+          in that position are made 2.5% faster. A team simulated from its sign-up list is left alone, because
+          the list already says who is running. It is a small sample, and it moves the odds a lot when one
+          team has a list and its rivals don&apos;t.
+        </p>
+        <p>
           <strong>Simulating.</strong> Each simulation decides who shows up, draws each team&apos;s time from its
           strength plus race-day randomness, scores the race (15, 12, 10, 8, 6, 5, 4, 3, 2, 1, then 1 for any
           other full team), and adds up the final standings the way the year-end ranking does: each
-          team&apos;s two lowest race scores are dropped. Ties for a promotion spot are split evenly.
+          team&apos;s two lowest race scores are dropped. Teams that end level on points share a place in
+          NYRR&apos;s standings, so the chance of that is shown on its own; where one number is needed, a tie
+          counts as half.
         </p>
         <p>
           <strong>Checked against history.</strong> Replayed race by race through the 2022–2025 A and B

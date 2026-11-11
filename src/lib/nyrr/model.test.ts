@@ -3,15 +3,18 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
+  DEFAULT_PARAMS,
   countedPoints,
   courseOffset,
   expectedPointsIfFielded,
   fieldProbability,
+  outcomeRules,
   pointsForPlace,
   projectRunner,
   runnerAttendance,
   seasonAsOf,
   simulate,
+  simulateSeason,
   type RaceInfo,
   type SimRaceInput,
   type SimTeamInput,
@@ -199,4 +202,80 @@ test('the year-end total drops each team\'s lowest race scores', () => {
   // A: best 2 of [15, 15, 0, 15] = 30; B: best 2 of [12, 15, 0, 0] = 27
   assert.equal(result.teams[0].meanPoints, 30);
   assert.equal(result.teams[1].meanPoints, 27);
+});
+
+test('teams level on points across a line are counted as tied, not as a clear finish', () => {
+  // Neither team can field a full team, so they end level on 10
+  const result = simulate([team('A', 10, 0, 0), team('B', 10, 0, 0), team('C', 0, 0, 0)], oneRace, 'A', 100);
+  const a = result.teams[0];
+  assert.deepEqual([a.pFirst, a.pFirstOutright, a.pFirstTied], [0.5, 0, 1]);
+  assert.deepEqual([a.pTop2, a.pTop2Outright, a.pTop2Tied], [1, 1, 0]);
+  const none = result.needs.find((n) => n.place === null)!;
+  assert.deepEqual([none.pFirstGiven, none.pFirstOutrightGiven, none.pFirstTiedGiven], [0.5, 0, 1]);
+});
+
+const fillers = ['X1', 'X2', 'X3'].map((teamCode) => ({ teamCode, racePoints: new Array(11).fill(0) }));
+
+test('with one race left, the rules give where each rival must finish (2026 Open Men B)', () => {
+  const teams = [
+    { teamCode: 'ReRC', racePoints: [6, 8, 10, 10, 12, 12, 12, 15, 15, 15, 24] },
+    { teamCode: 'LWTC', racePoints: [5, 6, 8, 10, 10, 10, 12, 12, 12, 12, 15] },
+    { teamCode: 'HRR', racePoints: [3, 4, 4, 5, 10, 10, 12, 15, 15, 15, 16] },
+    { teamCode: 'ManTC', racePoints: [0, 1, 4, 5, 6, 8, 8, 10, 15, 15, 30] },
+    { teamCode: 'STR', racePoints: [1, 1, 5, 5, 6, 8, 8, 8, 8, 10, 10] },
+    ...fillers,
+  ];
+  const rules = outcomeRules(teams, 'ManTC', 1, 2, 2)!;
+  // The leader can't be caught and the 5th team can't catch up: two rivals for one spot
+  assert.deepEqual(rules.rivals, ['LWTC', 'HRR']);
+  assert.equal(rules.mustBeat, 2);
+  assert.deepEqual(rules.rows.map((r) => [r.place, r.finalPoints, r.best]), [
+    [1, 116, 'clear'],
+    [2, 113, 'clear'],
+    [3, 111, 'clear'],
+    [4, 109, 'clear'],
+    [5, 107, 'level'],
+  ]);
+  // A win is enough whatever the rivals do; from 2nd to 4th, finishing ahead of them is
+  assert.ok(rules.rows[0].rivals.every((r) => r.always));
+  assert.deepEqual(rules.rows[2].rivals.map((r) => r.behindFrom), [4, 4]);
+  // 5th: Lone Wolf can't finish below 107, Hellgate is level on 107 if 6th
+  assert.deepEqual(rules.rows[4].rivals, [
+    { teamCode: 'LWTC', behindFrom: null, always: false, levelFrom: 6 },
+    { teamCode: 'HRR', behindFrom: 7, always: false, levelFrom: 6 },
+  ]);
+  // The title is out of reach
+  assert.equal(outcomeRules(teams, 'ManTC', 1, 2, 1), null);
+});
+
+test('a win can still leave two teams level for the title (2026 Open Women B)', () => {
+  const teams = [
+    { teamCode: 'NYF', racePoints: [6, 8, 8, 10, 12, 12, 15, 15, 15, 15, 16] },
+    { teamCode: 'ManTC', racePoints: [0, 0, 0, 0, 10, 15, 15, 15, 15, 15, 30] },
+    ...fillers,
+  ];
+  // Promotion is certain, so there is nothing to work out for it
+  assert.equal(outcomeRules(teams, 'ManTC', 1, 2, 2), null);
+  const rules = outcomeRules(teams, 'ManTC', 1, 2, 1)!;
+  assert.deepEqual(rules.rows.map((r) => [r.place, r.finalPoints, r.rivals[0].behindFrom, r.rivals[0].levelFrom]), [
+    [1, 130, 3, 2],
+    [2, 127, 4, null],
+  ]);
+});
+
+test('in the last race, teams whose place is still open run faster, unless run from a lineup', () => {
+  const runner = { projectedSeconds: Math.exp(8), chance: 1 };
+  const listed: SimTeamInput = { ...team('L', 0, 0), lineup: { R: Array(5).fill(runner) } };
+  const teams = [listed, team('A', 0, 0), team('B', -100, 0)];
+  const plain = simulate(teams, oneRace, 'L', 2000, 1);
+  const result = simulateSeason(teams, oneRace, 'L', 2000, 1, { ...DEFAULT_PARAMS, droppedRaces: 0 });
+  // A is level with L going in; B is out of it
+  assert.deepEqual(result.inFight, ['A']);
+  const ratio = (code: number) => result.teams[code].races.R.medianAvgSeconds / plain.teams[code].races.R.medianAvgSeconds;
+  assert.ok(Math.abs(ratio(1) - Math.exp(DEFAULT_PARAMS.lastRaceFightShift)) < 1e-6);
+  assert.equal(ratio(2), 1);
+  // With two races left nothing changes
+  const twoLeft = [...oneRace, { ...oneRace[0], race: race('R2', '2026-12-08') }];
+  const two = teams.map((t) => ({ ...t, fit: { ...t.fit, R2: t.fit.R }, fieldProb: { ...t.fieldProb, R2: 1 } }));
+  assert.deepEqual(simulateSeason(two, twoLeft, 'L', 200, 1, DEFAULT_PARAMS).inFight, []);
 });

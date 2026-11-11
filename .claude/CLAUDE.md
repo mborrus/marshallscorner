@@ -120,7 +120,7 @@ the model was calibrated, findings from 2022–2025 backtests, the lineup lists,
 Keep that file updated with anything new you learn.
 
 - `npm run build:nyrr` regenerates `content/nyrr/generated/forecast.json` (also runs in `prebuild`).
-- A weekly GitHub Action (`.github/workflows/nyrr-weekly.yml`) snapshots the standings to
+- A GitHub Action (`.github/workflows/nyrr-weekly.yml`, Tuesdays and Fridays) snapshots the standings to
   `content/nyrr/snapshots/` and rebuilds the forecast when NYRR posts something new.
 - Team sign-up lists: `npx tsx scripts/nyrr_lineup.ts [--asked] <year> "<race>" ManTC "Name" ...`
   (names are stored hashed; the repo is public).

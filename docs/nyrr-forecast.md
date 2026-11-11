@@ -22,8 +22,15 @@ Tests: `npm test` (node's test runner via tsx; `src/lib/nyrr/*.test.ts`) covers 
 odds summing to 2 and 1, lineups, as-of seasons, turnout, projections, course and name matching.
 
 The build checks the forecast before writing it (odds add up, values in range, every remaining
-race has a predicted time, history covers every completed race) and gives up after 5 minutes. On any
-failure it keeps the last good `forecast.json` and the site build continues.
+race has a predicted time, history covers every completed race, outright and tied odds bracket the split
+ones) and gives up after 5 minutes. On any failure it keeps the last good `forecast.json` and the site build
+continues. With `NYRR_STRICT=1` (the weekly job) a failed run exits with an error instead, and waits up to 12
+minutes.
+
+**NYRR rate limits.** A build makes ~1,100 requests. Sent 8 at a time with no gaps, GitHub's runner got
+HTTP 429 on Nov 3 and the forecast silently wasn't rebuilt (the job still said success and committed only
+the snapshot). `fetchNyrr` now spaces requests 60 ms apart (a build takes ~1.5–2.5 min) and on a 429 holds
+every request back (5 s, 10 s, 20 s, 40 s, 60 s, or NYRR's `retry-after`) before trying again.
 
 `NYRR_YEAR=2025 npm run build:nyrr` rebuilds a past season (useful for checking a finished season or a
 big division). MTC was in the C divisions in 2025 (~300 teams each; men 2nd, women 1st, so both were
@@ -35,14 +42,15 @@ site doesn't answer (it sometimes fails during a build, and ISR would then cache
 falls back to the standings saved in `forecast.json` (`standingsFromForecast`) with a note saying how old
 they are, and tries again within the hour.
 
-**Weekly job** (`.github/workflows/nyrr-weekly.yml`, Tuesdays 15:17 UTC, plus a manual "Run workflow"
-button; scheduled runs only happen once it's on `main`): `scripts/nyrr_snapshot.ts` fetches MTC's divisions
-(points per team per race) and saves `content/nyrr/snapshots/<date>.json` only if it differs from the
-latest one. No change → the job stops there (no rebuild, commit or deploy). Change → `npm run build:nyrr`
-and one commit of `content/nyrr`, whose push triggers a Vercel deploy. ~30s without changes, ~1 min with.
-The snapshots are the "as posted" record that NYRR doesn't keep (first one: Oct 30, 2026). If new results are
-out, the page shows a "forecast is out of date" note. If NYRR is unreachable at build time,
-the last committed `forecast.json` is kept.
+**Weekly job** (`.github/workflows/nyrr-weekly.yml`, Tuesdays and Fridays 15:17 UTC, plus a manual "Run
+workflow" button): `scripts/nyrr_snapshot.ts` fetches MTC's divisions (points per team per race) and saves
+`content/nyrr/snapshots/<date>.json` only if it differs from the latest one. No change → the job stops there
+(no rebuild, commit or deploy). Change → `npm run build:nyrr` with `NYRR_STRICT=1` (one retry after 3
+minutes) and one commit of `content/nyrr`, whose push triggers a Vercel deploy. If the rebuild fails the job
+fails and commits nothing, so the next run sees the same new results and tries again. The snapshots are the
+"as posted" record that NYRR doesn't keep (first one: Oct 30, 2026). If new results are out, the page shows
+a "forecast is out of date" note. If NYRR is unreachable during a site build, the last committed
+`forecast.json` is kept.
 
 ## NYRR API (`https://rmsprodapi.nyrr.org/api/v2`, all POST JSON)
 
@@ -78,17 +86,20 @@ Quirks:
   3 at the NYC Marathon, 10 at the Team Championships.**
 - **Team Championships count double** (30, 24, 20, …).
 - **The year-end ranking drops each team's two lowest race scores** (missed races count as 0). Written on
-  club sites, not readable on NYRR's own page (its waiting room blocks automated visits): NY Flyers' points
-  page ("each club's point totals in the nine best races of the series (the lowest two scores for each club
-  will be automatically dropped)", 11-race 2024 series) and NBR's team points page ("top 8 races" of 10 in
-  2025). History can't confirm it: in 2022–2025 every promoted B/C team was top 2 either way (dropping never
-  changed the top 2). 2026 Men B is the first season where it decides promotion. NYRR's posted running totals add every
-  race (checked 2023–2026), so the drop seems to apply only to the final ranking. 2026 has 12 races → best
-  10 count. `droppedRaces` (2) in the model; `counted` in `forecast.json` = points so far with the two
-  lowest already dropped (the "effective total" clubs usually quote): the final is about this plus what's scored in the races
-  left, except that a score worse than ones already dropped is dropped instead (so the floor is the running
-  total minus only the single worst). Backtests
-  still score finals on NYRR's raw totals (whether past promotions used the drop isn't confirmed).
+  club sites (NY Flyers' points page: "the lowest two scores for each club will be automatically dropped";
+  NYRR's own page sits behind a waiting room) and **confirmed in NYRR's data (Nov 11)**: in the final
+  2022–2024 standings each team's two lowest scores are blanked (`points: null`, different races for each
+  team) and `totalPoints` / `teamPlace` use the rest. Seasons so far: 2022 best 9 of 11, 2023 best 8 of 10,
+  2024 best 9 of 11. **2025 dropped only one** (best 9 of 10): the SI Half was cancelled, so the rule looks
+  like "count the scheduled races minus two" and a cancelled race uses up a drop. 2026 has 12 races → best 10
+  (if the Corbitt were cancelled, only one score would be dropped: `droppedRaces` would need to be 1).
+  During a season NYRR's running totals add every race. `counted` in `forecast.json` = points so far with
+  the two lowest already dropped (the "effective total" clubs quote): the final is about this plus what's
+  scored in the races left, except that a score worse than ones already dropped is dropped instead (so the
+  floor is the running total minus only the single worst).
+  **Side effect for past seasons:** a blanked score looks like a missed race in the points data, so
+  "fielded" must come from the team award (it does), and past-season backtests must not drop scores again
+  (`season_backtest.ts` passes `droppedRaces: 0`). Promotions 2022–2025 all match the post-drop top 2.
 - **NYRR's team-results lookup (`awards/teamAwards`) leaves out some full teams** (often ones placed 10th+:
   e.g. Van Cortlandt men, QDR/Taconic/West Side women at the 2026 marathon, all given 1 point). So
   "fielded a full team" = a listed team score **or** any points that race (`TeamRace.fielded`), including in
@@ -97,7 +108,12 @@ Quirks:
 - **Age-group divisions** (40M, 50W, …) score only older runners (team awards with `minimumAge` 40+). The
   forecast and tabs cover open A/B/C divisions only (`isOpenDivision`). MTC men scored in 40M at the 2026
   marathon; including it made the build 6+ minutes and gave two "men" tabs.
-- Ties share a place in the standings (e.g. 60W 2026). Promotion tie-break unknown → the sim splits ties evenly.
+- **Ties share a place**, including 1st: CPTC and Running for Ayotzinapa both finished the 2025 40M division
+  on 112 and both are listed in place 1 (also BTR and NYAC level in 2nd in 2025 AM, 2024 AM 4th, several 6ths). No tiebreak shows in the data and
+  none was found written down (searched Nov 11). No tie has landed on a promotion line in 2022–2025, so how
+  NYRR would pick between two teams level for 2nd is unknown. The sim reports ties as their own outcome
+  (`pFirstOutright` / `pFirstTied`, `pTop2Outright` / `pTop2Tied`, and the same per needs row); `pFirst` and
+  `pTop2` still split a tie evenly for charts and checks. `scripts/nyrr_research/ties.ts` lists past ties.
 - One unexplained case: URC at 2026 Team Champs placed 2nd on time but got 12 pts (probably a DQ).
 - 2026 remaining races (as of Oct 24): **NYC Marathon (Nov 1)** and **Ted Corbitt 15K (Dec 5)**.
   Both counted in 2022–2025 too.
@@ -280,7 +296,37 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   next to +1 points; "5 finished; fewer than 5"; the needs table showed "promoted 100%" on every row once
   promotion was locked — it now shows title odds then.
 
+- **Nov 11 review ("what can be better"):**
+  - **Exact rules** (`outcomeRules` in `model.ts`, `rules` in `forecast.json`, shown in the callout and step
+    6): with one race left the outcome is arithmetic. Men B: MTC is promoted if it finishes top 4 among
+    division teams and ahead of both Lone Wolf and Hellgate; 5th can only tie Lone Wolf on 107. Women B: MTC
+    wins the title outright with 1st and Flyers 3rd or lower, or 2nd and Flyers 4th or lower; **1st with
+    Flyers 2nd is a tie on 130**, the single most likely outcome. The old page showed "51% title", which was
+    ~35% outright + ~32% tie counted as half.
+  - **Last-race effect** (`lastRaceFightShift`, `simulateSeason`): `season_backtest.ts` output joined on
+    odds before the final race. Teams whose top-2 or title odds were between 5% and 95% going into the last
+    race (21 that fielded, 2022–2025 A+B) ran it **3.45% faster than predicted (se 0.9)**; equally strong
+    teams with nothing open −0.6% (se 1.5, n=21); everyone else +0.4%. No such gap at earlier races
+    (−0.0%, n=289). Most likely they send their best lineup. In both B-division fights for the last
+    promotion spot (2024 BW, 2025 BM) the favourite failed to field a team and the underdog ran 5–8% faster
+    than predicted and went up. Applied as −2.5% (between the −2.0% for all top-3 teams at the last race
+    and the −3.45% subgroup) to teams whose place is open after a first simulation pass, except a team run
+    from a lineup list (its list already says who runs). In the backtest it barely moves the score (Brier
+    with one race left 0.0182 → 0.0178) because it shifts all contenders alike; it matters when one team
+    has a list and its rivals don't. Effect on Nov 11: men's promotion 51% → 35% (19% with no list at all),
+    women's outright title 35% → 25% (+34% tie). Small sample: re-check after the 2026 Corbitt.
+  - **`withoutLineup`** in `forecast.json`: the focus team's odds with its lists ignored, shown next to the
+    headline so the reader sees how much rests on the list.
+
 ## Gaps and ideas
+
+- How NYRR settles a tie for a promotion spot (ask NYRR or the club council).
+- Past-season turnout is slightly undercounted: a year-end dropped score is blanked, and if that race's team
+  award is also missing (the 10th+ finishers `awards/teamAwards` leaves out), the team looks absent. At most
+  two races per team per past year, and rarely for the top teams.
+- The last-race effect is from 21 teams and one −2.5% number for everyone; it could depend on how close the
+  fight is. Whether MTC's own listed runners also beat their projections in a decisive race is unknown
+  (at the 2026 marathon MTC's list-based team times were 1–3% too slow).
 
 - Marathon entry depends on lottery / 9+1 / time qualifiers; last year's 9+1 completion could predict this year's entry.
 - Runner-level sim ignores teammates outside the roster (31% of marathon scorers historically).
@@ -306,4 +352,5 @@ container). Data goes to `.nyrr-research/` (gitignored; override with `NYRR_RESE
 | `runner_calibration.py` | Individual time offsets, residual quantiles, top-k sim bias |
 | `turnout_rows.ts` → `partrows.json`, then `turnout_blend.py` | Runner vs team turnout blend test |
 | `fallback_projection.ts` | Short club races vs other NYRR races for projecting the Marathon/15K |
-| `season_backtest.ts` → then `season_backtest_report.py` | Whole-season replay: odds by races left, next-race time/turnout accuracy (`PARAMS`, `PAST=0`, `YEARS`) |
+| `season_backtest.ts` → then `season_backtest_report.py` | Whole-season replay: odds by races left, next-race time/turnout accuracy (`PARAMS`, `PAST=0`, `YEARS`, `FIGHT=0` to turn off the last-race shift) |
+| `ties.ts` | Past seasons' ties on final points and the place NYRR gave each team |
