@@ -153,6 +153,14 @@ export interface DivisionForecast {
   form: Record<string, TeamForm>;
 }
 
+// The place a team is still racing for, 1st or 2nd: the last promotion spot
+// while it is open, the title once promotion is certain, and 2nd place once the
+// only promotion spot is out of reach
+export function goalLine(team: { pTop2: number; pFirst: number }, spots: number): 1 | 2 {
+  if (spots >= 2) return team.pTop2 > 0.999 && team.pFirst > 0 ? 1 : 2;
+  return team.pFirst > 0 ? 1 : 2;
+}
+
 export interface LeaderboardRow {
   name: string;
   races: number;

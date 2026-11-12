@@ -52,6 +52,7 @@ import {
 } from '../src/lib/nyrr/model';
 import {
   FORECAST_PATH,
+  goalLine,
   readLineups,
   type DivisionForecast,
   type Forecast,
@@ -62,7 +63,7 @@ import {
   type Lineup,
   type LineupKind,
 } from '../src/lib/nyrr/forecast';
-import { TEAM_CODE, isOpenDivision } from '../src/lib/nyrr/standings';
+import { TEAM_CODE, isOpenDivision, promotionSpots } from '../src/lib/nyrr/standings';
 
 const SIMS = 50000;
 // Fewer simulations per point for the season-so-far odds; there are many points
@@ -322,9 +323,8 @@ async function buildDivision(
   const plain = hasLineup
     ? simulateSeason(simTeams.map((t) => ({ ...t, lineup: undefined })), simRaces, TEAM_CODE, SIMS, undefined, params).teams[focusIdx]
     : undefined;
-  // With one race left, what the focus team needs is arithmetic. The goal is the
-  // title once promotion is certain, as on the page.
-  const titleRace = !!focusResult && focusResult.pTop2 > 0.999 && focusResult.pFirst > 0;
+  // With one race left, what the focus team needs is arithmetic, for the same
+  // place the page is about (see goalLine)
   const rules =
     remaining.length === 1 && focusIdx >= 0
       ? outcomeRules(
@@ -332,7 +332,7 @@ async function buildDivision(
           TEAM_CODE,
           remaining[0].multiplier,
           params.droppedRaces,
-          titleRace ? 1 : 2
+          focusResult ? goalLine(focusResult, promotionSpots(year)) : 2
         )
       : null;
   // Points so far with each team's lowest scores already dropped: roughly, a team's

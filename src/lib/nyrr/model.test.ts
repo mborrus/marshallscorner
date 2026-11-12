@@ -22,6 +22,8 @@ import {
 } from './model';
 import { distanceFromName, distanceMeters, raceKey, sameRunner } from './collect';
 import { shortEventName } from './format';
+import { goalLine } from './forecast';
+import { promotionSpots } from './standings';
 
 function race(eventCode: string, date: string, overrides: Partial<RaceInfo> = {}): RaceInfo {
   return {
@@ -278,4 +280,14 @@ test('in the last race, teams whose place is still open run faster, unless run f
   const twoLeft = [...oneRace, { ...oneRace[0], race: race('R2', '2026-12-08') }];
   const two = teams.map((t) => ({ ...t, fit: { ...t.fit, R2: t.fit.R }, fieldProb: { ...t.fieldProb, R2: 1 } }));
   assert.deepEqual(simulateSeason(two, twoLeft, 'L', 200, 1, DEFAULT_PARAMS).inFight, []);
+});
+
+test('the place being raced for follows how many teams move up', () => {
+  assert.deepEqual([2025, 2026].map(promotionSpots), [2, 1]);
+  // Two spots: the last promotion place while it is open, then the title
+  assert.equal(goalLine({ pTop2: 0.35, pFirst: 0 }, 2), 2);
+  assert.equal(goalLine({ pTop2: 1, pFirst: 0.4 }, 2), 1);
+  // One spot: the title while it can be won, else 2nd place (which no longer brings promotion)
+  assert.equal(goalLine({ pTop2: 1, pFirst: 0.4 }, 1), 1);
+  assert.equal(goalLine({ pTop2: 0.35, pFirst: 0 }, 1), 2);
 });
