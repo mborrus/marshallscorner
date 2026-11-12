@@ -4,6 +4,7 @@
 import { Fragment } from 'react';
 import type { DivisionForecast } from '@/lib/nyrr/forecast';
 import { formatDay, formatDuration, formatPct, ordinal, shortEventName } from '@/lib/nyrr/format';
+import { countedPoints, pointsForPlace } from '@/lib/nyrr/model';
 import { RuleSummary } from './OutcomeRules';
 import ProbBar from './ProbBar';
 import RaceWalkthrough from './RaceWalkthrough';
@@ -23,9 +24,16 @@ export default function ForecastView({ division, focusCode }: Props) {
   const focus = teams.find((t) => t.teamCode === focusCode);
   if (!focus) return null;
   const totalRaces = division.racesDone + division.remainingRaces.length;
+  const dropped = division.droppedRaces;
   const countsNote =
-    division.droppedRaces > 0
-      ? `Points count each team's best ${totalRaces - division.droppedRaces} of ${totalRaces} races: the year-end ranking drops the ${division.droppedRaces} lowest scores (missed races are 0), so these totals already leave out each team's ${division.droppedRaces} worst so far. NYRR's running totals, in brackets, add every race. A team's final total is about this plus what it scores in the ${division.remainingRaces.length === 1 ? 'last race' : 'races left'}; if that score is worse than ones already dropped, it gets dropped instead, so no team can finish below its total with only its single worst race left out.`
+    dropped > 0
+      ? `Points count each team's best ${totalRaces - dropped} of ${totalRaces} races: the year-end ranking drops ${
+          dropped === 1 ? 'the lowest score' : `the ${dropped} lowest scores`
+        } (a missed race is 0), so these totals already leave out each team's ${
+          dropped === 1 ? 'worst race' : `${dropped} worst races`
+        } so far. NYRR's running totals, in brackets, add every race. A team's final total is this plus what it scores in the ${
+          division.remainingRaces.length === 1 ? 'last race' : 'races left'
+        }, unless that score is lower than one already left out: then the new score is left out instead.`
       : null;
   const next = division.remainingRaces[0];
   const nextLineup = next && division.lineups[next.eventCode];
@@ -53,6 +61,20 @@ export default function ForecastView({ division, focusCode }: Props) {
   const main = goal === 'title' ? title : promotion;
   const plain = division.withoutLineup;
   const plainMain = plain && (goal === 'title' ? (title.tied ? plain.pFirstOutright : plain.pFirst) : promotion.tied ? plain.pTop2Outright : plain.pTop2);
+
+  // With one race left and nothing open for the focus team, say so with the
+  // points each team can still reach (a win, or no full team)
+  const sure = (p: number) => p < 0.0005 || p > 0.9995;
+  const settled = division.remainingRaces.length === 1 && !division.rules && sure(focus.pTop2) && sure(focus.pFirst);
+  const finalWith = (teamCode: string, racePoints: number) =>
+    countedPoints(
+      [...division.history.map((h) => h.teams.find((t) => t.teamCode === teamCode)?.points ?? 0), racePoints],
+      division.droppedRaces
+    );
+  const winPoints = next ? pointsForPlace(0, next.multiplier) : 0;
+  const surePlace = focus.placeDistribution.findIndex((p) => p > 0.9995) + 1;
+  const leader = teams[0];
+  const chaser = teams[teams.indexOf(focus) + 1];
 
   if (!next) {
     return (
@@ -105,7 +127,32 @@ export default function ForecastView({ division, focusCode }: Props) {
           .join(' and ')}
         .{' '}
         {goal === 'title' && <>Promotion is locked up; what&apos;s left is the division title. </>}
-        {division.rules ? (
+        {settled ? (
+          <>
+            <strong>Already decided:</strong>{' '}
+            {focus.pTop2 < 0.5
+              ? 'promotion is out of reach'
+              : focus.pFirst > 0.5
+                ? `the division is won, and with it promotion`
+                : 'promotion is locked up, and 1st is out of reach'}
+            {surePlace > 0 && <>. {focusName} finishes {ordinal(surePlace)} whatever happens at the {shortEventName(next.eventName)}</>}
+            .
+            {focus.pTop2 > 0.5 && focus.pFirst < 0.5 && (
+              <>
+                {' '}
+                {leader.teamName} can&apos;t finish below {finalWith(leader.teamCode, 0)} points and {focusName}{' '}
+                can&apos;t pass {finalWith(focusCode, winPoints)}
+                {chaser && (
+                  <>
+                    . Behind it, {chaser.teamName} can reach {finalWith(chaser.teamCode, winPoints)} at most, short of{' '}
+                    {focusName}&apos;s {finalWith(focusCode, 0)}
+                  </>
+                )}
+                .
+              </>
+            )}
+          </>
+        ) : division.rules ? (
           <>
             <RuleSummary rules={division.rules} focusName={focusName} raceName={shortEventName(next.eventName)} names={names} />{' '}
             The forecast: <strong>{formatPct(main.p)}</strong> to {goal === 'title' ? 'win it outright' : 'be promoted'}

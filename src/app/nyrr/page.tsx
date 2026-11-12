@@ -311,7 +311,7 @@ function Method({ generatedAt }: { generatedAt: string }) {
           <strong>Simulating.</strong> Each simulation decides who shows up, draws each team&apos;s time from its
           strength plus race-day randomness, scores the race (15, 12, 10, 8, 6, 5, 4, 3, 2, 1, then 1 for any
           other full team), and adds up the final standings the way the year-end ranking does: each
-          team&apos;s two lowest race scores are dropped. Teams that end level on points share a place in
+          team&apos;s lowest race score is dropped (two were dropped until 2024). Teams that end level on points share a place in
           NYRR&apos;s standings, so the chance of that is shown on its own; where one number is needed, a tie
           counts as half.
         </p>

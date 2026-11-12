@@ -35,6 +35,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
   const outrightGiven = (n: Need) => (goal === 'title' ? n.pFirstOutrightGiven : n.pTop2OutrightGiven);
   const tiedGiven = (n: Need) => (goal === 'title' ? n.pFirstTiedGiven : n.pTop2TiedGiven);
   const names = (teamCode: string) => division.teams.find((t) => t.teamCode === teamCode)?.teamName ?? teamCode;
+  const worst = division.droppedRaces === 1 ? 'worst race' : `${division.droppedRaces} worst races`;
   // Teams made faster for the last race because their place is still open
   const shifted = division.lastRaceShift.teams.filter((c) => teams.some((t) => t.teamCode === c));
   const needs = division.needs.filter((n) => n.pPlace >= 0.005);
@@ -45,7 +46,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
 
       <Step n={1} title="Where it stands">
         <p>
-          Points that count so far, with each team&apos;s worst races already dropped. The lighter part is what a{' '}
+          Points that count so far, with each team&apos;s {worst} already dropped. The lighter part is what a{' '}
           {raceName} win ({maxGain} points) would add.
         </p>
         <StandingsBars teams={teams} focusCode={focusCode} maxGain={maxGain} />
@@ -123,8 +124,8 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
 
       <Step n={6} title={`What each ${focusName} finish means`}>
         <p>
-          Each place adds its points to the totals in step 1, then the final standings drop each team&apos;s two
-          worst races.{' '}
+          Each place adds its points to the totals in step 1, then the final standings drop each team&apos;s{' '}
+          {worst}.{' '}
           {division.rules && (
             <>
               That part is plain arithmetic, no forecast needed: for each {focusName} finish, where each rival

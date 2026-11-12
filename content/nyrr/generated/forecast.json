@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T13:31:12.408Z",
+  "generatedAt": "2026-11-12T01:09:37.282Z",
   "year": 2026,
   "sims": 50000,
   "divisions": [
@@ -8,7 +8,7 @@
       "divisionName": "OPEN MEN B Standings",
       "gender": "M",
       "racesDone": 11,
-      "droppedRaces": 2,
+      "droppedRaces": 1,
       "remainingRaces": [
         {
           "eventCode": "26TC15K_draft",
@@ -28,9 +28,9 @@
           "pFirstTied": 0,
           "pTop2Outright": 1,
           "pTop2Tied": 0,
-          "meanPoints": 135.46742,
-          "p10Points": 133,
-          "p90Points": 140,
+          "meanPoints": 142.9173,
+          "p10Points": 139,
+          "p90Points": 148,
           "placeDistribution": [
             1,
             0,
@@ -75,24 +75,24 @@
           "teamName": "Rebeldes Running Club.",
           "place": 1,
           "points": 139,
-          "counted": 125
+          "counted": 133
         },
         {
           "teamCode": "LWTC",
           "pFirst": 0,
-          "pTop2": 0.32726000000000005,
+          "pTop2": 0.4663333333333323,
           "pFirstOutright": 0,
           "pFirstTied": 0,
-          "pTop2Outright": 0.32696,
-          "pTop2Tied": 0.00066,
-          "meanPoints": 111.16836,
-          "p10Points": 107,
-          "p90Points": 116,
+          "pTop2Outright": 0.44818,
+          "pTop2Tied": 0.0375,
+          "meanPoints": 116.99272,
+          "p10Points": 112,
+          "p90Points": 122,
           "placeDistribution": [
             0,
-            0.32726000000000005,
-            0.3030400000000001,
-            0.3696999999999999,
+            0.4663333333333323,
+            0.36317333333333385,
+            0.17049333333333289,
             0,
             0,
             0,
@@ -132,24 +132,24 @@
           "teamName": "Lone Wolf Track Club",
           "place": 2,
           "points": 112,
-          "counted": 101
+          "counted": 107
         },
         {
           "teamCode": "HRR",
           "pFirst": 0,
-          "pTop2": 0.32626000000000005,
+          "pTop2": 0.4260833333333327,
           "pFirstOutright": 0,
           "pFirstTied": 0,
-          "pTop2Outright": 0.32614,
-          "pTop2Tied": 0.0003,
-          "meanPoints": 111.77798,
-          "p10Points": 106,
-          "p90Points": 117,
+          "pTop2Outright": 0.41652,
+          "pTop2Tied": 0.02032,
+          "meanPoints": 115.69394,
+          "p10Points": 110,
+          "p90Points": 121,
           "placeDistribution": [
             0,
-            0.32626000000000005,
-            0.2745700000000001,
-            0.39916999999999986,
+            0.4260833333333327,
+            0.28771333333333415,
+            0.28620333333333414,
             0,
             0,
             0,
@@ -189,24 +189,24 @@
           "teamName": "Hellgate RR",
           "place": 3,
           "points": 109,
-          "counted": 102
+          "counted": 106
         },
         {
           "teamCode": "ManTC",
           "pFirst": 0,
-          "pTop2": 0.34648,
+          "pTop2": 0.1075833333333332,
           "pFirstOutright": 0,
           "pFirstTied": 0,
-          "pTop2Outright": 0.34624,
-          "pTop2Tied": 0.00054,
-          "meanPoints": 111.76272,
-          "p10Points": 109,
-          "p90Points": 116,
+          "pTop2Outright": 0.0832,
+          "pTop2Tied": 0.04996,
+          "meanPoints": 112.75204,
+          "p10Points": 110,
+          "p90Points": 117,
           "placeDistribution": [
             0,
-            0.34648,
-            0.4223899999999999,
-            0.23113000000000009,
+            0.1075833333333332,
+            0.3491133333333341,
+            0.5433033333333318,
             0,
             0,
             0,
@@ -246,7 +246,7 @@
           "teamName": "Manhattan Track Club",
           "place": 4,
           "points": 102,
-          "counted": 101
+          "counted": 102
         },
         {
           "teamCode": "STR",
@@ -256,17 +256,17 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 73.14216,
-          "p10Points": 70,
-          "p90Points": 76,
+          "meanPoints": 74.14216,
+          "p10Points": 71,
+          "p90Points": 77,
           "placeDistribution": [
             0,
             0,
             0,
             0,
-            0.98692,
-            0.01308,
-            0,
+            0.98012,
+            0.01986,
+            0.00002,
             0,
             0,
             0,
@@ -303,7 +303,7 @@
           "teamName": "Striders Track USA",
           "place": 5,
           "points": 70,
-          "counted": 68
+          "counted": 69
         },
         {
           "teamCode": "TFK",
@@ -313,17 +313,17 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 61.07812,
-          "p10Points": 58,
-          "p90Points": 66,
+          "meanPoints": 63.07812,
+          "p10Points": 60,
+          "p90Points": 68,
           "placeDistribution": [
             0,
             0,
             0,
             0,
-            0.00872,
-            0.73037,
-            0.26091,
+            0.01749,
+            0.78025,
+            0.20226,
             0,
             0,
             0,
@@ -360,7 +360,7 @@
           "teamName": "Team For Kids",
           "place": 6,
           "points": 60,
-          "counted": 56
+          "counted": 58
         },
         {
           "teamCode": "HHRT",
@@ -378,9 +378,9 @@
             0,
             0,
             0,
-            0.00436,
-            0.25655,
-            0.73909,
+            0.00239,
+            0.19989,
+            0.79772,
             0,
             0,
             0,
@@ -438,9 +438,9 @@
             0,
             0,
             0,
-            0.9787100000000002,
-            0.02112,
-            0.00017,
+            0.9537333333333335,
+            0.04524333333333333,
+            0.0010233333333333336,
             0,
             0,
             0,
@@ -484,9 +484,9 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 34.87832,
-          "p10Points": 33,
-          "p90Points": 37,
+          "meanPoints": 35.87832,
+          "p10Points": 34,
+          "p90Points": 38,
           "placeDistribution": [
             0,
             0,
@@ -495,10 +495,10 @@
             0,
             0,
             0,
-            0.014580000000000003,
-            0.8436233333333332,
-            0.13835333333333333,
-            0.003443333333333333,
+            0.03572333333333332,
+            0.8297000000000001,
+            0.1320999999999999,
+            0.0024766666666666656,
             0,
             0,
             0
@@ -531,7 +531,7 @@
           "teamName": "New York Flyers",
           "place": 9,
           "points": 34,
-          "counted": 32
+          "counted": 33
         },
         {
           "teamCode": "QDR",
@@ -541,9 +541,9 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 31.90276,
-          "p10Points": 30,
-          "p90Points": 34,
+          "meanPoints": 32.8537,
+          "p10Points": 31,
+          "p90Points": 35,
           "placeDistribution": [
             0,
             0,
@@ -552,12 +552,12 @@
             0,
             0,
             0,
-            0.00475,
-            0.11296333333333335,
-            0.7774399999999997,
-            0.10468666666666669,
-            0.0001533333333333333,
-            0.000006666666666666667,
+            0.008629999999999997,
+            0.11019666666666664,
+            0.8143433333333334,
+            0.06679333333333337,
+            0.000036666666666666666,
+            0,
             0
           ],
           "races": {
@@ -588,7 +588,7 @@
           "teamName": "Queens Distance Runners",
           "place": 10,
           "points": 30,
-          "counted": 29
+          "counted": 30
         },
         {
           "teamCode": "SBRC",
@@ -609,11 +609,11 @@
             0,
             0,
             0,
-            0.0019599999999999995,
-            0.022096666666666678,
-            0.08277333333333338,
-            0.8844233333333333,
-            0.008746666666666665,
+            0.001913333333333333,
+            0.014860000000000005,
+            0.05143666666666668,
+            0.9219233333333335,
+            0.009866666666666668,
             0,
             0
           ],
@@ -667,11 +667,11 @@
             0,
             0,
             0,
-            0.00019666666666666669,
-            0.0008033333333333333,
-            0.0049900000000000005,
-            0.9387533333333334,
-            0.05525666666666666,
+            0,
+            0.00058,
+            0.00533,
+            0.90366,
+            0.09043,
             0
           ],
           "races": {
@@ -712,9 +712,9 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 16.4274,
-          "p10Points": 16,
-          "p90Points": 17,
+          "meanPoints": 17.4274,
+          "p10Points": 17,
+          "p90Points": 18,
           "placeDistribution": [
             0,
             0,
@@ -725,11 +725,11 @@
             0,
             0,
             0,
-            0.00046,
-            0.0024566666666666665,
-            0.05223666666666667,
-            0.9444666666666667,
-            0.00038
+            0.0005166666666666667,
+            0.003476666666666666,
+            0.08632666666666666,
+            0.90954,
+            0.00014
           ],
           "races": {
             "26TC15K_draft": {
@@ -759,7 +759,7 @@
           "teamName": "Van Cortlandt TC",
           "place": 13,
           "points": 17,
-          "counted": 15
+          "counted": 16
         },
         {
           "teamCode": "UATH",
@@ -785,8 +785,8 @@
             0,
             0,
             0.00011,
-            0.00027,
-            0.99962
+            0.00003,
+            0.99986
           ],
           "races": {
             "26TC15K_draft": {
@@ -824,10 +824,10 @@
           "place": 1,
           "pPlace": 0.18882,
           "cutoffAvgSeconds": 3290.240037847959,
-          "pTop2Given": 1,
+          "pTop2Given": 0.4213536701620591,
           "pFirstGiven": 0,
-          "pTop2OutrightGiven": 1,
-          "pTop2TiedGiven": 0,
+          "pTop2OutrightGiven": 0.34943332274123506,
+          "pTop2TiedGiven": 0.14384069484164813,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
           "samples": 9441
@@ -836,10 +836,10 @@
           "place": 2,
           "pPlace": 0.29956,
           "cutoffAvgSeconds": 3431.189469788503,
-          "pTop2Given": 0.39898517826145014,
+          "pTop2Given": 0.08185338496461476,
           "pFirstGiven": 0,
-          "pTop2OutrightGiven": 0.39898517826145014,
-          "pTop2TiedGiven": 0,
+          "pTop2OutrightGiven": 0.057484310321805315,
+          "pTop2TiedGiven": 0.048738149285618905,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
           "samples": 14978
@@ -848,10 +848,10 @@
           "place": 3,
           "pPlace": 0.26224,
           "cutoffAvgSeconds": 3539.930690391131,
-          "pTop2Given": 0.1225594874923734,
+          "pTop2Given": 0.01335926377872689,
           "pFirstGiven": 0,
-          "pTop2OutrightGiven": 0.1225594874923734,
-          "pTop2TiedGiven": 0,
+          "pTop2OutrightGiven": 0,
+          "pTop2TiedGiven": 0.03126906650396583,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
           "samples": 13112
@@ -860,9 +860,9 @@
           "place": 4,
           "pPlace": 0.1536,
           "cutoffAvgSeconds": 3637.6749814456093,
-          "pTop2Given": 0.0375,
+          "pTop2Given": 0,
           "pFirstGiven": 0,
-          "pTop2OutrightGiven": 0.0375,
+          "pTop2OutrightGiven": 0,
           "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
@@ -872,10 +872,10 @@
           "place": 5,
           "pPlace": 0.05846,
           "cutoffAvgSeconds": 3725.9063125872763,
-          "pTop2Given": 0.00410537119397879,
+          "pTop2Given": 0,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 0,
-          "pTop2TiedGiven": 0.009237085186452275,
+          "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
           "samples": 2923
@@ -964,18 +964,18 @@
         "rows": [
           {
             "place": 1,
-            "finalPoints": 116,
+            "finalPoints": 117,
             "rivals": [
               {
                 "teamCode": "LWTC",
-                "behindFrom": 2,
-                "always": true,
-                "levelFrom": null
+                "behindFrom": 4,
+                "always": false,
+                "levelFrom": 3
               },
               {
                 "teamCode": "HRR",
-                "behindFrom": 2,
-                "always": true,
+                "behindFrom": 3,
+                "always": false,
                 "levelFrom": null
               }
             ],
@@ -983,64 +983,26 @@
           },
           {
             "place": 2,
-            "finalPoints": 113,
+            "finalPoints": 114,
             "rivals": [
               {
                 "teamCode": "LWTC",
-                "behindFrom": 3,
+                "behindFrom": 5,
                 "always": false,
                 "levelFrom": null
               },
               {
                 "teamCode": "HRR",
-                "behindFrom": 3,
+                "behindFrom": 5,
                 "always": false,
-                "levelFrom": null
+                "levelFrom": 4
               }
             ],
             "best": "clear"
           },
           {
             "place": 3,
-            "finalPoints": 111,
-            "rivals": [
-              {
-                "teamCode": "LWTC",
-                "behindFrom": 4,
-                "always": false,
-                "levelFrom": null
-              },
-              {
-                "teamCode": "HRR",
-                "behindFrom": 4,
-                "always": false,
-                "levelFrom": null
-              }
-            ],
-            "best": "clear"
-          },
-          {
-            "place": 4,
-            "finalPoints": 109,
-            "rivals": [
-              {
-                "teamCode": "LWTC",
-                "behindFrom": 5,
-                "always": false,
-                "levelFrom": null
-              },
-              {
-                "teamCode": "HRR",
-                "behindFrom": 5,
-                "always": false,
-                "levelFrom": null
-              }
-            ],
-            "best": "clear"
-          },
-          {
-            "place": 5,
-            "finalPoints": 107,
+            "finalPoints": 112,
             "rivals": [
               {
                 "teamCode": "LWTC",
@@ -1050,9 +1012,9 @@
               },
               {
                 "teamCode": "HRR",
-                "behindFrom": 7,
+                "behindFrom": 6,
                 "always": false,
-                "levelFrom": 6
+                "levelFrom": 5
               }
             ],
             "best": "level"
@@ -1067,9 +1029,9 @@
         "shift": -0.025
       },
       "withoutLineup": {
-        "pTop2": 0.18863333333333332,
+        "pTop2": 0.05936333333333338,
         "pFirst": 0,
-        "pTop2Outright": 0.18792,
+        "pTop2Outright": 0.0462,
         "pFirstOutright": 0
       },
       "runners": [
@@ -1818,8 +1780,8 @@
               "points": 15,
               "total": 15,
               "standing": 1,
-              "pTop2": 0.8664166666666666,
-              "pFirst": 0.4234
+              "pTop2": 0.8637333333333332,
+              "pFirst": 0.4159333333333333
             },
             {
               "teamCode": "LWTC",
@@ -1828,8 +1790,8 @@
               "points": 12,
               "total": 12,
               "standing": 2,
-              "pTop2": 0.8902166666666667,
-              "pFirst": 0.53315
+              "pTop2": 0.8904666666666666,
+              "pFirst": 0.5435333333333334
             },
             {
               "teamCode": "HRR",
@@ -1838,8 +1800,8 @@
               "points": 5,
               "total": 5,
               "standing": 6,
-              "pTop2": 0.06171666666666666,
-              "pFirst": 0.01095
+              "pTop2": 0.06855000000000001,
+              "pFirst": 0.012683333333333335
             },
             {
               "teamCode": "ManTC",
@@ -1848,8 +1810,8 @@
               "points": 10,
               "total": 10,
               "standing": 3,
-              "pTop2": 0.035116666666666664,
-              "pFirst": 0.00665
+              "pTop2": 0.030733333333333338,
+              "pFirst": 0.0055
             },
             {
               "teamCode": "STR",
@@ -1858,8 +1820,8 @@
               "points": 8,
               "total": 8,
               "standing": 4,
-              "pTop2": 0.045,
-              "pFirst": 0.0043
+              "pTop2": 0.0582,
+              "pFirst": 0.0052
             },
             {
               "teamCode": "TFK",
@@ -1868,8 +1830,8 @@
               "points": 2,
               "total": 2,
               "standing": 9,
-              "pTop2": 0.0018,
-              "pFirst": 0.00025
+              "pTop2": 0.00175,
+              "pFirst": 0.0002
             },
             {
               "teamCode": "HHRT",
@@ -1878,8 +1840,8 @@
               "points": 0,
               "total": 0,
               "standing": 12,
-              "pTop2": 0.09153333333333334,
-              "pFirst": 0.02
+              "pTop2": 0.07876666666666668,
+              "pFirst": 0.01535
             },
             {
               "teamCode": "URC",
@@ -1888,7 +1850,7 @@
               "points": 0,
               "total": 0,
               "standing": 12,
-              "pTop2": 0.0038,
+              "pTop2": 0.00315,
               "pFirst": 0.0007
             },
             {
@@ -1908,7 +1870,7 @@
               "points": 3,
               "total": 3,
               "standing": 8,
-              "pTop2": 0.0004,
+              "pTop2": 0.0006,
               "pFirst": 0
             },
             {
@@ -1918,7 +1880,7 @@
               "points": 1,
               "total": 1,
               "standing": 10,
-              "pTop2": 0.00045,
+              "pTop2": 0.0004,
               "pFirst": 0
             },
             {
@@ -1928,8 +1890,8 @@
               "points": 6,
               "total": 6,
               "standing": 5,
-              "pTop2": 0.00355,
-              "pFirst": 0.0006
+              "pTop2": 0.00365,
+              "pFirst": 0.0009
             },
             {
               "teamCode": "VCTC",
@@ -2016,8 +1978,8 @@
               "points": 10,
               "total": 25,
               "standing": 1,
-              "pTop2": 0.8684999999999998,
-              "pFirst": 0.4278833333333334
+              "pTop2": 0.8861666666666667,
+              "pFirst": 0.4420666666666666
             },
             {
               "teamCode": "LWTC",
@@ -2026,8 +1988,8 @@
               "points": 12,
               "total": 24,
               "standing": 3,
-              "pTop2": 0.8814166666666666,
-              "pFirst": 0.5152833333333333
+              "pTop2": 0.8915166666666666,
+              "pFirst": 0.51185
             },
             {
               "teamCode": "HRR",
@@ -2036,8 +1998,8 @@
               "points": 4,
               "total": 9,
               "standing": 4,
-              "pTop2": 0.03426666666666666,
-              "pFirst": 0.006483333333333333
+              "pTop2": 0.035550000000000005,
+              "pFirst": 0.007333333333333333
             },
             {
               "teamCode": "ManTC",
@@ -2046,8 +2008,8 @@
               "points": 15,
               "total": 25,
               "standing": 1,
-              "pTop2": 0.13433333333333333,
-              "pFirst": 0.03525
+              "pTop2": 0.11688333333333333,
+              "pFirst": 0.02666666666666666
             },
             {
               "teamCode": "STR",
@@ -2056,8 +2018,8 @@
               "points": 1,
               "total": 9,
               "standing": 4,
-              "pTop2": 0.005733333333333333,
-              "pFirst": 0.0006
+              "pTop2": 0.0061,
+              "pFirst": 0.0007
             },
             {
               "teamCode": "TFK",
@@ -2066,8 +2028,8 @@
               "points": 5,
               "total": 7,
               "standing": 8,
-              "pTop2": 0.00415,
-              "pFirst": 0.00055
+              "pTop2": 0.00395,
+              "pFirst": 0.0004
             },
             {
               "teamCode": "HHRT",
@@ -2076,8 +2038,8 @@
               "points": 8,
               "total": 8,
               "standing": 7,
-              "pTop2": 0.06246666666666668,
-              "pFirst": 0.013
+              "pTop2": 0.05163333333333332,
+              "pFirst": 0.010083333333333335
             },
             {
               "teamCode": "URC",
@@ -2086,8 +2048,8 @@
               "points": 2,
               "total": 2,
               "standing": 12,
-              "pTop2": 0.0046,
-              "pFirst": 0.0006
+              "pTop2": 0.0037,
+              "pFirst": 0.0005
             },
             {
               "teamCode": "NYF",
@@ -2106,7 +2068,7 @@
               "points": 1,
               "total": 4,
               "standing": 11,
-              "pTop2": 0.0003,
+              "pTop2": 0.0004,
               "pFirst": 0
             },
             {
@@ -2116,7 +2078,7 @@
               "points": 6,
               "total": 7,
               "standing": 8,
-              "pTop2": 0.00065,
+              "pTop2": 0.0006,
               "pFirst": 0
             },
             {
@@ -2126,8 +2088,8 @@
               "points": 3,
               "total": 9,
               "standing": 4,
-              "pTop2": 0.0035833333333333338,
-              "pFirst": 0.00035
+              "pTop2": 0.0035,
+              "pFirst": 0.0004
             },
             {
               "teamCode": "VCTC",
@@ -2244,8 +2206,8 @@
               "points": 12,
               "total": 37,
               "standing": 2,
-              "pTop2": 0.9231166666666668,
-              "pFirst": 0.40258333333333335
+              "pTop2": 0.9349833333333332,
+              "pFirst": 0.4219
             },
             {
               "teamCode": "LWTC",
@@ -2254,8 +2216,8 @@
               "points": 15,
               "total": 39,
               "standing": 1,
-              "pTop2": 0.9401666666666668,
-              "pFirst": 0.5756333333333333
+              "pTop2": 0.9423,
+              "pFirst": 0.55895
             },
             {
               "teamCode": "HRR",
@@ -2264,8 +2226,8 @@
               "points": 10,
               "total": 19,
               "standing": 4,
-              "pTop2": 0.0227,
-              "pFirst": 0.00275
+              "pTop2": 0.024233333333333336,
+              "pFirst": 0.0029
             },
             {
               "teamCode": "ManTC",
@@ -2274,8 +2236,8 @@
               "points": 8,
               "total": 33,
               "standing": 3,
-              "pTop2": 0.09366666666666668,
-              "pFirst": 0.01718333333333333
+              "pTop2": 0.08118333333333334,
+              "pFirst": 0.0149
             },
             {
               "teamCode": "STR",
@@ -2284,8 +2246,8 @@
               "points": 6,
               "total": 15,
               "standing": 5,
-              "pTop2": 0.0031,
-              "pFirst": 0.00015
+              "pTop2": 0.0038,
+              "pFirst": 0.0003
             },
             {
               "teamCode": "TFK",
@@ -2294,7 +2256,7 @@
               "points": 5,
               "total": 12,
               "standing": 6,
-              "pTop2": 0.0026,
+              "pTop2": 0.0022,
               "pFirst": 0.0001
             },
             {
@@ -2304,8 +2266,8 @@
               "points": 0,
               "total": 8,
               "standing": 9,
-              "pTop2": 0.01405,
-              "pFirst": 0.0016
+              "pTop2": 0.0108,
+              "pFirst": 0.00095
             },
             {
               "teamCode": "URC",
@@ -2314,7 +2276,7 @@
               "points": 0,
               "total": 2,
               "standing": 13,
-              "pTop2": 0.0004,
+              "pTop2": 0.00035,
               "pFirst": 0
             },
             {
@@ -2344,7 +2306,7 @@
               "points": 0,
               "total": 7,
               "standing": 10,
-              "pTop2": 0.0002,
+              "pTop2": 0.00015,
               "pFirst": 0
             },
             {
@@ -2447,8 +2409,8 @@
               "points": 12,
               "total": 49,
               "standing": 1,
-              "pTop2": 0.8974,
-              "pFirst": 0.5178333333333334
+              "pTop2": 0.9143666666666667,
+              "pFirst": 0.5376333333333333
             },
             {
               "teamCode": "LWTC",
@@ -2457,8 +2419,8 @@
               "points": 10,
               "total": 49,
               "standing": 1,
-              "pTop2": 0.8584166666666668,
-              "pFirst": 0.4120333333333334
+              "pTop2": 0.8682,
+              "pFirst": 0.40513333333333335
             },
             {
               "teamCode": "HRR",
@@ -2467,8 +2429,8 @@
               "points": 3,
               "total": 22,
               "standing": 5,
-              "pTop2": 0.00725,
-              "pFirst": 0.00065
+              "pTop2": 0.007983333333333334,
+              "pFirst": 0.0006
             },
             {
               "teamCode": "ManTC",
@@ -2477,8 +2439,8 @@
               "points": 15,
               "total": 48,
               "standing": 3,
-              "pTop2": 0.2277666666666667,
-              "pFirst": 0.06898333333333333
+              "pTop2": 0.2005,
+              "pFirst": 0.056383333333333334
             },
             {
               "teamCode": "STR",
@@ -2487,8 +2449,8 @@
               "points": 8,
               "total": 23,
               "standing": 4,
-              "pTop2": 0.003783333333333333,
-              "pFirst": 0
+              "pTop2": 0.0045,
+              "pFirst": 0.00005
             },
             {
               "teamCode": "TFK",
@@ -2497,8 +2459,8 @@
               "points": 6,
               "total": 18,
               "standing": 6,
-              "pTop2": 0.002833333333333333,
-              "pFirst": 0.0004
+              "pTop2": 0.003,
+              "pFirst": 0.0002
             },
             {
               "teamCode": "HHRT",
@@ -2507,8 +2469,8 @@
               "points": 4,
               "total": 12,
               "standing": 7,
-              "pTop2": 0.00245,
-              "pFirst": 0.0001
+              "pTop2": 0.00135,
+              "pFirst": 0
             },
             {
               "teamCode": "URC",
@@ -2685,8 +2647,8 @@
               "points": 15,
               "total": 64,
               "standing": 1,
-              "pTop2": 0.9686833333333332,
-              "pFirst": 0.78545
+              "pTop2": 0.9733333333333334,
+              "pFirst": 0.7937666666666666
             },
             {
               "teamCode": "LWTC",
@@ -2695,8 +2657,8 @@
               "points": 8,
               "total": 57,
               "standing": 2,
-              "pTop2": 0.7885833333333333,
-              "pFirst": 0.1739
+              "pTop2": 0.8175666666666667,
+              "pFirst": 0.17866666666666664
             },
             {
               "teamCode": "HRR",
@@ -2705,8 +2667,8 @@
               "points": 12,
               "total": 34,
               "standing": 4,
-              "pTop2": 0.0374,
-              "pFirst": 0.0027833333333333334
+              "pTop2": 0.03751666666666666,
+              "pFirst": 0.0025833333333333333
             },
             {
               "teamCode": "ManTC",
@@ -2715,8 +2677,8 @@
               "points": 1,
               "total": 49,
               "standing": 3,
-              "pTop2": 0.19476666666666664,
-              "pFirst": 0.037033333333333335
+              "pTop2": 0.16109999999999997,
+              "pFirst": 0.024633333333333333
             },
             {
               "teamCode": "STR",
@@ -2725,7 +2687,7 @@
               "points": 5,
               "total": 28,
               "standing": 5,
-              "pTop2": 0.00115,
+              "pTop2": 0.0012333333333333335,
               "pFirst": 0
             },
             {
@@ -2735,7 +2697,7 @@
               "points": 6,
               "total": 24,
               "standing": 6,
-              "pTop2": 0.00445,
+              "pTop2": 0.00585,
               "pFirst": 0.0002
             },
             {
@@ -2745,8 +2707,8 @@
               "points": 10,
               "total": 22,
               "standing": 7,
-              "pTop2": 0.004966666666666666,
-              "pFirst": 0.0006333333333333333
+              "pTop2": 0.0034,
+              "pFirst": 0.00015
             },
             {
               "teamCode": "URC",
@@ -2867,8 +2829,8 @@
               "points": 24,
               "total": 88,
               "standing": 1,
-              "pTop2": 0.9982,
-              "pFirst": 0.80545
+              "pTop2": 0.9972,
+              "pFirst": 0.86525
             },
             {
               "teamCode": "LWTC",
@@ -2877,8 +2839,8 @@
               "points": 6,
               "total": 63,
               "standing": 3,
-              "pTop2": 0.07656666666666666,
-              "pFirst": 0.00135
+              "pTop2": 0.12173333333333333,
+              "pFirst": 0.00285
             },
             {
               "teamCode": "HRR",
@@ -2887,8 +2849,8 @@
               "points": 16,
               "total": 50,
               "standing": 4,
-              "pTop2": 0.022433333333333333,
-              "pFirst": 0.0001
+              "pTop2": 0.029683333333333332,
+              "pFirst": 0.00005
             },
             {
               "teamCode": "ManTC",
@@ -2897,8 +2859,8 @@
               "points": 30,
               "total": 79,
               "standing": 2,
-              "pTop2": 0.8969166666666666,
-              "pFirst": 0.19305
+              "pTop2": 0.8471333333333332,
+              "pFirst": 0.13185
             },
             {
               "teamCode": "STR",
@@ -2927,8 +2889,8 @@
               "points": 20,
               "total": 42,
               "standing": 5,
-              "pTop2": 0.005883333333333332,
-              "pFirst": 0.00005
+              "pTop2": 0.00425,
+              "pFirst": 0
             },
             {
               "teamCode": "URC",
@@ -3115,8 +3077,8 @@
               "points": 12,
               "total": 100,
               "standing": 1,
-              "pTop2": 0.99915,
-              "pFirst": 0.9547
+              "pTop2": 0.99835,
+              "pFirst": 0.96755
             },
             {
               "teamCode": "LWTC",
@@ -3125,8 +3087,8 @@
               "points": 10,
               "total": 73,
               "standing": 3,
-              "pTop2": 0.20278333333333332,
-              "pFirst": 0.0019
+              "pTop2": 0.29425000000000007,
+              "pFirst": 0.00375
             },
             {
               "teamCode": "HRR",
@@ -3135,8 +3097,8 @@
               "points": 15,
               "total": 65,
               "standing": 4,
-              "pTop2": 0.12498333333333331,
-              "pFirst": 0.00105
+              "pTop2": 0.1384,
+              "pFirst": 0.0011
             },
             {
               "teamCode": "ManTC",
@@ -3145,8 +3107,8 @@
               "points": 4,
               "total": 83,
               "standing": 2,
-              "pTop2": 0.6720833333333333,
-              "pFirst": 0.04235
+              "pTop2": 0.5685,
+              "pFirst": 0.0276
             },
             {
               "teamCode": "STR",
@@ -3175,7 +3137,7 @@
               "points": 0,
               "total": 42,
               "standing": 6,
-              "pTop2": 0.001,
+              "pTop2": 0.0005,
               "pFirst": 0
             },
             {
@@ -3303,8 +3265,8 @@
               "points": 8,
               "total": 108,
               "standing": 1,
-              "pTop2": 0.9997,
-              "pFirst": 0.97615
+              "pTop2": 0.99955,
+              "pFirst": 0.987
             },
             {
               "teamCode": "LWTC",
@@ -3313,8 +3275,8 @@
               "points": 5,
               "total": 78,
               "standing": 4,
-              "pTop2": 0.14113333333333333,
-              "pFirst": 0.0001
+              "pTop2": 0.20443333333333327,
+              "pFirst": 0.0003
             },
             {
               "teamCode": "HRR",
@@ -3323,8 +3285,8 @@
               "points": 15,
               "total": 80,
               "standing": 3,
-              "pTop2": 0.4157833333333334,
-              "pFirst": 0.00515
+              "pTop2": 0.4506833333333334,
+              "pFirst": 0.0045
             },
             {
               "teamCode": "ManTC",
@@ -3333,8 +3295,8 @@
               "points": 0,
               "total": 83,
               "standing": 2,
-              "pTop2": 0.4433833333333334,
-              "pFirst": 0.0186
+              "pTop2": 0.3452333333333334,
+              "pFirst": 0.0082
             },
             {
               "teamCode": "STR",
@@ -3343,7 +3305,7 @@
               "points": 10,
               "total": 56,
               "standing": 5,
-              "pTop2": 0,
+              "pTop2": 0.0001,
               "pFirst": 0
             },
             {
@@ -3481,7 +3443,7 @@
               "total": 123,
               "standing": 1,
               "pTop2": 1,
-              "pFirst": 0.99945
+              "pFirst": 0.99965
             },
             {
               "teamCode": "LWTC",
@@ -3490,8 +3452,8 @@
               "points": 12,
               "total": 90,
               "standing": 2,
-              "pTop2": 0.28028333333333333,
-              "pFirst": 0.00005
+              "pTop2": 0.37065,
+              "pFirst": 0.0001
             },
             {
               "teamCode": "HRR",
@@ -3500,8 +3462,8 @@
               "points": 10,
               "total": 90,
               "standing": 2,
-              "pTop2": 0.4829333333333332,
-              "pFirst": 0.00015
+              "pTop2": 0.4743,
+              "pFirst": 0.00025
             },
             {
               "teamCode": "ManTC",
@@ -3510,8 +3472,8 @@
               "points": 6,
               "total": 89,
               "standing": 4,
-              "pTop2": 0.2367833333333334,
-              "pFirst": 0.00035
+              "pTop2": 0.15505,
+              "pFirst": 0
             },
             {
               "teamCode": "STR",
@@ -3678,7 +3640,7 @@
               "points": 12,
               "total": 102,
               "standing": 3,
-              "pTop2": 0.17389999999999997,
+              "pTop2": 0.2664,
               "pFirst": 0
             },
             {
@@ -3688,7 +3650,7 @@
               "points": 15,
               "total": 105,
               "standing": 2,
-              "pTop2": 0.65155,
+              "pTop2": 0.6298,
               "pFirst": 0
             },
             {
@@ -3698,7 +3660,7 @@
               "points": 8,
               "total": 97,
               "standing": 4,
-              "pTop2": 0.17454999999999993,
+              "pTop2": 0.1038,
               "pFirst": 0
             },
             {
@@ -3881,7 +3843,7 @@
               "points": 10,
               "total": 112,
               "standing": 2,
-              "pTop2": 0.4154666666666667,
+              "pTop2": 0.4918166666666667,
               "pFirst": 0
             },
             {
@@ -3891,7 +3853,7 @@
               "points": 4,
               "total": 109,
               "standing": 3,
-              "pTop2": 0.4054666666666667,
+              "pTop2": 0.4568166666666667,
               "pFirst": 0
             },
             {
@@ -3901,7 +3863,7 @@
               "points": 5,
               "total": 102,
               "standing": 4,
-              "pTop2": 0.17906666666666665,
+              "pTop2": 0.051366666666666665,
               "pFirst": 0
             },
             {
@@ -5332,7 +5294,7 @@
       "divisionName": "OPEN WOMEN B Standings",
       "gender": "W",
       "racesDone": 11,
-      "droppedRaces": 2,
+      "droppedRaces": 1,
       "remainingRaces": [
         {
           "eventCode": "26TC15K_draft",
@@ -5346,18 +5308,18 @@
       "teams": [
         {
           "teamCode": "NYF",
-          "pFirst": 0.58644,
+          "pFirst": 1,
           "pTop2": 1,
-          "pFirstOutright": 0.4181,
-          "pFirstTied": 0.33668,
+          "pFirstOutright": 1,
+          "pFirstTied": 0,
           "pTop2Outright": 1,
           "pTop2Tied": 0,
-          "meanPoints": 130.057,
-          "p10Points": 126,
-          "p90Points": 133,
+          "meanPoints": 137.1669,
+          "p10Points": 132,
+          "p90Points": 141,
           "placeDistribution": [
-            0.58644,
-            0.41356,
+            1,
+            0,
             0,
             0,
             0,
@@ -5372,22 +5334,22 @@
           "races": {
             "26TC15K_draft": {
               "pField": 0.9852,
-              "medianAvgSeconds": 4193.16038461429,
-              "p10AvgSeconds": 3868.508725776204,
-              "p90AvgSeconds": 4538.408860545793,
-              "pWin": 0.31124,
+              "medianAvgSeconds": 4299.310745129054,
+              "p10AvgSeconds": 3966.440490419034,
+              "p90AvgSeconds": 4653.299227839647,
+              "pWin": 0.21138,
               "placeOdds": [
-                0.31124,
-                0.38336,
-                0.17244,
-                0.07192,
-                0.02892,
-                0.01226,
-                0.00392,
-                0.00098,
-                0.00014,
+                0.21138,
+                0.36662,
+                0.21314,
+                0.1061,
+                0.05288,
+                0.0231,
+                0.00874,
+                0.0026,
+                0.00056,
+                0.00006,
                 0.00002,
-                0,
                 0
               ]
             }
@@ -5395,22 +5357,22 @@
           "teamName": "New York Flyers",
           "place": 1,
           "points": 132,
-          "counted": 118
+          "counted": 126
         },
         {
           "teamCode": "ManTC",
-          "pFirst": 0.41356,
+          "pFirst": 0,
           "pTop2": 1,
-          "pFirstOutright": 0.24522,
-          "pFirstTied": 0.33668,
+          "pFirstOutright": 0,
+          "pFirstTied": 0,
           "pTop2Outright": 1,
           "pTop2Tied": 0,
-          "meanPoints": 127.14386,
+          "meanPoints": 127.39888,
           "p10Points": 115,
           "p90Points": 130,
           "placeDistribution": [
-            0.41356,
-            0.58644,
+            0,
+            1,
             0,
             0,
             0,
@@ -5428,14 +5390,14 @@
               "medianAvgSeconds": 4030.690540916007,
               "p10AvgSeconds": 3810.542463963975,
               "p90AvgSeconds": 4271.342254246759,
-              "pWin": 0.55932,
+              "pWin": 0.63254,
               "placeOdds": [
-                0.55932,
-                0.25506,
-                0.05728,
-                0.0124,
-                0.00312,
-                0.00036,
+                0.63254,
+                0.19694,
+                0.0443,
+                0.01072,
+                0.00272,
+                0.00032,
                 0.00018,
                 0.00002,
                 0.00002,
@@ -5458,14 +5420,14 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 98.53562,
+          "meanPoints": 101.31716,
           "p10Points": 97,
-          "p90Points": 102,
+          "p90Points": 107,
           "placeDistribution": [
             0,
             0,
-            0.97822,
-            0.02178,
+            0.77952,
+            0.22048,
             0,
             0,
             0,
@@ -5481,17 +5443,17 @@
               "medianAvgSeconds": 4609.278469685093,
               "p10AvgSeconds": 4324.3220311648965,
               "p90AvgSeconds": 4902.217560858141,
-              "pWin": 0.00748,
+              "pWin": 0.0106,
               "placeOdds": [
-                0.00748,
-                0.04202,
-                0.1202,
-                0.14924,
-                0.11796,
-                0.06994,
-                0.03132,
-                0.01056,
-                0.003,
+                0.0106,
+                0.05316,
+                0.11962,
+                0.14296,
+                0.1134,
+                0.0679,
+                0.03072,
+                0.01038,
+                0.00298,
                 0.00038,
                 0.00008,
                 0.00002
@@ -5501,7 +5463,7 @@
           "teamName": "POLSKA Running Team",
           "place": 3,
           "points": 97,
-          "counted": 92
+          "counted": 97
         },
         {
           "teamCode": "UESRC",
@@ -5511,14 +5473,14 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 92.12448,
-          "p10Points": 88,
-          "p90Points": 96,
+          "meanPoints": 96.02918,
+          "p10Points": 92,
+          "p90Points": 100,
           "placeDistribution": [
             0,
             0,
-            0.02178,
-            0.97822,
+            0.22048,
+            0.77952,
             0,
             0,
             0,
@@ -5534,16 +5496,16 @@
               "medianAvgSeconds": 4572.421061479725,
               "p10AvgSeconds": 4229.721633864176,
               "p90AvgSeconds": 4931.911738381428,
-              "pWin": 0.0309,
+              "pWin": 0.03888,
               "placeOdds": [
-                0.0309,
-                0.11578,
-                0.2539,
-                0.23228,
-                0.1575,
-                0.09082,
-                0.04118,
-                0.01638,
+                0.03888,
+                0.14162,
+                0.24136,
+                0.21968,
+                0.15186,
+                0.08866,
+                0.04036,
+                0.01632,
                 0.0049,
                 0.00072,
                 0.00012,
@@ -5554,7 +5516,7 @@
           "teamName": "Upper East Side Run Club",
           "place": 4,
           "points": 88,
-          "counted": 84
+          "counted": 88
         },
         {
           "teamCode": "DPN",
@@ -5564,7 +5526,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 72.2325,
+          "meanPoints": 72.30968,
           "p10Points": 69,
           "p90Points": 81,
           "placeDistribution": [
@@ -5572,8 +5534,8 @@
             0,
             0,
             0,
-            0.96959,
-            0.03041,
+            0.96319,
+            0.03681,
             0,
             0,
             0,
@@ -5587,15 +5549,15 @@
               "medianAvgSeconds": 4298.470031393807,
               "p10AvgSeconds": 3983.7776051659944,
               "p90AvgSeconds": 4644.375012117261,
-              "pWin": 0.05034,
+              "pWin": 0.05724,
               "placeOdds": [
-                0.05034,
-                0.07882,
-                0.09016,
-                0.05004,
-                0.02516,
-                0.01134,
-                0.00438,
+                0.05724,
+                0.09046,
+                0.0785,
+                0.04562,
+                0.02332,
+                0.01082,
+                0.00428,
                 0.00108,
                 0.00054,
                 0.00012,
@@ -5617,7 +5579,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 62.95028,
+          "meanPoints": 63.00038,
           "p10Points": 58,
           "p90Points": 68,
           "placeDistribution": [
@@ -5625,9 +5587,9 @@
             0,
             0,
             0,
-            0.03041,
-            0.96738,
-            0.00221,
+            0.03681,
+            0.95853,
+            0.00466,
             0,
             0,
             0,
@@ -5640,18 +5602,18 @@
               "medianAvgSeconds": 4955.159288201805,
               "p10AvgSeconds": 4455.418566270508,
               "p90AvgSeconds": 5543.269452472042,
-              "pWin": 0.0092,
+              "pWin": 0.01126,
               "placeOdds": [
-                0.0092,
-                0.0289,
-                0.07302,
-                0.11444,
-                0.15356,
-                0.17014,
-                0.15394,
-                0.10474,
-                0.04982,
-                0.01522,
+                0.01126,
+                0.03518,
+                0.07132,
+                0.11258,
+                0.1513,
+                0.16896,
+                0.15306,
+                0.10434,
+                0.04978,
+                0.0152,
                 0.00268,
                 0.00018
               ]
@@ -5670,19 +5632,19 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 49.83754,
-          "p10Points": 47,
-          "p90Points": 54,
+          "meanPoints": 50.8643,
+          "p10Points": 48,
+          "p90Points": 55,
           "placeDistribution": [
             0,
             0,
             0,
             0,
             0,
-            0.00207,
-            0.7852800000000003,
-            0.2076200000000001,
-            0.005030000000000005,
+            0.00451,
+            0.85053,
+            0.14315,
+            0.00181,
             0,
             0,
             0
@@ -5693,17 +5655,17 @@
               "medianAvgSeconds": 5210.4918693590425,
               "p10AvgSeconds": 4593.403522076526,
               "p90AvgSeconds": 5904.458433376085,
-              "pWin": 0.00442,
+              "pWin": 0.00542,
               "placeOdds": [
-                0.00442,
-                0.01338,
-                0.03272,
-                0.0624,
-                0.09782,
-                0.13852,
-                0.1628,
-                0.14066,
-                0.0843,
+                0.00542,
+                0.01646,
+                0.0323,
+                0.06166,
+                0.0964,
+                0.13762,
+                0.1625,
+                0.1404,
+                0.08426,
                 0.03188,
                 0.00546,
                 0.00048
@@ -5713,7 +5675,7 @@
           "teamName": "Queens Distance Runners",
           "place": 7,
           "points": 48,
-          "counted": 46
+          "counted": 47
         },
         {
           "teamCode": "3RPL",
@@ -5723,7 +5685,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 46.2266,
+          "meanPoints": 46.25308,
           "p10Points": 43,
           "p90Points": 51,
           "placeDistribution": [
@@ -5732,11 +5694,11 @@
             0,
             0,
             0,
-            0.00014,
-            0.2007900000000001,
-            0.7011599999999996,
-            0.09774999999999996,
-            0.00016,
+            0.00015,
+            0.13778,
+            0.75648,
+            0.10538,
+            0.00021,
             0,
             0
           ],
@@ -5746,18 +5708,18 @@
               "medianAvgSeconds": 5023.821821719876,
               "p10AvgSeconds": 4554.853307021667,
               "p90AvgSeconds": 5547.98013257091,
-              "pWin": 0.00266,
+              "pWin": 0.00318,
               "placeOdds": [
-                0.00266,
-                0.01228,
-                0.03466,
-                0.06718,
-                0.10462,
-                0.12874,
-                0.12304,
-                0.09312,
-                0.04686,
-                0.01566,
+                0.00318,
+                0.01508,
+                0.03552,
+                0.0665,
+                0.1028,
+                0.1279,
+                0.1225,
+                0.0929,
+                0.0468,
+                0.01564,
                 0.00288,
                 0.0001
               ]
@@ -5776,7 +5738,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 38.57486,
+          "meanPoints": 38.6406,
           "p10Points": 35,
           "p90Points": 45,
           "placeDistribution": [
@@ -5786,10 +5748,10 @@
             0,
             0,
             0,
-            0.01172,
-            0.09054000000000002,
-            0.8235100000000004,
-            0.07423,
+            0.00703,
+            0.09953,
+            0.81794,
+            0.0755,
             0,
             0
           ],
@@ -5799,17 +5761,17 @@
               "medianAvgSeconds": 4630.6775679745615,
               "p10AvgSeconds": 4246.914421390786,
               "p90AvgSeconds": 5064.24509683736,
-              "pWin": 0.0141,
+              "pWin": 0.01738,
               "placeOdds": [
-                0.0141,
-                0.04264,
-                0.0918,
-                0.1025,
-                0.0918,
-                0.06416,
-                0.04106,
-                0.0202,
-                0.00756,
+                0.01738,
+                0.05092,
+                0.08978,
+                0.09828,
+                0.08866,
+                0.06266,
+                0.04052,
+                0.02012,
+                0.0075,
                 0.00186,
                 0.00024,
                 0.00002
@@ -5829,7 +5791,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 31.01848,
+          "meanPoints": 31.03704,
           "p10Points": 29,
           "p90Points": 35,
           "placeDistribution": [
@@ -5840,10 +5802,10 @@
             0,
             0,
             0,
-            0.00068,
-            0.07371,
-            0.91128,
-            0.01433,
+            0.00084,
+            0.07487,
+            0.90825,
+            0.01604,
             0
           ],
           "races": {
@@ -5852,18 +5814,18 @@
               "medianAvgSeconds": 4992.498023456104,
               "p10AvgSeconds": 4501.4128449201,
               "p90AvgSeconds": 5499.66519588673,
-              "pWin": 0.00206,
+              "pWin": 0.00262,
               "placeOdds": [
-                0.00206,
-                0.00876,
-                0.02534,
-                0.0453,
-                0.06098,
-                0.0732,
-                0.07138,
-                0.0577,
+                0.00262,
+                0.01086,
+                0.0257,
+                0.04418,
+                0.06008,
+                0.07268,
+                0.0711,
+                0.05752,
                 0.03128,
-                0.01088,
+                0.01086,
                 0.00258,
                 0.00014
               ]
@@ -5882,7 +5844,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 22.6937,
+          "meanPoints": 22.71398,
           "p10Points": 19,
           "p90Points": 27,
           "placeDistribution": [
@@ -5895,8 +5857,8 @@
             0,
             0,
             0,
-            0.01433,
-            0.98567,
+            0.01604,
+            0.98396,
             0
           ],
           "races": {
@@ -5905,17 +5867,17 @@
               "medianAvgSeconds": 5067.872646246017,
               "p10AvgSeconds": 4667.490296537693,
               "p90AvgSeconds": 5515.413768000501,
-              "pWin": 0.00082,
+              "pWin": 0.00102,
               "placeOdds": [
-                0.00082,
-                0.00626,
-                0.02914,
-                0.0703,
-                0.1273,
-                0.16772,
-                0.16736,
-                0.11618,
-                0.0567,
+                0.00102,
+                0.00822,
+                0.02988,
+                0.07046,
+                0.12612,
+                0.16682,
+                0.16678,
+                0.11596,
+                0.05652,
                 0.01614,
                 0.0024,
                 0.00016
@@ -5935,7 +5897,7 @@
           "pFirstTied": 0,
           "pTop2Outright": 0,
           "pTop2Tied": 0,
-          "meanPoints": 1.96944,
+          "meanPoints": 1.98528,
           "p10Points": 1,
           "p90Points": 5,
           "placeDistribution": [
@@ -5958,19 +5920,19 @@
               "medianAvgSeconds": 4705.350906880599,
               "p10AvgSeconds": 4170.6044489914275,
               "p90AvgSeconds": 5325.372797248618,
-              "pWin": 0.00746,
+              "pWin": 0.00848,
               "placeOdds": [
-                0.00746,
-                0.01274,
-                0.01928,
-                0.02088,
-                0.02106,
-                0.01922,
-                0.01716,
-                0.0122,
-                0.00678,
-                0.00286,
-                0.00064,
+                0.00848,
+                0.01448,
+                0.01852,
+                0.02014,
+                0.02026,
+                0.01898,
+                0.01698,
+                0.01218,
+                0.00676,
+                0.00288,
+                0.00062,
                 0.00006
               ]
             }
@@ -5984,80 +5946,80 @@
       "needs": [
         {
           "place": 1,
-          "pPlace": 0.55932,
-          "cutoffAvgSeconds": 4126.400982785623,
+          "pPlace": 0.63254,
+          "cutoffAvgSeconds": 4186.783166577483,
           "pTop2Given": 1,
-          "pFirstGiven": 0.6990273904026317,
+          "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
-          "pFirstOutrightGiven": 0.3980547808052635,
-          "pFirstTiedGiven": 0.6019452191947364,
-          "samples": 27966
+          "pFirstOutrightGiven": 0,
+          "pFirstTiedGiven": 0,
+          "samples": 31627
         },
         {
           "place": 2,
-          "pPlace": 0.25506,
-          "cutoffAvgSeconds": 4392.141477701315,
+          "pPlace": 0.19694,
+          "cutoffAvgSeconds": 4417.021382319113,
           "pTop2Given": 1,
-          "pFirstGiven": 0.08852818944562064,
+          "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
-          "pFirstOutrightGiven": 0.08852818944562064,
+          "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
-          "samples": 12753
+          "samples": 9847
         },
         {
           "place": 3,
-          "pPlace": 0.05728,
-          "cutoffAvgSeconds": 4580.988648147481,
+          "pPlace": 0.0443,
+          "cutoffAvgSeconds": 4592.197369859922,
           "pTop2Given": 1,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
-          "samples": 2864
+          "samples": 2215
         },
         {
           "place": 4,
-          "pPlace": 0.0124,
-          "cutoffAvgSeconds": 4755.695479557395,
+          "pPlace": 0.01072,
+          "cutoffAvgSeconds": 4759.844669204727,
           "pTop2Given": 1,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
-          "samples": 620
+          "samples": 536
         },
         {
           "place": 5,
-          "pPlace": 0.00312,
-          "cutoffAvgSeconds": 4937.226980706995,
+          "pPlace": 0.00272,
+          "cutoffAvgSeconds": 4939.1257873368395,
           "pTop2Given": 1,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
-          "samples": 156
+          "samples": 136
         },
         {
           "place": 6,
-          "pPlace": 0.00036,
-          "cutoffAvgSeconds": 5116.557839833249,
+          "pPlace": 0.00032,
+          "cutoffAvgSeconds": 5117.034170525999,
           "pTop2Given": 1,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
           "pTop2TiedGiven": 0,
           "pFirstOutrightGiven": 0,
           "pFirstTiedGiven": 0,
-          "samples": 18
+          "samples": 16
         },
         {
           "place": 7,
           "pPlace": 0.00018,
-          "cutoffAvgSeconds": 5270.405404819364,
+          "cutoffAvgSeconds": 5270.455529599309,
           "pTop2Given": 1,
           "pFirstGiven": 0,
           "pTop2OutrightGiven": 1,
@@ -6104,52 +6066,16 @@
         }
       ],
       "scenarios": [],
-      "rules": {
-        "slots": 1,
-        "rivals": [
-          "NYF"
-        ],
-        "mustBeat": 1,
-        "rows": [
-          {
-            "place": 1,
-            "finalPoints": 130,
-            "rivals": [
-              {
-                "teamCode": "NYF",
-                "behindFrom": 3,
-                "always": false,
-                "levelFrom": 2
-              }
-            ],
-            "best": "clear"
-          },
-          {
-            "place": 2,
-            "finalPoints": 127,
-            "rivals": [
-              {
-                "teamCode": "NYF",
-                "behindFrom": 4,
-                "always": false,
-                "levelFrom": null
-              }
-            ],
-            "best": "clear"
-          }
-        ]
-      },
+      "rules": null,
       "lastRaceShift": {
-        "teams": [
-          "NYF"
-        ],
+        "teams": [],
         "shift": -0.025
       },
       "withoutLineup": {
         "pTop2": 1,
-        "pFirst": 0.33886,
+        "pFirst": 0,
         "pTop2Outright": 1,
-        "pFirstOutright": 0.1923
+        "pFirstOutright": 0
       },
       "runners": [
         {
@@ -6861,8 +6787,8 @@
               "points": 15,
               "total": 15,
               "standing": 1,
-              "pTop2": 0.9480333333333334,
-              "pFirst": 0.68665
+              "pTop2": 0.9536,
+              "pFirst": 0.7439
             },
             {
               "teamCode": "ManTC",
@@ -6871,8 +6797,8 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.7504833333333333,
-              "pFirst": 0.2716
+              "pTop2": 0.7220833333333333,
+              "pFirst": 0.2154
             },
             {
               "teamCode": "POLS",
@@ -6881,8 +6807,8 @@
               "points": 10,
               "total": 10,
               "standing": 3,
-              "pTop2": 0.0308,
-              "pFirst": 0.0025
+              "pTop2": 0.03503333333333333,
+              "pFirst": 0.0024
             },
             {
               "teamCode": "UESRC",
@@ -6891,8 +6817,8 @@
               "points": 8,
               "total": 8,
               "standing": 4,
-              "pTop2": 0.09595,
-              "pFirst": 0.0105
+              "pTop2": 0.11626666666666667,
+              "pFirst": 0.0128
             },
             {
               "teamCode": "DPN",
@@ -6901,8 +6827,8 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.03683333333333333,
-              "pFirst": 0.00415
+              "pTop2": 0.03323333333333333,
+              "pFirst": 0.00295
             },
             {
               "teamCode": "HRR",
@@ -6911,7 +6837,7 @@
               "points": 6,
               "total": 6,
               "standing": 5,
-              "pTop2": 0.0153,
+              "pTop2": 0.01763333333333333,
               "pFirst": 0.00125
             },
             {
@@ -6921,7 +6847,7 @@
               "points": 5,
               "total": 5,
               "standing": 6,
-              "pTop2": 0.0001,
+              "pTop2": 0.00005,
               "pFirst": 0
             },
             {
@@ -6931,8 +6857,8 @@
               "points": 12,
               "total": 12,
               "standing": 2,
-              "pTop2": 0.11375,
-              "pFirst": 0.02215
+              "pTop2": 0.1139,
+              "pFirst": 0.02025
             },
             {
               "teamCode": "URC",
@@ -6941,7 +6867,7 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.0004,
+              "pTop2": 0.0003,
               "pFirst": 0
             },
             {
@@ -6951,7 +6877,7 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.00165,
+              "pTop2": 0.0015,
               "pFirst": 0.0001
             },
             {
@@ -6961,7 +6887,7 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.0002,
+              "pTop2": 0.00025,
               "pFirst": 0
             },
             {
@@ -6971,8 +6897,8 @@
               "points": 0,
               "total": 0,
               "standing": 7,
-              "pTop2": 0.0065,
-              "pFirst": 0.0011
+              "pTop2": 0.00615,
+              "pFirst": 0.00095
             }
           ],
           "focusRunners": [
@@ -7018,8 +6944,8 @@
               "points": 8,
               "total": 23,
               "standing": 1,
-              "pTop2": 0.9026333333333332,
-              "pFirst": 0.6646
+              "pTop2": 0.9198833333333334,
+              "pFirst": 0.71895
             },
             {
               "teamCode": "ManTC",
@@ -7028,8 +6954,8 @@
               "points": 10,
               "total": 10,
               "standing": 7,
-              "pTop2": 0.53635,
-              "pFirst": 0.20685000000000003
+              "pTop2": 0.4942333333333333,
+              "pFirst": 0.15711666666666668
             },
             {
               "teamCode": "POLS",
@@ -7038,8 +6964,8 @@
               "points": 5,
               "total": 15,
               "standing": 3,
-              "pTop2": 0.0211,
-              "pFirst": 0.00205
+              "pTop2": 0.02406666666666667,
+              "pFirst": 0.0021
             },
             {
               "teamCode": "UESRC",
@@ -7048,8 +6974,8 @@
               "points": 12,
               "total": 20,
               "standing": 2,
-              "pTop2": 0.2947166666666667,
-              "pFirst": 0.06516666666666666
+              "pTop2": 0.33853333333333335,
+              "pFirst": 0.07696666666666667
             },
             {
               "teamCode": "DPN",
@@ -7058,8 +6984,8 @@
               "points": 15,
               "total": 15,
               "standing": 3,
-              "pTop2": 0.19666666666666668,
-              "pFirst": 0.05393333333333334
+              "pTop2": 0.17336666666666664,
+              "pFirst": 0.03841666666666667
             },
             {
               "teamCode": "HRR",
@@ -7068,8 +6994,8 @@
               "points": 6,
               "total": 12,
               "standing": 6,
-              "pTop2": 0.01775,
-              "pFirst": 0.00295
+              "pTop2": 0.021233333333333333,
+              "pFirst": 0.00325
             },
             {
               "teamCode": "QDR",
@@ -7078,7 +7004,7 @@
               "points": 1,
               "total": 6,
               "standing": 8,
-              "pTop2": 0.0006,
+              "pTop2": 0.00055,
               "pFirst": 0.0001
             },
             {
@@ -7088,8 +7014,8 @@
               "points": 1,
               "total": 13,
               "standing": 5,
-              "pTop2": 0.023983333333333336,
-              "pFirst": 0.00355
+              "pTop2": 0.0232,
+              "pFirst": 0.00265
             },
             {
               "teamCode": "URC",
@@ -7098,7 +7024,7 @@
               "points": 3,
               "total": 3,
               "standing": 10,
-              "pTop2": 0.0005,
+              "pTop2": 0.0003,
               "pFirst": 0
             },
             {
@@ -7108,8 +7034,8 @@
               "points": 4,
               "total": 4,
               "standing": 9,
-              "pTop2": 0.00265,
-              "pFirst": 0.0002
+              "pTop2": 0.0025333333333333336,
+              "pFirst": 0.00005
             },
             {
               "teamCode": "TRR",
@@ -7118,7 +7044,7 @@
               "points": 2,
               "total": 2,
               "standing": 11,
-              "pTop2": 0.0001,
+              "pTop2": 0,
               "pFirst": 0
             },
             {
@@ -7128,8 +7054,8 @@
               "points": 0,
               "total": 0,
               "standing": 12,
-              "pTop2": 0.00295,
-              "pFirst": 0.0006
+              "pTop2": 0.0021,
+              "pFirst": 0.0004
             }
           ],
           "focusRunners": [
@@ -7201,8 +7127,8 @@
               "points": 15,
               "total": 38,
               "standing": 1,
-              "pTop2": 0.9774333333333334,
-              "pFirst": 0.8880833333333334
+              "pTop2": 0.97995,
+              "pFirst": 0.9010833333333332
             },
             {
               "teamCode": "ManTC",
@@ -7211,8 +7137,8 @@
               "points": 0,
               "total": 10,
               "standing": 7,
-              "pTop2": 0.2582833333333334,
-              "pFirst": 0.041133333333333334
+              "pTop2": 0.2178333333333334,
+              "pFirst": 0.02705
             },
             {
               "teamCode": "POLS",
@@ -7221,8 +7147,8 @@
               "points": 12,
               "total": 27,
               "standing": 3,
-              "pTop2": 0.16856666666666667,
-              "pFirst": 0.0125
+              "pTop2": 0.17719999999999997,
+              "pFirst": 0.011983333333333334
             },
             {
               "teamCode": "UESRC",
@@ -7231,8 +7157,8 @@
               "points": 8,
               "total": 28,
               "standing": 2,
-              "pTop2": 0.3787833333333333,
-              "pFirst": 0.03518333333333333
+              "pTop2": 0.4397833333333333,
+              "pFirst": 0.044
             },
             {
               "teamCode": "DPN",
@@ -7241,8 +7167,8 @@
               "points": 0,
               "total": 15,
               "standing": 5,
-              "pTop2": 0.12298333333333335,
-              "pFirst": 0.0146
+              "pTop2": 0.10166666666666667,
+              "pFirst": 0.009333333333333332
             },
             {
               "teamCode": "HRR",
@@ -7251,8 +7177,8 @@
               "points": 0,
               "total": 12,
               "standing": 6,
-              "pTop2": 0.012466666666666668,
-              "pFirst": 0.0006
+              "pTop2": 0.01115,
+              "pFirst": 0.00045
             },
             {
               "teamCode": "QDR",
@@ -7261,7 +7187,7 @@
               "points": 3,
               "total": 9,
               "standing": 8,
-              "pTop2": 0.0003,
+              "pTop2": 0.0002333333333333333,
               "pFirst": 0
             },
             {
@@ -7271,8 +7197,8 @@
               "points": 10,
               "total": 23,
               "standing": 4,
-              "pTop2": 0.07778333333333333,
-              "pFirst": 0.00765
+              "pTop2": 0.06933333333333334,
+              "pFirst": 0.0061
             },
             {
               "teamCode": "URC",
@@ -7291,7 +7217,7 @@
               "points": 5,
               "total": 9,
               "standing": 8,
-              "pTop2": 0.0014,
+              "pTop2": 0.0012,
               "pFirst": 0
             },
             {
@@ -7301,7 +7227,7 @@
               "points": 4,
               "total": 6,
               "standing": 11,
-              "pTop2": 0.0001,
+              "pTop2": 0,
               "pFirst": 0
             },
             {
@@ -7311,8 +7237,8 @@
               "points": 0,
               "total": 0,
               "standing": 12,
-              "pTop2": 0.0018,
-              "pFirst": 0.00025
+              "pTop2": 0.00155,
+              "pFirst": 0
             }
           ],
           "focusRunners": [
@@ -7358,8 +7284,8 @@
               "points": 10,
               "total": 48,
               "standing": 1,
-              "pTop2": 0.9697166666666668,
-              "pFirst": 0.8203333333333332
+              "pTop2": 0.9777333333333333,
+              "pFirst": 0.8708
             },
             {
               "teamCode": "ManTC",
@@ -7368,8 +7294,8 @@
               "points": 15,
               "total": 25,
               "standing": 5,
-              "pTop2": 0.46055,
-              "pFirst": 0.10773333333333335
+              "pTop2": 0.4136166666666667,
+              "pFirst": 0.0718
             },
             {
               "teamCode": "POLS",
@@ -7378,8 +7304,8 @@
               "points": 5,
               "total": 32,
               "standing": 3,
-              "pTop2": 0.08256666666666668,
-              "pFirst": 0.00455
+              "pTop2": 0.09360000000000002,
+              "pFirst": 0.0041
             },
             {
               "teamCode": "UESRC",
@@ -7388,8 +7314,8 @@
               "points": 6,
               "total": 34,
               "standing": 2,
-              "pTop2": 0.20801666666666666,
-              "pFirst": 0.019783333333333333
+              "pTop2": 0.2697833333333334,
+              "pFirst": 0.02365
             },
             {
               "teamCode": "DPN",
@@ -7398,8 +7324,8 @@
               "points": 12,
               "total": 27,
               "standing": 4,
-              "pTop2": 0.23241666666666666,
-              "pFirst": 0.04285
+              "pTop2": 0.20286666666666664,
+              "pFirst": 0.027
             },
             {
               "teamCode": "HRR",
@@ -7408,8 +7334,8 @@
               "points": 3,
               "total": 15,
               "standing": 8,
-              "pTop2": 0.00465,
-              "pFirst": 0.0003
+              "pTop2": 0.00435,
+              "pFirst": 0.0001
             },
             {
               "teamCode": "QDR",
@@ -7428,8 +7354,8 @@
               "points": 1,
               "total": 24,
               "standing": 6,
-              "pTop2": 0.040383333333333334,
-              "pFirst": 0.0043
+              "pTop2": 0.03665,
+              "pFirst": 0.0024
             },
             {
               "teamCode": "URC",
@@ -7438,7 +7364,7 @@
               "points": 8,
               "total": 17,
               "standing": 7,
-              "pTop2": 0.00105,
+              "pTop2": 0.0009,
               "pFirst": 0.00015
             },
             {
@@ -7448,7 +7374,7 @@
               "points": 4,
               "total": 13,
               "standing": 9,
-              "pTop2": 0.0002,
+              "pTop2": 0.00015,
               "pFirst": 0
             },
             {
@@ -7468,7 +7394,7 @@
               "points": 0,
               "total": 0,
               "standing": 12,
-              "pTop2": 0.00025,
+              "pTop2": 0.00015,
               "pFirst": 0
             }
           ],
@@ -7541,8 +7467,8 @@
               "points": 15,
               "total": 63,
               "standing": 1,
-              "pTop2": 0.99665,
-              "pFirst": 0.96325
+              "pTop2": 0.9973166666666667,
+              "pFirst": 0.9731333333333332
             },
             {
               "teamCode": "ManTC",
@@ -7551,8 +7477,8 @@
               "points": 0,
               "total": 25,
               "standing": 5,
-              "pTop2": 0.2677833333333333,
-              "pFirst": 0.01635
+              "pTop2": 0.21675,
+              "pFirst": 0.007233333333333335
             },
             {
               "teamCode": "POLS",
@@ -7561,8 +7487,8 @@
               "points": 12,
               "total": 44,
               "standing": 2,
-              "pTop2": 0.3043833333333333,
-              "pFirst": 0.0071
+              "pTop2": 0.31468333333333337,
+              "pFirst": 0.0069
             },
             {
               "teamCode": "UESRC",
@@ -7571,8 +7497,8 @@
               "points": 10,
               "total": 44,
               "standing": 2,
-              "pTop2": 0.31684999999999997,
-              "pFirst": 0.0085
+              "pTop2": 0.3840166666666667,
+              "pFirst": 0.010083333333333333
             },
             {
               "teamCode": "DPN",
@@ -7581,8 +7507,8 @@
               "points": 0,
               "total": 27,
               "standing": 4,
-              "pTop2": 0.0882,
-              "pFirst": 0.0042
+              "pTop2": 0.06708333333333334,
+              "pFirst": 0.00225
             },
             {
               "teamCode": "HRR",
@@ -7591,8 +7517,8 @@
               "points": 4,
               "total": 19,
               "standing": 8,
-              "pTop2": 0.00285,
-              "pFirst": 0.00005
+              "pTop2": 0.0024,
+              "pFirst": 0
             },
             {
               "teamCode": "QDR",
@@ -7601,7 +7527,7 @@
               "points": 5,
               "total": 15,
               "standing": 11,
-              "pTop2": 0.0005,
+              "pTop2": 0.0003,
               "pFirst": 0
             },
             {
@@ -7611,8 +7537,8 @@
               "points": 0,
               "total": 24,
               "standing": 6,
-              "pTop2": 0.02068333333333333,
-              "pFirst": 0.00055
+              "pTop2": 0.015550000000000003,
+              "pFirst": 0.0004
             },
             {
               "teamCode": "URC",
@@ -7621,7 +7547,7 @@
               "points": 6,
               "total": 23,
               "standing": 7,
-              "pTop2": 0.002,
+              "pTop2": 0.0018,
               "pFirst": 0
             },
             {
@@ -7698,8 +7624,8 @@
               "points": 16,
               "total": 79,
               "standing": 1,
-              "pTop2": 0.9965666666666666,
-              "pFirst": 0.8954833333333332
+              "pTop2": 0.99785,
+              "pFirst": 0.947
             },
             {
               "teamCode": "ManTC",
@@ -7708,8 +7634,8 @@
               "points": 30,
               "total": 55,
               "standing": 3,
-              "pTop2": 0.5226666666666666,
-              "pFirst": 0.0898
+              "pTop2": 0.4652833333333333,
+              "pFirst": 0.04225
             },
             {
               "teamCode": "POLS",
@@ -7718,8 +7644,8 @@
               "points": 20,
               "total": 64,
               "standing": 2,
-              "pTop2": 0.34678333333333333,
-              "pFirst": 0.0087
+              "pTop2": 0.4014833333333334,
+              "pFirst": 0.0083
             },
             {
               "teamCode": "UESRC",
@@ -7728,8 +7654,8 @@
               "points": 0,
               "total": 44,
               "standing": 5,
-              "pTop2": 0.0452,
-              "pFirst": 0.0002
+              "pTop2": 0.059733333333333326,
+              "pFirst": 0.0003
             },
             {
               "teamCode": "DPN",
@@ -7738,8 +7664,8 @@
               "points": 24,
               "total": 51,
               "standing": 4,
-              "pTop2": 0.08778333333333334,
-              "pFirst": 0.005816666666666666
+              "pTop2": 0.07470000000000002,
+              "pFirst": 0.00215
             },
             {
               "teamCode": "HRR",
@@ -7748,7 +7674,7 @@
               "points": 12,
               "total": 31,
               "standing": 7,
-              "pTop2": 0.0002,
+              "pTop2": 0.00025,
               "pFirst": 0
             },
             {
@@ -7768,7 +7694,7 @@
               "points": 10,
               "total": 34,
               "standing": 6,
-              "pTop2": 0.0008,
+              "pTop2": 0.0007,
               "pFirst": 0
             },
             {
@@ -7936,8 +7862,8 @@
               "points": 15,
               "total": 94,
               "standing": 1,
-              "pTop2": 0.9998,
-              "pFirst": 0.98245
+              "pTop2": 0.99995,
+              "pFirst": 0.9944
             },
             {
               "teamCode": "ManTC",
@@ -7946,8 +7872,8 @@
               "points": 0,
               "total": 55,
               "standing": 4,
-              "pTop2": 0.38398333333333334,
-              "pFirst": 0.0161
+              "pTop2": 0.30695000000000006,
+              "pFirst": 0.0044
             },
             {
               "teamCode": "POLS",
@@ -7956,7 +7882,7 @@
               "points": 10,
               "total": 74,
               "standing": 2,
-              "pTop2": 0.4904666666666667,
+              "pTop2": 0.5624499999999999,
               "pFirst": 0.00105
             },
             {
@@ -7966,7 +7892,7 @@
               "points": 12,
               "total": 56,
               "standing": 3,
-              "pTop2": 0.08300000000000002,
+              "pTop2": 0.0991,
               "pFirst": 0
             },
             {
@@ -7976,8 +7902,8 @@
               "points": 0,
               "total": 51,
               "standing": 5,
-              "pTop2": 0.042749999999999996,
-              "pFirst": 0.0004
+              "pTop2": 0.03155,
+              "pFirst": 0.00015
             },
             {
               "teamCode": "HRR",
@@ -8078,8 +8004,8 @@
               "points": 8,
               "total": 102,
               "standing": 1,
-              "pTop2": 1,
-              "pFirst": 0.92585
+              "pTop2": 0.9999,
+              "pFirst": 0.9831
             },
             {
               "teamCode": "ManTC",
@@ -8088,8 +8014,8 @@
               "points": 15,
               "total": 70,
               "standing": 3,
-              "pTop2": 0.64835,
-              "pFirst": 0.07335
+              "pTop2": 0.57905,
+              "pFirst": 0.0164
             },
             {
               "teamCode": "POLS",
@@ -8098,8 +8024,8 @@
               "points": 0,
               "total": 74,
               "standing": 2,
-              "pTop2": 0.15801666666666667,
-              "pFirst": 0.0001
+              "pTop2": 0.16379999999999997,
+              "pFirst": 0.00015
             },
             {
               "teamCode": "UESRC",
@@ -8108,7 +8034,7 @@
               "points": 12,
               "total": 68,
               "standing": 4,
-              "pTop2": 0.15091666666666664,
+              "pTop2": 0.22306666666666666,
               "pFirst": 0.0002
             },
             {
@@ -8118,8 +8044,8 @@
               "points": 10,
               "total": 61,
               "standing": 5,
-              "pTop2": 0.04271666666666667,
-              "pFirst": 0.0005
+              "pTop2": 0.03418333333333333,
+              "pFirst": 0.00015
             },
             {
               "teamCode": "HRR",
@@ -8252,7 +8178,7 @@
               "total": 114,
               "standing": 1,
               "pTop2": 1,
-              "pFirst": 0.92185
+              "pFirst": 0.99285
             },
             {
               "teamCode": "ManTC",
@@ -8261,8 +8187,8 @@
               "points": 15,
               "total": 85,
               "standing": 2,
-              "pTop2": 0.7662666666666664,
-              "pFirst": 0.07815
+              "pTop2": 0.6760833333333333,
+              "pFirst": 0.00715
             },
             {
               "teamCode": "POLS",
@@ -8271,7 +8197,7 @@
               "points": 8,
               "total": 82,
               "standing": 3,
-              "pTop2": 0.08283333333333336,
+              "pTop2": 0.08958333333333335,
               "pFirst": 0
             },
             {
@@ -8281,7 +8207,7 @@
               "points": 10,
               "total": 78,
               "standing": 4,
-              "pTop2": 0.14696666666666663,
+              "pTop2": 0.2317333333333333,
               "pFirst": 0
             },
             {
@@ -8291,7 +8217,7 @@
               "points": 0,
               "total": 61,
               "standing": 5,
-              "pTop2": 0.003933333333333334,
+              "pTop2": 0.0026,
               "pFirst": 0
             },
             {
@@ -8460,7 +8386,7 @@
               "total": 126,
               "standing": 1,
               "pTop2": 1,
-              "pFirst": 0.92625
+              "pFirst": 0.99905
             },
             {
               "teamCode": "ManTC",
@@ -8469,8 +8395,8 @@
               "points": 15,
               "total": 100,
               "standing": 2,
-              "pTop2": 0.91525,
-              "pFirst": 0.07375
+              "pTop2": 0.8548333333333334,
+              "pFirst": 0.00095
             },
             {
               "teamCode": "POLS",
@@ -8479,7 +8405,7 @@
               "points": 10,
               "total": 92,
               "standing": 3,
-              "pTop2": 0.0688,
+              "pTop2": 0.09118333333333334,
               "pFirst": 0
             },
             {
@@ -8489,7 +8415,7 @@
               "points": 6,
               "total": 84,
               "standing": 4,
-              "pTop2": 0.01595,
+              "pTop2": 0.053983333333333335,
               "pFirst": 0
             },
             {
@@ -8628,7 +8554,7 @@
               "total": 132,
               "standing": 1,
               "pTop2": 1,
-              "pFirst": 0.69475
+              "pFirst": 1
             },
             {
               "teamCode": "ManTC",
@@ -8638,7 +8564,7 @@
               "total": 115,
               "standing": 2,
               "pTop2": 1,
-              "pFirst": 0.30525
+              "pFirst": 0
             },
             {
               "teamCode": "POLS",

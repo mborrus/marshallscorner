@@ -85,18 +85,17 @@ Quirks:
 - Team score = combined time of the top N team finishers of that gender. **N = 5 at most races,
   3 at the NYC Marathon, 10 at the Team Championships.**
 - **Team Championships count double** (30, 24, 20, …).
-- **The year-end ranking drops each team's two lowest race scores** (missed races count as 0). Written on
-  club sites (NY Flyers' points page: "the lowest two scores for each club will be automatically dropped";
-  NYRR's own page sits behind a waiting room) and **confirmed in NYRR's data (Nov 11)**: in the final
-  2022–2024 standings each team's two lowest scores are blanked (`points: null`, different races for each
-  team) and `totalPoints` / `teamPlace` use the rest. Seasons so far: 2022 best 9 of 11, 2023 best 8 of 10,
-  2024 best 9 of 11. **2025 dropped only one** (best 9 of 10): the SI Half was cancelled, so the rule looks
-  like "count the scheduled races minus two" and a cancelled race uses up a drop. 2026 has 12 races → best 10
-  (if the Corbitt were cancelled, only one score would be dropped: `droppedRaces` would need to be 1).
+- **The year-end ranking drops each team's lowest race score: one in 2025 and 2026, two before that**
+  (a missed race counts as 0). **2026: one score dropped, best 11 of 12** (a teammate confirmed it on Nov 12,
+  after we had assumed two). It matches NYRR's data: in final standings NYRR blanks each team's dropped
+  scores (`points: null`, different races for each team) and `totalPoints` / `teamPlace` use the rest.
+  2022 best 9 of 11, 2023 best 8 of 10, 2024 best 9 of 11 (two blanked per team); **2025 best 9 of 10 (one
+  blanked per team)**. Older club pages still say two (NY Flyers' 2024 page: "the lowest two scores for each
+  club will be automatically dropped"). NYRR's own rules page sits behind a waiting room. `droppedRaces` in
+  `DEFAULT_PARAMS` is 1 and needs checking each season.
   During a season NYRR's running totals add every race. `counted` in `forecast.json` = points so far with
-  the two lowest already dropped (the "effective total" clubs quote): the final is about this plus what's
-  scored in the races left, except that a score worse than ones already dropped is dropped instead (so the
-  floor is the running total minus only the single worst).
+  the lowest already dropped: the final is this plus what's scored in the races left, unless a new score is
+  lower than the one left out (then the new one is left out instead).
   **Side effect for past seasons:** a blanked score looks like a missed race in the points data, so
   "fielded" must come from the team award (it does), and past-season backtests must not drop scores again
   (`season_backtest.ts` passes `droppedRaces: 0`). Promotions 2022–2025 all match the post-drop top 2.
@@ -296,7 +295,7 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   next to +1 points; "5 finished; fewer than 5"; the needs table showed "promoted 100%" on every row once
   promotion was locked — it now shows title odds then.
 
-- **Nov 11 review ("what can be better"):**
+- **Nov 11 review ("what can be better")** (the standings numbers in it assumed two dropped scores; see Nov 12 below)**:**
   - **Exact rules** (`outcomeRules` in `model.ts`, `rules` in `forecast.json`, shown in the callout and step
     6): with one race left the outcome is arithmetic. Men B: MTC is promoted if it finishes top 4 among
     division teams and ahead of both Lone Wolf and Hellgate; 5th can only tie Lone Wolf on 107. Women B: MTC
@@ -317,6 +316,14 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
     women's outright title 35% → 25% (+34% tie). Small sample: re-check after the 2026 Corbitt.
   - **`withoutLineup`** in `forecast.json`: the focus team's odds with its lists ignored, shown next to the
     headline so the reader sees how much rests on the list.
+
+- **Nov 12: one dropped score, not two.** With best 11 of 12: men B counted Rebeldes 133, Lone Wolf 107,
+  Hellgate 106, MTC 102. MTC needs 1st with Lone Wolf 4th or lower and Hellgate 3rd or lower, or 2nd with
+  both 5th or lower; promotion 8% outright plus 5% level on points (was 35% with two drops). Women B is
+  decided: NY Flyers can't finish below 132 and MTC can't pass 130, POLSKA can't reach MTC's 115, so MTC is
+  2nd and promoted whatever happens at the Corbitt. The page shows an "Already decided" box when nothing is
+  open for the focus team. (A one-promotion-spot version was shipped by mistake in #19 and reverted; two
+  teams still move up.)
 
 ## Gaps and ideas
 

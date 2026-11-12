@@ -66,16 +66,20 @@ export function RuleSummary({ rules, focusName, raceName, names }: SummaryProps)
       const with_ = row.rivals.filter((r) => r.behindFrom === null && r.levelFrom !== null).map((r) => names(r.teamCode));
       level.push(`Finishing ${ordinal(row.place)} could at best leave it level on points with ${joinNames(with_)}.`);
     }
-  } else if (clear.length && rules.rivals.length === 1) {
-    const rival = rivals[0];
+  } else if (clear.length && rules.mustBeat === rules.rivals.length) {
+    // Every rival has to end up behind: spell out each finish that can do it
     const paths = clear.map((row) => {
-      const r = row.rivals[0];
-      return r.always ? ordinal(row.place) : `${ordinal(row.place)} with ${rival} ${orLower(r.behindFrom!)}`;
+      const needs = row.rivals.filter((r) => !r.always).map((r) => `${names(r.teamCode)} ${orLower(r.behindFrom!)}`);
+      return needs.length ? `${ordinal(row.place)} with ${needs.join(' and ')}` : ordinal(row.place);
     });
     main = `${scope}, ${focusName} ${prize} if it finishes ${paths.join(', or ')}.`;
-    for (const row of rules.rows) {
-      const text = levelText(row.rivals[0], row.place);
-      if (text) level.push(`${ordinal(row.place)} with ${rival} ${text} leaves the two level on points.`);
+    if (rules.rivals.length === 1) {
+      for (const row of rules.rows) {
+        const text = levelText(row.rivals[0], row.place);
+        if (text) level.push(`${ordinal(row.place)} with ${rivals[0]} ${text} leaves the two level on points.`);
+      }
+    } else if (rules.rows.some((row) => row.rivals.some((r) => r.levelFrom !== null))) {
+      level.push('Some other results leave it level on points with a rival (the table in step 6 has them).');
     }
   } else if (clear.length) {
     main = `${focusName} ${prize} if it finishes ahead of ${

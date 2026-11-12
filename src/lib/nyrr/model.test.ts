@@ -216,15 +216,35 @@ test('teams level on points across a line are counted as tied, not as a clear fi
 
 const fillers = ['X1', 'X2', 'X3'].map((teamCode) => ({ teamCode, racePoints: new Array(11).fill(0) }));
 
+const menB = () => [
+  { teamCode: 'ReRC', racePoints: [6, 8, 10, 10, 12, 12, 12, 15, 15, 15, 24] },
+  { teamCode: 'LWTC', racePoints: [5, 6, 8, 10, 10, 10, 12, 12, 12, 12, 15] },
+  { teamCode: 'HRR', racePoints: [3, 4, 4, 5, 10, 10, 12, 15, 15, 15, 16] },
+  { teamCode: 'ManTC', racePoints: [0, 1, 4, 5, 6, 8, 8, 10, 15, 15, 30] },
+  { teamCode: 'STR', racePoints: [1, 1, 5, 5, 6, 8, 8, 8, 8, 10, 10] },
+  ...fillers,
+];
+
 test('with one race left, the rules give where each rival must finish (2026 Open Men B)', () => {
-  const teams = [
-    { teamCode: 'ReRC', racePoints: [6, 8, 10, 10, 12, 12, 12, 15, 15, 15, 24] },
-    { teamCode: 'LWTC', racePoints: [5, 6, 8, 10, 10, 10, 12, 12, 12, 12, 15] },
-    { teamCode: 'HRR', racePoints: [3, 4, 4, 5, 10, 10, 12, 15, 15, 15, 16] },
-    { teamCode: 'ManTC', racePoints: [0, 1, 4, 5, 6, 8, 8, 10, 15, 15, 30] },
-    { teamCode: 'STR', racePoints: [1, 1, 5, 5, 6, 8, 8, 8, 8, 10, 10] },
-    ...fillers,
-  ];
+  // One score dropped, as in 2026
+  const rules = outcomeRules(menB(), 'ManTC', 1, 1, 2)!;
+  assert.deepEqual(rules.rivals, ['LWTC', 'HRR']);
+  assert.deepEqual(rules.rows.map((r) => [r.place, r.finalPoints, r.best]), [
+    [1, 117, 'clear'],
+    [2, 114, 'clear'],
+    [3, 112, 'level'],
+  ]);
+  // Even a win needs Lone Wolf 4th or lower (level if 3rd) and Hellgate 3rd or lower
+  assert.deepEqual(rules.rows[0].rivals, [
+    { teamCode: 'LWTC', behindFrom: 4, always: false, levelFrom: 3 },
+    { teamCode: 'HRR', behindFrom: 3, always: false, levelFrom: null },
+  ]);
+  // 3rd: Lone Wolf can't finish below 112
+  assert.deepEqual(rules.rows[2].rivals[0], { teamCode: 'LWTC', behindFrom: null, always: false, levelFrom: 6 });
+});
+
+test('the same standings with two scores dropped leave an easier path', () => {
+  const teams = menB();
   const rules = outcomeRules(teams, 'ManTC', 1, 2, 2)!;
   // The leader can't be caught and the 5th team can't catch up: two rivals for one spot
   assert.deepEqual(rules.rivals, ['LWTC', 'HRR']);
@@ -248,13 +268,16 @@ test('with one race left, the rules give where each rival must finish (2026 Open
   assert.equal(outcomeRules(teams, 'ManTC', 1, 2, 1), null);
 });
 
-test('a win can still leave two teams level for the title (2026 Open Women B)', () => {
+test('a win can still leave two teams level for the title, or the title can be gone (2026 Open Women B)', () => {
   const teams = [
     { teamCode: 'NYF', racePoints: [6, 8, 8, 10, 12, 12, 15, 15, 15, 15, 16] },
     { teamCode: 'ManTC', racePoints: [0, 0, 0, 0, 10, 15, 15, 15, 15, 15, 30] },
     ...fillers,
   ];
-  // Promotion is certain, so there is nothing to work out for it
+  // One score dropped, as in 2026: promotion is certain and the leader can't be caught
+  assert.equal(outcomeRules(teams, 'ManTC', 1, 1, 2), null);
+  assert.equal(outcomeRules(teams, 'ManTC', 1, 1, 1), null);
+  // With two dropped, promotion is still certain but the title is open
   assert.equal(outcomeRules(teams, 'ManTC', 1, 2, 2), null);
   const rules = outcomeRules(teams, 'ManTC', 1, 2, 1)!;
   assert.deepEqual(rules.rows.map((r) => [r.place, r.finalPoints, r.rivals[0].behindFrom, r.rivals[0].levelFrom]), [
