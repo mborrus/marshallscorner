@@ -8,7 +8,6 @@ import {
   getDivisions,
   getLatestYear,
   isOpenDivision,
-  promotionSpots,
   type Division,
   type TeamResult,
 } from '@/lib/nyrr/standings';
@@ -64,7 +63,6 @@ export default async function NyrrPage() {
   );
 
   const teamName = teamDivisions[0]?.team.teamName ?? 'Manhattan Track Club';
-  const spots = promotionSpots(year);
   const genderLabel: Record<string, string> = { M: 'Men', W: 'Women', X: 'Nonbinary' };
 
   const tabs = teamDivisions.map(({ division, team, detail }) => {
@@ -87,14 +85,14 @@ export default async function NyrrPage() {
             </p>
           )}
           {divisionForecast ? (
-            <ForecastView division={divisionForecast} focusCode={TEAM_CODE} spots={spots} />
+            <ForecastView division={divisionForecast} focusCode={TEAM_CODE} />
           ) : (
             <p className="win98-box-inset">
               {ordinal(team.teamPlace)} place with {team.totalPoints} pts. No forecast for this division yet.
             </p>
           )}
           {detail.length > 0 && (
-            <RaceByRace division={division} detail={detail} team={team} forecast={divisionForecast} spots={spots} />
+            <RaceByRace division={division} detail={detail} team={team} forecast={divisionForecast} />
           )}
         </>
       ),
@@ -107,7 +105,7 @@ export default async function NyrrPage() {
         <p className={styles.kicker}>{year} NYRR Club Points</p>
         <h1>NYRR Team Standings</h1>
         <p>
-          Can {teamName} {spots === 1 ? 'win its division' : `finish top ${spots}`} and move up? Standings come live from NYRR; the forecast
+          Can {teamName} finish top 2 and move up a division? Standings come live from NYRR; the forecast
           simulates the rest of the season {forecast ? forecast.sims.toLocaleString() : ''} times.
         </p>
       </div>
@@ -173,22 +171,17 @@ function RaceByRace({
   detail,
   team,
   forecast,
-  spots,
 }: {
   division: Division;
   detail: TeamResult[];
   team: TeamResult;
   forecast?: DivisionForecast;
-  spots: number; // how many teams move up this year
 }) {
   const history = forecast?.history;
-  const focus = forecast?.teams.find((t) => t.teamCode === TEAM_CODE);
-  // Promotion odds today, with a tie on points counted as half, as in the chart
-  const todayOdds = focus && (spots === 1 ? focus.pFirst : focus.pTop2);
-  const promotionMeans = spots === 1 ? 'winning the division' : `a top ${spots} finish`;
+  const todayTop2 = forecast?.teams.find((t) => t.teamCode === TEAM_CODE)?.pTop2;
   const byCounted = [...(forecast?.teams ?? [])].sort((a, b) => b.counted - a.counted);
-  const lastUp = byCounted[spots - 1];
-  const gapToLine = focus && lastUp ? lastUp.counted - focus.counted : undefined;
+  const focusCounted = byCounted.find((t) => t.teamCode === TEAM_CODE)?.counted;
+  const gapToSecond = focusCounted !== undefined && byCounted[1] ? byCounted[1].counted - focusCounted : undefined;
   const leaderboard = forecast?.leaderboard ?? [];
   const top = detail.slice(0, 5);
   const chartTeams = top.some((t) => t.teamCode === TEAM_CODE)
@@ -200,21 +193,20 @@ function RaceByRace({
       <PointsChart teams={chartTeams} highlightCode={TEAM_CODE} />
       {!!history?.length && (
         <>
-          <h3 className={styles.subhead}>Chance of {promotionMeans} after each race</h3>
+          <h3 className={styles.subhead}>Chance of a top 2 finish after each race</h3>
           <p className={styles.muted}>
             What the forecast would have said right after each race, using only results up to then. Early in
             the season the odds lean on last season&apos;s results, so a team that was strong last year can look
             likely to move up before it has scored much. These replays leave out sign-up lists, so the last
             point can differ from today&apos;s forecast above
-            {todayOdds !== undefined && <> (which has {team.teamName} at {formatPct(todayOdds)} for {promotionMeans})</>}
-            . A tie on points counts as half here. Click a race to see the standings at that point.
+            {todayTop2 !== undefined && <> (which has {team.teamName} at {formatPct(todayTop2)} for a top 2 finish)</>}
+            . Click a race to see the standings at that point.
           </p>
           <SeasonHistory
             history={history}
             teamNames={Object.fromEntries(detail.map((t) => [t.teamCode, t.teamName]))}
             focusCode={TEAM_CODE}
-            gapToLine={gapToLine}
-            spots={spots}
+            gapToSecond={gapToSecond}
           />
         </>
       )}
@@ -316,14 +308,10 @@ function Method({ generatedAt }: { generatedAt: string }) {
           team has a list and its rivals don&apos;t.
         </p>
         <p>
-          <strong>Who moves up.</strong> In 2022&ndash;2025 the top two teams of a division moved up. For 2026
-          only the division winner does, so the promotion chance here is the chance of finishing 1st.
-        </p>
-        <p>
           <strong>Simulating.</strong> Each simulation decides who shows up, draws each team&apos;s time from its
           strength plus race-day randomness, scores the race (15, 12, 10, 8, 6, 5, 4, 3, 2, 1, then 1 for any
           other full team), and adds up the final standings the way the year-end ranking does: each
-          team&apos;s two lowest race scores are dropped. Teams that end level on points share a place in
+          team&apos;s lowest race score is dropped (two were dropped until 2024). Teams that end level on points share a place in
           NYRR&apos;s standings, so the chance of that is shown on its own; where one number is needed, a tie
           counts as half.
         </p>

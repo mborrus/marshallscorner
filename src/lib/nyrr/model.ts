@@ -63,7 +63,8 @@ export interface ModelParams {
   historyWeight: number;
   // Lowest race scores left out of each team's year-end total. NYRR's running
   // totals add every race; at year end it blanks each team's lowest scores and
-  // ranks on the rest (2022-2024 final data: two blanked per team).
+  // ranks on the rest. Two per team in the 2022-2024 final data, one in 2025,
+  // and one in 2026 (confirmed by a teammate).
   droppedRaces: number;
   // Change to a team's time (log scale) in the season's last race when its
   // place is still open. In 2022-2025 such teams ran about 3.5% faster than
@@ -94,7 +95,7 @@ export const DEFAULT_PARAMS: ModelParams = {
   strengthScaleOther: 1,
   timeOffsetMarathon: -0.032,
   historyWeight: 6,
-  droppedRaces: 2,
+  droppedRaces: 1,
   lastRaceFightShift: -0.025,
   turnoutPrior: 0.8,
   teamSigmaPrior: 0.045,
