@@ -2,8 +2,7 @@
 
 Everything learned building `/nyrr` (Oct 2026), so the next round of work starts from here.
 Focus team: **Manhattan Track Club (`ManTC`)**, in **Open Men B** and **Open Women B**.
-**In 2026 only the division winner is promoted** to the next level (A); in 2022–2025 the top 2 were
-(see "Who moves up" below).
+**Top 2 in a division get promoted** to the next level (A).
 
 ## Where things live
 
@@ -109,15 +108,6 @@ Quirks:
 - **Age-group divisions** (40M, 50W, …) score only older runners (team awards with `minimumAge` 40+). The
   forecast and tabs cover open A/B/C divisions only (`isOpenDivision`). MTC men scored in 40M at the 2026
   marathon; including it made the build 6+ minutes and gave two "men" tabs.
-- **Who moves up.** 2022–2025: the top 2 of each B and C division (every one matches the next year's
-  divisions). **2026: only the division winner** (a teammate confirmed it with NYRR's rules for the year,
-  Nov 11; not checkable in the data until the 2027 divisions are posted). `promotionSpots(year)` in
-  `standings.ts` holds this and needs checking each season. The model still reports both `pFirst` and
-  `pTop2`; the page uses the one that matches (`goalLine` in `forecast.ts` picks the place still being raced
-  for: the promotion place while it is open, otherwise the title or 2nd). Effect on Nov 12: men B promotion
-  is 0% (Rebeldes have clinched 1st; what's left is a 35% shot at 2nd), women B promotion is the title race
-  (25% outright, 34% level with NY Flyers, and who goes up from a tie is unknown). The 2022–2025 backtests and
-  the last-race finding were measured with top-2 promotion.
 - **Ties share a place**, including 1st: CPTC and Running for Ayotzinapa both finished the 2025 40M division
   on 112 and both are listed in place 1 (also BTR and NYAC level in 2nd in 2025 AM, 2024 AM 4th, several 6ths). No tiebreak shows in the data and
   none was found written down (searched Nov 11). No tie has landed on a promotion line in 2022–2025, so how

@@ -14,13 +14,6 @@ export function isOpenDivision(divisionCode: string): boolean {
   return /^[ABC][MWX]$/.test(divisionCode);
 }
 
-// How many teams move up from a division at year end. Two in 2022-2025 (seen in
-// the next year's divisions). Only the winner in 2026, per NYRR's rules for the
-// year as passed on by a teammate. Check again each season.
-export function promotionSpots(year: number): number {
-  return year >= 2026 ? 1 : 2;
-}
-
 export interface EventPoints {
   eventCode: string;
   eventName: string;

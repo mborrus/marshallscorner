@@ -16,16 +16,11 @@ interface Props {
   history: HistoryRace[];
   teamNames: Record<string, string>;
   focusCode: string;
-  // Points behind the last promotion place today, counted the year-end way
-  gapToLine?: number;
-  // How many teams move up this year
-  spots: number;
+  // Points behind 2nd today, counted the year-end way
+  gapToSecond?: number;
 }
 
-export default function SeasonHistory({ history, teamNames, focusCode, gapToLine, spots }: Props) {
-  // Promotion odds after a race: the title when only the winner moves up
-  const odds = (t?: { pTop2: number; pFirst: number }) => (t ? (spots === 1 ? t.pFirst : t.pTop2) : 0);
-  const oddsLabel = spots === 1 ? 'Title odds' : `Top ${spots} odds`;
+export default function SeasonHistory({ history, teamNames, focusCode, gapToSecond }: Props) {
   const [selected, setSelected] = useState(history.length - 1);
   if (!history.length) return null;
   const race = history[selected];
@@ -36,7 +31,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
   const shown = [...latest]
     .sort((a, b) => a.standing - b.standing)
     .filter(
-      (t) => t.teamCode === focusCode || history.some((h) => odds(h.teams.find((x) => x.teamCode === t.teamCode)) >= 0.2)
+      (t) => t.teamCode === focusCode || history.some((h) => (h.teams.find((x) => x.teamCode === t.teamCode)?.pTop2 ?? 0) >= 0.2)
     )
     .slice(0, 5);
   let colorIndex = 0;
@@ -67,7 +62,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
               {missed.length === 1 ? 'race' : 'races'} without a full team (
               {missed.map((h) => shortEventName(h.eventName)).join(', ')}), going by how a typical{' '}
               {teamNames[focusCode]} team was running then.
-              {gapToLine !== undefined && gapToLine > 0 && <> The gap to {ordinal(spots)} is {gapToLine}.</>}{' '}
+              {gapToSecond !== undefined && gapToSecond > 0 && <> The gap to 2nd is {gapToSecond}.</>}{' '}
             </>
           )}
           {closeCalls.length > 0 && (
@@ -85,7 +80,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
         </p>
       )}
       <figure className={styles.chart}>
-        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${oddsLabel} after each race`}>
+        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Chance of a top 2 finish after each race">
           {[0, 0.25, 0.5, 0.75, 1].map((p) => (
             <g key={p}>
               <line x1={pad.left} x2={width - pad.right} y1={y(p)} y2={y(p)} stroke="#e0d9cc" />
@@ -106,7 +101,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
           {[...shown].reverse().map((t) => {
             const color = colorOf.get(t.teamCode)!;
             const isFocus = t.teamCode === focusCode;
-            const points = history.map((h) => odds(h.teams.find((x) => x.teamCode === t.teamCode)));
+            const points = history.map((h) => h.teams.find((x) => x.teamCode === t.teamCode)?.pTop2 ?? 0);
             return (
               <g key={t.teamCode}>
                 <polyline
@@ -189,7 +184,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
               <th className={styles.num} title="Team's average scorer time">Avg time</th>
               <th className={styles.num}>Pts</th>
               <th className={styles.num} title="NYRR's running total: every race counts">NYRR total</th>
-              <th>{oddsLabel}</th>
+              <th>Top 2 odds</th>
             </tr>
           </thead>
           <tbody>
@@ -219,7 +214,7 @@ export default function SeasonHistory({ history, teamNames, focusCode, gapToLine
                   <td className={styles.num}>{t.points ? `+${t.points}` : 0}</td>
                   <td className={styles.num}>{t.total}</td>
                   <td>
-                    <ProbBar p={odds(t)} />
+                    <ProbBar p={t.pTop2} />
                   </td>
                 </tr>
               );
