@@ -20,10 +20,12 @@ interface Props {
   division: DivisionForecast;
   teams: ForecastTeam[]; // contenders, best counted points first
   focusCode: string;
-  goal: 'promotion' | 'title';
+  // The place the focus team is racing for (1st or 2nd), and the column heading for reaching it
+  line: 1 | 2;
+  ifSoLabel: string;
 }
 
-export default function RaceWalkthrough({ division, teams, focusCode, goal }: Props) {
+export default function RaceWalkthrough({ division, teams, focusCode, line, ifSoLabel }: Props) {
   const race = division.remainingRaces[0];
   if (!race) return null;
   const code = race.eventCode;
@@ -32,8 +34,8 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
   const focusName = teams.find((t) => t.teamCode === focusCode)?.teamName ?? focusCode;
   const maxGain = pointsForPlace(0, race.multiplier);
   type Need = DivisionForecast['needs'][number];
-  const outrightGiven = (n: Need) => (goal === 'title' ? n.pFirstOutrightGiven : n.pTop2OutrightGiven);
-  const tiedGiven = (n: Need) => (goal === 'title' ? n.pFirstTiedGiven : n.pTop2TiedGiven);
+  const outrightGiven = (n: Need) => (line === 1 ? n.pFirstOutrightGiven : n.pTop2OutrightGiven);
+  const tiedGiven = (n: Need) => (line === 1 ? n.pFirstTiedGiven : n.pTop2TiedGiven);
   const names = (teamCode: string) => division.teams.find((t) => t.teamCode === teamCode)?.teamName ?? teamCode;
   // Teams made faster for the last race because their place is still open
   const shifted = division.lastRaceShift.teams.filter((c) => teams.some((t) => t.teamCode === c));
@@ -146,7 +148,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
                 <th className={styles.num}>Pts</th>
                 <th className={styles.num}>Avg time needed</th>
                 <th>How likely</th>
-                <th>{goal === 'title' ? 'Wins division if so' : 'Promoted if so'}</th>
+                <th>{ifSoLabel}</th>
               </tr>
             </thead>
             <tbody>

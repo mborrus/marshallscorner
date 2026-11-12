@@ -40,19 +40,31 @@ function aheadIsEnough(rules: OutcomeRules, clear: RuleRow[]): boolean {
 
 interface SummaryProps {
   rules: OutcomeRules;
+  spots: number; // how many teams move up this year
   focusName: string;
   raceName: string;
   names: Names;
 }
 
-export function RuleSummary({ rules, focusName, raceName, names }: SummaryProps) {
+export function RuleSummary({ rules, spots, focusName, raceName, names }: SummaryProps) {
   const clear = rules.rows.filter((r) => r.best === 'clear');
   const levelOnly = rules.rows.filter((r) => r.best === 'level');
-  const prize = rules.slots === 1 ? 'wins the division outright' : 'is promoted';
-  const rivals = rules.rivals.map(names);
-  const tieMeans =
+  // The rules are for 1st or for 2nd place; which of those brings promotion depends on the year
+  const promotes = rules.slots === spots;
+  const prize =
     rules.slots === 1
-      ? 'NYRR lists teams level on points in the same place, so that would be a shared 1st'
+      ? promotes
+        ? 'wins the division outright and moves up'
+        : 'wins the division outright'
+      : promotes
+        ? 'is promoted'
+        : 'finishes in the top 2';
+  const rivals = rules.rivals.map(names);
+  const shared = `NYRR lists teams level on points in the same place, so that would be a shared ${ordinal(rules.slots)}`;
+  const tieMeans = !promotes
+    ? shared
+    : rules.slots === 1
+      ? `${shared}, and it isn’t known which of them would move up`
       : 'NYRR hasn’t said how a tie for a promotion spot is settled';
 
   const scope = `Counting only this division’s teams at the ${raceName}`;

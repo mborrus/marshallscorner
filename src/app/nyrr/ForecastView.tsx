@@ -2,21 +2,21 @@
 // next race, a two-race grid when two races are left, and the focus team's runners
 
 import { Fragment } from 'react';
-import type { DivisionForecast } from '@/lib/nyrr/forecast';
+import { goalLine, type DivisionForecast } from '@/lib/nyrr/forecast';
 import { formatDay, formatDuration, formatPct, ordinal, shortEventName } from '@/lib/nyrr/format';
 import { RuleSummary } from './OutcomeRules';
 import ProbBar from './ProbBar';
 import RaceWalkthrough from './RaceWalkthrough';
 import styles from './page.module.css';
 
-const PROMOTED = 2;
-
 interface Props {
   division: DivisionForecast;
   focusCode: string;
+  // How many teams move up this year
+  spots: number;
 }
 
-export default function ForecastView({ division, focusCode }: Props) {
+export default function ForecastView({ division, focusCode, spots }: Props) {
   // Ranked by the points that count at year end (lowest race scores dropped)
   const teams = [...division.teams].sort((a, b) => b.counted - a.counted || b.points - a.points);
   const rank = (t: (typeof teams)[number]) => 1 + teams.filter((o) => o.counted > t.counted).length;
@@ -29,30 +29,37 @@ export default function ForecastView({ division, focusCode }: Props) {
       : null;
   const next = division.remainingRaces[0];
   const nextLineup = next && division.lineups[next.eventCode];
-  const second = teams[PROMOTED - 1];
-  const third = teams[PROMOTED];
+  // The last team in a promotion place, and the first one outside
+  const lastUp = teams[spots - 1];
+  const firstOut = teams[spots];
   const focusName = focus.teamName;
 
   // Teams with a real shot, plus everyone at or above the focus team
-  const contenders = teams.filter((t) => t.pTop2 >= 0.001 || rank(t) <= Math.max(PROMOTED + 2, rank(focus) + 1));
+  const contenders = teams.filter((t) => t.pTop2 >= 0.001 || rank(t) <= Math.max(4, rank(focus) + 1));
 
-  const inPromotion = rank(focus) <= PROMOTED;
-  const gapToLine = inPromotion ? focus.counted - (third?.counted ?? 0) : second.counted - focus.counted;
+  const inPromotion = rank(focus) <= spots;
+  const gapToLine = inPromotion ? focus.counted - (firstOut?.counted ?? 0) : lastUp.counted - focus.counted;
 
-  // Once promotion is certain, the race that matters is for the title
-  const goal = focus.pTop2 > 0.999 && focus.pFirst > 0 ? 'title' : 'promotion';
+  // The place still being raced for (1st or 2nd), and whether it is the one that brings promotion
+  const line = goalLine(focus, spots);
+  const promotes = line === spots;
+  const goalName = promotes ? 'promotion' : line === 1 ? 'title' : 'top 2';
+  const chanceLabel = promotes ? 'promotion chance' : line === 1 ? 'chance of winning the division' : 'chance of a top 2 finish';
   const given = (n: { pTop2Given: number | null; pFirstGiven: number | null }) =>
-    goal === 'title' ? n.pFirstGiven : n.pTop2Given;
+    line === 1 ? n.pFirstGiven : n.pTop2Given;
   const placeNeeded = division.needs.find((n) => n.place !== null && (given(n) ?? 0) >= 0.5);
   const winRow = division.needs.find((n) => n.place === 1);
   const names = (teamCode: string) => teams.find((t) => t.teamCode === teamCode)?.teamName ?? teamCode;
 
   // A tie on points across the line is its own outcome, shown apart from finishing clear once it matters
-  const promotion = headline(focus.pTop2, focus.pTop2Outright, focus.pTop2Tied);
+  const top2 = headline(focus.pTop2, focus.pTop2Outright, focus.pTop2Tied);
   const title = headline(focus.pFirst, focus.pFirstOutright, focus.pFirstTied);
-  const main = goal === 'title' ? title : promotion;
+  const promotion = spots === 1 ? title : top2;
+  const main = line === 1 ? title : top2;
   const plain = division.withoutLineup;
-  const plainMain = plain && (goal === 'title' ? (title.tied ? plain.pFirstOutright : plain.pFirst) : promotion.tied ? plain.pTop2Outright : plain.pTop2);
+  const plainMain = plain && (line === 1 ? (title.tied ? plain.pFirstOutright : plain.pFirst) : top2.tied ? plain.pTop2Outright : plain.pTop2);
+  const leader = teams.reduce((a, b) => (b.pFirst > a.pFirst ? b : a));
+  const runnerUp = teams[1];
 
   if (!next) {
     return (
@@ -69,34 +76,47 @@ export default function ForecastView({ division, focusCode }: Props) {
           <p className={styles.cardLabel}>Promotion chance</p>
           <p className={styles.bigNumber}>{formatPct(promotion.p)}</p>
           <p className={styles.muted}>
-            {promotion.tied > 0 && <>Plus {formatPct(promotion.tied)} level on points for {ordinal(PROMOTED)}. </>}
-            Top {PROMOTED} move up a division
+            {promotion.tied > 0 && <>Plus {formatPct(promotion.tied)} level on points for {ordinal(spots)}. </>}
+            {spots === 1 ? 'Only the division winner moves up this year' : `Top ${spots} move up a division`}
           </p>
         </div>
         <div className={`${styles.card} win98-box`}>
-          <p className={styles.cardLabel}>{inPromotion ? 'Cushion' : 'Gap to 2nd'}</p>
+          <p className={styles.cardLabel}>{inPromotion ? 'Cushion' : `Gap to ${ordinal(spots)}`}</p>
           <p className={styles.bigNumber}>
             {gapToLine} <span className={styles.unit}>{gapToLine === 1 ? 'pt' : 'pts'}</span>
           </p>
           <p className={styles.muted}>
             {ordinal(rank(focus))} with {focus.counted} &middot;{' '}
-            {inPromotion ? `ahead of ${third?.teamName}` : `behind ${second.teamName}`}
+            {inPromotion ? `ahead of ${firstOut?.teamName}` : `behind ${lastUp.teamName}`}
           </p>
         </div>
-        <div className={`${styles.card} win98-box`}>
-          <p className={styles.cardLabel}>Win the division</p>
-          <p className={styles.bigNumber}>{formatPct(title.p)}</p>
-          <p className={styles.muted}>
-            {title.tied > 0 && <>Outright. Plus {formatPct(title.tied)} level on points, a shared 1st. </>}
-            {teams[0].teamCode === focusCode
-              ? 'Currently leading'
-              : `${teams[0].counted - focus.counted} pts behind ${teams[0].teamName}`}
-          </p>
-        </div>
+        {spots === 1 ? (
+          <div className={`${styles.card} win98-box`}>
+            <p className={styles.cardLabel}>Finish in the top 2</p>
+            <p className={styles.bigNumber}>{formatPct(top2.p)}</p>
+            <p className={styles.muted}>
+              {top2.tied > 0 && <>Plus {formatPct(top2.tied)} level on points for 2nd. </>}
+              {rank(focus) <= 2
+                ? `${focus.counted - (teams[2]?.counted ?? 0)} pts ahead of ${teams[2]?.teamName}`
+                : `${runnerUp.counted - focus.counted} ${runnerUp.counted - focus.counted === 1 ? 'pt' : 'pts'} behind ${runnerUp.teamName}`}
+            </p>
+          </div>
+        ) : (
+          <div className={`${styles.card} win98-box`}>
+            <p className={styles.cardLabel}>Win the division</p>
+            <p className={styles.bigNumber}>{formatPct(title.p)}</p>
+            <p className={styles.muted}>
+              {title.tied > 0 && <>Outright. Plus {formatPct(title.tied)} level on points, a shared 1st. </>}
+              {teams[0].teamCode === focusCode
+                ? 'Currently leading'
+                : `${teams[0].counted - focus.counted} pts behind ${teams[0].teamName}`}
+            </p>
+          </div>
+        )}
       </div>
       {countsNote && <p className={styles.muted}>{countsNote}</p>}
 
-      <PlaceOdds distribution={focus.placeDistribution} tiesSplit={promotion.tied > 0 || title.tied > 0} />
+      <PlaceOdds distribution={focus.placeDistribution} spots={spots} tiesSplit={top2.tied > 0 || title.tied > 0} />
 
       <p className={`${styles.callout} win98-box-inset`}>
         <strong>{division.remainingRaces.length === 1 ? 'One race left' : `${division.remainingRaces.length} races left`}:</strong>{' '}
@@ -104,11 +124,25 @@ export default function ForecastView({ division, focusCode }: Props) {
           .map((r) => `${shortEventName(r.eventName)} (${formatDay(r.date)}, top ${r.scorers} score)`)
           .join(' and ')}
         .{' '}
-        {goal === 'title' && <>Promotion is locked up; what&apos;s left is the division title. </>}
+        {line === 1 && spots > 1 && <>Promotion is locked up; what&apos;s left is the division title. </>}
+        {line === 1 && spots === 1 && <>Only the division winner moves up this year. </>}
+        {line === 2 && spots === 1 && (
+          <>
+            Only the division winner moves up this year, and {leader.teamName.replace(/\.$/, '')} can&apos;t be caught, so promotion is
+            out of reach. What&apos;s left is 2nd place.{' '}
+          </>
+        )}
         {division.rules ? (
           <>
-            <RuleSummary rules={division.rules} focusName={focusName} raceName={shortEventName(next.eventName)} names={names} />{' '}
-            The forecast: <strong>{formatPct(main.p)}</strong> to {goal === 'title' ? 'win it outright' : 'be promoted'}
+            <RuleSummary
+              rules={division.rules}
+              spots={spots}
+              focusName={focusName}
+              raceName={shortEventName(next.eventName)}
+              names={names}
+            />{' '}
+            The forecast: <strong>{formatPct(main.p)}</strong> to{' '}
+            {line === 1 ? (promotes ? 'win the division and move up' : 'win it outright') : promotes ? 'be promoted' : 'finish in the top 2'}
             {main.tied > 0 && <>, {formatPct(main.tied)} to end level on points</>}.
             {winRow?.cutoffAvgSeconds && (
               <>
@@ -123,13 +157,13 @@ export default function ForecastView({ division, focusCode }: Props) {
             The clearest path: <strong>{placeNeeded.place === 1 ? 'win' : `finish ${ordinal(placeNeeded.place!)} or better at`}</strong> the{' '}
             {shortEventName(next.eventName)}, which means the top {next.scorers} averaging about{' '}
             <strong>{formatDuration(placeNeeded.cutoffAvgSeconds ?? 0)}</strong>. That gives a{' '}
-            {formatPct(given(placeNeeded) ?? 0)} {goal === 'title' ? 'chance of winning the division' : 'promotion chance'}.
+            {formatPct(given(placeNeeded) ?? 0)} {chanceLabel}.
           </>
         ) : (
           <>
             Even winning the {shortEventName(next.eventName)} (top {next.scorers} averaging about{' '}
             {winRow?.cutoffAvgSeconds ? formatDuration(winRow.cutoffAvgSeconds) : '?'}) only gives a{' '}
-            {formatPct(winRow ? given(winRow) ?? 0 : 0)} {goal === 'title' ? 'chance of winning the division' : 'promotion chance'}.{' '}
+            {formatPct(winRow ? given(winRow) ?? 0 : 0)} {chanceLabel}.{' '}
             {focusName} also needs teams ahead to have bad days.
           </>
         )}
@@ -146,7 +180,7 @@ export default function ForecastView({ division, focusCode }: Props) {
             <>
               {' '}
               <strong>
-                Without that list the {goal === 'title' ? 'title' : 'promotion'} chance would be {formatPct(plainMain)}, not{' '}
+                Without that list the {goalName} chance would be {formatPct(plainMain)}, not{' '}
                 {formatPct(main.p)}
               </strong>
               , so much of this number rests on those runners turning up and running to form.
@@ -155,10 +189,16 @@ export default function ForecastView({ division, focusCode }: Props) {
         </p>
       )}
 
-      <RaceWalkthrough division={division} teams={contenders} focusCode={focusCode} goal={goal} />
+      <RaceWalkthrough
+        division={division}
+        teams={contenders}
+        focusCode={focusCode}
+        line={line}
+        ifSoLabel={promotes ? 'Promoted if so' : line === 1 ? 'Wins division if so' : 'Top 2 if so'}
+      />
 
       {division.remainingRaces.length >= 2 && (
-        <ScenarioGrid division={division} focusName={focusName} />
+        <ScenarioGrid division={division} focusName={focusName} spots={spots} />
       )}
 
       {division.runners.length > 0 && (
@@ -198,7 +238,8 @@ export default function ForecastView({ division, focusCode }: Props) {
 }
 
 // Promotion chance for each combination of places at the next two races
-function ScenarioGrid({ division, focusName }: { division: DivisionForecast; focusName: string }) {
+function ScenarioGrid({ division, focusName, spots }: { division: DivisionForecast; focusName: string; spots: number }) {
+  const odds = (cell: DivisionForecast['scenarios'][number]) => (spots === 1 ? cell.pFirst : cell.pTop2);
   const [first, second] = division.remainingRaces;
   const cells = division.scenarios;
   // The likelier places at each race (top 6 at most), plus no full team
@@ -219,7 +260,8 @@ function ScenarioGrid({ division, focusName }: { division: DivisionForecast; foc
       <h2>Both races: promotion chance by finish</h2>
       <p className={styles.muted}>
         Rows are {focusName}&apos;s place at the {shortEventName(first.eventName)}, columns at the{' '}
-        {shortEventName(second.eventName)}. Each cell is the chance of finishing top {PROMOTED} if that happens.
+        {shortEventName(second.eventName)}. Each cell is the chance of{' '}
+        {spots === 1 ? 'winning the division' : `finishing top ${spots}`} if that happens.
       </p>
       <div className={styles.tableWrap}>
         <table className={`${styles.table} ${styles.grid}`}>
@@ -244,10 +286,10 @@ function ScenarioGrid({ division, focusName }: { division: DivisionForecast; foc
                     <td
                       key={String(c)}
                       className={styles.num}
-                      style={known ? { background: `rgba(46, 139, 87, ${0.08 + 0.5 * cell.pTop2})` } : undefined}
+                      style={known ? { background: `rgba(46, 139, 87, ${0.08 + 0.5 * odds(cell)})` } : undefined}
                       title={cell ? `Happens in ${formatPct(cell.p)} of simulations` : undefined}
                     >
-                      {known ? formatPct(cell.pTop2) : '·'}
+                      {known ? formatPct(odds(cell)) : '·'}
                     </td>
                   );
                 })}
@@ -267,14 +309,14 @@ function headline(split: number, outright: number, tied: number): { p: number; t
 }
 
 // Chance of each final place, for places with at least a 1% chance
-function PlaceOdds({ distribution, tiesSplit }: { distribution: number[]; tiesSplit: boolean }) {
+function PlaceOdds({ distribution, spots, tiesSplit }: { distribution: number[]; spots: number; tiesSplit: boolean }) {
   const shown = distribution.map((p, i) => ({ place: i + 1, p })).filter((x) => x.p >= 0.01);
   return (
     <div className={styles.placeOdds} aria-label="Chance of each final place">
       <span className={styles.muted}>Final place:</span>
       {shown.map(({ place, p }) => (
         <span key={place} className={styles.placeOdd}>
-          <span className={place <= PROMOTED ? styles.promoted : undefined}>{ordinal(place)}</span>{' '}
+          <span className={place <= spots ? styles.promoted : undefined}>{ordinal(place)}</span>{' '}
           <ProbBar p={p} />
         </span>
       ))}
