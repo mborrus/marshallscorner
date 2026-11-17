@@ -1,7 +1,7 @@
 // Turkey Trot dashboard page.
 // The dashboard is a Streamlit (Python) app, which Vercel can't run, so it is
-// hosted separately and shown here in a frame. Set NEXT_PUBLIC_TURKEY_TROT_URL
-// to the app's address (e.g. https://your-app.streamlit.app).
+// hosted on Streamlit and shown here in a frame. NEXT_PUBLIC_TURKEY_TROT_URL
+// overrides the address if the app ever moves.
 
 import type { Metadata } from 'next';
 import styles from './page.module.css';
@@ -11,7 +11,9 @@ export const metadata: Metadata = {
   description: 'Every year of turkey trot results: trends, rivals, and a place predictor.',
 };
 
-const DASHBOARD_URL = (process.env.NEXT_PUBLIC_TURKEY_TROT_URL ?? '').replace(/\/+$/, '');
+const DASHBOARD_URL = (
+  process.env.NEXT_PUBLIC_TURKEY_TROT_URL ?? 'https://turkeytrotter.streamlit.app'
+).replace(/\/+$/, '');
 
 export default function TurkeyTrotPage() {
   return (
