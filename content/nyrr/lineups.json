@@ -34,23 +34,19 @@
       "team": "ManTC",
       "kind": "signed-up",
       "runners": [
-        "366d855cd4341833",
         "9e328f1461f2ecce",
-        "5ec9b34a0b2b7c3a",
-        "3164d46b9fdd7eac",
-        "d9f9127bbbc48718",
-        "9664a73a99c5a7a5",
-        "402c9cab7e15086b",
-        "5baa495b1a5cf823",
-        "df48173e6c820266",
         "a13c4bc8c6bd0208",
-        "71122568648c903f",
+        "5baa495b1a5cf823",
+        "402c9cab7e15086b",
         "563cdc89dad3d3d0",
-        "6ad1a1e83e68e745",
-        "f34c3afec9ec153d"
+        "71122568648c903f",
+        "df48173e6c820266",
+        "366d855cd4341833",
+        "5ec9b34a0b2b7c3a",
+        "3164d46b9fdd7eac"
       ],
       "unmatched": 0,
-      "updated": "2026-11-02"
+      "updated": "2026-11-18"
     }
   ]
 }
