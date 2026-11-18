@@ -331,6 +331,12 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   average (was 57:13), mostly 2nd–4th in the race; promotion 6% outright plus 4% level on points. Women:
   3 listed, so MTC fields a full team only ~19% of the time; the result is decided anyway (2nd, promoted).
 
+- **Nov 18: ties explained on the page.** The page says "tied on points" (was "level"), with a one-line
+  definition under the headline cards whenever a tie has a real chance. The "Final place" row now shows
+  each place alone plus "+ x% tied" (`placeClear` / `placeShared` in `forecast.json`) instead of counting
+  a tie as half, which had shown 8% for 2nd next to a 6% promotion chance. The season chart and history
+  table still count a tie as half, and say so.
+
 ## Gaps and ideas
 
 - How NYRR settles a tie for a promotion spot (ask NYRR or the club council).

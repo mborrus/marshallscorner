@@ -178,7 +178,7 @@ function RaceByRace({
   forecast?: DivisionForecast;
 }) {
   const history = forecast?.history;
-  const todayTop2 = forecast?.teams.find((t) => t.teamCode === TEAM_CODE)?.pTop2;
+  const focusForecast = forecast?.teams.find((t) => t.teamCode === TEAM_CODE);
   const byCounted = [...(forecast?.teams ?? [])].sort((a, b) => b.counted - a.counted);
   const focusCounted = byCounted.find((t) => t.teamCode === TEAM_CODE)?.counted;
   const gapToSecond = focusCounted !== undefined && byCounted[1] ? byCounted[1].counted - focusCounted : undefined;
@@ -199,8 +199,17 @@ function RaceByRace({
             the season the odds lean on last season&apos;s results, so a team that was strong last year can look
             likely to move up before it has scored much. These replays leave out sign-up lists, so the last
             point can differ from today&apos;s forecast above
-            {todayTop2 !== undefined && <> (which has {team.teamName} at {formatPct(todayTop2)} for a top 2 finish)</>}
-            . Click a race to see the standings at that point.
+            {focusForecast && (
+              <>
+                {' '}
+                (which has {team.teamName} at{' '}
+                {focusForecast.pTop2Tied >= 0.01
+                  ? `${formatPct(focusForecast.pTop2Outright)}, plus ${formatPct(focusForecast.pTop2Tied)} tied on points,`
+                  : formatPct(focusForecast.pTop2)}{' '}
+                for a top 2 finish)
+              </>
+            )}
+            . A tie on points counts as half in this chart. Click a race to see the standings at that point.
           </p>
           <SeasonHistory
             history={history}
@@ -311,9 +320,9 @@ function Method({ generatedAt }: { generatedAt: string }) {
           <strong>Simulating.</strong> Each simulation decides who shows up, draws each team&apos;s time from its
           strength plus race-day randomness, scores the race (15, 12, 10, 8, 6, 5, 4, 3, 2, 1, then 1 for any
           other full team), and adds up the final standings the way the year-end ranking does: each
-          team&apos;s lowest race score is dropped (two were dropped until 2024). Teams that end level on points share a place in
-          NYRR&apos;s standings, so the chance of that is shown on its own; where one number is needed, a tie
-          counts as half.
+          team&apos;s lowest race score is dropped (two were dropped until 2024). Teams that end tied on points share a place in
+          NYRR&apos;s standings, so the chance of a tie is shown on its own (&ldquo;+ 4% tied&rdquo;). The
+          season chart and the history table count a tie as half.
         </p>
         <p>
           <strong>Checked against history.</strong> Replayed race by race through the 2022–2025 A and B

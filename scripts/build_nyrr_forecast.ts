@@ -427,6 +427,9 @@ function checkForecast(forecast: Forecast) {
       const placeSum = t.placeDistribution.reduce((s, p) => s + p, 0);
       if (Math.abs(placeSum - 1) > 1e-6) problems.push(`${where} ${t.teamCode}: place odds add to ${placeSum}`);
       if (Math.abs(t.placeDistribution[0] - t.pFirst) > 1e-6) problems.push(`${where} ${t.teamCode}: 1st place odds differ from title odds`);
+      const clearSum = [...t.placeClear, ...t.placeShared].reduce((s, p) => s + p, 0);
+      if (Math.abs(clearSum - 1) > 1e-6) problems.push(`${where} ${t.teamCode}: clear and shared places add to ${clearSum}`);
+      if (Math.abs(t.placeClear[0] - t.pFirstOutright) > 1e-6) problems.push(`${where} ${t.teamCode}: clear 1st differs from outright title odds`);
       for (const [p, outright, tied] of [[t.pFirst, t.pFirstOutright, t.pFirstTied], [t.pTop2, t.pTop2Outright, t.pTop2Tied]]) {
         if (!(outright <= p + 1e-9 && p <= outright + tied + 1e-9)) problems.push(`${where} ${t.teamCode}: outright ${outright} and tied ${tied} don't bracket ${p}`);
       }

@@ -52,7 +52,7 @@ export function RuleSummary({ rules, focusName, raceName, names }: SummaryProps)
   const rivals = rules.rivals.map(names);
   const tieMeans =
     rules.slots === 1
-      ? 'NYRR lists teams level on points in the same place, so that would be a shared 1st'
+      ? 'NYRR lists teams tied on points in the same place, so that would be a shared 1st'
       : 'NYRR hasn’t said how a tie for a promotion spot is settled';
 
   const scope = `Counting only this division’s teams at the ${raceName}`;
@@ -64,7 +64,7 @@ export function RuleSummary({ rules, focusName, raceName, names }: SummaryProps)
     }.`;
     for (const row of levelOnly) {
       const with_ = row.rivals.filter((r) => r.behindFrom === null && r.levelFrom !== null).map((r) => names(r.teamCode));
-      level.push(`Finishing ${ordinal(row.place)} could at best leave it level on points with ${joinNames(with_)}.`);
+      level.push(`Finishing ${ordinal(row.place)} could at best leave it tied on points with ${joinNames(with_)}.`);
     }
   } else if (clear.length && rules.mustBeat === rules.rivals.length) {
     // Every rival has to end up behind: spell out each finish that can do it
@@ -76,17 +76,17 @@ export function RuleSummary({ rules, focusName, raceName, names }: SummaryProps)
     if (rules.rivals.length === 1) {
       for (const row of rules.rows) {
         const text = levelText(row.rivals[0], row.place);
-        if (text) level.push(`${ordinal(row.place)} with ${rivals[0]} ${text} leaves the two level on points.`);
+        if (text) level.push(`${ordinal(row.place)} with ${rivals[0]} ${text} leaves the two tied on points.`);
       }
     } else if (rules.rows.some((row) => row.rivals.some((r) => r.levelFrom !== null))) {
-      level.push('Some other results leave it level on points with a rival (the table in step 6 has them).');
+      level.push('Some other results leave it tied on points with a rival (the table in step 6 has them).');
     }
   } else if (clear.length) {
     main = `${focusName} ${prize} if it finishes ahead of ${
       rules.mustBeat === rules.rivals.length ? joinNames(rivals) : `at least ${rules.mustBeat} of ${rivals.join(', ')}`
     } on final points. The table in step 6 shows where each would have to finish.`;
   } else {
-    main = `${focusName} can no longer finish clear; the best left is level on points.`;
+    main = `${focusName} can no longer finish clear; the best left is a tie on points.`;
   }
 
   return (
@@ -112,11 +112,11 @@ export function RuleTable({ rules, focusName, names }: TableProps) {
   const cell = (rule: RivalRule, place: number) => {
     const level = levelText(rule, place);
     if (rule.always) return 'anywhere';
-    if (rule.behindFrom === null) return level ? `level at best (${level})` : 'stays ahead';
+    if (rule.behindFrom === null) return level ? `tied at best (${level})` : 'stays ahead';
     return (
       <>
         {orLower(rule.behindFrom)}
-        {level && <span className={styles.muted}> &middot; level if {level}</span>}
+        {level && <span className={styles.muted}> &middot; tied if {level}</span>}
       </>
     );
   };

@@ -549,6 +549,10 @@ export interface SimTeamResult {
   p10Points: number;
   p90Points: number;
   placeDistribution: number[];
+  // Chance of finishing in each place alone, and of sharing it with teams tied
+  // on points (index = the place the tied teams share, as NYRR lists them)
+  placeClear: number[];
+  placeShared: number[];
   // Per remaining race
   races: Record<
     string,
@@ -641,6 +645,8 @@ export function simulate(
   const pointSums = new Float64Array(n);
   const finals: number[][] = teams.map(() => []);
   const placeCounts = teams.map(() => new Array(n).fill(0));
+  const clearCounts = teams.map(() => new Array(n).fill(0));
+  const sharedCounts = teams.map(() => new Array(n).fill(0));
   const raceStats = teams.map(() =>
     Object.fromEntries(
       races.map((r) => [
@@ -724,6 +730,7 @@ export function simulate(
       if (finals[i].length < 20000) finals[i].push(totals[i]);
       // Tied teams share the places they tie for, as the title and promotion odds do
       for (let p = table[i].better; p < table[i].better + table[i].tied; p++) placeCounts[i][p] += 1 / table[i].tied;
+      (table[i].tied > 1 ? sharedCounts : clearCounts)[i][table[i].better]++;
     }
     if (focusIdx >= 0) {
       const row = needs.get(focusNextPlace) ?? { count: 0, top2: zero(), first: zero() };
@@ -756,6 +763,8 @@ export function simulate(
       p10Points: quantile(sorted, 0.1),
       p90Points: quantile(sorted, 0.9),
       placeDistribution: placeCounts[i].map((c: number) => c / sims),
+      placeClear: clearCounts[i].map((c: number) => c / sims),
+      placeShared: sharedCounts[i].map((c: number) => c / sims),
       races: Object.fromEntries(
         races.map((r) => {
           const st = raceStats[i][r.race.eventCode];

@@ -130,7 +130,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
             <>
               That part is plain arithmetic, no forecast needed: for each {focusName} finish, where each rival
               has to finish to end up behind it on final points. Places count only this division&apos;s teams, and
-              &ldquo;level&rdquo; means the two finish on the same points.
+              &ldquo;tied&rdquo; means the two finish on exactly the same points.
             </>
           )}
         </p>
@@ -166,7 +166,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
                       <>
                         <ProbBar p={outrightGiven(n)!} />
                         {(tiedGiven(n) ?? 0) >= 0.01 && (
-                          <span className={styles.muted}> + {formatPct(tiedGiven(n)!)} level</span>
+                          <span className={styles.muted}> + {formatPct(tiedGiven(n)!)} tied</span>
                         )}
                       </>
                     ) : (
@@ -182,7 +182,7 @@ export default function RaceWalkthrough({ division, teams, focusCode, goal }: Pr
 
       <Step n={7} title="Final standings">
         <p>
-          Projected final points after the {raceName}. Teams that finish level on points share a place in
+          Projected final points after the {raceName}. Teams that finish tied on points share a place in
           NYRR&apos;s standings.
         </p>
         <RangeChart teams={teams} highlightCode={focusCode} />
