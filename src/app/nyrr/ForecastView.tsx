@@ -59,6 +59,7 @@ export default function ForecastView({ division, focusCode }: Props) {
   const promotion = headline(focus.pTop2, focus.pTop2Outright, focus.pTop2Tied);
   const title = headline(focus.pFirst, focus.pFirstOutright, focus.pFirstTied);
   const main = goal === 'title' ? title : promotion;
+  const anyTie = focus.placeShared.some((p) => p >= 0.005);
   const plain = division.withoutLineup;
   const plainMain = plain && (goal === 'title' ? (title.tied ? plain.pFirstOutright : plain.pFirst) : promotion.tied ? plain.pTop2Outright : plain.pTop2);
 
@@ -91,7 +92,7 @@ export default function ForecastView({ division, focusCode }: Props) {
           <p className={styles.cardLabel}>Promotion chance</p>
           <p className={styles.bigNumber}>{formatPct(promotion.p)}</p>
           <p className={styles.muted}>
-            {promotion.tied > 0 && <>Plus {formatPct(promotion.tied)} level on points for {ordinal(PROMOTED)}. </>}
+            {promotion.tied > 0 && <>Plus {formatPct(promotion.tied)} tied on points for {ordinal(PROMOTED)}. </>}
             Top {PROMOTED} move up a division
           </p>
         </div>
@@ -109,7 +110,7 @@ export default function ForecastView({ division, focusCode }: Props) {
           <p className={styles.cardLabel}>Win the division</p>
           <p className={styles.bigNumber}>{formatPct(title.p)}</p>
           <p className={styles.muted}>
-            {title.tied > 0 && <>Outright. Plus {formatPct(title.tied)} level on points, a shared 1st. </>}
+            {title.tied > 0 && <>Outright. Plus {formatPct(title.tied)} tied on points, a shared 1st. </>}
             {teams[0].teamCode === focusCode
               ? 'Currently leading'
               : `${teams[0].counted - focus.counted} pts behind ${teams[0].teamName}`}
@@ -117,8 +118,16 @@ export default function ForecastView({ division, focusCode }: Props) {
         </div>
       </div>
       {countsNote && <p className={styles.muted}>{countsNote}</p>}
+      {anyTie && (
+        <p className={styles.muted}>
+          <strong>&ldquo;Tied&rdquo;</strong> means {focusName} ends the season on exactly the same points as another
+          team. NYRR lists tied teams in the same place and hasn&apos;t said which one moves up when the tie is
+          for {ordinal(PROMOTED)}, so those chances are shown on their own (&ldquo;+ 4% tied&rdquo;) and not
+          counted as promotion.
+        </p>
+      )}
 
-      <PlaceOdds distribution={focus.placeDistribution} tiesSplit={promotion.tied > 0 || title.tied > 0} />
+      <PlaceOdds clear={focus.placeClear} shared={focus.placeShared} />
 
       <p className={`${styles.callout} win98-box-inset`}>
         <strong>{division.remainingRaces.length === 1 ? 'One race left' : `${division.remainingRaces.length} races left`}:</strong>{' '}
@@ -156,7 +165,7 @@ export default function ForecastView({ division, focusCode }: Props) {
           <>
             <RuleSummary rules={division.rules} focusName={focusName} raceName={shortEventName(next.eventName)} names={names} />{' '}
             The forecast: <strong>{formatPct(main.p)}</strong> to {goal === 'title' ? 'win it outright' : 'be promoted'}
-            {main.tied > 0 && <>, {formatPct(main.tied)} to end level on points</>}.
+            {main.tied > 0 && <>, plus {formatPct(main.tied)} to end tied on points</>}.
             {winRow?.cutoffAvgSeconds && (
               <>
                 {' '}
@@ -308,24 +317,27 @@ function ScenarioGrid({ division, focusName }: { division: DivisionForecast; foc
 }
 
 // Headline odds: once a tie across the line has a real chance, show the chance of
-// finishing clear and the chance of ending level separately
+// finishing clear and the chance of ending tied separately
 function headline(split: number, outright: number, tied: number): { p: number; tied: number } {
   return tied >= 0.01 ? { p: outright, tied } : { p: split, tied: 0 };
 }
 
-// Chance of each final place, for places with at least a 1% chance
-function PlaceOdds({ distribution, tiesSplit }: { distribution: number[]; tiesSplit: boolean }) {
-  const shown = distribution.map((p, i) => ({ place: i + 1, p })).filter((x) => x.p >= 0.01);
+// Chance of each final place, alone or tied on points with other teams, for
+// places with at least a 1% chance
+function PlaceOdds({ clear, shared }: { clear: number[]; shared: number[] }) {
+  const shown = clear
+    .map((p, i) => ({ place: i + 1, p, tied: shared[i] }))
+    .filter((x) => x.p + x.tied >= 0.01);
   return (
     <div className={styles.placeOdds} aria-label="Chance of each final place">
       <span className={styles.muted}>Final place:</span>
-      {shown.map(({ place, p }) => (
+      {shown.map(({ place, p, tied }) => (
         <span key={place} className={styles.placeOdd}>
           <span className={place <= PROMOTED ? styles.promoted : undefined}>{ordinal(place)}</span>{' '}
           <ProbBar p={p} />
+          {tied >= 0.005 && <span className={styles.muted}> + {formatPct(tied)} tied</span>}
         </span>
       ))}
-      {tiesSplit && <span className={styles.muted}>(teams level on points count half for each place)</span>}
     </div>
   );
 }

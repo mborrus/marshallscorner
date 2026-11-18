@@ -54,7 +54,9 @@ export interface ForecastTeam {
   meanPoints: number;
   p10Points: number;
   p90Points: number;
-  placeDistribution: number[];
+  placeDistribution: number[]; // a tie counts as an equal share of the places it covers
+  placeClear: number[]; // finishing in that place alone
+  placeShared: number[]; // tied on points with other teams, sharing that place
   races: Record<
     string,
     {

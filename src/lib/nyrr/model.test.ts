@@ -210,6 +210,9 @@ test('teams level on points across a line are counted as tied, not as a clear fi
   const a = result.teams[0];
   assert.deepEqual([a.pFirst, a.pFirstOutright, a.pFirstTied], [0.5, 0, 1]);
   assert.deepEqual([a.pTop2, a.pTop2Outright, a.pTop2Tied], [1, 1, 0]);
+  // NYRR would list A and B both in 1st
+  assert.deepEqual([a.placeClear[0], a.placeShared[0]], [0, 1]);
+  assert.deepEqual([result.teams[2].placeClear[2], result.teams[2].placeShared[2]], [1, 0]);
   const none = result.needs.find((n) => n.place === null)!;
   assert.deepEqual([none.pFirstGiven, none.pFirstOutrightGiven, none.pFirstTiedGiven], [0.5, 0, 1]);
 });
