@@ -325,6 +325,12 @@ odds-over-time chart and a race picker (`src/app/nyrr/SeasonHistory.tsx`).
   open for the focus team. (A one-promotion-spot version was shipped by mistake in #19 and reverted; two
   teams still move up.)
 
+- **Nov 18: Corbitt list updated** from the team app's "Going" list: 10 runners (7 men, 3 women), all
+  on the Nov 2 list; 4 from that list are no longer going (1 man, 3 women). One man is back from injury
+  and slower than his results; no adjustment made (the user's call). Men B: MTC predicted ~58:01 top-5
+  average (was 57:13), mostly 2nd–4th in the race; promotion 6% outright plus 4% level on points. Women:
+  3 listed, so MTC fields a full team only ~19% of the time; the result is decided anyway (2nd, promoted).
+
 ## Gaps and ideas
 
 - How NYRR settles a tie for a promotion spot (ask NYRR or the club council).
