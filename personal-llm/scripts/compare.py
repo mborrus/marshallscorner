@@ -15,10 +15,12 @@ from mlx_lm import generate, load
 from mlx_lm.sample_utils import make_sampler
 
 ROOT = Path(__file__).resolve().parent.parent
-MODEL = os.environ.get("MODEL", "mlx-community/Qwen2.5-7B-Instruct-4bit")
-DATA = ROOT / (sys.argv[1] if len(sys.argv) > 1 else "data/blog")
+DATA = ROOT / (sys.argv[1] if len(sys.argv) > 1 else "data/all")
 COUNT = int(sys.argv[2]) if len(sys.argv) > 2 else 6
 ADAPTER = ROOT / "adapters" / DATA.name
+_saved = ADAPTER / "base_model.txt"
+MODEL = os.environ.get("MODEL") or (_saved.read_text().strip() if _saved.exists()
+                                    else "mlx-community/Qwen2.5-7B-Instruct-4bit")
 OUT = ROOT / "outputs" / f"compare-{DATA.name}.md"
 
 rows = [json.loads(l) for l in open(DATA / "test.jsonl", encoding="utf-8")][:COUNT]
@@ -39,6 +41,10 @@ def run(adapter_path):
 
 
 print("plain model"); base = run(None)
+import gc  # free memory before the 2nd load (matters on an 8GB Mac)
+import mlx.core as mx
+gc.collect()
+getattr(mx, "clear_cache", None) and mx.clear_cache()
 print("trained model"); tuned = run(str(ADAPTER))
 
 OUT.parent.mkdir(exist_ok=True)

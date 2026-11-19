@@ -1,0 +1,31 @@
+# Files in the Drive folder that prepare_essays.py ignores (matched on file name, without extension).
+# Reviewed by reading the start of each doc. Delete a line to include that file again.
+
+# Notes, outlines, drafts that have a finished version elsewhere
+Plough and the Stars Draft
+Final Response Paper Pethica
+A+D Paper 1
+Time Machine Wells
+Pethica response 2 storm
+PSG response
+Lit disc 1
+Paper_1_Gaines_and_Vorhies
+Geomorph Final
+Ireland Recap 2
+Ireland Recap - Days
+Spring Break Recap
+
+# Not written by you, or written as a group
+loveoflit final assig
+Envi Final
+Research Project Final Paper
+Tick Tock Take Two
+Script For Wedding
+You goin' up North dis weekend
+trustees letter round 2
+Adam Falk: Stand With Standing Rock
+
+# Plans, instructions, forms
+Camp Williams
+How to Compost; the manual
+Mini-essays Fulbright

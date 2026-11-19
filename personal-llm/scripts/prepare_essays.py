@@ -32,6 +32,11 @@ W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 END_MARKERS = re.compile(r"^(works cited|bibliography|references|sources|citations|notes)\s*:?\s*$", re.I)
 
 
+def norm(name: str) -> str:
+    """Compare file names loosely: Drive swaps characters like ':' and '?' on download."""
+    return re.sub(r"[^a-z0-9]+", "", name.lower())
+
+
 def read_docx(path: Path) -> list[str]:
     with zipfile.ZipFile(path) as z:
         root = ET.fromstring(z.read("word/document.xml"))
@@ -90,8 +95,16 @@ def main():
     if not SRC or not SRC.is_dir():
         sys.exit(__doc__)
     files = sorted(p for p in SRC.rglob("*") if p.suffix.lower() in (".docx", ".txt", ".md"))
+    skip_file = ROOT / f"{FORMAT}_skip.txt"
+    skip = set()
+    if skip_file.exists():
+        skip = {norm(l) for l in skip_file.read_text(encoding="utf-8").splitlines()
+                if l.strip() and not l.startswith("#")}
     docs, skipped = [], []
     for f in files:
+        if norm(f.stem) in skip:
+            skipped.append(f"{f.name} (on skip list)")
+            continue
         try:
             body = clean(read_any(f))
         except Exception as e:  # noqa: BLE001 - report and keep going
