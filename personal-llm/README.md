@@ -3,7 +3,7 @@
 A small open model trained on your own writing, with a separate voice for each format
 (blog, email, texts). Training runs on your Mac, so your data stays on your computer.
 
-Status: blog posts done. Email and texts next.
+Status: blog posts and college essays done. Email and texts next.
 
 ## Setup (once)
 
@@ -25,7 +25,23 @@ python scripts/prepare_blog.py        # 1. posts -> data/blog/*.jsonl
 python scripts/compare.py data/blog   # 3. writes outputs/compare-blog.md
 ```
 
-To try it yourself:
+### College essays
+
+1. In Google Drive, right-click the **personal-llm – college writing** folder → Download. Unzip it.
+2. Delete anything you don't want the model to learn from (group projects, drafts you hate).
+3. Run:
+
+```bash
+python scripts/prepare_essays.py ~/Downloads/college-writing   # -> data/essay/
+python scripts/combine.py blog essay                            # -> data/all/
+./scripts/train.sh data/all
+python scripts/compare.py data/all
+```
+
+The script strips the name/class/date header and cuts off the bibliography.
+Docs under 200 words are skipped.
+
+### Try it yourself
 
 ```bash
 python -m mlx_lm.generate --model mlx-community/Qwen2.5-7B-Instruct-4bit \

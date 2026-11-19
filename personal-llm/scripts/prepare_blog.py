@@ -121,7 +121,7 @@ def main():
         (test if name in test_names else train).extend(examples_for(meta, chunks))
 
     random.Random(SEED).shuffle(train)
-    n_valid = max(5, len(train) // 10)
+    n_valid = max(1, len(train) // 10)
     valid, train = train[:n_valid], train[n_valid:]
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
